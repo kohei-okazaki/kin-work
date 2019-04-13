@@ -1,0 +1,5 @@
+#org.springsource.ide.eclipse.gradle.core.preferences.GradleProjectPreferences
+#Sat Apr 13 23:08:13 JST 2019
+build.family.org.gradle.tooling.model.eclipse.HierarchicalEclipseProject=;../kin-api;../kin-batch;../kin-business;../kin-common;../kin-dashboard;../kin-db;../kin-tool;../kin-web;
+org.springsource.ide.eclipse.gradle.linkedresources=
+org.springsource.ide.eclipse.gradle.rootprojectloc=

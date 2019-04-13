@@ -24,6 +24,7 @@ hs_err_pid*
 #ビルド成果物
 /target/
 /bin/
+/.gradle/
 
 #その他
 /work/
