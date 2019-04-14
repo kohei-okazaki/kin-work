@@ -64,7 +64,61 @@ subprojects {
 
   version = '1.0'
 
+  compileJava {
+    options.encoding = 'UTF-8'
+  }
+
   jar {
     manifest.attributes provider: 'kin'
   }
 }
+
+// dbプロジェクトの設定
+project(':kin-db') {
+  dependencies {
+    compile project(':kin-common')
+  }
+}
+
+// businessプロジェクトの設定
+project(':kin-business') {
+  dependencies {
+    compile project(':kin-common'), project(':kin-db')
+  }
+}
+
+// webプロジェクトの設定
+project(':kin-web') {
+  dependencies {
+    compile project(':kin-common')
+  }
+}
+
+// batchプロジェクトの設定
+project(':kin-batch') {
+  dependencies {
+    compile project(':kin-common'), project(':kin-db')
+  }
+}
+
+// apiプロジェクトの設定
+project(':kin-api') {
+  dependencies {
+    compile project(':kin-common'), project(':kin-db'), project(':kin-business'), project(':kin-web')
+  }
+}
+
+// dashboardプロジェクトの設定
+project(':kin-dashboard') {
+  dependencies {
+    compile project(':kin-common'), project(':kin-db'), project(':kin-business'), project(':kin-web')
+  }
+}
+
+// toolプロジェクトの設定
+project(':kin-tool') {
+  dependencies {
+    compile project(':kin-common'), project(':kin-db')
+  }
+}
+
