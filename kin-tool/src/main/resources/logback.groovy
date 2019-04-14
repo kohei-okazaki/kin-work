@@ -28,10 +28,10 @@ appender("STDOUT", ConsoleAppender) {
 
 appender("FILE", RollingFileAppender) {
 
-  file = "${FILE_PATH}/dashboard.log"
+  file = "${FILE_PATH}/tool.log"
 
   rollingPolicy(TimeBasedRollingPolicy) {
-    fileNamePattern = "dashboard_%d{yyyy-MM-dd}.log"
+    fileNamePattern = "tool_%d{yyyy-MM-dd}.log"
     maxHistory = 30
   }
 
