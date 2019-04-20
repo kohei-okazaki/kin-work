@@ -1,5 +1,9 @@
 package jp.co.kin.common.type;
 
+/**
+ * DateFormatType
+ *
+ */
 public enum DateFormatType implements BaseEnum {
 
 	/** YYYY/MM/DD */
@@ -9,11 +13,11 @@ public enum DateFormatType implements BaseEnum {
 	/** YYYYMMDD_HHmmss */
 	YYYYMMDD_HHMMSS_NOSEP("yyyyMMdd_HHmmss");
 
+	private String value;
+
 	private DateFormatType(String value) {
 		this.value = value;
 	}
-
-	private String value;
 
 	/**
 	 * {@inheritDoc}

@@ -29,9 +29,6 @@ public class StringUtil {
 	/** アンダースコア */
 	public static final String UNDER_SCORE = "_";
 
-	/**
-	 * プライベートコンストラクタ
-	 */
 	private StringUtil() {
 	}
 
