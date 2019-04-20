@@ -44,5 +44,4 @@ public enum RegixType implements BaseEnum {
 	public static RegixType of(String value) {
 		return BaseEnum.of(RegixType.class, value);
 	}
-
 }
