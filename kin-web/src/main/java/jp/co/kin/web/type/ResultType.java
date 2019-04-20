@@ -1,4 +1,4 @@
-package jp.co.kin.web.api.type;
+package jp.co.kin.web.type;
 
 import jp.co.kin.common.type.BaseEnum;
 

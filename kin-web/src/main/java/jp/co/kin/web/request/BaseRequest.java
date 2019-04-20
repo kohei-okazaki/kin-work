@@ -1,4 +1,4 @@
-package jp.co.kin.web.api;
+package jp.co.kin.web.request;
 
 public abstract class BaseRequest {
 

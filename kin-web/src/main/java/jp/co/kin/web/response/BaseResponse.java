@@ -1,9 +1,9 @@
-package jp.co.kin.web.api;
+package jp.co.kin.web.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-import jp.co.kin.web.api.type.ResultType;
+import jp.co.kin.web.type.ResultType;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public abstract class BaseResponse {
