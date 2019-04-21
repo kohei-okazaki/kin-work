@@ -11,6 +11,10 @@ import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
 
+/**
+ * DateUtil
+ *
+ */
 public class DateUtil {
 
 	/** LOG */

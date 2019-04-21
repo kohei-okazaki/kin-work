@@ -28,7 +28,7 @@ public interface BaseEnum {
 
 	/**
 	 * 指定した値と列挙と指定した値が一致する列挙型を返す<br>
-	 * 一致するenumがない場合nullを返す<br>
+	 * 一致するenumがない場合nullを返す
 	 *
 	 * @param enumClass
 	 *     BaseEnumを継承した列挙型
@@ -39,9 +39,8 @@ public interface BaseEnum {
 	@SuppressWarnings("unchecked")
 	public static <T extends BaseEnum> T of(Class<? extends BaseEnum> enumClass, String value) {
 		return (T) Stream.of(enumClass.getEnumConstants())
-				.filter(e -> e.getValue().equals(value))
+				.filter(e -> e.is(value))
 				.findFirst()
 				.orElse(null);
 	}
-
 }

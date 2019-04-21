@@ -36,5 +36,4 @@ public enum DateFormatType implements BaseEnum {
 	public static DateFormatType of(String value) {
 		return BaseEnum.of(DateFormatType.class, value);
 	}
-
 }

@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * CollectionUtil
+ *
+ */
 public class CollectionUtil {
 
 	private CollectionUtil() {

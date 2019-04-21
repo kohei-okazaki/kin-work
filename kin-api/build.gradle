@@ -5,13 +5,15 @@ apply plugin: 'eclipse-wtp'
 
 // sourceCompatibility = 10
 
+description = 'api'
+
 war {
   archiveName = 'kin-api.war'
 
-  manifest {
-    attributes 'Implementation-Title': 'Gradle Quickstart',
-               'Implementation-Version': version
-  }
+//   manifest {
+//     attributes 'Implementation-Title': 'Gradle Quickstart',
+//                'Implementation-Version': version
+//   }
 }
 
 repositories {
