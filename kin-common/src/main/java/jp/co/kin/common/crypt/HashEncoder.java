@@ -14,12 +14,12 @@ public interface HashEncoder {
 	 * ハッシュ化を行う
 	 *
 	 * @param password
-	 *     パスワード
+	 *            パスワード
 	 * @param salt
-	 *     ソルト
+	 *            ソルト
 	 * @return パスワード
 	 * @throws BaseException
-	 *     基底例外
+	 *             基底例外
 	 */
 	String encode(String password, String salt) throws BaseException;
 
@@ -27,19 +27,19 @@ public interface HashEncoder {
 	 * デフォルトで指定した値からハッシュ化した値を返す
 	 *
 	 * @param password
-	 *     パスワード
+	 *            パスワード
 	 * @param salt
-	 *     ソルト
+	 *            ソルト
 	 * @param algorithm
-	 *     アルゴリズム
+	 *            アルゴリズム
 	 * @return
 	 * @throws NoSuchAlgorithmException
-	 *     指定したアルゴリズムが存在しない場合
+	 *             指定したアルゴリズムが存在しない場合
 	 * @throws UnsupportedEncodingException
-	 *     指定した文字コードが存在しない場合
+	 *             指定した文字コードが存在しない場合
 	 */
 	public default String encodeDefault(String password, String salt, Algorithm algorithm)
-			throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	        throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		MessageDigest messsageDigest = MessageDigest.getInstance(algorithm.getValue());
 		String str = password + salt;
 		messsageDigest.update(str.getBytes(Charset.UTF_8.getValue()));

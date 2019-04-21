@@ -13,12 +13,12 @@ public interface BaseEncodeAndDecoder {
 	 * エンコードを行う
 	 *
 	 * @param src
-	 *     エンコード対象文字列
+	 *            エンコード対象文字列
 	 * @param charset
-	 *     文字コード
+	 *            文字コード
 	 * @return
 	 * @throws BaseException
-	 *     指定した文字コードが不正だった場合
+	 *             指定した文字コードが不正だった場合
 	 */
 	String encode(String src, Charset charset) throws BaseException;
 
@@ -26,12 +26,12 @@ public interface BaseEncodeAndDecoder {
 	 * デコードを行う
 	 *
 	 * @param src
-	 *     デコード対象文字列
+	 *            デコード対象文字列
 	 * @param charset
-	 *     文字コード
+	 *            文字コード
 	 * @return
 	 * @throws BaseException
-	 *     指定した文字コードが不正だった場合
+	 *             指定した文字コードが不正だった場合
 	 */
 	String decode(String src, Charset charset) throws BaseException;
 }

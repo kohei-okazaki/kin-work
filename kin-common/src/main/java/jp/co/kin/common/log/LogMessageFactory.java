@@ -30,13 +30,12 @@ public class LogMessageFactory {
 	 * ログメッセージを返す
 	 *
 	 * @param bean
-	 *     Bean
+	 *            Bean
 	 * @return ログメッセージ
 	 */
 	public static String getLogMessage(Object bean) {
 		StringJoiner body = new StringJoiner(", ");
 		Class<?> clazz = bean.getClass();
-
 		for (Field f : BeanUtil.getFieldList(clazz)) {
 			if (isIgnore(f)) {
 				// 出力非対象項目
@@ -58,7 +57,7 @@ public class LogMessageFactory {
 	 * 指定されてる場合、<code>@LogParam</code>のパラメータ名を返す
 	 *
 	 * @param field
-	 *     フィールド名
+	 *            フィールド名
 	 * @return パラメータ名
 	 */
 	private static String getLogParamName(Field field) {
@@ -71,7 +70,7 @@ public class LogMessageFactory {
 	 * 出力対象で無い場合true, それ以外の場合false
 	 *
 	 * @param field
-	 *     フィールド名
+	 *            フィールド名
 	 * @return 判定結果
 	 */
 	private static boolean isIgnore(Field field) {
@@ -82,9 +81,9 @@ public class LogMessageFactory {
 	 * 値を取得
 	 *
 	 * @param bean
-	 *     Bean
+	 *            Bean
 	 * @param fieldName
-	 *     フィールド名
+	 *            フィールド名
 	 * @return value
 	 */
 	private static Object getValue(Object bean, String fieldName) {
@@ -106,7 +105,7 @@ public class LogMessageFactory {
 	 * 値を出力用に編集する
 	 *
 	 * @param value
-	 *     値
+	 *            値
 	 * @return 編集後の値
 	 */
 	private static String editValue(Object value) {

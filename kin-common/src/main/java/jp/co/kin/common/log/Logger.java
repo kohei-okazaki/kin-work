@@ -13,7 +13,7 @@ public class Logger {
 	 * コンストラクタ
 	 *
 	 * @param logger
-	 *     org.slf4j.Logger
+	 *            org.slf4j.Logger
 	 */
 	Logger(org.slf4j.Logger logger) {
 		this.logger = logger;
@@ -23,7 +23,7 @@ public class Logger {
 	 * Debugログを出力する
 	 *
 	 * @param bean
-	 *     Bean
+	 *            Bean
 	 */
 	public void debugRes(Object bean) {
 		logger.debug(LogMessageFactory.getLogMessage(bean));
@@ -33,7 +33,7 @@ public class Logger {
 	 * Debugログを出力する
 	 *
 	 * @param msg
-	 *     ログメッセージ
+	 *            ログメッセージ
 	 */
 	public void debug(String msg) {
 		logger.debug(msg);
@@ -43,7 +43,7 @@ public class Logger {
 	 * Debugログを出力する
 	 *
 	 * @param bean
-	 *     Bean
+	 *            Bean
 	 */
 	public void infoRes(Object bean) {
 		logger.info(LogMessageFactory.getLogMessage(bean));
@@ -53,7 +53,7 @@ public class Logger {
 	 * Infoログを出力する
 	 *
 	 * @param msg
-	 *     ログメッセージ
+	 *            ログメッセージ
 	 */
 	public void info(String msg) {
 		logger.info(msg);
@@ -63,7 +63,7 @@ public class Logger {
 	 * Warnログを出力する
 	 *
 	 * @param bean
-	 *     Bean
+	 *            Bean
 	 */
 	public void warnRes(Object bean) {
 		logger.warn(LogMessageFactory.getLogMessage(bean));
@@ -73,9 +73,9 @@ public class Logger {
 	 * Warnログを出力する
 	 *
 	 * @param bean
-	 *     Bean
+	 *            Bean
 	 * @param t
-	 *     例外
+	 *            例外
 	 */
 	public void warnRes(Object bean, Throwable t) {
 		logger.warn(LogMessageFactory.getLogMessage(bean), t);
@@ -85,7 +85,7 @@ public class Logger {
 	 * Warnログを出力する
 	 *
 	 * @param msg
-	 *     ログメッセージ
+	 *            ログメッセージ
 	 */
 	public void warn(String msg) {
 		logger.warn(msg);
@@ -95,9 +95,9 @@ public class Logger {
 	 * Warnログを出力する
 	 *
 	 * @param msg
-	 *     ログメッセージ
+	 *            ログメッセージ
 	 * @param t
-	 *     例外
+	 *            例外
 	 */
 	public void warn(String msg, Throwable t) {
 		logger.warn(msg, t);
@@ -107,7 +107,7 @@ public class Logger {
 	 * Errorログを出力する
 	 *
 	 * @param bean
-	 *     Bean
+	 *            Bean
 	 */
 	public void errorRes(Object bean) {
 		logger.error(LogMessageFactory.getLogMessage(bean));
@@ -117,9 +117,9 @@ public class Logger {
 	 * Errorログを出力する
 	 *
 	 * @param bean
-	 *     Bean
+	 *            Bean
 	 * @param t
-	 *     例外
+	 *            例外
 	 */
 	public void errorRes(Object bean, Throwable t) {
 		logger.error(LogMessageFactory.getLogMessage(bean), t);
@@ -129,7 +129,7 @@ public class Logger {
 	 * Errorログを出力する
 	 *
 	 * @param msg
-	 *     ログメッセージ
+	 *            ログメッセージ
 	 */
 	public void error(String msg) {
 		logger.error(msg);
@@ -139,9 +139,9 @@ public class Logger {
 	 * Errorログを出力する
 	 *
 	 * @param msg
-	 *     ログメッセージ
+	 *            ログメッセージ
 	 * @param t
-	 *     例外
+	 *            例外
 	 */
 	public void error(String msg, Throwable t) {
 		logger.error(msg, t);

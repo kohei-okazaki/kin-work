@@ -32,5 +32,4 @@ public class SystemMemory {
 		double ratio = (used * 100 / total.doubleValue());
 		return usedFormat.format(ratio);
 	}
-
 }

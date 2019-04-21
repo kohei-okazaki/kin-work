@@ -15,7 +15,6 @@ public class BeanLoader {
 
 	/** LOG */
 	private static final Logger LOG = LoggerFactory.getLogger(BeanLoader.class);
-
 	/** ApplicationContext */
 	private static ApplicationContext context;
 
@@ -26,7 +25,7 @@ public class BeanLoader {
 	 * Beanを取得
 	 *
 	 * @param clazz
-	 *     Beanの実装クラス
+	 *            Beanの実装クラス
 	 * @return Bean
 	 */
 	public static <T> T getBean(Class<T> clazz) {
@@ -47,7 +46,6 @@ public class BeanLoader {
 	 * @return ApplicationContext
 	 */
 	private static ApplicationContext getContext() {
-
 		if (BeanUtil.notNull(context)) {
 			return context;
 		}
@@ -60,7 +58,7 @@ public class BeanLoader {
 	 * ApplicationContextを設定する
 	 *
 	 * @param context
-	 *     ApplicationContext
+	 *            ApplicationContext
 	 */
 	public static void setContext(ApplicationContext context) {
 		BeanLoader.context = context;

@@ -11,18 +11,25 @@ public abstract class BaseResponse {
 	@JsonProperty(value = "result")
 	private ResultType resultType;
 
+
 	/**
+	 * resultTypeを返す
 	 * @return resultType
+	 *
 	 */
 	public ResultType getResultType() {
 		return resultType;
 	}
 
+
 	/**
-	 * @param resultType セットする resultType
+	 * @param resultType resultTypeを設定する
+	 *
+	 *
 	 */
 	public void setResultType(ResultType resultType) {
 		this.resultType = resultType;
 	}
+
 
 }

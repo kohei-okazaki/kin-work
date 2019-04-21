@@ -5,7 +5,6 @@ package jp.co.kin.common.type;
  *
  */
 public enum DateFormatType implements BaseEnum {
-
 	/** YYYY/MM/DD */
 	YYYYMMDD("yyyy/MM/dd"),
 	/** YYYY/MM/DD HH:mm:ss */
@@ -30,7 +29,7 @@ public enum DateFormatType implements BaseEnum {
 	/**
 	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
 	 * @param value
-	 *     値
+	 *            値
 	 * @return DateFormatType
 	 */
 	public static DateFormatType of(String value) {

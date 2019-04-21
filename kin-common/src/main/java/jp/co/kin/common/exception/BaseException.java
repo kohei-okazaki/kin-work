@@ -8,7 +8,6 @@ public abstract class BaseException extends Exception {
 
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
-
 	private String detail;
 
 	public BaseException() {
@@ -25,10 +24,12 @@ public abstract class BaseException extends Exception {
 	}
 
 	/**
+	 * detailを返す
+	 * 
 	 * @return detail
+	 *
 	 */
 	public String getDetail() {
 		return detail;
 	}
-
 }

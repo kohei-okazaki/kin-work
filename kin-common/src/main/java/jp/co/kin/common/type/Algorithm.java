@@ -1,7 +1,6 @@
 package jp.co.kin.common.type;
 
 public enum Algorithm implements BaseEnum {
-
 	/** SHA-256 */
 	SHA_256("SHA-256"),
 	/** SHA-512 */
@@ -24,7 +23,7 @@ public enum Algorithm implements BaseEnum {
 	/**
 	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
 	 * @param value
-	 *     値
+	 *            値
 	 * @return Algorithm
 	 */
 	public static Algorithm of(String value) {

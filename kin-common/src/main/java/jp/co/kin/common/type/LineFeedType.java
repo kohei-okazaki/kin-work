@@ -5,7 +5,6 @@ package jp.co.kin.common.type;
  *
  */
 public enum LineFeedType implements BaseEnum {
-
 	/** CR */
 	CR("\r"),
 	/** LF */
@@ -30,7 +29,7 @@ public enum LineFeedType implements BaseEnum {
 	/**
 	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
 	 * @param value
-	 *     値
+	 *            値
 	 * @return LineFeedType
 	 */
 	public static LineFeedType of(String value) {
