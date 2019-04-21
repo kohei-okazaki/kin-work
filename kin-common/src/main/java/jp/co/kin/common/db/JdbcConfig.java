@@ -1,4 +1,4 @@
-package jp.co.kin.common.db.annotation;
+package jp.co.kin.common.db;
 
 public class JdbcConfig {
 
