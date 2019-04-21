@@ -19,17 +19,22 @@ public class ErrorResponse extends BaseResponse {
 	}
 
 	/**
+	 * errorCodeを返す
+	 *
 	 * @return errorCode
+	 *
 	 */
 	public String getErrorCode() {
 		return errorCode;
 	}
 
 	/**
+	 * detailを返す
+	 *
 	 * @return detail
+	 *
 	 */
 	public String getDetail() {
 		return detail;
 	}
-
 }

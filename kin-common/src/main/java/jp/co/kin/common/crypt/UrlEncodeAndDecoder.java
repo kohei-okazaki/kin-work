@@ -33,5 +33,4 @@ public class UrlEncodeAndDecoder implements BaseEncodeAndDecoder {
 			throw new UnExpectedException(e);
 		}
 	}
-
 }

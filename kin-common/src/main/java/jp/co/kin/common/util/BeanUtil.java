@@ -32,9 +32,9 @@ public class BeanUtil {
 	 * コピー先のクラスと同じフィールド名の場合コピー元のフィールドに値を設定する<br>
 	 *
 	 * @param src
-	 *     コピー元
+	 *            コピー元
 	 * @param dest
-	 *     コピー先
+	 *            コピー先
 	 */
 	public static void copy(Object src, Object dest) {
 		copy(src, dest, Collections.emptyList());
@@ -46,14 +46,13 @@ public class BeanUtil {
 	 * コピー時に無視リストの名前のフィールドの場合、コピーを行わない。<br>
 	 *
 	 * @param src
-	 *     コピー元
+	 *            コピー元
 	 * @param dest
-	 *     コピー先
+	 *            コピー先
 	 * @param ignoreList
-	 *     無視リスト
+	 *            無視リスト
 	 */
 	public static void copy(Object src, Object dest, List<String> ignoreList) {
-
 		// コピー元のクラス型
 		Class<?> srcClass = src.getClass();
 		// コピー先のクラス型
@@ -63,14 +62,12 @@ public class BeanUtil {
 				if (ignore(ignoreList, targetField.getName())) {
 					continue;
 				}
-
 				for (Field sourceField : BeanUtil.getFieldList(srcClass)) {
 					if (isCopyTarget(sourceField, targetField)) {
 						// getter呼び出し
 						Method getter = getAccessor(sourceField.getName(), srcClass, AccessorType.GETTER);
 						// setter呼び出し
 						Method setter = getAccessor(sourceField.getName(), destClass, AccessorType.SETTER);
-
 						// 値を設定
 						setter.invoke(dest, getter.invoke(src));
 					}
@@ -94,9 +91,9 @@ public class BeanUtil {
 	 * </ul>
 	 *
 	 * @param ignoreList
-	 *     無視リスト
+	 *            無視リスト
 	 * @param fieldName
-	 *     フィールド名
+	 *            フィールド名
 	 * @return 判定結果
 	 */
 	private static boolean ignore(List<String> ignoreList, String fieldName) {
@@ -107,9 +104,9 @@ public class BeanUtil {
 	 * コピー対象かどうか判定する
 	 *
 	 * @param src
-	 *     Field コピー元のフィールド
+	 *            Field コピー元のフィールド
 	 * @param dest
-	 *     Field コピー先のフィールド
+	 *            Field コピー先のフィールド
 	 * @return 判定結果
 	 */
 	private static boolean isCopyTarget(Field src, Field dest) {
@@ -125,7 +122,7 @@ public class BeanUtil {
 	 * 判定結果:nullの場合true, それ以外の場合false<br>
 	 *
 	 * @param target
-	 *     検査対象インスタンス
+	 *            検査対象インスタンス
 	 * @return 判定結果
 	 */
 	public static boolean isNull(Object target) {
@@ -138,7 +135,7 @@ public class BeanUtil {
 	 *
 	 * @see jp.co.ha.common.util.BeanUtil#isNull
 	 * @param target
-	 *     検査対象インスタンス
+	 *            検査対象インスタンス
 	 * @return 判定結果
 	 */
 	public static boolean notNull(Object target) {
@@ -149,7 +146,7 @@ public class BeanUtil {
 	 * パラメータ引数にしているクラス型を取得する
 	 *
 	 * @param clazz
-	 *     対象クラス
+	 *            対象クラス
 	 * @return クラス型
 	 */
 	public static Class<?> getParameterType(Class<?> clazz) {
@@ -160,9 +157,9 @@ public class BeanUtil {
 	 * パラメータ引数にしているクラス型を取得する
 	 *
 	 * @param clazz
-	 *     対象クラス
+	 *            対象クラス
 	 * @param position
-	 *     パラメータ引数の位置
+	 *            パラメータ引数の位置
 	 * @return クラス型
 	 */
 	public static Class<?> getParameterType(Class<?> clazz, int position) {
@@ -174,7 +171,7 @@ public class BeanUtil {
 	 * 指定したクラス型のフィールドをリストで返す
 	 *
 	 * @param clazz
-	 *     クラス型
+	 *            クラス型
 	 * @return フィールドのリスト
 	 */
 	public static List<Field> getFieldList(Class<?> clazz) {
@@ -191,11 +188,11 @@ public class BeanUtil {
 	 * 指定したclazzのfieldNameのアクセサを返す
 	 *
 	 * @param fieldName
-	 *     フィールド名
+	 *            フィールド名
 	 * @param clazz
-	 *     クラス
+	 *            クラス
 	 * @param type
-	 *     SETTER/GETTER
+	 *            SETTER/GETTER
 	 * @return アクセサメソッド
 	 */
 	public static Method getAccessor(String fieldName, Class<?> clazz, AccessorType type) {
@@ -217,6 +214,7 @@ public class BeanUtil {
 
 	/**
 	 * メソッドのアクセス列挙<br>
+	 *
 	 * @see BeanUtil#getAccessor(String, Class, AccessorType)
 	 *
 	 */
@@ -226,5 +224,4 @@ public class BeanUtil {
 		/** getter */
 		GETTER;
 	}
-
 }

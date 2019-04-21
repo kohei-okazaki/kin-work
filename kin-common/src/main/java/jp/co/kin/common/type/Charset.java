@@ -5,7 +5,6 @@ package jp.co.kin.common.type;
  *
  */
 public enum Charset implements BaseEnum {
-
 	/** MS932 */
 	MS_932("MS932"),
 	/** UTF-8 */
@@ -28,7 +27,7 @@ public enum Charset implements BaseEnum {
 	/**
 	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
 	 * @param value
-	 *     値
+	 *            値
 	 * @return Charset
 	 */
 	public static Charset of(String value) {

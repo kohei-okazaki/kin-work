@@ -14,7 +14,7 @@ public class MaskExecutor {
 	 * マスク対象の場合true, それ以外の場合false
 	 *
 	 * @param field
-	 *     フィールド
+	 *            フィールド
 	 * @return 判定結果
 	 */
 	public static boolean isMask(Field field) {
@@ -25,7 +25,7 @@ public class MaskExecutor {
 	 * マスク文字列を返す
 	 *
 	 * @param field
-	 *     フィールド
+	 *            フィールド
 	 * @return マスク文字列
 	 */
 	public static String getMask(Field field) {

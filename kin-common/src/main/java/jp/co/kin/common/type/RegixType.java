@@ -5,7 +5,6 @@ package jp.co.kin.common.type;
  *
  */
 public enum RegixType implements BaseEnum {
-
 	/** 半角数字 */
 	HALF_NUMBER("^[0-9]*$"),
 	/** 半角数字とピリオド */
@@ -38,7 +37,7 @@ public enum RegixType implements BaseEnum {
 	/**
 	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
 	 * @param value
-	 *     値
+	 *            値
 	 * @return RegixType
 	 */
 	public static RegixType of(String value) {
