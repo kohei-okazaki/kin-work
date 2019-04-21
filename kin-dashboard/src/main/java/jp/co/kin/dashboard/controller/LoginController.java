@@ -1,4 +1,4 @@
-package jp.co.kin.controller;
+package jp.co.kin.dashboard.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
