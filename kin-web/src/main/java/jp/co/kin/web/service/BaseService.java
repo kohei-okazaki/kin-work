@@ -9,9 +9,9 @@ import jp.co.kin.web.response.BaseResponse;
  * 各機能のサービスの親インターフェース
  *
  * @param <Rq>
- *     リクエスト
+ *            リクエスト
  * @param <Rs>
- *     レスポンス
+ *            レスポンス
  */
 public interface BaseService<Rq extends BaseRequest, Rs extends BaseResponse> {
 
@@ -19,9 +19,9 @@ public interface BaseService<Rq extends BaseRequest, Rs extends BaseResponse> {
 	 * 継承先でそれぞれチェックを実装
 	 *
 	 * @param request
-	 *     Request実装クラス
+	 *            Request実装クラス
 	 * @throws BaseException
-	 *     基底例外
+	 *             基底例外
 	 */
 	void checkRequest(Rq request) throws BaseException;
 
@@ -30,11 +30,10 @@ public interface BaseService<Rq extends BaseRequest, Rs extends BaseResponse> {
 	 * リクエスト型を処理し、レスポンス型で返す
 	 *
 	 * @param request
-	 *     Request実装クラス
+	 *            Request実装クラス
 	 * @return Rs Response実装クラス
 	 * @throws BaseException
-	 *     基底例外
+	 *             基底例外
 	 */
 	Rs execute(Rq request) throws BaseException;
-
 }

@@ -7,7 +7,6 @@ import jp.co.kin.common.type.BaseEnum;
  *
  */
 public enum ResultType implements BaseEnum {
-
 	/** Success */
 	SUCCESS("0"),
 	/** Failure */
@@ -30,7 +29,7 @@ public enum ResultType implements BaseEnum {
 	/**
 	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
 	 * @param value
-	 *     値
+	 *            値
 	 * @return ResultType
 	 */
 	public static ResultType of(String value) {
