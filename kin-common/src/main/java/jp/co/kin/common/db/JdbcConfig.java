@@ -22,8 +22,7 @@ public class JdbcConfig {
 
 	/**
 	 * @param driverClassName
-	 *            設定する
-	 *            driverClassName
+	 *            driverClassNameを設定する
 	 *
 	 */
 	public void setDriverClassName(String driverClassName) {
@@ -42,8 +41,7 @@ public class JdbcConfig {
 
 	/**
 	 * @param url
-	 *            設定する
-	 *            url
+	 *            urlを設定する
 	 *
 	 */
 	public void setUrl(String url) {
@@ -62,8 +60,7 @@ public class JdbcConfig {
 
 	/**
 	 * @param username
-	 *            設定する
-	 *            username
+	 *            usernameを設定する
 	 *
 	 */
 	public void setUsername(String username) {
@@ -82,8 +79,7 @@ public class JdbcConfig {
 
 	/**
 	 * @param password
-	 *            設定する
-	 *            password
+	 *            passwordを設定する
 	 *
 	 */
 	public void setPassword(String password) {

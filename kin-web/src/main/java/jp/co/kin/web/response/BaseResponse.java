@@ -11,9 +11,9 @@ public abstract class BaseResponse {
 	@JsonProperty(value = "result")
 	private ResultType resultType;
 
-
 	/**
 	 * resultTypeを返す
+	 *
 	 * @return resultType
 	 *
 	 */
@@ -21,15 +21,12 @@ public abstract class BaseResponse {
 		return resultType;
 	}
 
-
 	/**
-	 * @param resultType resultTypeを設定する
-	 *
+	 * @param resultType
+	 *            resultTypeを設定する
 	 *
 	 */
 	public void setResultType(ResultType resultType) {
 		this.resultType = resultType;
 	}
-
-
 }
