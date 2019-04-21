@@ -6,6 +6,10 @@ import java.util.stream.Stream;
 
 import jp.co.kin.common.exception.BaseException;
 
+/**
+ * StringUtil
+ *
+ */
 public class StringUtil {
 
 	/** カンマ */

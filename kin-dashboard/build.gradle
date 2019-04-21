@@ -7,9 +7,8 @@ apply plugin: 'eclipse-wtp'
 
 war {
   archiveName = 'kin-dashboard.war'
-
   manifest {
-    attributes 'Implementation-Title': 'Gradle Quickstart',
+    attributes 'Implementation-Title': 'kin-dashboard',
                'Implementation-Version': version
   }
 }

@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.StringJoiner;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import jp.co.kin.common.log.annotation.Ignore;
 import jp.co.kin.common.log.annotation.LogParam;
 import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.util.BeanUtil;

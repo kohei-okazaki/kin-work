@@ -1,11 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-// sourceCompatibility = 10
-
 jar {
+  archiveName = 'kin-batch.jar'
   manifest {
-    attributes 'Implementation-Title': 'Gradle Quickstart',
+    attributes 'Implementation-Title': 'kin-batch',
                'Implementation-Version': version
   }
 }

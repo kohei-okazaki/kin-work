@@ -4,8 +4,9 @@ apply plugin: 'eclipse'
 // sourceCompatibility = 10
 
 jar {
+  archiveName = 'kin-tool.war'
   manifest {
-    attributes 'Implementation-Title': 'Gradle Quickstart',
+    attributes 'Implementation-Title': 'kin-tool',
                'Implementation-Version': version
   }
 }
