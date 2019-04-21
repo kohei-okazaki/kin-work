@@ -13,9 +13,10 @@ public class SystemMemory {
 	 * @return メモリ使用量
 	 */
 	public String getMemoryUsage() {
+		Runtime rt = Runtime.getRuntime();
 		DecimalFormat usedFormat = new DecimalFormat("#,###KB");
-		Long free = Runtime.getRuntime().freeMemory() / 1024;
-		Long total = Runtime.getRuntime().totalMemory() / 1024;
+		Long free = rt.freeMemory() / 1024;
+		Long total = rt.totalMemory() / 1024;
 		return usedFormat.format(total - free);
 	}
 
@@ -25,9 +26,10 @@ public class SystemMemory {
 	 * @return メモリ使用量(%)
 	 */
 	public String getMemoryUsageRate() {
+		Runtime rt = Runtime.getRuntime();
 		DecimalFormat usedFormat = new DecimalFormat("##.#");
-		Long free = Runtime.getRuntime().freeMemory() / 1024;
-		Long total = Runtime.getRuntime().totalMemory() / 1024;
+		Long free = rt.freeMemory() / 1024;
+		Long total = rt.totalMemory() / 1024;
 		Long used = total - free;
 		double ratio = (used * 100 / total.doubleValue());
 		return usedFormat.format(ratio);
