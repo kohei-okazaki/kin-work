@@ -23,11 +23,11 @@
     <h1>ログイン画面</h1>
     <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}">
 
-      <div th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" data-sal="slide-up"></div>
+      <div th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
       <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
 
       <div class="iconUser icon"></div>
-      <input type="text" class="validate[required]" th:field="*{userId}" maxlength="16" placeholder="ユーザID" required />
+      <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" placeholder="ログインID" required />
       <br><br>
       <div class="iconPassword icon"></div>
       <input type="password" class="validate[required]" th:field="*{password}" maxlength="16" placeholder="パスワード" required />
@@ -60,9 +60,9 @@
 
       // 進捗バーの処理
       var mprogress = new Mprogress();
-      $("#userId").on("change", function() {
+      $("#loginId").on("change", function() {
         var value = 0;
-        if ($("#userId").val() !== "") {
+        if ($("#loginId").val() !== "") {
           value += 1;
         }
         if ($("#password").val() !== "") {
@@ -73,7 +73,7 @@
       });
       $("#password").on("change", function() {
         var value = 0;
-        if ($("#userId").val() !== "") {
+        if ($("#loginId").val() !== "") {
           value += 1;
         }
         if ($("#password").val() !== "") {

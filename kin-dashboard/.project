@@ -3,6 +3,10 @@
 	<name>kin-dashboard</name>
 	<comment></comment>
 	<projects>
+		<project>kin-business</project>
+		<project>kin-common</project>
+		<project>kin-db</project>
+		<project>kin-web</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
