@@ -1,164 +1,149 @@
 package jp.co.kin.common.log;
 
-import org.springframework.stereotype.Component;
-
 /**
  * Logger
  */
-@Component
 public class Logger {
 
-	/* DEBUG */
+	/** ロガー */
+	private org.slf4j.Logger logger;
+
 	/**
-	 * Debugログを出力する
+	 * コンストラクタ
 	 *
-	 * @param clazz
-	 *            対象クラス
-	 * @param bean
-	 *            Bean
+	 * @param logger
+	 *            org.slf4j.Logger
 	 */
-	public void debugRes(Class<?> clazz, Object bean) {
-		org.slf4j.LoggerFactory.getLogger(clazz).debug(LogMessageFactory.getLogMessage(bean));
+	Logger(org.slf4j.Logger logger) {
+		this.logger = logger;
 	}
 
 	/**
 	 * Debugログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
+	 * @param bean
+	 *            Bean
+	 */
+	public void debugRes(Object bean) {
+		logger.debug(LogMessageFactory.getLogMessage(bean));
+	}
+
+	/**
+	 * Debugログを出力する
+	 *
 	 * @param msg
 	 *            ログメッセージ
 	 */
-	public void debug(Class<?> clazz, String msg) {
-		org.slf4j.LoggerFactory.getLogger(clazz).debug(msg);
+	public void debug(String msg) {
+		logger.debug(msg);
 	}
 
-	/* INFO */
+	/**
+	 * Debugログを出力する
+	 *
+	 * @param bean
+	 *            Bean
+	 */
+	public void infoRes(Object bean) {
+		logger.info(LogMessageFactory.getLogMessage(bean));
+	}
+
 	/**
 	 * Infoログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
-	 * @param bean
-	 *            Bean
-	 */
-	public void infoRes(Class<?> clazz, Object bean) {
-		org.slf4j.LoggerFactory.getLogger(clazz).info(LogMessageFactory.getLogMessage(bean));
-	}
-
-	/**
-	 * Infoログを出力する
-	 *
-	 * @param clazz
-	 *            対象クラス
 	 * @param msg
 	 *            ログメッセージ
 	 */
-	public void info(Class<?> clazz, String msg) {
-		org.slf4j.LoggerFactory.getLogger(clazz).info(msg);
+	public void info(String msg) {
+		logger.info(msg);
 	}
 
-	/* WARN */
 	/**
 	 * Warnログを出力する
 	 *
 	 * @param bean
 	 *            Bean
 	 */
-	public void warnRes(Class<?> clazz, Object bean) {
-		org.slf4j.LoggerFactory.getLogger(clazz).warn(LogMessageFactory.getLogMessage(bean));
+	public void warnRes(Object bean) {
+		logger.warn(LogMessageFactory.getLogMessage(bean));
 	}
 
 	/**
 	 * Warnログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
 	 * @param bean
 	 *            Bean
 	 * @param t
 	 *            例外
 	 */
-	public void warnRes(Class<?> clazz, Object bean, Throwable t) {
-		org.slf4j.LoggerFactory.getLogger(clazz).warn(LogMessageFactory.getLogMessage(bean), t);
+	public void warnRes(Object bean, Throwable t) {
+		logger.warn(LogMessageFactory.getLogMessage(bean), t);
 	}
 
 	/**
 	 * Warnログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
 	 * @param msg
 	 *            ログメッセージ
 	 */
-	public void warn(Class<?> clazz, String msg) {
-		org.slf4j.LoggerFactory.getLogger(clazz).warn(msg);
+	public void warn(String msg) {
+		logger.warn(msg);
 	}
 
 	/**
 	 * Warnログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
 	 * @param msg
 	 *            ログメッセージ
 	 * @param t
 	 *            例外
 	 */
-	public void warn(Class<?> clazz, String msg, Throwable t) {
-		org.slf4j.LoggerFactory.getLogger(clazz).warn(msg, t);
+	public void warn(String msg, Throwable t) {
+		logger.warn(msg, t);
 	}
 
-	/* ERROR */
 	/**
 	 * Errorログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
 	 * @param bean
 	 *            Bean
 	 */
-	public void errorRes(Class<?> clazz, Object bean) {
-		org.slf4j.LoggerFactory.getLogger(clazz).error(LogMessageFactory.getLogMessage(bean));
+	public void errorRes(Object bean) {
+		logger.error(LogMessageFactory.getLogMessage(bean));
 	}
 
 	/**
 	 * Errorログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
 	 * @param bean
 	 *            Bean
 	 * @param t
 	 *            例外
 	 */
-	public void errorRes(Class<?> clazz, Object bean, Throwable t) {
-		org.slf4j.LoggerFactory.getLogger(clazz).error(LogMessageFactory.getLogMessage(bean), t);
+	public void errorRes(Object bean, Throwable t) {
+		logger.error(LogMessageFactory.getLogMessage(bean), t);
 	}
 
 	/**
 	 * Errorログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
 	 * @param msg
 	 *            ログメッセージ
 	 */
-	public void error(Class<?> clazz, String msg) {
-		org.slf4j.LoggerFactory.getLogger(clazz).error(msg);
+	public void error(String msg) {
+		logger.error(msg);
 	}
 
 	/**
 	 * Errorログを出力する
 	 *
-	 * @param clazz
-	 *            対象クラス
 	 * @param msg
 	 *            ログメッセージ
 	 * @param t
 	 *            例外
 	 */
-	public void error(Class<?> clazz, String msg, Throwable t) {
-		org.slf4j.LoggerFactory.getLogger(clazz).error(msg, t);
+	public void error(String msg, Throwable t) {
+		logger.error(msg, t);
 	}
+
 }

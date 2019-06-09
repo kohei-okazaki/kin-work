@@ -3,18 +3,123 @@ package jp.co.kin.common.util;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BiConsumer;
+
+import jp.co.kin.common.log.Logger;
+import jp.co.kin.common.log.LoggerFactory;
 
 /**
  * Bean操作のUtilクラス
  */
 public class BeanUtil {
 
+	private static final Logger logger = LoggerFactory.getLogger(BeanUtil.class);
+
 	private BeanUtil() {
+	}
+
+	/**
+	 * <code>src</code>のフィールドを<code>dest</code>のフィールドにコピーする<br>
+	 * コピー先のクラスと同じフィールド名の場合、コピー元のフィールドに値を設定する
+	 *
+	 * @param src
+	 *            コピー元
+	 * @param dest
+	 *            コピー先
+	 */
+	public static void copy(Object src, Object dest) {
+		copy(src, dest, Collections.emptyList());
+	}
+
+	/**
+	 * <code>src</code>のフィールドを<code>dest</code>のフィールドにコピーする<br>
+	 * コピー先のクラスと同じフィールド名の場合、コピー元のフィールドに値を設定する<br>
+	 * コピー後に行う処理をfunctionに指定してください
+	 *
+	 * @param src
+	 *            コピー元
+	 * @param dest
+	 *            コピー先
+	 * @param function
+	 *            コールバック処理
+	 */
+	public static void copy(Object src, Object dest, BiConsumer<Object, Object> function) {
+		copy(src, dest, Collections.emptyList(), function);
+	}
+
+	/**
+	 * <code>src</code>のフィールドを<code>dest</code>のフィールドにコピーする<br>
+	 * コピー先のクラスと同じフィールド名の場合、コピー元のフィールドに値を設定する<br>
+	 * コピー時に無視リストの名前のフィールドの場合、コピーを行わない。
+	 *
+	 * @param src
+	 *            コピー元
+	 * @param dest
+	 *            コピー先
+	 * @param ignoreList
+	 *            無視リスト
+	 */
+	public static void copy(Object src, Object dest, List<String> ignoreList) {
+		copy(src, dest, ignoreList, null);
+	}
+
+	/**
+	 * <code>src</code>のフィールドを<code>dest</code>のフィールドにコピーする<br>
+	 * コピー先のクラスと同じフィールド名の場合、コピー元のフィールドに値を設定する<br>
+	 * コピー時に無視リストの名前のフィールドの場合、コピーを行わない。
+	 *
+	 * @param src
+	 *            コピー元
+	 * @param dest
+	 *            コピー先
+	 * @param ignoreList
+	 *            無視リスト
+	 * @param function
+	 *            コールバック処理
+	 */
+	public static void copy(Object src, Object dest, List<String> ignoreList, BiConsumer<Object, Object> function) {
+
+		// コピー元のクラス型
+		Class<?> srcClass = src.getClass();
+		// コピー先のクラス型
+		Class<?> destClass = dest.getClass();
+		try {
+			for (Field targetField : BeanUtil.getFieldList(destClass)) {
+				if (ignore(ignoreList, targetField.getName())) {
+					continue;
+				}
+
+				for (Field sourceField : BeanUtil.getFieldList(srcClass)) {
+					if (isCopyTarget(sourceField, targetField)) {
+						// getter呼び出し
+						Method getter = getAccessor(sourceField.getName(), srcClass, AccessorType.GETTER);
+						// setter呼び出し
+						Method setter = getAccessor(sourceField.getName(), destClass, AccessorType.SETTER);
+
+						// 値を設定
+						setter.invoke(dest, getter.invoke(src));
+					}
+				}
+			}
+		} catch (IllegalAccessException e) {
+			logger.warn("アクセスに失敗", e);
+		} catch (IllegalArgumentException e) {
+			logger.warn("不正な引数", e);
+		} catch (InvocationTargetException e) {
+			logger.warn("フィールドのアクセスに失敗", e);
+		}
+
+		if (notNull(function)) {
+			function.accept(src, dest);
+		}
+
 	}
 
 	/**

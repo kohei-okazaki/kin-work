@@ -6,7 +6,6 @@ import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.StringJoiner;
 
-import jp.co.kin.common.context.BeanContextLoader;
 import jp.co.kin.common.log.annotation.Ignore;
 import jp.co.kin.common.log.annotation.LogParam;
 import jp.co.kin.common.type.DateFormatType;
@@ -21,7 +20,7 @@ import jp.co.kin.common.util.StringUtil;
 public class LogMessageFactory {
 
 	/** LOG */
-	private final static Logger LOG = BeanContextLoader.getBean(Logger.class);
+	private final static Logger LOG = LoggerFactory.getLogger(LogMessageFactory.class);
 
 	/**
 	 * プライベートコンストラクタ
@@ -96,11 +95,11 @@ public class LogMessageFactory {
 			Method getter = BeanUtil.getAccessor(fieldName, bean.getClass(), AccessorType.GETTER);
 			value = getter.invoke(bean);
 		} catch (IllegalAccessException e) {
-			LOG.error(LogMessageFactory.class, "フィールドに対して不正アクセスです フィールド：" + fieldName, e);
+			LOG.error("フィールドに対して不正アクセスです フィールド：" + fieldName, e);
 		} catch (IllegalArgumentException e) {
-			LOG.error(LogMessageFactory.class, "不正な引数です" + fieldName, e);
+			LOG.error("不正な引数です" + fieldName, e);
 		} catch (InvocationTargetException e) {
-			LOG.error(LogMessageFactory.class, "項目が不正です" + fieldName, e);
+			LOG.error("項目が不正です" + fieldName, e);
 		}
 		return value;
 	}
