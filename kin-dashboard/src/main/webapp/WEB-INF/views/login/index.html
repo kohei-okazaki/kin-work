@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ログイン画面</title>
+<link rel="icon" type="image/png" href="../resources/image/favicon.png" th:href="@{/resources/image/favicon.png}">
+<link rel="stylesheet" type="text/css" href="../resources/css/loginLayout.css" th:href="@{/resources/css/loginLayout.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/common/headericon.css" th:href="@{/resources/css/common/headericon.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/lib/validationEngine.jquery.css" th:href="@{/resources/css/lib/validationEngine.jquery.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/lib/mprogress.css" th:href="@{/resources/css/lib/mprogress.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/lib/sal.css" th:href="@{/resources/css/lib/sal.min.css}">
+</head>
+<body>
+
+  <div th:if="${errorMessage} != null" data-sal="slide-up">
+    <div class="errorMessage">
+      <p th:text="${errorMessage}"></p>
+    </div>
+  </div>
+
+  <fieldset>
+    <h1>ログイン画面</h1>
+    <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}">
+
+      <div th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
+      <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
+
+      <div class="iconUser icon"></div>
+      <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" placeholder="ログインID" required />
+      <br><br>
+      <div class="iconPassword icon"></div>
+      <input type="password" class="validate[required]" th:field="*{password}" maxlength="16" placeholder="パスワード" required />
+      <input type="submit" value="ログイン" />
+      <input id="account-regist" type="button" value="アカウント作成" />
+    </form>
+  </fieldset>
+
+  <br>
+
+  <script type="text/javascript" src="../resources/js/lib/jquery.js" th:src="@{/resources/js/lib/jquery.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/jquery.validationEngine-ja.js" th:src="@{/resources/js/lib/jquery.validationEngine-ja.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/jquery.validationEngine.js" th:src="@{/resources/js/lib/jquery.validationEngine.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/mprogress.js" th:src="@{/resources/js/lib/mprogress.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/sal.js" th:src="@{/resources/js/lib/sal.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/common/common.js" th:src="@{/resources/js/common/common.min.js}"></script>
+  <script type="text/javascript">
+
+    $(function() {
+
+      sal({
+        threshold: 1,
+        once: false
+      });
+
+      // validate処理
+      jQuery("#loginForm").validationEngine({
+        promptPosition : "topLeft:0"
+      });
+
+      // 進捗バーの処理
+      var mprogress = new Mprogress();
+      $("#loginId").on("change", function() {
+        var value = 0;
+        if ($("#loginId").val() !== "") {
+          value += 1;
+        }
+        if ($("#password").val() !== "") {
+          value += 1;
+        }
+        var progressValue = value / 2;
+        mprogress.set(progressValue);
+      });
+      $("#password").on("change", function() {
+        var value = 0;
+        if ($("#loginId").val() !== "") {
+          value += 1;
+        }
+        if ($("#password").val() !== "") {
+          value += 1;
+        }
+        var progressValue = value / 2;
+        mprogress.set(progressValue);
+      });
+
+      $("#account-regist").on("click", function() {
+    	// アカウント登録処理
+        var form = $("<form></form>", {
+          method : "get",
+          action : "../accountRegist/input"
+        });
+        form.appendTo(document.body);
+        form.submit();
+      });
+
+    });
+
+  </script>
+</body>
+</html>
