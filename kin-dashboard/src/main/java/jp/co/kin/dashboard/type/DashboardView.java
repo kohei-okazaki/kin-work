@@ -1,6 +1,6 @@
 package jp.co.kin.dashboard.type;
 
-import jp.co.kin.web.type.BaseView;
+import jp.co.kin.web.view.BaseView;
 
 /**
  * 勤怠管理ダッシュボード列挙

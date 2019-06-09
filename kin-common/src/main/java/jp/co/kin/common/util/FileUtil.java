@@ -296,7 +296,7 @@ public class FileUtil {
 		}
 
 		/**
-		 * @see jp.co.ha.common.type.BaseEnum#of(Class, String)
+		 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
 		 * @param value
 		 *            値
 		 * @return FileExtension
@@ -351,7 +351,7 @@ public class FileUtil {
 		}
 
 		/**
-		 * @see jp.co.ha.common.type.BaseEnum#of(Class, String)
+		 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
 		 * @param value
 		 *            値
 		 * @return FileSeparator
