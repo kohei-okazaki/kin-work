@@ -1,1 +1,0 @@
-includeFlat "kin-common", "kin-db", "kin-business", "kin-web", "kin-batch", "kin-api", "kin-dashboard", "kin-tool"
