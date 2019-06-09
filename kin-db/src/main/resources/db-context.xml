@@ -22,6 +22,16 @@
     <property name="password" value="${jdbc.password}" />
   </bean>
 
+  <bean id="domaConfig" class="jp.co.kin.db.config.DaoConfig">
+    <property name="dataSource" ref="dataSource" />
+    <property name="dialect" ref="dialect" />
+    <property name="sqlFileRepository" ref="sqlFileRepository" />
+  </bean>
+
+  <bean id="dialect" class="org.seasar.doma.jdbc.dialect.MysqlDialect" />
+
+  <bean id="sqlFileRepository" class="org.seasar.doma.jdbc.GreedyCacheSqlFileRepository" />
+
   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="dataSource" />
   </bean>
@@ -33,5 +43,8 @@
       <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED" timeout="32" read-only="false" rollback-for="java.lang.Exception" />
     </tx:attributes>
   </tx:advice>
+
+  <context:component-scan base-package="jp.co.kin.db.config" />
+  <context:component-scan base-package="jp.co.kin.db.dao" />
 
 </beans>
