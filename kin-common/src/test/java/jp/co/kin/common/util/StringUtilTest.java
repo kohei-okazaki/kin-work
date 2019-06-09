@@ -12,6 +12,9 @@ import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.util.StringUtil.PaddingType;
 
+/**
+ * {@link StringUtil} のjUnit
+ */
 public class StringUtilTest {
 
 	private static Logger LOG = LoggerFactory.getLogger(StringUtilTest.class);
