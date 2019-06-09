@@ -1,4 +1,4 @@
-package jp.co.kin.web.type;
+package jp.co.kin.web.view;
 
 /**
  * ViewEnumの基底インターフェース<br>

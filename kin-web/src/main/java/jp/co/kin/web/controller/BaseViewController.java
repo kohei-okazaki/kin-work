@@ -1,6 +1,6 @@
 package jp.co.kin.web.controller;
 
-import jp.co.kin.web.type.BaseView;
+import jp.co.kin.web.view.BaseView;
 
 /**
  * 基底Viewコントローラ
