@@ -1,17 +1,17 @@
 package jp.co.kin.web.controller;
 
-import jp.co.kin.common.type.BaseEnum;
+import jp.co.kin.web.type.BaseView;
 
 /**
  * 基底Viewコントローラ
  */
 public interface BaseViewController {
 
-	public default String getView(BaseEnum view) {
-		return view.getValue();
+	public default String getView(BaseView view) {
+		return view.getName();
 	}
 
-	public default String getRedirectView(BaseEnum view) {
-		return "redirect:" + view.getValue();
+	public default String getRedirectView(BaseView view) {
+		return "redirect:" + view.getName();
 	}
 }
