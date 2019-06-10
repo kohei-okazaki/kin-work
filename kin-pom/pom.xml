@@ -31,13 +31,12 @@
   <modules>
     <module>../kin-common</module>
 <!--
-    <module>../kin-tool</module>
     <module>../kin-api</module>
 -->
+    <module>../kin-tool</module>
     <module>../kin-db</module>
     <module>../kin-web</module>
     <module>../kin-business</module>
-
     <module>../kin-dashboard</module>
   </modules>
 

@@ -29,3 +29,9 @@ hs_err_pid*
 /.settings/
 /src/main/java/META-INF/MANIFEST.MF
 /.apt_generated/
+/.factorypath
+
+
+
+
+
