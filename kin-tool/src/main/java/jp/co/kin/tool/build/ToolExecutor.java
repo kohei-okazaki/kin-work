@@ -16,6 +16,6 @@ public class ToolExecutor {
 	 *            使わない
 	 */
 	public static void main(String[] args) {
-		BuildInvoker.build("CreateTableBuilder", "DropBuilder", "EntityBuilder");
+		BuildInvoker.build("EntityBuilder", "DaoBuilder");
 	}
 }

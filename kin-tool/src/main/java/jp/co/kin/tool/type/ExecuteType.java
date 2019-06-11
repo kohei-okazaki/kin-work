@@ -13,7 +13,9 @@ public enum ExecuteType implements BaseEnum {
 	/** DROP作成 */
 	DROP("DROP"),
 	/** TABLE_DEFINE */
-	TABLE_DEFINE("TABLE_DEFINE");
+	TABLE_DEFINE("TABLE_DEFINE"),
+	/** DAO */
+	DAO("DAO");
 
 	/** 値 */
 	private String value;

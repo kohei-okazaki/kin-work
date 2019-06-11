@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
+import jp.co.kin.common.util.FileUtil;
 import jp.co.kin.tool.config.ExcelConfig;
 import jp.co.kin.tool.excel.Cell;
 import jp.co.kin.tool.excel.Excel;
@@ -42,7 +43,7 @@ public class ExcelReader extends BaseFileReader {
 	public Excel read() {
 
 		Iterator<Sheet> sheetIte;
-		try (Workbook wb = WorkbookFactory.create(getFile(conf.getFilePath()))) {
+		try (Workbook wb = WorkbookFactory.create(FileUtil.getFile(conf.getFilePath()))) {
 			sheetIte = wb.sheetIterator();
 		} catch (EncryptedDocumentException | IOException e) {
 			LOG.error("excelファイル読込エラー", e);
@@ -53,6 +54,9 @@ public class ExcelReader extends BaseFileReader {
 		while (sheetIte.hasNext()) {
 			jp.co.kin.tool.excel.Sheet excelSheet = new jp.co.kin.tool.excel.Sheet();
 			Sheet sheet = sheetIte.next();
+			if (isSkip(sheet.getSheetName())) {
+				break;
+			}
 			excelSheet.setName(sheet.getSheetName());
 			Iterator<Row> rowIte = sheet.iterator();
 			while (rowIte.hasNext()) {
@@ -72,6 +76,17 @@ public class ExcelReader extends BaseFileReader {
 	private Cell getCell(Row row, CellPositionType type) {
 		String cellValue = row.getCell(type.getPosition()).getStringCellValue();
 		return new Cell(cellValue);
+	}
+
+	/**
+	 * 指定されたシート名の場合、読み込みを中断する
+	 *
+	 * @param sheetName
+	 *            シート名
+	 * @return
+	 */
+	private boolean isSkip(String sheetName) {
+		return !"TABLE_LIST".equals(sheetName);
 	}
 
 }

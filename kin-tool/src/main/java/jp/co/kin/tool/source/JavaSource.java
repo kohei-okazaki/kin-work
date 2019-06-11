@@ -22,6 +22,8 @@ public class JavaSource {
 	private Class<?> extendsClass;
 	/** 実装インターフェース */
 	private List<Class<?>> implInterfaceList;
+	/** クラスに付与するアノテーションのリスト */
+	private List<Class<?>> classAnnotationList;
 	/** フィールド情報のリスト */
 	private List<Field<?>> fieldList;
 	/** メソッドのリスト */
@@ -33,6 +35,7 @@ public class JavaSource {
 	public JavaSource() {
 		this.importList = new ArrayList<>();
 		this.implInterfaceList = new ArrayList<>();
+		this.classAnnotationList = new ArrayList<>();
 		this.fieldList = new ArrayList<>();
 		this.methodList = new ArrayList<>();
 	}
@@ -206,6 +209,25 @@ public class JavaSource {
 	 */
 	public void addImplInterface(Class<?> implInterface) {
 		this.implInterfaceList.add(implInterface);
+	}
+
+	/**
+	 * classAnnotationListを返す
+	 *
+	 * @return classAnnotationList
+	 */
+	public List<Class<?>> getClassAnnotationList() {
+		return classAnnotationList;
+	}
+
+	/**
+	 * classAnnotationを追加する
+	 *
+	 * @param classAnnotation
+	 *            アノテーション
+	 */
+	public void addClassAnnotation(Class<?> classAnnotation) {
+		this.classAnnotationList.add(classAnnotation);
 	}
 
 }
