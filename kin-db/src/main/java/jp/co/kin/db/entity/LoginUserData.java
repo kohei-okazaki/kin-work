@@ -78,5 +78,4 @@ public class LoginUserData implements BaseEntity {
 	public Date getRegDate() {
 		return regDate;
 	}
-
 }
