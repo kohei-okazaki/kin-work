@@ -26,9 +26,6 @@ public class FileUtil {
 	/** LOG */
 	private static final Logger LOG = LoggerFactory.getLogger(FileUtil.class);
 
-	/**
-	 * プライベートコンストラクタ
-	 */
 	private FileUtil() {
 	}
 

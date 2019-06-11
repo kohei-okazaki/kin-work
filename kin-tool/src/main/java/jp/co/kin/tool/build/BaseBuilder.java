@@ -1,16 +1,15 @@
 package jp.co.kin.tool.build;
 
 import java.util.List;
-import java.util.Properties;
 
 import jp.co.kin.common.io.file.property.reader.PropertyReader;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
-import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.FileUtil.FileSeparator;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.config.ExcelConfig;
 import jp.co.kin.tool.config.FileConfig;
+import jp.co.kin.tool.config.ToolProperties;
 import jp.co.kin.tool.excel.Cell;
 import jp.co.kin.tool.excel.Row;
 import jp.co.kin.tool.reader.ExcelReader;
@@ -30,18 +29,19 @@ public abstract class BaseBuilder {
 	/** ExcelReader */
 	protected ExcelReader reader;
 
+	public BaseBuilder() {
+		this.init();
+	}
+
 	private void init() {
 
 		String resourcePath = this.getClass().getClassLoader().getResource("").getPath()
 				+ FileSeparator.SYSTEM.getValue() + "META-INF";
-		Properties prop = new PropertyReader().read(resourcePath, "tool.properties");
+		ToolProperties prop = new PropertyReader().read(resourcePath, "tool.properties", ToolProperties.class);
 
-		String targetTable = prop.getProperty("targetTable");
-		if (BeanUtil.notNull(targetTable)) {
-			this.targetTableList = StringUtil.toStrList(targetTable, StringUtil.COMMA);
-		}
+		this.targetTableList = StringUtil.toStrList(prop.getTargetTable(), StringUtil.COMMA);
 
-		this.baseDir = prop.getProperty("baseDir");
+		this.baseDir = prop.getBaseDir();
 
 		this.reader = new ExcelReader(getExcelConfig());
 	}
@@ -53,7 +53,7 @@ public abstract class BaseBuilder {
 	 */
 	protected ExcelConfig getExcelConfig() {
 		ExcelConfig conf = new ExcelConfig();
-		conf.setFilePath("META-INF" + FileSeparator.SYSTEM.getValue() + "DB.xlsx");
+		conf.setFilePath(baseDir + "\\kin-docs\\detail-design\\DB.xlsx");
 		conf.setSheetName("TABLE_LIST");
 		return conf;
 	}
@@ -72,7 +72,7 @@ public abstract class BaseBuilder {
 			conf.setOutputPath(this.baseDir + "\\kin-resource\\db\\ddl");
 			break;
 		case ENTITY:
-			conf.setOutputPath(this.baseDir + "\\kin-tool\\src\\main\\java\\jp\\co\\kin\\tool\\source");
+			conf.setOutputPath(this.baseDir + "\\kin-db\\src\\main\\java\\jp\\co\\kin\\db\\entity");
 			break;
 		case DROP:
 			conf.setOutputPath(this.baseDir + "\\kin-resource\\db\\drop");
@@ -82,6 +82,9 @@ public abstract class BaseBuilder {
 			break;
 		case TABLE_DEFINE:
 			conf.setOutputPath(this.baseDir + "\\kin-resource\\db\\others");
+			break;
+		case DAO:
+			conf.setOutputPath(this.baseDir + "\\kin-db\\src\\main\\java\\jp\\co\\kin\\db\\dao");
 			break;
 		default:
 			LOG.warn("SQL生成の指定が間違っています execType:" + execType.getValue());

@@ -22,7 +22,7 @@ public class BuildInvoker {
 		try {
 			for (String name : names) {
 				Class<? extends BaseBuilder> builderClass = (Class<BaseBuilder>) Class
-						.forName("jp.co.ha.tool.build." + name);
+						.forName("jp.co.kin.tool.build." + name);
 				for (Method m : builderClass.getDeclaredMethods()) {
 					if (m.isAnnotationPresent(Build.class)) {
 						BaseBuilder builder = builderClass.getDeclaredConstructor().newInstance();
