@@ -5,25 +5,59 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>TOP画面</title>
 <link rel="icon" type="image/png" href="../resources/image/favicon.png" th:href="@{/resources/image/favicon.png}">
-<link rel="stylesheet" type="text/css" href="../resources/css/layout.css" th:href="@{/resources/css/layout.min.css}">
-<link rel="stylesheet" type="text/css" href="../resources/css/navigation.css" th:href="@{/resources/css/navigation.min.css}">
-<link rel="stylesheet" type="text/css" href="../resources/css/common/headericon.css" th:href="@{/resources/css/common/headericon.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/menu.css" th:href="@{/resources/css/menu.css}">
 </head>
 <body>
 
-  <div th:replace="layout/layout :: header"></div>
+  <!-- コンテナ -->
+  <div class="grid">
+    <!-- アイテム1 -->
+    <div class="item kintai">
+      <div class="item-content">
+        <!-- カスタムコンテンツ開始 -->
+        <div class="custom-content">勤怠登録</div>
+        <!-- カスタムコンテンツ終了 -->
+      </div>
+    </div>
 
-  <div th:replace="./common/navigation.html"></div>
+    <!-- アイテム2 -->
+    <div class="item kintai">
+      <div class="item-content">
+        <!-- カスタムコンテンツ開始 -->
+        <div class="custom-content">勤怠照会</div>
+        <!-- カスタムコンテンツ終了 -->
+      </div>
+    </div>
 
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- アイテム3 -->
+    <div class="item setting">
+      <div class="item-content">
+        <!-- カスタムコンテンツ開始 -->
+        <div class="custom-content">ユーザ設定変更</div>
+        <!-- カスタムコンテンツ終了 -->
+      </div>
+    </div>
 
-  <div th:replace="layout/layout :: footer"></div>
+    <!-- アイテム4 -->
+    <div class="item logout">
+      <div class="item-content">
+        <!-- カスタムコンテンツ開始 -->
+        <div class="custom-content">ログアウト</div>
+        <!-- カスタムコンテンツ終了 -->
+      </div>
+    </div>
+  </div>
 
   <script type="text/javascript" src="../resources/js/lib/jquery.js" th:src="@{/resources/js/lib/jquery.min.js}"></script>
   <script type="text/javascript" src="../resources/js/common/common.js" th:src="@{/resources/js/common/common.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/hammer.js" th:src="@{/resources/js/lib/hammer.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/web-animations.min.js" th:src="@{/resources/js/lib/web-animations.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/muuri.js" th:src="@{/resources/js/lib/muuri.min.js}"></script>
   <script type="text/javascript">
     $(function() {
-
+      var grid = new Muuri('.grid', {
+        dragEnabled: true
+      });
     });
   </script>
 </body>

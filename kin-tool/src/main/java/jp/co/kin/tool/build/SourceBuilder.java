@@ -1,8 +1,16 @@
 package jp.co.kin.tool.build;
 
+import java.util.List;
+import java.util.StringJoiner;
+import java.util.function.Function;
+
+import jp.co.kin.common.util.BeanUtil;
+import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.excel.Row;
+import jp.co.kin.tool.source.JavaSource;
 import jp.co.kin.tool.type.CellPositionType;
+import jp.co.kin.tool.type.ClassType;
 
 public abstract class SourceBuilder extends BaseBuilder {
 
@@ -16,6 +24,7 @@ public abstract class SourceBuilder extends BaseBuilder {
 	 * @return キャメルケースに変換した文字列
 	 */
 	protected String toCamelCase(String name) {
+
 		String result = name.toLowerCase();
 		while (result.indexOf(StringUtil.UNDER_SCORE) != -1) {
 			int pos = result.indexOf(StringUtil.UNDER_SCORE);
@@ -23,7 +32,69 @@ public abstract class SourceBuilder extends BaseBuilder {
 			String after = target.replace(StringUtil.UNDER_SCORE, StringUtil.EMPTY).toUpperCase();
 			result = result.replaceFirst(target, after);
 		}
+
 		return result;
+	}
+
+	/**
+	 * クラス名部分を組み立てる<br>
+	 * ex<br>
+	 * <code>public class XXXX</code>
+	 *
+	 * @param source
+	 *            生成するJavaファイルのリソース
+	 * @return クラス名
+	 */
+	protected String buildClass(JavaSource source) {
+
+		String accessType = source.getAccessType().getValue();
+		String classType = source.getClassType().getValue();
+		String className = source.getClassName();
+		StringJoiner body = new StringJoiner(StringUtil.SPACE);
+
+		return body.add(accessType).add(classType).add(className).toString();
+	}
+
+	/**
+	 * interfaceのリストの継承部分を組み立てる<br>
+	 * <code>implements AAAA, BBBB</code><br>
+	 * or<br>
+	 * <code>extends AAAA, BBBB</code>
+	 *
+	 * @param source
+	 *            JavaSource
+	 * @return インターフェース
+	 */
+	protected String buildInterfaces(JavaSource source) {
+
+		if (CollectionUtil.isEmpty(source.getImplInterfaceList())) {
+			return "";
+		}
+
+		String prefix = source.getClassType().equals(ClassType.CLASS) ? "implements" : "extends";
+		StringJoiner body = new StringJoiner(StringUtil.COMMA + StringUtil.SPACE);
+		source.getImplInterfaceList().stream().forEach(e -> body.add(e.getSimpleName()));
+
+		return " " + prefix + " " + body.toString();
+	}
+
+	/**
+	 * Classの継承部分を組み立てる<br>
+	 * <cpde>extends AAAA</code>
+	 *
+	 * @param source
+	 *            JavaSource
+	 * @return
+	 */
+	protected String buildExtendsClass(JavaSource source) {
+
+		if (BeanUtil.isNull(source.getExtendsClass())) {
+			return "";
+		}
+
+		String prefix = "extends";
+
+		return " " + prefix + " " + source.getExtendsClass().getSimpleName();
 	}
 
 	/**
@@ -41,6 +112,7 @@ public abstract class SourceBuilder extends BaseBuilder {
 		// 先頭の文字列を大文字に変換
 		Character startChar = result.charAt(0);
 		Character large = Character.toUpperCase(result.charAt(0));
+
 		return result.replaceFirst(startChar.toString(), large.toString());
 	}
 
@@ -53,5 +125,27 @@ public abstract class SourceBuilder extends BaseBuilder {
 	 */
 	protected String getPhysicalName(Row row) {
 		return row.getCell(CellPositionType.PHYSICAL_NAME).getValue();
+	}
+
+	/**
+	 * クラスに付与するアノテーション部分を組み立てる
+	 *
+	 * @param classAnnotationList
+	 *            クラスに付与するアノテーションのリスト
+	 * @return クラスに付与するアノテーション部
+	 */
+	protected String buildClassAnnotation(List<Class<?>> classAnnotationList,
+			Function<Class<?>, String> function) {
+
+		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
+		for (Class<?> clazz : classAnnotationList) {
+			String str = "";
+			if (BeanUtil.notNull(function)) {
+				str = function.apply(clazz);
+			}
+			body.add("@" + clazz.getSimpleName() + str);
+		}
+
+		return body.toString();
 	}
 }

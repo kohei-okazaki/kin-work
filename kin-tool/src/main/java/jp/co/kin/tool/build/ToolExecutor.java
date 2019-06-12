@@ -9,6 +9,7 @@ public class ToolExecutor {
 	 * <li>CreateTableBuilder</li>
 	 * <li>DropBuilder</li>
 	 * <li>EntityBuilder</li>
+	 * <li>DaoBuilder</li>
 	 * <li>TableDefineBuilder</li>
 	 * </ul>
 	 *
@@ -16,6 +17,7 @@ public class ToolExecutor {
 	 *            使わない
 	 */
 	public static void main(String[] args) {
-		BuildInvoker.build("EntityBuilder", "DaoBuilder");
+		// BuildInvoker.build("EntityBuilder", "DaoBuilder");
+		BuildInvoker.build("CreateTableBuilder");
 	}
 }

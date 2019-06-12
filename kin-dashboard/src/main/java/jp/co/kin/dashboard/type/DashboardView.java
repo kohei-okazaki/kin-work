@@ -8,7 +8,9 @@ import jp.co.kin.web.view.BaseView;
 public enum DashboardView implements BaseView {
 
 	/** ログイン画面 */
-	LOGIN("login/index");
+	LOGIN("login/index"),
+	/** TOP画面 */
+	TOP("login/top");
 
 	private String name;
 
@@ -20,4 +22,5 @@ public enum DashboardView implements BaseView {
 	public String getName() {
 		return this.name;
 	}
+
 }
