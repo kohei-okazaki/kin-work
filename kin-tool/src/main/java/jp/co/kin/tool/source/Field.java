@@ -1,5 +1,6 @@
 package jp.co.kin.tool.source;
 
+import java.util.List;
 import java.util.StringJoiner;
 
 import jp.co.kin.common.util.StringUtil;
@@ -21,6 +22,8 @@ public class Field<T> {
 	private Class<T> classType;
 	/** アクセスタイプ */
 	private AccessType accessType;
+	/** Annotationリスト */
+	private List<Class<?>> annotationList;
 
 	/**
 	 * コンストラクタ
@@ -31,9 +34,11 @@ public class Field<T> {
 	 *            コメント
 	 * @param classType
 	 *            型
+	 * @param annotationList
+	 *            Annotationリスト
 	 */
-	public Field(String name, String comment, Class<T> classType) {
-		this(name, comment, classType, AccessType.PRIVATE);
+	public Field(String name, String comment, Class<T> classType, List<Class<?>> annotationList) {
+		this(name, comment, classType, AccessType.PRIVATE, annotationList);
 	}
 
 	/**
@@ -47,12 +52,16 @@ public class Field<T> {
 	 *            型
 	 * @param accessType
 	 *            アクセスタイプ
+	 * @param annotationList
+	 *            Annotationリスト
 	 */
-	public Field(String name, String comment, Class<T> classType, AccessType accessType) {
+	public Field(String name, String comment, Class<T> classType, AccessType accessType,
+			List<Class<?>> annotationList) {
 		this.name = name;
 		this.comment = comment;
 		this.classType = classType;
 		this.accessType = accessType;
+		this.annotationList = annotationList;
 	}
 
 	/**
@@ -63,6 +72,7 @@ public class Field<T> {
 
 		final String TAB = "	";
 
+		/* JavaDoc作成 */
 		String javadocPrefix = "/**";
 		String javadocSuffix = "*/";
 		StringJoiner javadocBody = new StringJoiner(StringUtil.SPACE);
@@ -71,12 +81,18 @@ public class Field<T> {
 		javadocBody.add(javadocSuffix);
 		String javadoc = TAB + javadocBody.toString();
 
-		String suffix = ";";
+		/* annotation作成 */
+		StringJoiner annotationBody = new StringJoiner(StringUtil.NEW_LINE);
+		annotationList.stream().forEach(e -> {
+			annotationBody.add("@" + e.getClass());
+		});
+
+		/* field作成 */
 		StringJoiner fieldBody = new StringJoiner(StringUtil.SPACE);
 		fieldBody.add(this.accessType.getValue());
 		fieldBody.add(this.classType.getSimpleName());
 		fieldBody.add(this.name);
-		String field = TAB + fieldBody.toString() + suffix;
+		String field = TAB + fieldBody.toString() + ";";
 		return javadoc + StringUtil.NEW_LINE + field;
 	}
 

@@ -6,7 +6,7 @@ import org.seasar.doma.Entity;
 import org.seasar.doma.jdbc.entity.NamingType;
 
 @Entity(naming = NamingType.SNAKE_UPPER_CASE)
-public class LoginUserData implements BaseEntity {
+public class LoginUserData extends BaseEntity {
 
 	/** ログインID */
 	private String loginId;
@@ -78,4 +78,5 @@ public class LoginUserData implements BaseEntity {
 	public Date getRegDate() {
 		return regDate;
 	}
+
 }
