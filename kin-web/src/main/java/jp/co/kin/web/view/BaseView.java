@@ -12,4 +12,5 @@ public interface BaseView {
 	 * @return name
 	 */
 	String getName();
+
 }
