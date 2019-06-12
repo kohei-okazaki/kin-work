@@ -6,6 +6,7 @@ import java.util.StringJoiner;
 import java.util.function.Function;
 
 import org.seasar.doma.Entity;
+import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
@@ -76,9 +77,13 @@ public class EntityBuilder extends SourceBuilder {
 
 	private List<Class<?>> getAnnotationList(Row row) {
 		List<Class<?>> annotationList = new ArrayList<>();
-		Cell cell = row.getCell(CellPositionType.PRIMARY_KEY);
-		if (StringUtil.hasValue(cell.getValue())) {
+		Cell primaryKeyCell = row.getCell(CellPositionType.PRIMARY_KEY);
+		if (StringUtil.hasValue(primaryKeyCell.getValue())) {
 			annotationList.add(Id.class);
+		}
+		Cell sequenceCell = row.getCell(CellPositionType.SEQUENCE);
+		if (StringUtil.hasValue(sequenceCell.getValue())) {
+			annotationList.add(GeneratedValue.class);
 		}
 		return annotationList;
 	}
