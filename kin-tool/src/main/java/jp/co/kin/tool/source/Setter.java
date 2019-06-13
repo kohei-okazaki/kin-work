@@ -49,8 +49,8 @@ public class Setter<T> extends Method<T> {
 		final String TAB = "	";
 
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		body.add(TAB + accessType.getValue() + " void " + getMethodName()
-				+ "(" + field.getClassType().getSimpleName() + " " + field.getName() + ") {");
+		body.add(TAB + accessType.getValue() + " void " + getMethodName() + "("
+				+ field.getClassType().getSimpleName() + " " + field.getName() + ") {");
 		body.add(TAB + TAB + "this." + field.getName() + " = " + field.getName() + ";");
 		body.add(TAB + "}");
 

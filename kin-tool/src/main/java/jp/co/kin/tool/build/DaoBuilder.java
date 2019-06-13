@@ -32,6 +32,10 @@ public class DaoBuilder extends SourceBuilder {
 			for (Row row : excel.getRowList()) {
 				if (isTargetTable(row, table)) {
 					source.setClassName(toJavaFileName(getPhysicalName(row)) + "Dao");
+
+					// Delete文メソッドを作成
+
+					// Update文メソッドを作成
 				}
 			}
 			FileConfig fileConf = getFileConfig(ExecuteType.DAO);
