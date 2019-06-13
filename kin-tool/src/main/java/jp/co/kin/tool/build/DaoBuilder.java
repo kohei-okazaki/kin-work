@@ -36,6 +36,8 @@ public class DaoBuilder extends SourceBuilder {
 					// Delete文メソッドを作成
 
 					// Update文メソッドを作成
+
+					// Insert文メソッドを作成
 				}
 			}
 			FileConfig fileConf = getFileConfig(ExecuteType.DAO);
