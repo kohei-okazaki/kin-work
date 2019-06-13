@@ -1,5 +1,8 @@
 package jp.co.kin.db.listener;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.seasar.doma.jdbc.entity.EntityListener;
 import org.seasar.doma.jdbc.entity.PostDeleteContext;
 import org.seasar.doma.jdbc.entity.PostInsertContext;
@@ -8,6 +11,9 @@ import org.seasar.doma.jdbc.entity.PreDeleteContext;
 import org.seasar.doma.jdbc.entity.PreInsertContext;
 import org.seasar.doma.jdbc.entity.PreUpdateContext;
 
+import jp.co.kin.common.log.Logger;
+import jp.co.kin.common.log.LoggerFactory;
+import jp.co.kin.common.util.DateUtil;
 import jp.co.kin.db.entity.BaseEntity;
 
 /**
@@ -23,6 +29,8 @@ import jp.co.kin.db.entity.BaseEntity;
  */
 public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 
+	private static final Logger LOG = LoggerFactory.getLogger(DaoListener.class);
+
 	@Override
 	public void preDelete(T entity, PreDeleteContext<T> context) {
 		System.out.println("#preDelete");
@@ -32,12 +40,32 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 	@Override
 	public void preInsert(T entity, PreInsertContext<T> context) {
 		System.out.println("#preInsert");
+		try {
+			for (Method m : entity.getClass().getDeclaredMethods()) {
+				if ("setRegDate".equals(m.getName()) || "setUpdateDate".equals(m.getName())) {
+					// 登録日時/更新日時の設定
+					m.invoke(entity, DateUtil.getSysDate());
+				}
+			}
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			LOG.error("setterの実行に失敗しました", e);
+		}
 		EntityListener.super.preInsert(entity, context);
 	}
 
 	@Override
 	public void preUpdate(T entity, PreUpdateContext<T> context) {
 		System.out.println("#preUpdate");
+		try {
+			for (Method m : entity.getClass().getDeclaredMethods()) {
+				if ("setUpdateDate".equals(m.getName())) {
+					// 登録日時/更新日時の設定
+					m.invoke(entity, DateUtil.getSysDate());
+				}
+			}
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			LOG.error("setterの実行に失敗しました", e);
+		}
 		EntityListener.super.preUpdate(entity, context);
 	}
 
