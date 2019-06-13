@@ -1,7 +1,8 @@
 package jp.co.kin.tool.build;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
 import java.util.function.Function;
 
@@ -10,9 +11,11 @@ import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
+import jp.co.kin.common.log.annotation.Mask;
 import jp.co.kin.common.type.LineFeedType;
 import jp.co.kin.common.util.FileUtil.FileExtension;
 import jp.co.kin.common.util.StringUtil;
+import jp.co.kin.db.annotation.Crypt;
 import jp.co.kin.db.entity.BaseEntity;
 import jp.co.kin.tool.build.annotation.Build;
 import jp.co.kin.tool.config.FileConfig;
@@ -51,7 +54,7 @@ public class EntityBuilder extends SourceBuilder {
 
 					// fieldの設定
 					Field<?> field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
-							getClassType(row), getAnnotationList(row));
+							getClassType(row), getAnnotationMap(row, source));
 					source.addField(field);
 
 					// fieldのimport文を設定
@@ -75,17 +78,28 @@ public class EntityBuilder extends SourceBuilder {
 		}
 	}
 
-	private List<Class<?>> getAnnotationList(Row row) {
-		List<Class<?>> annotationList = new ArrayList<>();
+	private Map<Class<?>, String> getAnnotationMap(Row row, JavaSource source) {
+
+		Map<Class<?>, String> map = new HashMap<>();
 		Cell primaryKeyCell = row.getCell(CellPositionType.PRIMARY_KEY);
 		if (StringUtil.hasValue(primaryKeyCell.getValue())) {
-			annotationList.add(Id.class);
+			map.put(Id.class, "");
+			source.addImport(new Import(Id.class));
 		}
 		Cell sequenceCell = row.getCell(CellPositionType.SEQUENCE);
 		if (StringUtil.hasValue(sequenceCell.getValue())) {
-			annotationList.add(GeneratedValue.class);
+			map.put(GeneratedValue.class, "strategy = GenerationType.SEQUENCE");
+			source.addImport(new Import(GeneratedValue.class));
 		}
-		return annotationList;
+		Cell cryptCell = row.getCell(CellPositionType.CRYPT);
+		if (StringUtil.hasValue(cryptCell.getValue())) {
+			map.put(Crypt.class, "");
+			source.addImport(new Import(Crypt.class));
+
+			map.put(Mask.class, "");
+			source.addImport(new Import(Mask.class));
+		}
+		return map;
 	}
 
 	private String getColumnComment(Row row) {
@@ -150,55 +164,12 @@ public class EntityBuilder extends SourceBuilder {
 		return result.toString();
 	}
 
-	/**
-	 * パッケージ部分を組み立てる
-	 *
-	 * @param source
-	 *            Javaソース
-	 * @return
-	 */
-	private String buildPackage(JavaSource source) {
-		return source.getPackage().toString();
-	}
-
-	/**
-	 * import部分を組み立てる
-	 *
-	 * @param importList
-	 *            インポート文のリスト
-	 * @return インポート
-	 */
-	private String buildImport(List<Import> importList) {
-		List<String> strImportList = new ArrayList<>();
-
-		importList.stream().filter(e -> !strImportList.contains(e.toString())).map(e -> e.toString())
-				.forEach(e -> strImportList.add(e));
-
-		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		strImportList.stream().forEach(e -> body.add(e));
-		return body.toString();
-	}
-
-	/**
-	 * フィールドを組み立てる
-	 *
-	 * @param fieldList
-	 *            フィールドリスト
-	 * @return フィールド
-	 */
 	private String buildFields(List<Field<?>> fieldList) {
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
 		fieldList.stream().forEach(e -> body.add(e.toString()));
 		return body.toString();
 	}
 
-	/**
-	 * メソッドを組み立てる
-	 *
-	 * @param methodList
-	 *            メソッドリスト
-	 * @return メソッド
-	 */
 	private String buildMethods(List<Method<?>> methodList) {
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
 		methodList.stream().forEach(e -> body.add(e.toString()));

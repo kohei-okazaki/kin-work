@@ -43,8 +43,8 @@ public class Getter<T> extends Method<T> {
 		final String TAB = "	";
 
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		body.add(TAB + accessType.getValue() + " " + field.getClassType().getSimpleName() + " " + getMethodName()
-				+ "() {");
+		body.add(TAB + accessType.getValue() + " " + field.getClassType().getSimpleName() + " "
+				+ getMethodName() + "() {");
 		body.add(TAB + TAB + "return " + field.getName() + ";");
 		body.add(TAB + "}");
 
@@ -55,7 +55,7 @@ public class Getter<T> extends Method<T> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String getMethodName() {
+	public String getMethodName() {
 		return PREFIX + StringUtils.capitalize(field.getName());
 	}
 }

@@ -1,5 +1,6 @@
 package jp.co.kin.tool.build;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 import java.util.function.Function;
@@ -8,6 +9,7 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.excel.Row;
+import jp.co.kin.tool.source.Import;
 import jp.co.kin.tool.source.JavaSource;
 import jp.co.kin.tool.type.CellPositionType;
 import jp.co.kin.tool.type.ClassType;
@@ -37,6 +39,80 @@ public abstract class SourceBuilder extends BaseBuilder {
 	}
 
 	/**
+	 * Javaファイル名に変換する<br>
+	 * (例)<br>
+	 * TEST_NAME -> TestName<br>
+	 *
+	 * @param fileName
+	 *            ファイル名
+	 * @return Javaファイル名
+	 */
+	protected String toJavaFileName(String fileName) {
+
+		String result = toCamelCase(fileName);
+		// 先頭の文字列を大文字に変換
+		Character startChar = result.charAt(0);
+		Character large = Character.toUpperCase(result.charAt(0));
+
+		return result.replaceFirst(startChar.toString(), large.toString());
+	}
+
+	protected String getPhysicalName(Row row) {
+		return row.getCell(CellPositionType.PHYSICAL_NAME).getValue();
+	}
+
+	/**
+	 * Package部分を組み立てる
+	 *
+	 * @param source
+	 *            JavaSource
+	 * @return Package部分
+	 */
+	protected String buildPackage(JavaSource source) {
+		return source.getPackage().toString();
+	}
+
+	/**
+	 * import部分を組み立てる
+	 *
+	 * @param importList
+	 *            importリスト
+	 * @return import部分
+	 */
+	protected String buildImport(List<Import> importList) {
+
+		List<String> strImportList = new ArrayList<>();
+		importList.stream().filter(e -> !strImportList.contains(e.toString())).map(e -> e.toString())
+				.forEach(e -> strImportList.add(e));
+
+		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
+		strImportList.stream().forEach(e -> body.add(e));
+		return body.toString();
+	}
+
+	/**
+	 * クラスに付与するアノテーション部分を組み立てる
+	 *
+	 * @param classAnnotationList
+	 *            クラスに付与するアノテーションのリスト
+	 * @return クラスに付与するアノテーション部分
+	 */
+	protected String buildClassAnnotation(List<Class<?>> classAnnotationList,
+			Function<Class<?>, String> function) {
+
+		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
+		for (Class<?> clazz : classAnnotationList) {
+			String str = "";
+			if (BeanUtil.notNull(function)) {
+				str = function.apply(clazz);
+			}
+			body.add("@" + clazz.getSimpleName() + str);
+		}
+
+		return body.toString();
+	}
+
+	/**
 	 * クラス名部分を組み立てる<br>
 	 * ex<br>
 	 * <code>public class XXXX</code>
@@ -56,6 +132,25 @@ public abstract class SourceBuilder extends BaseBuilder {
 	}
 
 	/**
+	 * Classの継承部分を組み立てる<br>
+	 * <cpde>extends AAAA</code>
+	 *
+	 * @param source
+	 *            JavaSource
+	 * @return Classの継承部分
+	 */
+	protected String buildExtendsClass(JavaSource source) {
+
+		if (BeanUtil.isNull(source.getExtendsClass())) {
+			return "";
+		}
+
+		String prefix = "extends";
+
+		return " " + prefix + " " + source.getExtendsClass().getSimpleName();
+	}
+
+	/**
 	 * interfaceのリストの継承部分を組み立てる<br>
 	 * <code>implements AAAA, BBBB</code><br>
 	 * or<br>
@@ -63,7 +158,7 @@ public abstract class SourceBuilder extends BaseBuilder {
 	 *
 	 * @param source
 	 *            JavaSource
-	 * @return インターフェース
+	 * @return interfaceのリストの継承部分
 	 */
 	protected String buildInterfaces(JavaSource source) {
 
@@ -78,74 +173,4 @@ public abstract class SourceBuilder extends BaseBuilder {
 		return " " + prefix + " " + body.toString();
 	}
 
-	/**
-	 * Classの継承部分を組み立てる<br>
-	 * <cpde>extends AAAA</code>
-	 *
-	 * @param source
-	 *            JavaSource
-	 * @return
-	 */
-	protected String buildExtendsClass(JavaSource source) {
-
-		if (BeanUtil.isNull(source.getExtendsClass())) {
-			return "";
-		}
-
-		String prefix = "extends";
-
-		return " " + prefix + " " + source.getExtendsClass().getSimpleName();
-	}
-
-	/**
-	 * Javaファイル名に変換する<br>
-	 * (例)<br>
-	 * TEST_NAME -> TestName<br>
-	 *
-	 * @param fileName
-	 *            ファイル名
-	 * @return Javaファイル名
-	 */
-	protected String toJavaFileName(String fileName) {
-
-		String result = toCamelCase(fileName);
-		// 先頭の文字列を大文字に変換
-		Character startChar = result.charAt(0);
-		Character large = Character.toUpperCase(result.charAt(0));
-
-		return result.replaceFirst(startChar.toString(), large.toString());
-	}
-
-	/**
-	 * 物理名を取得
-	 *
-	 * @param row
-	 *            Row
-	 * @return
-	 */
-	protected String getPhysicalName(Row row) {
-		return row.getCell(CellPositionType.PHYSICAL_NAME).getValue();
-	}
-
-	/**
-	 * クラスに付与するアノテーション部分を組み立てる
-	 *
-	 * @param classAnnotationList
-	 *            クラスに付与するアノテーションのリスト
-	 * @return クラスに付与するアノテーション部
-	 */
-	protected String buildClassAnnotation(List<Class<?>> classAnnotationList,
-			Function<Class<?>, String> function) {
-
-		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		for (Class<?> clazz : classAnnotationList) {
-			String str = "";
-			if (BeanUtil.notNull(function)) {
-				str = function.apply(clazz);
-			}
-			body.add("@" + clazz.getSimpleName() + str);
-		}
-
-		return body.toString();
-	}
 }

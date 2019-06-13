@@ -33,4 +33,10 @@
     </property>
   </bean>
 
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <mvc:mapping path="/**" />
+      <bean class="jp.co.kin.business.interceptor.RequestInterceptor" />
+    </mvc:interceptor>
+  </mvc:interceptors>
 </beans>

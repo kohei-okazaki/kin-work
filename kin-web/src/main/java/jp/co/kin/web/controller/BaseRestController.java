@@ -29,6 +29,15 @@ public abstract class BaseRestController<Rq extends BaseApiRequest, Rs extends B
 	/** LOG */
 	protected final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
+	/**
+	 * POST通信処理行う
+	 * 
+	 * @param request
+	 *            APIリクエスト
+	 * @return
+	 * @throws BaseException
+	 *             API関連の例外
+	 */
 	public Rs doPost(@RequestBody Rq request) throws BaseException {
 
 		Rs response = getApiResponse();

@@ -1,6 +1,6 @@
 package jp.co.kin.tool.source;
 
-import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
 
 import jp.co.kin.common.util.StringUtil;
@@ -22,8 +22,8 @@ public class Field<T> {
 	private Class<T> classType;
 	/** アクセスタイプ */
 	private AccessType accessType;
-	/** Annotationリスト */
-	private List<Class<?>> annotationList;
+	/** AnnotationMap */
+	private Map<Class<?>, String> annotationMap;
 
 	/**
 	 * コンストラクタ
@@ -34,11 +34,11 @@ public class Field<T> {
 	 *            コメント
 	 * @param classType
 	 *            型
-	 * @param annotationList
-	 *            Annotationリスト
+	 * @param annotationMap
+	 *            AnnotationMap
 	 */
-	public Field(String name, String comment, Class<T> classType, List<Class<?>> annotationList) {
-		this(name, comment, classType, AccessType.PRIVATE, annotationList);
+	public Field(String name, String comment, Class<T> classType, Map<Class<?>, String> annotationMap) {
+		this(name, comment, classType, AccessType.PRIVATE, annotationMap);
 	}
 
 	/**
@@ -52,16 +52,16 @@ public class Field<T> {
 	 *            型
 	 * @param accessType
 	 *            アクセスタイプ
-	 * @param annotationList
-	 *            Annotationリスト
+	 * @param annotationMap
+	 *            AnnotationMap
 	 */
 	public Field(String name, String comment, Class<T> classType, AccessType accessType,
-			List<Class<?>> annotationList) {
+			Map<Class<?>, String> annotationMap) {
 		this.name = name;
 		this.comment = comment;
 		this.classType = classType;
 		this.accessType = accessType;
-		this.annotationList = annotationList;
+		this.annotationMap = annotationMap;
 	}
 
 	/**
@@ -83,8 +83,12 @@ public class Field<T> {
 
 		/* annotation作成 */
 		StringJoiner annotationBody = new StringJoiner(StringUtil.NEW_LINE);
-		annotationList.stream().forEach(e -> {
-			annotationBody.add("@" + e.getClass());
+		annotationMap.entrySet().stream().forEach(entry -> {
+			if (StringUtil.isEmpty(entry.getValue())) {
+				annotationBody.add(TAB + "@" + entry.getKey().getSimpleName());
+			} else {
+				annotationBody.add(TAB + "@" + entry.getKey().getSimpleName() + "(" + entry.getValue() + ")");
+			}
 		});
 
 		/* field作成 */
@@ -93,7 +97,12 @@ public class Field<T> {
 		fieldBody.add(this.classType.getSimpleName());
 		fieldBody.add(this.name);
 		String field = TAB + fieldBody.toString() + ";";
-		return javadoc + StringUtil.NEW_LINE + field;
+
+		if (StringUtil.isEmpty(annotationBody.toString())) {
+			return javadoc + StringUtil.NEW_LINE + field;
+		} else {
+			return javadoc + StringUtil.NEW_LINE + annotationBody + StringUtil.NEW_LINE + field;
+		}
 	}
 
 	/**

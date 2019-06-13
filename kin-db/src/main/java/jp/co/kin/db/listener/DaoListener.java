@@ -1,5 +1,8 @@
 package jp.co.kin.db.listener;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.seasar.doma.jdbc.entity.EntityListener;
 import org.seasar.doma.jdbc.entity.PostDeleteContext;
 import org.seasar.doma.jdbc.entity.PostInsertContext;
@@ -8,6 +11,11 @@ import org.seasar.doma.jdbc.entity.PreDeleteContext;
 import org.seasar.doma.jdbc.entity.PreInsertContext;
 import org.seasar.doma.jdbc.entity.PreUpdateContext;
 
+import jp.co.kin.common.log.Logger;
+import jp.co.kin.common.log.LoggerFactory;
+import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.db.entity.BaseEntity;
+
 /**
  * 以下のDataBase操作処理のリスナークラス
  * <ul>
@@ -15,41 +23,66 @@ import org.seasar.doma.jdbc.entity.PreUpdateContext;
  * <li>INSERT</li>
  * <li>UPDATE</li>
  * </ul>
+ *
+ * @param <T>
+ *            Entity継承クラス
  */
-public class DaoListener<BaseEntity> implements EntityListener<BaseEntity> {
+public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
+
+	private static final Logger LOG = LoggerFactory.getLogger(DaoListener.class);
 
 	@Override
-	public void preDelete(BaseEntity entity, PreDeleteContext<BaseEntity> context) {
+	public void preDelete(T entity, PreDeleteContext<T> context) {
 		System.out.println("#preDelete");
 		EntityListener.super.preDelete(entity, context);
 	}
 
 	@Override
-	public void preInsert(BaseEntity entity, PreInsertContext<BaseEntity> context) {
+	public void preInsert(T entity, PreInsertContext<T> context) {
 		System.out.println("#preInsert");
+		try {
+			for (Method m : entity.getClass().getDeclaredMethods()) {
+				if ("setRegDate".equals(m.getName()) || "setUpdateDate".equals(m.getName())) {
+					// 登録日時/更新日時の設定
+					m.invoke(entity, DateUtil.getSysDate());
+				}
+			}
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			LOG.error("setterの実行に失敗しました", e);
+		}
 		EntityListener.super.preInsert(entity, context);
 	}
 
 	@Override
-	public void preUpdate(BaseEntity entity, PreUpdateContext<BaseEntity> context) {
+	public void preUpdate(T entity, PreUpdateContext<T> context) {
 		System.out.println("#preUpdate");
+		try {
+			for (Method m : entity.getClass().getDeclaredMethods()) {
+				if ("setUpdateDate".equals(m.getName())) {
+					// 登録日時/更新日時の設定
+					m.invoke(entity, DateUtil.getSysDate());
+				}
+			}
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			LOG.error("setterの実行に失敗しました", e);
+		}
 		EntityListener.super.preUpdate(entity, context);
 	}
 
 	@Override
-	public void postDelete(BaseEntity entity, PostDeleteContext<BaseEntity> context) {
+	public void postDelete(T entity, PostDeleteContext<T> context) {
 		System.out.println("#postDelete");
 		EntityListener.super.postDelete(entity, context);
 	}
 
 	@Override
-	public void postInsert(BaseEntity entity, PostInsertContext<BaseEntity> context) {
+	public void postInsert(T entity, PostInsertContext<T> context) {
 		System.out.println("#postInsert");
 		EntityListener.super.postInsert(entity, context);
 	}
 
 	@Override
-	public void postUpdate(BaseEntity entity, PostUpdateContext<BaseEntity> context) {
+	public void postUpdate(T entity, PostUpdateContext<T> context) {
 		System.out.println("#postUpdate");
 		EntityListener.super.postUpdate(entity, context);
 	}
