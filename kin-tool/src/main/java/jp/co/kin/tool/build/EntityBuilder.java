@@ -1,6 +1,5 @@
 package jp.co.kin.tool.build;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,9 +11,11 @@ import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
+import jp.co.kin.common.log.annotation.Mask;
 import jp.co.kin.common.type.LineFeedType;
 import jp.co.kin.common.util.FileUtil.FileExtension;
 import jp.co.kin.common.util.StringUtil;
+import jp.co.kin.db.annotation.Crypt;
 import jp.co.kin.db.entity.BaseEntity;
 import jp.co.kin.tool.build.annotation.Build;
 import jp.co.kin.tool.config.FileConfig;
@@ -90,7 +91,14 @@ public class EntityBuilder extends SourceBuilder {
 			map.put(GeneratedValue.class, "strategy = GenerationType.SEQUENCE");
 			source.addImport(new Import(GeneratedValue.class));
 		}
+		Cell cryptCell = row.getCell(CellPositionType.CRYPT);
+		if (StringUtil.hasValue(cryptCell.getValue())) {
+			map.put(Crypt.class, "");
+			source.addImport(new Import(Crypt.class));
 
+			map.put(Mask.class, "");
+			source.addImport(new Import(Mask.class));
+		}
 		return map;
 	}
 
@@ -154,21 +162,6 @@ public class EntityBuilder extends SourceBuilder {
 		result.add("}");
 
 		return result.toString();
-	}
-
-	private String buildPackage(JavaSource source) {
-		return source.getPackage().toString();
-	}
-
-	private String buildImport(List<Import> importList) {
-
-		List<String> strImportList = new ArrayList<>();
-		importList.stream().filter(e -> !strImportList.contains(e.toString())).map(e -> e.toString())
-				.forEach(e -> strImportList.add(e));
-
-		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		strImportList.stream().forEach(e -> body.add(e));
-		return body.toString();
 	}
 
 	private String buildFields(List<Field<?>> fieldList) {

@@ -1,14 +1,11 @@
 package jp.co.kin.tool.build;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringJoiner;
 
 import org.seasar.doma.Dao;
 
 import jp.co.kin.common.type.LineFeedType;
 import jp.co.kin.common.util.FileUtil.FileExtension;
-import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.db.config.DaoRepository;
 import jp.co.kin.db.dao.BaseDao;
 import jp.co.kin.tool.build.annotation.Build;
@@ -74,21 +71,6 @@ public class DaoBuilder extends SourceBuilder {
 		result.add("}");
 
 		return result.toString();
-	}
-
-	private String buildPackage(JavaSource source) {
-		return source.getPackage().toString();
-	}
-
-	private String buildImport(List<Import> importList) {
-
-		List<String> strImportList = new ArrayList<>();
-		importList.stream().filter(e -> !strImportList.contains(e.toString())).map(e -> e.toString())
-				.forEach(e -> strImportList.add(e));
-
-		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		strImportList.stream().forEach(e -> body.add(e));
-		return body.toString();
 	}
 
 }
