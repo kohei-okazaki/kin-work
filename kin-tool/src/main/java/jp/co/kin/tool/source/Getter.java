@@ -55,7 +55,7 @@ public class Getter<T> extends Method<T> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected String getMethodName() {
+	public String getMethodName() {
 		return PREFIX + StringUtils.capitalize(field.getName());
 	}
 }

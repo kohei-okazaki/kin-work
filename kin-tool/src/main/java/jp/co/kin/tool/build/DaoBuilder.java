@@ -2,11 +2,9 @@ package jp.co.kin.tool.build;
 
 import java.util.StringJoiner;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.seasar.doma.Dao;
 
 import jp.co.kin.common.type.LineFeedType;
-import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.FileUtil.FileExtension;
 import jp.co.kin.db.config.DaoRepository;
 import jp.co.kin.db.dao.BaseDao;
@@ -15,17 +13,14 @@ import jp.co.kin.tool.config.FileConfig;
 import jp.co.kin.tool.excel.Excel;
 import jp.co.kin.tool.excel.Row;
 import jp.co.kin.tool.factory.FileFactory;
-import jp.co.kin.tool.source.Field;
 import jp.co.kin.tool.source.Import;
 import jp.co.kin.tool.source.JavaSource;
-import jp.co.kin.tool.source.Method;
 import jp.co.kin.tool.type.AccessType;
 import jp.co.kin.tool.type.ClassType;
 import jp.co.kin.tool.type.ExecuteType;
 
 public class DaoBuilder extends SourceBuilder {
 
-	@SuppressWarnings("unchecked")
 	@Build
 	public void execute() {
 		Excel excel = super.reader.read();
@@ -36,33 +31,9 @@ public class DaoBuilder extends SourceBuilder {
 				JavaSource source = new JavaSource();
 				setCommonInfo(source);
 				for (Row row : excel.getRowList()) {
+
 					if (isTargetTable(row, table)) {
 						source.setClassName(toJavaFileName(getPhysicalName(row)) + "Dao");
-
-						Class<T> entityClass = (Class<T>) Class
-								.forName("jp.co.kin.db.entity." + toJavaFileName(getPhysicalName(row)));
-
-						Field<T> field = new Field<T>(table, table, entityClass, null);
-						// Delete文メソッドを作成
-						Method<T> delete = new Method<T>(field, AccessType.PUBLIC) {
-
-							@Override
-							protected String getMethodName() {
-								return "delete";
-							}
-
-							@Override
-							public String toString() {
-								final String TAB = "	";
-								Class<?> clazz = BeanUtil.getParameterType(field.getClassType());
-								return TAB + accessType.getValue() + " int " + getMethodName() + "("
-										+ clazz.getSimpleName() + " entity)";
-							}
-						};
-
-						// Update文メソッドを作成
-
-						// Insert文メソッドを作成
 					}
 				}
 				FileConfig fileConf = getFileConfig(ExecuteType.DAO);
