@@ -20,10 +20,10 @@ public class LoginUserData extends BaseEntity {
 	private Date passwordExpire;
 	/** ユーザ権限 */
 	private String userAuth;
-	/** 更新日時 */
-	private Date updateDate;
 	/** 登録日時 */
 	private Date regDate;
+	/** 更新日時 */
+	private Date updateDate;
 
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
@@ -65,20 +65,20 @@ public class LoginUserData extends BaseEntity {
 		return userAuth;
 	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
-	}
-
-	public Date getUpdateDate() {
-		return updateDate;
-	}
-
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
 
 	public Date getRegDate() {
 		return regDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
 }
