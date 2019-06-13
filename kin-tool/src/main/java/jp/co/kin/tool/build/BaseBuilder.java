@@ -37,7 +37,8 @@ public abstract class BaseBuilder {
 
 		String resourcePath = this.getClass().getClassLoader().getResource("").getPath()
 				+ FileSeparator.SYSTEM.getValue() + "META-INF";
-		ToolProperties prop = new PropertyReader().read(resourcePath, "tool.properties", ToolProperties.class);
+		ToolProperties prop = new PropertyReader().read(resourcePath, "tool.properties",
+				ToolProperties.class);
 
 		this.targetTableList = StringUtil.toStrList(prop.getTargetTable(), StringUtil.COMMA);
 
@@ -46,11 +47,6 @@ public abstract class BaseBuilder {
 		this.reader = new ExcelReader(getExcelConfig());
 	}
 
-	/**
-	 * excel設定情報を返す
-	 *
-	 * @return ExcelConfig
-	 */
 	protected ExcelConfig getExcelConfig() {
 		ExcelConfig conf = new ExcelConfig();
 		conf.setFilePath(baseDir + "\\kin-docs\\detail-design\\DB.xlsx");
@@ -58,13 +54,6 @@ public abstract class BaseBuilder {
 		return conf;
 	}
 
-	/**
-	 * ファイル設定情報を返す
-	 *
-	 * @param execType
-	 *            実行タイプ
-	 * @return FileConfig
-	 */
 	protected FileConfig getFileConfig(ExecuteType execType) {
 		FileConfig conf = new FileConfig();
 		switch (execType) {
@@ -93,15 +82,6 @@ public abstract class BaseBuilder {
 		return conf;
 	}
 
-	/**
-	 * 対象のテーブルかどうか判定
-	 *
-	 * @param row
-	 *            excelの行情報
-	 * @param tableName
-	 *            テーブル名
-	 * @return 判定結果
-	 */
 	protected boolean isTargetTable(Row row, String tableName) {
 		Cell cell = row.getCell(CellPositionType.PHYSICAL_NAME);
 		return tableName.equals(cell.getValue());

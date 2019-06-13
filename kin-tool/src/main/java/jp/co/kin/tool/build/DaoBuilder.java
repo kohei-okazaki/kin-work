@@ -76,30 +76,14 @@ public class DaoBuilder extends SourceBuilder {
 		return result.toString();
 	}
 
-	/**
-	 * パッケージ部分を組み立てる
-	 *
-	 * @param source
-	 *            Javaソース
-	 * @return パッケージ
-	 */
 	private String buildPackage(JavaSource source) {
 		return source.getPackage().toString();
 	}
 
-	/**
-	 * import部分を組み立てる
-	 *
-	 * @param importList
-	 *            インポート文のリスト
-	 * @return インポート
-	 */
 	private String buildImport(List<Import> importList) {
 
 		List<String> strImportList = new ArrayList<>();
-		importList.stream()
-				.filter(e -> !strImportList.contains(e.toString()))
-				.map(e -> e.toString())
+		importList.stream().filter(e -> !strImportList.contains(e.toString())).map(e -> e.toString())
 				.forEach(e -> strImportList.add(e));
 
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);

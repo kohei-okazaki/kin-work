@@ -37,6 +37,29 @@ public abstract class SourceBuilder extends BaseBuilder {
 	}
 
 	/**
+	 * Javaファイル名に変換する<br>
+	 * (例)<br>
+	 * TEST_NAME -> TestName<br>
+	 *
+	 * @param fileName
+	 *            ファイル名
+	 * @return Javaファイル名
+	 */
+	protected String toJavaFileName(String fileName) {
+
+		String result = toCamelCase(fileName);
+		// 先頭の文字列を大文字に変換
+		Character startChar = result.charAt(0);
+		Character large = Character.toUpperCase(result.charAt(0));
+
+		return result.replaceFirst(startChar.toString(), large.toString());
+	}
+
+	protected String getPhysicalName(Row row) {
+		return row.getCell(CellPositionType.PHYSICAL_NAME).getValue();
+	}
+
+	/**
 	 * クラス名部分を組み立てる<br>
 	 * ex<br>
 	 * <code>public class XXXX</code>
@@ -95,36 +118,6 @@ public abstract class SourceBuilder extends BaseBuilder {
 		String prefix = "extends";
 
 		return " " + prefix + " " + source.getExtendsClass().getSimpleName();
-	}
-
-	/**
-	 * Javaファイル名に変換する<br>
-	 * (例)<br>
-	 * TEST_NAME -> TestName<br>
-	 *
-	 * @param fileName
-	 *            ファイル名
-	 * @return Javaファイル名
-	 */
-	protected String toJavaFileName(String fileName) {
-
-		String result = toCamelCase(fileName);
-		// 先頭の文字列を大文字に変換
-		Character startChar = result.charAt(0);
-		Character large = Character.toUpperCase(result.charAt(0));
-
-		return result.replaceFirst(startChar.toString(), large.toString());
-	}
-
-	/**
-	 * 物理名を取得
-	 *
-	 * @param row
-	 *            Row
-	 * @return
-	 */
-	protected String getPhysicalName(Row row) {
-		return row.getCell(CellPositionType.PHYSICAL_NAME).getValue();
 	}
 
 	/**

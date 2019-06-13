@@ -156,27 +156,13 @@ public class EntityBuilder extends SourceBuilder {
 		return result.toString();
 	}
 
-	/**
-	 * パッケージ部分を組み立てる
-	 *
-	 * @param source
-	 *            Javaソース
-	 * @return
-	 */
 	private String buildPackage(JavaSource source) {
 		return source.getPackage().toString();
 	}
 
-	/**
-	 * import部分を組み立てる
-	 *
-	 * @param importList
-	 *            インポート文のリスト
-	 * @return インポート
-	 */
 	private String buildImport(List<Import> importList) {
-		List<String> strImportList = new ArrayList<>();
 
+		List<String> strImportList = new ArrayList<>();
 		importList.stream().filter(e -> !strImportList.contains(e.toString())).map(e -> e.toString())
 				.forEach(e -> strImportList.add(e));
 
@@ -185,26 +171,12 @@ public class EntityBuilder extends SourceBuilder {
 		return body.toString();
 	}
 
-	/**
-	 * フィールドを組み立てる
-	 *
-	 * @param fieldList
-	 *            フィールドリスト
-	 * @return フィールド
-	 */
 	private String buildFields(List<Field<?>> fieldList) {
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
 		fieldList.stream().forEach(e -> body.add(e.toString()));
 		return body.toString();
 	}
 
-	/**
-	 * メソッドを組み立てる
-	 *
-	 * @param methodList
-	 *            メソッドリスト
-	 * @return メソッド
-	 */
 	private String buildMethods(List<Method<?>> methodList) {
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
 		methodList.stream().forEach(e -> body.add(e.toString()));
