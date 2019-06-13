@@ -3,12 +3,14 @@ package jp.co.kin.db.entity;
 import java.util.Date;
 
 import org.seasar.doma.Entity;
+import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
 @Entity(naming = NamingType.SNAKE_UPPER_CASE)
 public class LoginUserData extends BaseEntity {
 
 	/** ログインID */
+	@Id
 	private String loginId;
 	/** ユーザ名 */
 	private String userName;

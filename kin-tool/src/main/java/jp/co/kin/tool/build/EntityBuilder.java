@@ -1,7 +1,9 @@
 package jp.co.kin.tool.build;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
 import java.util.function.Function;
 
@@ -51,7 +53,7 @@ public class EntityBuilder extends SourceBuilder {
 
 					// fieldの設定
 					Field<?> field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
-							getClassType(row), getAnnotationList(row));
+							getClassType(row), getAnnotationMap(row, source));
 					source.addField(field);
 
 					// fieldのimport文を設定
@@ -75,17 +77,21 @@ public class EntityBuilder extends SourceBuilder {
 		}
 	}
 
-	private List<Class<?>> getAnnotationList(Row row) {
-		List<Class<?>> annotationList = new ArrayList<>();
+	private Map<Class<?>, String> getAnnotationMap(Row row, JavaSource source) {
+
+		Map<Class<?>, String> map = new HashMap<>();
 		Cell primaryKeyCell = row.getCell(CellPositionType.PRIMARY_KEY);
 		if (StringUtil.hasValue(primaryKeyCell.getValue())) {
-			annotationList.add(Id.class);
+			map.put(Id.class, "");
+			source.addImport(new Import(Id.class));
 		}
 		Cell sequenceCell = row.getCell(CellPositionType.SEQUENCE);
 		if (StringUtil.hasValue(sequenceCell.getValue())) {
-			annotationList.add(GeneratedValue.class);
+			map.put(GeneratedValue.class, "strategy = GenerationType.SEQUENCE");
+			source.addImport(new Import(GeneratedValue.class));
 		}
-		return annotationList;
+
+		return map;
 	}
 
 	private String getColumnComment(Row row) {
