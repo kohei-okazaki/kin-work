@@ -18,8 +18,8 @@ public class LoginUserData extends BaseEntity {
 	/** ユーザ名 */
 	private String userName;
 	/** パスワード */
-	@Crypt
 	@Mask
+	@Crypt
 	private String password;
 	/** パスワード有効期限 */
 	private Date passwordExpire;
