@@ -27,7 +27,6 @@ import jp.co.kin.tool.source.Field;
 import jp.co.kin.tool.source.Getter;
 import jp.co.kin.tool.source.Import;
 import jp.co.kin.tool.source.JavaSource;
-import jp.co.kin.tool.source.Method;
 import jp.co.kin.tool.source.Setter;
 import jp.co.kin.tool.type.AccessType;
 import jp.co.kin.tool.type.CellPositionType;
@@ -49,26 +48,27 @@ public class EntityBuilder extends SourceBuilder {
 			setCommonInfo(source);
 			for (Row row : excel.getRowList()) {
 
-				if (isTargetTable(row, table)) {
-					source.setClassName(toJavaFileName(getPhysicalName(row)));
-
-					// fieldの設定
-					Field<?> field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
-							getClassType(row), getAnnotationMap(row, source));
-					source.addField(field);
-
-					// fieldのimport文を設定
-					Import im = new Import(field);
-					source.addImport(im);
-
-					// setterの設定
-					Setter<?> setter = new Setter(field);
-					source.addMethod(setter);
-
-					// getterの設定
-					Getter<?> getter = new Getter(field);
-					source.addMethod(getter);
+				if (!isTargetTable(row, table)) {
+					continue;
 				}
+				source.setClassName(toJavaFileName(getPhysicalName(row)));
+
+				// fieldの設定
+				Field<?> field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
+						getClassType(row), getAnnotationMap(row, source));
+				source.addField(field);
+
+				// fieldのimport文を設定
+				Import im = new Import(field);
+				source.addImport(im);
+
+				// setterの設定
+				Setter<?> setter = new Setter(field);
+				source.addMethod(setter);
+
+				// getterの設定
+				Getter<?> getter = new Getter(field);
+				source.addMethod(getter);
 			}
 
 			FileConfig fileConf = getFileConfig(ExecuteType.ENTITY);
@@ -170,9 +170,4 @@ public class EntityBuilder extends SourceBuilder {
 		return body.toString();
 	}
 
-	private String buildMethods(List<Method<?>> methodList) {
-		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		methodList.stream().forEach(e -> body.add(e.toString()));
-		return body.toString();
-	}
 }

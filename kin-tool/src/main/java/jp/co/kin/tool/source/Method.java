@@ -1,5 +1,8 @@
 package jp.co.kin.tool.source;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import jp.co.kin.tool.type.AccessType;
 
 /**
@@ -14,6 +17,14 @@ public abstract class Method<T> {
 	protected Field<T> field;
 	/** メソッドのアクセスタイプ */
 	protected AccessType accessType;
+	/** AnnotationMap */
+	protected Map<Class<?>, String> annotationMap = new LinkedHashMap<>();
+	/** 戻り値 */
+	protected Class<?> returnType;
+	/** 抽象メソッドかどうか */
+	protected boolean isAbstract;
+	/** 引数情報 */
+	protected Signature signature;
 
 	/**
 	 * コンストラクタ
@@ -34,5 +45,47 @@ public abstract class Method<T> {
 	 * @return メソッド名
 	 */
 	protected abstract String getMethodName();
+
+	/**
+	 * annotationを追加する
+	 *
+	 * @param clazz
+	 *            クラス型
+	 * @param option
+	 *            追加オプション
+	 */
+	public void addAnnotation(Class<?> clazz, String option) {
+		this.annotationMap.put(clazz, option);
+	}
+
+	/**
+	 * returnTypeを設定する
+	 *
+	 * @param returnType
+	 *            returnType
+	 */
+	public void setReturnType(Class<?> returnType) {
+		this.returnType = returnType;
+	}
+
+	/**
+	 * isAbstractを設定する
+	 *
+	 * @param isAbstract
+	 *            isAbstract
+	 */
+	public void setAbstract(boolean isAbstract) {
+		this.isAbstract = isAbstract;
+	}
+
+	/**
+	 * signatureを設定する
+	 *
+	 * @param signature
+	 *            signature
+	 */
+	public void setSignature(Signature signature) {
+		this.signature = signature;
+	}
 
 }

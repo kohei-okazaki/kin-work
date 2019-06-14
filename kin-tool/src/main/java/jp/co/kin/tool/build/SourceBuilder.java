@@ -11,6 +11,7 @@ import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.excel.Row;
 import jp.co.kin.tool.source.Import;
 import jp.co.kin.tool.source.JavaSource;
+import jp.co.kin.tool.source.Method;
 import jp.co.kin.tool.type.CellPositionType;
 import jp.co.kin.tool.type.ClassType;
 
@@ -171,6 +172,12 @@ public abstract class SourceBuilder extends BaseBuilder {
 		source.getImplInterfaceList().stream().forEach(e -> body.add(e.getSimpleName()));
 
 		return " " + prefix + " " + body.toString();
+	}
+
+	protected String buildMethods(List<Method<?>> methodList) {
+		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE + StringUtil.NEW_LINE);
+		methodList.stream().forEach(e -> body.add(e.toString()));
+		return body.toString();
 	}
 
 }

@@ -20,4 +20,5 @@ public interface LoginUserDataDao extends BaseDao {
 
 	@Insert
 	public int insert(LoginUserData entity);
+
 }
