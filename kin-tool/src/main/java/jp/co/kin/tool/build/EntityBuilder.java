@@ -93,11 +93,11 @@ public class EntityBuilder extends SourceBuilder {
 		}
 		Cell cryptCell = row.getCell(CellPositionType.CRYPT);
 		if (StringUtil.hasValue(cryptCell.getValue())) {
-			map.put(Crypt.class, "");
-			source.addImport(new Import(Crypt.class));
-
 			map.put(Mask.class, "");
 			source.addImport(new Import(Mask.class));
+
+			map.put(Crypt.class, "");
+			source.addImport(new Import(Crypt.class));
 		}
 		return map;
 	}
