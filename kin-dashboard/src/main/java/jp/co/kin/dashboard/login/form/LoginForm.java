@@ -12,16 +12,20 @@ public class LoginForm implements BaseForm {
 
 	/**
 	 * loginIdを返す
-	 *
+	 * 
 	 * @return loginId
+	 *
 	 */
 	public String getLoginId() {
 		return loginId;
 	}
 
 	/**
+	 * loginIdを設定する
+	 * 
 	 * @param loginId
-	 *            loginIdを設定する
+	 *            loginId
+	 *
 	 */
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
@@ -29,16 +33,20 @@ public class LoginForm implements BaseForm {
 
 	/**
 	 * passwordを返す
-	 *
+	 * 
 	 * @return password
+	 *
 	 */
 	public String getPassword() {
 		return password;
 	}
 
 	/**
+	 * passwordを設定する
+	 * 
 	 * @param password
-	 *            passwordを設定する
+	 *            password
+	 *
 	 */
 	public void setPassword(String password) {
 		this.password = password;
