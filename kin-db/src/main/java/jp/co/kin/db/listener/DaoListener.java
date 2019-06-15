@@ -33,13 +33,11 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 
 	@Override
 	public void preDelete(T entity, PreDeleteContext<T> context) {
-		System.out.println("#preDelete");
 		EntityListener.super.preDelete(entity, context);
 	}
 
 	@Override
 	public void preInsert(T entity, PreInsertContext<T> context) {
-		System.out.println("#preInsert");
 		try {
 			for (Method m : entity.getClass().getDeclaredMethods()) {
 				if ("setRegDate".equals(m.getName()) || "setUpdateDate".equals(m.getName())) {
@@ -55,7 +53,6 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 
 	@Override
 	public void preUpdate(T entity, PreUpdateContext<T> context) {
-		System.out.println("#preUpdate");
 		try {
 			for (Method m : entity.getClass().getDeclaredMethods()) {
 				if ("setUpdateDate".equals(m.getName())) {
@@ -71,19 +68,16 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 
 	@Override
 	public void postDelete(T entity, PostDeleteContext<T> context) {
-		System.out.println("#postDelete");
 		EntityListener.super.postDelete(entity, context);
 	}
 
 	@Override
 	public void postInsert(T entity, PostInsertContext<T> context) {
-		System.out.println("#postInsert");
 		EntityListener.super.postInsert(entity, context);
 	}
 
 	@Override
 	public void postUpdate(T entity, PostUpdateContext<T> context) {
-		System.out.println("#postUpdate");
 		EntityListener.super.postUpdate(entity, context);
 	}
 

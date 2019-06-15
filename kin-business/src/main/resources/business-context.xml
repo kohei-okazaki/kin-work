@@ -14,4 +14,9 @@
   <context:component-scan base-package="jp.co.kin.business.aspect" />
   <context:component-scan base-package="jp.co.kin.business.*.service.impl" />
 
+  <context:component-scan base-package="jp.co.kin.business.db.*.impl" />
+
+
+
+
 </beans>
