@@ -5,6 +5,7 @@
   xmlns:context="http://www.springframework.org/schema/context"
   xmlns:mvc="http://www.springframework.org/schema/mvc"
   xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:util="http://www.springframework.org/schema/util"
   xsi:schemaLocation="http://www.springframework.org/schema/mvc
                       http://www.springframework.org/schema/mvc/spring-mvc.xsd
                       http://www.springframework.org/schema/beans
@@ -12,7 +13,9 @@
                       http://www.springframework.org/schema/context
                       http://www.springframework.org/schema/context/spring-context.xsd
                       http://www.springframework.org/schema/tx
-                      http://www.springframework.org/schema/tx/spring-tx.xsd">
+                      http://www.springframework.org/schema/tx/spring-tx.xsd
+                      http://www.springframework.org/schema/util
+                      http://www.springframework.org/schema/util/spring-util.xsd">
 
   <context:property-placeholder location="classpath:META-INF/jdbc.properties" />
   <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
@@ -36,13 +39,23 @@
     <property name="dataSource" ref="dataSource" />
   </bean>
 
-  <tx:annotation-driven />
-  <!-- 自動トランザクションの設定 -->
+  <tx:annotation-driven transaction-manager="transactionManager" />
+  <!-- 宣言的トランザクションの設定 -->
   <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
     <tx:attributes>
-      <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED" timeout="32" read-only="false" rollback-for="java.lang.Exception" />
+      <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED" read-only="false" rollback-for="java.lang.Exception" />
     </tx:attributes>
   </tx:advice>
+  <!-- 明示的トランザクションの設定 -->
+  <bean id="transactionDefinition" class="org.springframework.transaction.support.DefaultTransactionDefinition">
+    <property name="propagationBehavior">
+      <util:constant static-field="org.springframework.transaction.TransactionDefinition.PROPAGATION_REQUIRED" />
+    </property>
+    <property name="isolationLevel">
+      <util:constant static-field="org.springframework.transaction.TransactionDefinition.ISOLATION_READ_COMMITTED" />
+    </property>
+    <property name="readOnly" value="false" />
+  </bean>
 
   <context:component-scan base-package="jp.co.kin.db.config" />
   <context:component-scan base-package="jp.co.kin.db.dao" />

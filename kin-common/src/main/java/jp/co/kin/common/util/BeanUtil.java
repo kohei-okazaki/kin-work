@@ -20,7 +20,7 @@ import jp.co.kin.common.log.LoggerFactory;
  */
 public class BeanUtil {
 
-	private static final Logger logger = LoggerFactory.getLogger(BeanUtil.class);
+	private static final Logger LOG = LoggerFactory.getLogger(BeanUtil.class);
 
 	private BeanUtil() {
 	}
@@ -84,7 +84,8 @@ public class BeanUtil {
 	 * @param function
 	 *            コールバック処理
 	 */
-	public static void copy(Object src, Object dest, List<String> ignoreList, BiConsumer<Object, Object> function) {
+	public static void copy(Object src, Object dest, List<String> ignoreList,
+			BiConsumer<Object, Object> function) {
 
 		// コピー元のクラス型
 		Class<?> srcClass = src.getClass();
@@ -109,11 +110,11 @@ public class BeanUtil {
 				}
 			}
 		} catch (IllegalAccessException e) {
-			logger.warn("アクセスに失敗", e);
+			LOG.warn("アクセスに失敗", e);
 		} catch (IllegalArgumentException e) {
-			logger.warn("不正な引数", e);
+			LOG.warn("不正な引数", e);
 		} catch (InvocationTargetException e) {
-			logger.warn("フィールドのアクセスに失敗", e);
+			LOG.warn("フィールドのアクセスに失敗", e);
 		}
 
 		if (notNull(function)) {
@@ -244,11 +245,11 @@ public class BeanUtil {
 			} else if (AccessorType.GETTER == type) {
 				accessor = pd.getReadMethod();
 			} else {
-				// LOG.error("AccessTypeの指定が不正です。accessType = " + type);
+				LOG.error("AccessTypeの指定が不正です。accessType = " + type);
 				accessor = null;
 			}
 		} catch (IntrospectionException e) {
-			// LOG.warn("メソッドがみつかりません", e);
+			LOG.warn("メソッドがみつかりません", e);
 		}
 		return accessor;
 	}

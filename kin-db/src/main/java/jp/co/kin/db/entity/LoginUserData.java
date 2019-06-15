@@ -6,8 +6,8 @@ import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
+import jp.co.kin.common.db.annotation.Crypt;
 import jp.co.kin.common.log.annotation.Mask;
-import jp.co.kin.db.annotation.Crypt;
 
 @Entity(naming = NamingType.SNAKE_UPPER_CASE)
 public class LoginUserData extends BaseEntity {

@@ -58,19 +58,19 @@ public abstract class BaseBuilder {
 		FileConfig conf = new FileConfig();
 		switch (execType) {
 		case DDL:
-			conf.setOutputPath(this.baseDir + "\\kin-resource\\db\\ddl");
+			conf.setOutputPath(this.baseDir + "\\kin-docs\\detail-design\\db\\ddl");
 			break;
 		case ENTITY:
 			conf.setOutputPath(this.baseDir + "\\kin-db\\src\\main\\java\\jp\\co\\kin\\db\\entity");
 			break;
 		case DROP:
-			conf.setOutputPath(this.baseDir + "\\kin-resource\\db\\drop");
+			conf.setOutputPath(this.baseDir + "\\kin-docs\\detail-design\\db\\drop");
 			break;
 		case DML:
-			conf.setOutputPath(this.baseDir + "\\kin-resource\\db\\dml");
+			conf.setOutputPath(this.baseDir + "\\kin-docs\\detail-design\\db\\dml");
 			break;
 		case TABLE_DEFINE:
-			conf.setOutputPath(this.baseDir + "\\kin-resource\\db\\others");
+			conf.setOutputPath(this.baseDir + "\\kin-docs\\detail-design\\db\\others");
 			break;
 		case DAO:
 			conf.setOutputPath(this.baseDir + "\\kin-db\\src\\main\\java\\jp\\co\\kin\\db\\dao");

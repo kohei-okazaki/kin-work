@@ -4,18 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
-import java.util.function.Function;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
+import jp.co.kin.common.db.annotation.Crypt;
 import jp.co.kin.common.log.annotation.Mask;
 import jp.co.kin.common.type.LineFeedType;
 import jp.co.kin.common.util.FileUtil.FileExtension;
 import jp.co.kin.common.util.StringUtil;
-import jp.co.kin.db.annotation.Crypt;
 import jp.co.kin.db.entity.BaseEntity;
 import jp.co.kin.tool.build.annotation.Build;
 import jp.co.kin.tool.config.FileConfig;
@@ -27,7 +26,6 @@ import jp.co.kin.tool.source.Field;
 import jp.co.kin.tool.source.Getter;
 import jp.co.kin.tool.source.Import;
 import jp.co.kin.tool.source.JavaSource;
-import jp.co.kin.tool.source.Method;
 import jp.co.kin.tool.source.Setter;
 import jp.co.kin.tool.type.AccessType;
 import jp.co.kin.tool.type.CellPositionType;
@@ -49,26 +47,27 @@ public class EntityBuilder extends SourceBuilder {
 			setCommonInfo(source);
 			for (Row row : excel.getRowList()) {
 
-				if (isTargetTable(row, table)) {
-					source.setClassName(toJavaFileName(getPhysicalName(row)));
-
-					// fieldの設定
-					Field<?> field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
-							getClassType(row), getAnnotationMap(row, source));
-					source.addField(field);
-
-					// fieldのimport文を設定
-					Import im = new Import(field);
-					source.addImport(im);
-
-					// setterの設定
-					Setter<?> setter = new Setter(field);
-					source.addMethod(setter);
-
-					// getterの設定
-					Getter<?> getter = new Getter(field);
-					source.addMethod(getter);
+				if (!isTargetTable(row, table)) {
+					continue;
 				}
+				source.setClassName(toJavaFileName(getPhysicalName(row)));
+
+				// fieldの設定
+				Field<?> field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
+						getClassType(row), getFieldAnnotationMap(row, source));
+				source.addField(field);
+
+				// fieldのimport文を設定
+				Import im = new Import(field);
+				source.addImport(im);
+
+				// setterの設定
+				Setter<?> setter = new Setter(field);
+				source.addMethod(setter);
+
+				// getterの設定
+				Getter<?> getter = new Getter(field);
+				source.addMethod(getter);
 			}
 
 			FileConfig fileConf = getFileConfig(ExecuteType.ENTITY);
@@ -78,7 +77,7 @@ public class EntityBuilder extends SourceBuilder {
 		}
 	}
 
-	private Map<Class<?>, String> getAnnotationMap(Row row, JavaSource source) {
+	private Map<Class<?>, String> getFieldAnnotationMap(Row row, JavaSource source) {
 
 		Map<Class<?>, String> map = new HashMap<>();
 		Cell primaryKeyCell = row.getCell(CellPositionType.PRIMARY_KEY);
@@ -93,11 +92,11 @@ public class EntityBuilder extends SourceBuilder {
 		}
 		Cell cryptCell = row.getCell(CellPositionType.CRYPT);
 		if (StringUtil.hasValue(cryptCell.getValue())) {
-			map.put(Crypt.class, "");
-			source.addImport(new Import(Crypt.class));
-
 			map.put(Mask.class, "");
 			source.addImport(new Import(Mask.class));
+
+			map.put(Crypt.class, "");
+			source.addImport(new Import(Crypt.class));
 		}
 		return map;
 	}
@@ -118,7 +117,7 @@ public class EntityBuilder extends SourceBuilder {
 		source.setAccessType(AccessType.PUBLIC);
 		source.setExtendsClass(BaseEntity.class);
 		source.addImport(new Import(BaseEntity.class));
-		source.addClassAnnotation(Entity.class);
+		source.addClassAnnotation(Entity.class, "(naming = NamingType.SNAKE_UPPER_CASE)");
 		source.addImport(new Import(Entity.class));
 		source.addImport(new Import(NamingType.class));
 	}
@@ -142,15 +141,8 @@ public class EntityBuilder extends SourceBuilder {
 		result.add(buildImport(source.getImportList()));
 
 		// class情報
-		Function<Class<?>, String> function = clazz -> {
-			if (clazz.equals(Entity.class)) {
-				return "(naming = NamingType.SNAKE_UPPER_CASE)";
-			} else {
-				return "";
-			}
-		};
 		result.add(
-				buildClassAnnotation(source.getClassAnnotationList(), function) + LineFeedType.CRLF.getValue()
+				buildClassAnnotation(source.getClassAnnotationMap()) + LineFeedType.CRLF.getValue()
 						+ buildClass(source) + buildExtendsClass(source) + buildInterfaces(source) + " {");
 
 		// field情報
@@ -170,9 +162,4 @@ public class EntityBuilder extends SourceBuilder {
 		return body.toString();
 	}
 
-	private String buildMethods(List<Method<?>> methodList) {
-		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		methodList.stream().forEach(e -> body.add(e.toString()));
-		return body.toString();
-	}
 }

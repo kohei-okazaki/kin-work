@@ -24,6 +24,7 @@
   <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
 
   <context:component-scan base-package="jp.co.kin.dashboard.*.controller" />
+  <context:component-scan base-package="jp.co.kin.dashboard.exception" />
 
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
     <property name="basenames">

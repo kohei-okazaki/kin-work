@@ -12,30 +12,15 @@ public enum DateFormatType implements BaseEnum {
 	/** 名前 */
 	private String value;
 
-	/**
-	 * コンストラクタ
-	 *
-	 * @param value
-	 *            値
-	 */
 	private DateFormatType(String value) {
 		this.value = value;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String getValue() {
 		return this.value;
 	}
 
-	/**
-	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-	 * @param value
-	 *            値
-	 * @return DateFormatType
-	 */
 	public static DateFormatType of(String value) {
 		return BaseEnum.of(DateFormatType.class, value);
 	}

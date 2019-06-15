@@ -18,6 +18,28 @@ public class Logger {
 		this.logger = logger;
 	}
 
+	/* ----- TRACE ----- */
+	/**
+	 * Traceログを出力する
+	 *
+	 * @param bean
+	 *            Bean
+	 */
+	public void traceRes(Object bean) {
+		logger.trace(LogMessageFactory.getLogMessage(bean));
+	}
+
+	/**
+	 * Traceログを出力する
+	 *
+	 * @param msg
+	 *            ログメッセージ
+	 */
+	public void trace(String msg) {
+		logger.trace(msg);
+	}
+
+	/* ----- DEBUG ----- */
 	/**
 	 * Debugログを出力する
 	 *
@@ -38,8 +60,9 @@ public class Logger {
 		logger.debug(msg);
 	}
 
+	/* ----- INFO ----- */
 	/**
-	 * Debugログを出力する
+	 * Infoログを出力する
 	 *
 	 * @param bean
 	 *            Bean
@@ -58,6 +81,7 @@ public class Logger {
 		logger.info(msg);
 	}
 
+	/* ----- WARN ----- */
 	/**
 	 * Warnログを出力する
 	 *
@@ -102,6 +126,7 @@ public class Logger {
 		logger.warn(msg, t);
 	}
 
+	/* ----- ERROR ----- */
 	/**
 	 * Errorログを出力する
 	 *

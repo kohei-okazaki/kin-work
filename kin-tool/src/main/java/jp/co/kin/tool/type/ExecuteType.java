@@ -20,30 +20,15 @@ public enum ExecuteType implements BaseEnum {
 	/** 値 */
 	private String value;
 
-	/**
-	 * コンストラクタ
-	 *
-	 * @param value
-	 *            値
-	 */
 	private ExecuteType(String value) {
 		this.value = value;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String getValue() {
 		return this.value;
 	}
 
-	/**
-	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-	 * @param value
-	 *            値
-	 * @return ExecuteType
-	 */
 	public static ExecuteType of(String value) {
 		return BaseEnum.of(ExecuteType.class, value);
 	}

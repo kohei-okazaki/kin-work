@@ -7,11 +7,6 @@ import java.util.stream.Stream;
  */
 public interface BaseEnum {
 
-	/**
-	 * 値を返す
-	 *
-	 * @return value
-	 */
 	String getValue();
 
 	/**

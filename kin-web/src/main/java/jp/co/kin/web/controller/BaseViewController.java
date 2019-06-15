@@ -5,7 +5,7 @@ import jp.co.kin.web.view.BaseView;
 /**
  * 基底Viewコントローラ
  */
-public interface BaseViewController {
+public interface BaseViewController extends BaseController {
 
 	public default String getView(BaseView view) {
 		return view.getName();
