@@ -54,20 +54,11 @@ public enum CellPositionType implements BaseEnum {
 		return this.position;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String getValue() {
 		return this.value;
 	}
 
-	/**
-	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-	 * @param value
-	 *            値
-	 * @return CellPositionType
-	 */
 	public static CellPositionType of(String value) {
 		return BaseEnum.of(CellPositionType.class, value);
 	}

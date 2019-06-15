@@ -13,19 +13,10 @@ public enum Charset implements BaseEnum {
 	/** 値 */
 	private String value;
 
-	/**
-	 * コンストラクタ
-	 *
-	 * @param value
-	 *            値
-	 */
 	private Charset(String value) {
 		this.value = value;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String getValue() {
 		return this.value;

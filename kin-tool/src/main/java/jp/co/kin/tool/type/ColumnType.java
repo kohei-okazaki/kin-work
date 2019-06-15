@@ -18,14 +18,6 @@ public enum ColumnType implements BaseEnum {
 	/** INT */
 	INT("INT", BigDecimal.class);
 
-	/**
-	 * コンストラクタ
-	 *
-	 * @param value
-	 *            値
-	 * @param classType
-	 *            クラス型
-	 */
 	private ColumnType(String value, Class<?> classType) {
 		this.value = value;
 		this.classType = classType;
@@ -41,21 +33,10 @@ public enum ColumnType implements BaseEnum {
 		return value;
 	}
 
-	/**
-	 * classTypeを返す
-	 *
-	 * @return classType
-	 */
 	public Class<?> getClassType() {
 		return this.classType;
 	}
 
-	/**
-	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-	 * @param value
-	 *            値
-	 * @return ColumnType
-	 */
 	public static ColumnType of(String value) {
 		return BaseEnum.of(ColumnType.class, value);
 	}

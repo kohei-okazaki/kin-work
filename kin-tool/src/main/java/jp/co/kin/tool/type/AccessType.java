@@ -13,26 +13,17 @@ public enum AccessType implements BaseEnum {
 	/** private */
 	PRIVATE("private");
 
+	private String value;
+
 	private AccessType(String value) {
 		this.value = value;
 	}
 
-	private String value;
-
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String getValue() {
 		return this.value;
 	}
 
-	/**
-	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-	 * @param value
-	 *            値
-	 * @return AccessType
-	 */
 	public static AccessType of(String value) {
 		return BaseEnum.of(AccessType.class, value);
 	}
