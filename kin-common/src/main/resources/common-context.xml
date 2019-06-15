@@ -21,6 +21,7 @@
   <context:annotation-config />
 
   <context:component-scan base-package="jp.co.kin.common.context" />
+  <context:component-scan base-package="jp.co.kin.common.db" />
 
   <bean id="properties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">

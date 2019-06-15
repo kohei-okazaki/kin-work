@@ -1,4 +1,4 @@
-package jp.co.kin.db.annotation;
+package jp.co.kin.common.db.annotation;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.*;

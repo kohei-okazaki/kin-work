@@ -1,5 +1,9 @@
 package jp.co.kin.common.db;
 
+/**
+ * 暗号/復号インターフェース
+ *
+ */
 public interface Crypter {
 
 	/**

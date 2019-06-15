@@ -25,7 +25,7 @@ public class SystemProperties {
 	 * loglevelを設定する
 	 *
 	 * @param loglevel
-	 *            loglevel
+	 *            ログレベル
 	 */
 	public void setLoglevel(String loglevel) {
 		this.loglevel = loglevel;
