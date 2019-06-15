@@ -4,14 +4,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.function.BiFunction;
 
+import jp.co.kin.common.log.Logger;
+import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
 
 /**
  * 日付Utilクラス
  */
 public class DateUtil {
+
+	private static final Logger LOG = LoggerFactory.getLogger(DateUtil.class);
 
 	private DateUtil() {
 	}
@@ -49,7 +52,7 @@ public class DateUtil {
 		try {
 			return new SimpleDateFormat(format.getValue()).parse(strDate);
 		} catch (ParseException e) {
-			e.printStackTrace();
+			LOG.warn("フォーマットの指定が不正です format:" + format, e);
 			return null;
 		}
 	}
@@ -117,9 +120,7 @@ public class DateUtil {
 			return StringUtil.EMPTY;
 		}
 
-		BiFunction<Date, DateFormatType, String> toStringFunction = (d, f) -> new SimpleDateFormat(f.getValue())
-				.format(d);
-		return toStringFunction.apply(date, format);
+		return new SimpleDateFormat(format.getValue()).format(date);
 	}
 
 	/**
