@@ -2,8 +2,8 @@ package jp.co.kin.tool.build;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.StringJoiner;
-import java.util.function.Function;
 
 import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.CollectionUtil;
@@ -98,17 +98,12 @@ public abstract class SourceBuilder extends BaseBuilder {
 	 *            クラスに付与するアノテーションのリスト
 	 * @return クラスに付与するアノテーション部分
 	 */
-	protected String buildClassAnnotation(List<Class<?>> classAnnotationList,
-			Function<Class<?>, String> function) {
+	protected String buildClassAnnotation(Map<Class<?>, String> annotationMap) {
 
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		for (Class<?> clazz : classAnnotationList) {
-			String str = "";
-			if (BeanUtil.notNull(function)) {
-				str = function.apply(clazz);
-			}
-			body.add("@" + clazz.getSimpleName() + str);
-		}
+		annotationMap.entrySet().stream().forEach(e -> {
+			body.add("@" + e.getKey().getSimpleName() + e.getValue());
+		});
 
 		return body.toString();
 	}

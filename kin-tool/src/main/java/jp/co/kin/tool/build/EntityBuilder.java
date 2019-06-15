@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
-import java.util.function.Function;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
@@ -55,7 +54,7 @@ public class EntityBuilder extends SourceBuilder {
 
 				// fieldの設定
 				Field<?> field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
-						getClassType(row), getAnnotationMap(row, source));
+						getClassType(row), getFieldAnnotationMap(row, source));
 				source.addField(field);
 
 				// fieldのimport文を設定
@@ -78,7 +77,7 @@ public class EntityBuilder extends SourceBuilder {
 		}
 	}
 
-	private Map<Class<?>, String> getAnnotationMap(Row row, JavaSource source) {
+	private Map<Class<?>, String> getFieldAnnotationMap(Row row, JavaSource source) {
 
 		Map<Class<?>, String> map = new HashMap<>();
 		Cell primaryKeyCell = row.getCell(CellPositionType.PRIMARY_KEY);
@@ -118,7 +117,7 @@ public class EntityBuilder extends SourceBuilder {
 		source.setAccessType(AccessType.PUBLIC);
 		source.setExtendsClass(BaseEntity.class);
 		source.addImport(new Import(BaseEntity.class));
-		source.addClassAnnotation(Entity.class);
+		source.addClassAnnotation(Entity.class, "(naming = NamingType.SNAKE_UPPER_CASE)");
 		source.addImport(new Import(Entity.class));
 		source.addImport(new Import(NamingType.class));
 	}
@@ -142,15 +141,8 @@ public class EntityBuilder extends SourceBuilder {
 		result.add(buildImport(source.getImportList()));
 
 		// class情報
-		Function<Class<?>, String> function = clazz -> {
-			if (clazz.equals(Entity.class)) {
-				return "(naming = NamingType.SNAKE_UPPER_CASE)";
-			} else {
-				return "";
-			}
-		};
 		result.add(
-				buildClassAnnotation(source.getClassAnnotationList(), function) + LineFeedType.CRLF.getValue()
+				buildClassAnnotation(source.getClassAnnotationMap()) + LineFeedType.CRLF.getValue()
 						+ buildClass(source) + buildExtendsClass(source) + buildInterfaces(source) + " {");
 
 		// field情報

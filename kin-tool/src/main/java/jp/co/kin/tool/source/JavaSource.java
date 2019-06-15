@@ -1,7 +1,9 @@
 package jp.co.kin.tool.source;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import jp.co.kin.tool.type.AccessType;
 import jp.co.kin.tool.type.ClassType;
@@ -23,7 +25,7 @@ public class JavaSource {
 	/** 実装インターフェース */
 	private List<Class<?>> implInterfaceList;
 	/** クラスに付与するアノテーションのリスト */
-	private List<Class<?>> classAnnotationList;
+	private Map<Class<?>, String> classAnnotationMap;
 	/** フィールド情報のリスト */
 	private List<Field<?>> fieldList;
 	/** メソッドのリスト */
@@ -35,7 +37,7 @@ public class JavaSource {
 	public JavaSource() {
 		this.importList = new ArrayList<>();
 		this.implInterfaceList = new ArrayList<>();
-		this.classAnnotationList = new ArrayList<>();
+		this.classAnnotationMap = new LinkedHashMap<>();
 		this.fieldList = new ArrayList<>();
 		this.methodList = new ArrayList<>();
 	}
@@ -212,22 +214,25 @@ public class JavaSource {
 	}
 
 	/**
-	 * classAnnotationListを返す
+	 * classAnnotationMapを返す
 	 *
-	 * @return classAnnotationList
+	 * @return classAnnotationMap
+	 *
 	 */
-	public List<Class<?>> getClassAnnotationList() {
-		return classAnnotationList;
+	public Map<Class<?>, String> getClassAnnotationMap() {
+		return classAnnotationMap;
 	}
 
 	/**
-	 * classAnnotationを追加する
-	 *
-	 * @param classAnnotation
-	 *            アノテーション
+	 * クラスアノテーションを追加する
+	 * 
+	 * @param clazz
+	 *            アノテーションのクラス型
+	 * @param value
+	 *            値
 	 */
-	public void addClassAnnotation(Class<?> classAnnotation) {
-		this.classAnnotationList.add(classAnnotation);
+	public void addClassAnnotation(Class<?> clazz, String value) {
+		this.classAnnotationMap.put(clazz, value);
 	}
 
 }

@@ -90,9 +90,9 @@ public class DaoBuilder extends SourceBuilder {
 		source.setAccessType(AccessType.PUBLIC);
 		source.addImplInterface(BaseDao.class);
 		source.addImport(new Import(BaseDao.class));
-		source.addClassAnnotation(Dao.class);
+		source.addClassAnnotation(Dao.class, "");
 		source.addImport(new Import(Dao.class));
-		source.addClassAnnotation(DaoRepository.class);
+		source.addClassAnnotation(DaoRepository.class, "");
 		source.addImport(new Import(DaoRepository.class));
 	}
 
@@ -203,8 +203,8 @@ public class DaoBuilder extends SourceBuilder {
 		result.add(buildImport(source.getImportList()));
 
 		// class情報
-		result.add(buildClassAnnotation(source.getClassAnnotationList(), null)
-				+ LineFeedType.CRLF.getValue() + buildClass(source) + buildInterfaces(source) + " {");
+		result.add(buildClassAnnotation(source.getClassAnnotationMap()) + LineFeedType.CRLF.getValue()
+				+ buildClass(source) + buildInterfaces(source) + " {");
 
 		// method情報
 		result.add(buildMethods(source.getMethodList()));
