@@ -65,10 +65,9 @@ public class DaoConfig implements Config {
 
 	@Override
 	public JdbcLogger getJdbcLogger() {
-		Level level = Stream.of(Level.class.getEnumConstants())
+		return new DaoLogger(Stream.of(Level.class.getEnumConstants())
 				.filter(e -> e.toString().equals(systemProperties.getLoglevel())).findFirst()
-				.orElse(Level.INFO);
-		return new DaoLogger(level);
+				.orElse(Level.INFO));
 	}
 
 	/**
@@ -91,29 +90,18 @@ public class DaoConfig implements Config {
 		public void log(Level level, String callerClassName, String callerMethodName, Throwable throwable,
 				Supplier<String> messageSupplier) {
 
-			switch (level) {
-			case ERROR:
-				LOG.error(buildLogMessage(callerClassName, callerMethodName, messageSupplier), throwable);
-				break;
-			case WARN:
-				LOG.warn(buildLogMessage(callerClassName, callerMethodName, messageSupplier), throwable);
-				break;
-			case INFO:
-				LOG.info(buildLogMessage(callerClassName, callerMethodName, messageSupplier));
-				break;
-			case DEBUG:
-				LOG.debug(buildLogMessage(callerClassName, callerMethodName, messageSupplier));
-				break;
-			default:
-				LOG.trace(buildLogMessage(callerClassName, callerMethodName, messageSupplier));
-				break;
+			if (Level.ERROR == level) {
+				LOG.error(messageSupplier.get(), throwable);
+			} else if (Level.WARN == level) {
+				LOG.warn(messageSupplier.get(), throwable);
+			} else if (Level.INFO == level) {
+				LOG.info(messageSupplier.get());
+			} else if (Level.DEBUG == level) {
+				LOG.debug(messageSupplier.get());
+			} else if (Level.TRACE == level) {
+				LOG.trace(messageSupplier.get());
 			}
 
-		}
-
-		private String buildLogMessage(String callerClassName, String callerMethodName,
-				Supplier<String> messageSupplier) {
-			return messageSupplier.get();
 		}
 
 	}

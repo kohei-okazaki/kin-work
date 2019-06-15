@@ -11,7 +11,7 @@ import jp.co.kin.web.type.ResultType;
  * API基底レスポンス
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
-public class BaseApiResponse implements BaseForm {
+public abstract class BaseApiResponse implements BaseForm {
 
 	public BaseApiResponse() {
 		this.resultType = ResultType.SUCCESS;

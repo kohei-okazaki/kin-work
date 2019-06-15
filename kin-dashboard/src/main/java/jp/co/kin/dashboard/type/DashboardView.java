@@ -1,5 +1,6 @@
 package jp.co.kin.dashboard.type;
 
+import jp.co.kin.common.type.BaseEnum;
 import jp.co.kin.web.view.BaseView;
 
 /**
@@ -10,7 +11,10 @@ public enum DashboardView implements BaseView {
 	/** ログイン画面 */
 	LOGIN("login/index"),
 	/** TOP画面 */
-	TOP("login/top");
+	TOP("login/top"),
+
+	/** Error画面 */
+	ERROR("error/index");
 
 	private String name;
 
@@ -20,7 +24,16 @@ public enum DashboardView implements BaseView {
 
 	@Override
 	public String getName() {
+		return getValue();
+	}
+
+	@Override
+	public String getValue() {
 		return this.name;
+	}
+
+	public static DashboardView of(String value) {
+		return BaseEnum.of(DashboardView.class, value);
 	}
 
 }

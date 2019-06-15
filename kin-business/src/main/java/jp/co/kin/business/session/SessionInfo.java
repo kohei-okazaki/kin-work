@@ -6,7 +6,7 @@ package jp.co.kin.business.session;
  */
 public class SessionInfo {
 
-	private LoginUser loginUser;
+	private SessionLoginUser loginUser;
 
 	/**
 	 * loginUserを返す
@@ -14,7 +14,7 @@ public class SessionInfo {
 	 * @return loginUser
 	 *
 	 */
-	public LoginUser getLoginUser() {
+	public SessionLoginUser getLoginUser() {
 		return loginUser;
 	}
 
@@ -25,7 +25,7 @@ public class SessionInfo {
 	 *            loginUser
 	 *
 	 */
-	public void setLoginUser(LoginUser loginUser) {
+	public void setLoginUser(SessionLoginUser loginUser) {
 		this.loginUser = loginUser;
 	}
 

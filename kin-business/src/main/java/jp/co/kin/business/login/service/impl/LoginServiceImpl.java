@@ -3,28 +3,33 @@ package jp.co.kin.business.login.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.kin.business.db.search.LoginUserDataSearchService;
+import jp.co.kin.business.login.dto.LoginCheckResult;
+import jp.co.kin.business.login.dto.LoginUserDataDto;
 import jp.co.kin.business.login.service.LoginService;
-import jp.co.kin.db.dao.LoginUserDataDao;
+import jp.co.kin.common.util.BeanUtil;
 
 @Service
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
-	private LoginUserDataDao dao;
+	private LoginUserDataSearchService searchService;
 
 	@Override
-	public String check(String name) {
-		test();
-		return "gaebawtw";
-	}
+	public LoginCheckResult checkLogin(LoginUserDataDto dto) {
 
-	private void test() {
+		LoginUserDataDto searchDto = searchService.search(dto.getLoginId());
+		LoginCheckResult result = new LoginCheckResult();
 
-	}
+		if (BeanUtil.isNull(searchDto)) {
+			result.setHasError(true);
+			result.setMessage("指定されたログインIDは存在しません");
+		} else if (searchDto.getPassword().equals(dto.getPassword())) {
+			result.setHasError(true);
+			result.setMessage("パスワードが一致しません");
+		}
 
-	@Override
-	public void testService() {
-
+		return result;
 	}
 
 }
