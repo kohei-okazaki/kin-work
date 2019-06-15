@@ -1,4 +1,4 @@
-package jp.co.kin.common.function;
+package jp.co.kin.common.util;
 
 import jp.co.kin.common.exception.BaseException;
 

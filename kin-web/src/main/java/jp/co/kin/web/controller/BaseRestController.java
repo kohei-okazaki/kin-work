@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jp.co.kin.common.exception.BaseException;
-import jp.co.kin.common.function.ThrowableBiConsumer;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.log.type.LogLevel;
+import jp.co.kin.common.util.ThrowableBiConsumer;
 import jp.co.kin.web.form.BaseApiRequest;
 import jp.co.kin.web.form.BaseApiResponse;
 import jp.co.kin.web.form.ErrorResponse;

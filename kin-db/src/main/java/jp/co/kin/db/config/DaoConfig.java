@@ -1,6 +1,7 @@
 package jp.co.kin.db.config;
 
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 import javax.sql.DataSource;
 
@@ -13,6 +14,7 @@ import org.slf4j.event.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
+import jp.co.kin.common.context.SystemProperties;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 
@@ -28,6 +30,8 @@ public class DaoConfig implements Config {
 	private Dialect dialect;
 	@Autowired
 	private SqlFileRepository sqlFileRepository;
+	@Autowired
+	private SystemProperties systemProperties;
 
 	public DaoConfig() {
 	}
@@ -61,7 +65,10 @@ public class DaoConfig implements Config {
 
 	@Override
 	public JdbcLogger getJdbcLogger() {
-		return new DaoLogger(Level.INFO);
+		Level level = Stream.of(Level.class.getEnumConstants())
+				.filter(e -> e.toString().equals(systemProperties.getLoglevel())).findFirst()
+				.orElse(Level.INFO);
+		return new DaoLogger(level);
 	}
 
 	/**
@@ -106,7 +113,7 @@ public class DaoConfig implements Config {
 
 		private String buildLogMessage(String callerClassName, String callerMethodName,
 				Supplier<String> messageSupplier) {
-			return "| - " + callerClassName + ", " + messageSupplier.get();
+			return messageSupplier.get();
 		}
 
 	}

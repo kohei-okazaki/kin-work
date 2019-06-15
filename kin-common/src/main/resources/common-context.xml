@@ -22,4 +22,16 @@
 
   <context:component-scan base-package="jp.co.kin.common.context" />
 
+  <bean id="properties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+      <list>
+        <value>classpath:META-INF/system.properties</value>
+        <value>classpath:META-INF/jdbc.properties</value>
+      </list>
+    </property>
+  </bean>
+  <bean id="systemProperties" class="jp.co.kin.common.context.SystemProperties" lazy-init="true">
+    <property name="loglevel" value="${system.loglevel}" />
+  </bean>
+
 </beans>
