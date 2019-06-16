@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.kin.business.login.dto.LoginCheckResult;
 import jp.co.kin.business.login.dto.LoginUserDataDto;
 import jp.co.kin.business.login.service.LoginService;
 import jp.co.kin.common.bean.DtoFactory;
+import jp.co.kin.common.context.MessageSourceComponent;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.dashboard.login.form.LoginForm;
 import jp.co.kin.dashboard.type.DashboardView;
@@ -30,6 +32,8 @@ public class LoginController implements BaseViewController {
 	private LoginService loginService;
 	@Autowired
 	private SessionComponent sessionComponent;
+	@Autowired
+	private MessageSourceComponent messageSourceComponnt;
 
 	/**
 	 * Formを返す
@@ -55,7 +59,10 @@ public class LoginController implements BaseViewController {
 
 		LoginUserDataDto dto = DtoFactory.getDto(LoginUserDataDto.class, form);
 
-		loginService.checkLogin(dto);
+		LoginCheckResult loginCheckResult = loginService.checkLogin(dto);
+		if (loginCheckResult.hasError()) {
+			String message = messageSourceComponnt.getMessage(loginCheckResult.getMessage());
+		}
 
 		sessionComponent.setValue(request.getSession(), "sessionUser", dto.getSessionLoginUser());
 
