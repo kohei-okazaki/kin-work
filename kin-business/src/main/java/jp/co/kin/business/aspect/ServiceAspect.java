@@ -21,9 +21,11 @@ public class ServiceAspect {
 
 	@Around("execution(* jp.co.kin.business.*.service.impl.*Impl.*(..))")
 	public Object executeLog(ProceedingJoinPoint pjp) throws Throwable {
+
 		LOG.info(this.getClass() + " called...");
 		Object o = pjp.proceed();
 		LOG.info(this.getClass() + " success");
+
 		return o;
 	}
 }
