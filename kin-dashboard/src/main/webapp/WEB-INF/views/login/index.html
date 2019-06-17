@@ -14,13 +14,15 @@
 <body>
 
   <div class="login">
-    <div th:if="${errorMessage} != null" data-sal="slide-up">
-      <div class="errorMessage">
-        <p th:text="${errorMessage}"></p>
-      </div>
-    </div>
     <div class="heading">
-      <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}">
+      <div th:if="${errorMessage} != null" data-sal="slide-up">
+        <div class="errorMessage">
+          <p th:text="${errorMessage}"></p>
+        </div>
+      </div>
+      <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}"  data-sal="slide-up">
+        <div th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
+        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
         <div class="input-group input-group-lg unit">
           <span class="input-group-addon">
             <i class="fa fa-user"></i>
@@ -31,7 +33,7 @@
           <span class="input-group-addon">
             <i class="fa fa-lock"></i>
           </span>
-          <input type="password" class="validate[required]" th:field="*{password}" maxlength="16" placeholder="パスワード" required />
+          <input type="password" class="validate[required]"  th:field="*{password}" maxlength="16" placeholder="パスワード" required />
         </div>
         <div class="unit">
           <input type="submit" value="ログイン" />
@@ -96,7 +98,7 @@
     	// アカウント登録処理
         var form = $("<form></form>", {
           method : "get",
-          action : "../accountRegist/input"
+          action : "../loginUserRegist/input"
         });
         form.appendTo(document.body);
         form.submit();

@@ -21,7 +21,7 @@ import jp.co.kin.common.validator.RequiredValidator;
 public @interface Required {
 
 	/** message */
-	String message() default "";
+	String message() default "{0}を入力してください";
 
 	/** groups */
 	Class<?>[] groups() default {};

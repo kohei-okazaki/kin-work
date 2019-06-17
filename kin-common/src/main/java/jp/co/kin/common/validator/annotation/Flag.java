@@ -9,6 +9,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
+import javax.validation.Payload;
 
 import jp.co.kin.common.validator.FlagValidator;
 
@@ -19,4 +20,12 @@ import jp.co.kin.common.validator.FlagValidator;
 @Constraint(validatedBy = FlagValidator.class)
 public @interface Flag {
 
+	/** message */
+	String message() default "{0}は0または1で入力してください";
+
+	/** groups */
+	Class<?>[] groups() default {};
+
+	/** payload */
+	Class<? extends Payload>[] payload() default {};
 }

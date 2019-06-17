@@ -27,7 +27,7 @@ public @interface Min {
 	boolean isEqual() default true;
 
 	/** message */
-	String message() default "";
+	String message() default "{0}は桁数が足りません";
 
 	/** groups */
 	Class<?>[] groups() default {};

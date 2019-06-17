@@ -27,7 +27,7 @@ public @interface Max {
 	boolean isEqual() default true;
 
 	/** message */
-	String message() default "";
+	String message() default "{0}は桁数超過しています";
 
 	/** groups */
 	Class<?>[] groups() default {};

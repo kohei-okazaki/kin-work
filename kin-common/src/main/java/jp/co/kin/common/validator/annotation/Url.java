@@ -21,7 +21,7 @@ import jp.co.kin.common.validator.UrlValidator;
 public @interface Url {
 
 	/** message */
-	String message() default "";
+	String message() default "{0}はURL形式で入力してください";
 
 	/** groups */
 	Class<?>[] groups() default {};
