@@ -33,6 +33,7 @@
   </bean>
   <bean id="systemProperties" class="jp.co.kin.common.context.SystemProperties" lazy-init="true">
     <property name="loglevel" value="${system.loglevel}" />
+    <property name="paging" value="${system.paging}" />
   </bean>
 
 </beans>

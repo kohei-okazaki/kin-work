@@ -6,11 +6,12 @@ package jp.co.kin.business.session;
  */
 public class SessionInfo {
 
+	/** sessionログインユーザ */
 	private SessionLoginUser loginUser;
 
 	/**
 	 * loginUserを返す
-	 * 
+	 *
 	 * @return loginUser
 	 *
 	 */
@@ -20,7 +21,7 @@ public class SessionInfo {
 
 	/**
 	 * loginUserを設定する
-	 * 
+	 *
 	 * @param loginUser
 	 *            loginUser
 	 *
