@@ -21,7 +21,7 @@ import jp.co.kin.common.validator.MailAddressValidator;
 public @interface MailAddress {
 
 	/** message */
-	String message() default "";
+	String message() default "{0}はメールアドレス形式で入力してください";
 
 	/** groups */
 	Class<?>[] groups() default {};

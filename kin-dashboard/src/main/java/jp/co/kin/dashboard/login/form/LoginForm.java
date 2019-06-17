@@ -1,5 +1,6 @@
 package jp.co.kin.dashboard.login.form;
 
+import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;
 
 /**
@@ -7,12 +8,14 @@ import jp.co.kin.web.form.BaseForm;
  */
 public class LoginForm implements BaseForm {
 
+	@Required
 	private String loginId;
+	@Required
 	private String password;
 
 	/**
 	 * loginIdを返す
-	 * 
+	 *
 	 * @return loginId
 	 *
 	 */
@@ -22,7 +25,7 @@ public class LoginForm implements BaseForm {
 
 	/**
 	 * loginIdを設定する
-	 * 
+	 *
 	 * @param loginId
 	 *            loginId
 	 *
@@ -33,7 +36,7 @@ public class LoginForm implements BaseForm {
 
 	/**
 	 * passwordを返す
-	 * 
+	 *
 	 * @return password
 	 *
 	 */
@@ -43,7 +46,7 @@ public class LoginForm implements BaseForm {
 
 	/**
 	 * passwordを設定する
-	 * 
+	 *
 	 * @param password
 	 *            password
 	 *

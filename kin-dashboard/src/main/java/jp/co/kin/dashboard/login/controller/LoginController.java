@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -51,7 +52,7 @@ public class LoginController implements BaseViewController {
 	}
 
 	@PostMapping("/top")
-	public String top(HttpServletRequest request, @Valid LoginForm form, BindingResult result) {
+	public String top(Model model, HttpServletRequest request, @Valid LoginForm form, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return getView(DashboardView.LOGIN);
@@ -62,10 +63,17 @@ public class LoginController implements BaseViewController {
 		LoginCheckResult loginCheckResult = loginService.checkLogin(dto);
 		if (loginCheckResult.hasError()) {
 			String message = messageSourceComponnt.getMessage(loginCheckResult.getMessage());
+			model.addAttribute("errorMessage", message);
+			return getView(DashboardView.LOGIN);
 		}
 
 		sessionComponent.setValue(request.getSession(), "sessionUser", dto.getSessionLoginUser());
 
+		return getView(DashboardView.TOP);
+	}
+
+	@GetMapping("/top")
+	public String top() {
 		return getView(DashboardView.TOP);
 	}
 }
