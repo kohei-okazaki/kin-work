@@ -15,19 +15,20 @@
 
   <div class="login">
     <div class="heading">
-      <div th:if="${errorMessage} != null" data-sal="slide-up">
-        <div class="errorMessage">
-          <p th:text="${errorMessage}"></p>
-        </div>
-      </div>
       <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}"  data-sal="slide-up">
-        <div th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
-        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
+        <div th:if="${errorMessage} != null" data-sal="slide-up">
+          <div class="errorMessage" data-sal="slide-up">
+            <p th:text="${errorMessage}"></p>
+          </div>
+        </div>
+        <div class="errorMessage" th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
+        <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
         <div class="input-group input-group-lg unit">
           <span class="input-group-addon">
             <i class="fa fa-user"></i>
           </span>
-          <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" placeholder="ログインID" required />
+          <!-- <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" placeholder="ログインID" required /> -->
+          <input type="text" class="" th:field="*{loginId}" maxlength="16" placeholder="ログインID" />
         </div>
         <div class="input-group input-group-lg unit">
           <span class="input-group-addon">

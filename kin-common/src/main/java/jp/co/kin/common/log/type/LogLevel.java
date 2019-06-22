@@ -4,6 +4,8 @@ import jp.co.kin.common.type.BaseEnum;
 
 public enum LogLevel implements BaseEnum {
 
+	/** TRACE */
+	TRACE("TRACE"),
 	/** DEBUG */
 	DEBUG("DEBUG"),
 	/** INFO */

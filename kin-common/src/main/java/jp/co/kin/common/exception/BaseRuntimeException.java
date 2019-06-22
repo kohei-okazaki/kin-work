@@ -1,6 +1,6 @@
 package jp.co.kin.common.exception;
 
-public abstract class BaseException extends Exception {
+public abstract class BaseRuntimeException extends RuntimeException {
 
 	/** シリアルバージョンUID */
 	private static final long serialVersionUID = 1L;
@@ -16,7 +16,7 @@ public abstract class BaseException extends Exception {
 	 * @param e
 	 *            例外クラス
 	 */
-	public BaseException(Exception e) {
+	public BaseRuntimeException(RuntimeException e) {
 		super(e);
 	}
 
@@ -28,7 +28,7 @@ public abstract class BaseException extends Exception {
 	 * @param detail
 	 *            詳細
 	 */
-	public BaseException(BaseErrorCode errorCode, String detail) {
+	public BaseRuntimeException(BaseErrorCode errorCode, String detail) {
 		this.errorCode = errorCode;
 		this.detail = detail;
 	}
@@ -43,7 +43,7 @@ public abstract class BaseException extends Exception {
 	 * @param e
 	 *            例外クラス
 	 */
-	public BaseException(BaseErrorCode errorCode, String detail, Exception e) {
+	public BaseRuntimeException(BaseErrorCode errorCode, String detail, RuntimeException e) {
 		this(e);
 		this.errorCode = errorCode;
 		this.detail = detail;
@@ -53,6 +53,7 @@ public abstract class BaseException extends Exception {
 	 * errorCodeを返す
 	 *
 	 * @return errorCode
+	 *
 	 */
 	public BaseErrorCode getErrorCode() {
 		return errorCode;
@@ -62,6 +63,7 @@ public abstract class BaseException extends Exception {
 	 * detailを返す
 	 *
 	 * @return detail
+	 *
 	 */
 	public String getDetail() {
 		return detail;

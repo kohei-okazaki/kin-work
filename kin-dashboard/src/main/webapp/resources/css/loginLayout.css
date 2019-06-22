@@ -14,20 +14,13 @@
 
 body {
   font-family: 'Open Sans', sans-serif;
-}
-
-h2 {
-  background: #71f145;
-  padding: 20px 0;
-  font-size: 140%;
-  font-weight: 300;
-  text-align: center;
-  color: #fff;
+  background: radial-gradient(#FB6514, #D27848) fixed;
 }
 
 form {
   background: #f0f0f0;
   padding: 6% 4%;
+  border: solid 2px #e5e5e5;
 }
 
 input[type="password"],
@@ -43,9 +36,8 @@ input[type="text"] {
 
 input[type="password"]:focus,
 input[type="text"]:focus {
-  background: #ffffca;
-  box-shadow: 0 0 7px #80ff00;
-  border: solid 2px #71f145;
+  box-shadow: 0 0 7px #F4491A;
+  border: solid 2px #ff8000;
 }
 
 input[type="submit"],
@@ -72,14 +64,11 @@ input[type="button"]:hover {
 }
 
 .errorMessage {
-  background : #96ef10;
-  color : #000000;
+  background : #f0f0f0;
+  color : #ff0000;
   font-size : 15px;
-  padding : 10px 10px 10px 10px;
-  margin : 10px 200px;
+  padding : 5px 5px 5px 5px;
   text-align : center;
-  font-weight : bold;
-  border : 2px #FF0000 dashed;
 }
 
 .login  {

@@ -6,18 +6,27 @@
 <title>エラーが発生しました</title>
 <link rel="icon" type="image/png" href="../resources/image/favicon.ico" th:href="@{/resources/image/favicon.ico}">
 <link rel="stylesheet" type="text/css" href="../resources/css/input.css" th:href="@{/resources/css/input.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/lib/sal.css" th:href="@{/resources/css/lib/sal.min.css}">
 </head>
 <body>
 
-  <div>
-    <div>予期せぬエラーが発生しました</div>
-    <div>再度、処理を行ってください</div>
+  <div th:if="${errorMessage} != null" data-sal="slide-up">
+    <div class="errorMessage">
+      <p th:utext="${errorMessage}"></p>
+    </div>
   </div>
 
   <div th:replace="layout/layout :: footer"></div>
-  <script type="text/javascript" src="../resources/js/lib/jquery.js" th:src="@{/resources/js/lib/jquery.min.js}"></script>
-  <script type="text/javascript">
 
+  <script type="text/javascript" src="../resources/js/lib/jquery.js" th:src="@{/resources/js/lib/jquery.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/sal.js" th:src="@{/resources/js/lib/sal.min.js}"></script>
+  <script type="text/javascript">
+    $(function() {
+      sal({
+        threshold: 1,
+        once: false
+      });
+    });
   </script>
 </body>
 </html>

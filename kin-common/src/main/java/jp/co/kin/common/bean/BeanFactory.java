@@ -1,4 +1,4 @@
-package jp.co.kin.common.context;
+package jp.co.kin.common.bean;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -7,12 +7,12 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import jp.co.kin.common.util.BeanUtil;
 
-public class BeanContextLoader {
+public class BeanFactory {
 
 	/** ApplicationContext */
 	private static ApplicationContext context;
 
-	private BeanContextLoader() {
+	private BeanFactory() {
 	}
 
 	/**
@@ -48,6 +48,6 @@ public class BeanContextLoader {
 	 *            ApplicationContext
 	 */
 	public static void setContext(ApplicationContext context) {
-		BeanContextLoader.context = context;
+		BeanFactory.context = context;
 	}
 }
