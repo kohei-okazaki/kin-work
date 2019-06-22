@@ -96,7 +96,8 @@ public class StringUtil {
 	 * @throws BaseException
 	 *             PaddingTypeの指定が不正の場合
 	 */
-	public static String paddingSpace(String target, int length, PaddingType paddingType) throws BaseException {
+	public static String paddingSpace(String target, int length, PaddingType paddingType)
+			throws BaseException {
 		return padding(target, length, SPACE, paddingType);
 	}
 

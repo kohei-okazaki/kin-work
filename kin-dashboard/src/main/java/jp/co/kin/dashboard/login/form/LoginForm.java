@@ -8,8 +8,10 @@ import jp.co.kin.web.form.BaseForm;
  */
 public class LoginForm implements BaseForm {
 
+	/** ログインID */
 	@Required
 	private String loginId;
+	/** パスワード */
 	@Required
 	private String password;
 

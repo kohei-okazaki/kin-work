@@ -24,6 +24,7 @@ import jp.co.kin.web.controller.BaseViewController;
 
 /**
  * ログインコントローラ
+ *
  */
 @Controller
 @RequestMapping("login")
@@ -36,11 +37,6 @@ public class LoginController implements BaseViewController {
 	@Autowired
 	private MessageSourceComponent messageSourceComponnt;
 
-	/**
-	 * Formを返す
-	 *
-	 * @return LoginForm
-	 */
 	@ModelAttribute("loginForm")
 	public LoginForm setUpForm() {
 		return new LoginForm();
@@ -73,7 +69,7 @@ public class LoginController implements BaseViewController {
 	}
 
 	@GetMapping("/top")
-	public String top() {
+	public String top(HttpServletRequest request) {
 		return getView(DashboardView.TOP);
 	}
 }

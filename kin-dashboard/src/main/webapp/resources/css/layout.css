@@ -3,42 +3,13 @@
 /**************/
 @charset "UTF-8";
 
-.menuTitle {
-  margin : 5px;
-  padding : 5px;
-}
-
-/* 注意文言の設定 */
-.attention {
-  color : #ff8080;
-  font-size : 60%;
-}
-
-.appTitle {
-  border-bottom : 2px solid #32cd32;
-  border-left : 10px solid #32cd32;
-  padding : 7px;
-}
-
-.appTitle:hover {
-  cursor : pointer;
-}
-
-/* 戻るボタン */
-.browseBack {
-  width : 20px;
-  height : 20px;
-}
-
 .errorMessage {
   background : #96ef10;
-  color : #000000;
+  color : #ff0000;
   font-size : 15px;
   padding : 10px 10px 10px 10px;
   margin : 10px 200px;
   text-align : center;
-  font-weight : bold;
-  border : 2px #FF0000 dashed;
 }
 
 .contentLayout {

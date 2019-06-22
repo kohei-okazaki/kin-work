@@ -20,7 +20,7 @@
     <property name="basenames">
       <list>
         <value>META-INF/messages</value>
-        <value>META-INF/validationMessages</value>
+        <value>META-INF/commonErrorCode</value>
       </list>
     </property>
   </bean>

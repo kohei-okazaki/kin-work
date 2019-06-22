@@ -5,5 +5,5 @@ import jp.co.kin.web.service.BaseService;
 
 public interface LoginUserDataSearchService extends BaseService {
 
-	public LoginUserDataDto search(String loginId);
+	LoginUserDataDto search(String loginId);
 }

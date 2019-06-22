@@ -28,9 +28,11 @@ public class DaoAspect {
 
 	@Around("execution(* jp.co.kin.db.dao.*Dao.select*(..))")
 	public Object select(ProceedingJoinPoint pjp) throws Throwable {
+
 		LOG.info(this.getClass() + " select called...");
 		Object result = pjp.proceed();
 		LOG.info(this.getClass() + " select success");
+
 		return result;
 	}
 }
