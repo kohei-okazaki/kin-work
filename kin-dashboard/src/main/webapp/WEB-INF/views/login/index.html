@@ -14,36 +14,33 @@
 <body>
 
   <div class="login">
-    <div class="heading">
-      <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}" data-sal="slide-up" novalidate>
-        <div th:if="${errorMessage} != null" data-sal="slide-up">
-          <div class="errorMessage" data-sal="slide-up">
-            <p th:text="${errorMessage}"></p>
-          </div>
+    <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}" data-sal="slide-up" novalidate>
+      <div th:if="${errorMessage} != null" data-sal="slide-up">
+        <div class="errorMessage" data-sal="slide-up">
+          <p th:text="${errorMessage}"></p>
         </div>
-        <div class="errorMessage" th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
-        <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
-        <div class="input-group input-group-lg unit">
-          <span class="input-group-addon">
-            <i class="fa fa-user"></i>
-          </span>
-          <!-- <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" placeholder="ログインID" required /> -->
-          <input type="text" class="" th:field="*{loginId}" maxlength="16" placeholder="ログインID" />
+      </div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
+      <div class="unit">
+        <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" placeholder="ログインID" />
+      </div>
+      <div class="unit">
+        <div class="checkbox">
+          <input type="password" class="validate[required]"  th:field="*{password}" maxlength="16" placeholder="パスワード" />
+          <label>
+            <input type="checkbox" id="password-check" class="checkbox-input" />
+            <span class="checkbox-parts">パスワードを表示する</span>
+          </label>
         </div>
-        <div class="input-group input-group-lg unit">
-          <span class="input-group-addon">
-            <i class="fa fa-lock"></i>
-          </span>
-          <input type="password" class="validate[required]"  th:field="*{password}" maxlength="16" placeholder="パスワード" required />
-        </div>
-        <div class="unit">
-          <input type="submit" value="ログイン" />
-        </div>
-        <div class="unit">
-          <input id="account-regist" type="button" value="アカウント作成" />
-        </div>
-      </form>
-    </div>
+      </div>
+      <div class="unit">
+        <input type="submit" value="ログイン" />
+      </div>
+      <div class="unit">
+        <input type="button" id="loginUserRegist" value="アカウント作成" />
+      </div>
+    </form>
   </div>
 
   <br>
@@ -57,7 +54,6 @@
   <script type="text/javascript" src="../resources/js/lib/sal.js" th:src="@{/resources/js/lib/sal.min.js}"></script>
   <script type="text/javascript" src="../resources/js/common/common.js" th:src="@{/resources/js/common/common.min.js}"></script>
   <script type="text/javascript">
-
     $(function() {
 
       sal({
@@ -95,8 +91,8 @@
         mprogress.set(progressValue);
       });
 
-      $("#account-regist").on("click", function() {
-    	// アカウント登録処理
+      $("#loginUserRegist").on("click", function() {
+    	// ログインユーザ登録処理のformを作成
         var form = $("<form></form>", {
           method : "get",
           action : "../loginUserRegist/input"
@@ -105,8 +101,17 @@
         form.submit();
       });
 
-    });
+      var password = $('#password').get(0);
+      var passwordCheck = $('#password-check').get(0);
+      passwordCheck.addEventListener('change', function() {
+        if (passwordCheck.checked) {
+          password.setAttribute('type', 'text');
+        } else {
+          password.setAttribute('type', 'password');
+        }
+      }, false);
 
+    });
   </script>
 </body>
 </html>
