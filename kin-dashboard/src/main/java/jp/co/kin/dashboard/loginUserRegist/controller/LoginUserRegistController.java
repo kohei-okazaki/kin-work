@@ -48,14 +48,15 @@ public class LoginUserRegistController implements BaseViewController {
 			return getView(DashboardView.USER_REGIST_INPUT);
 		}
 
-		LoginUserRegistDto dto = DtoFactory.getDto(LoginUserRegistDto.class, form);
-		loginUserRegistService.regist(dto);
-
 		return getView(DashboardView.USER_REGIST_CONFIRM);
 	}
 
 	@PostMapping("/complete")
 	public String complete(Model model, @Valid LoginUserRegistForm form, BindingResult result) {
+
+		LoginUserRegistDto dto = DtoFactory.getDto(LoginUserRegistDto.class, form);
+		loginUserRegistService.regist(dto);
+
 		return getView(DashboardView.USER_REGIST_COMPLETE);
 	}
 
