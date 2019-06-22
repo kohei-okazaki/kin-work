@@ -2,7 +2,6 @@ package jp.co.kin.business.login.dto;
 
 import java.util.Date;
 
-import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.common.bean.BaseDto;
 import jp.co.kin.common.log.annotation.Mask;
 
@@ -27,12 +26,6 @@ public class LoginUserDataDto implements BaseDto {
 	private Date regDate;
 	/** 更新日時 */
 	private Date updateDate;
-	/** session上で保持するログインユーザ */
-	private SessionLoginUser sessionLoginUser;
-
-	public LoginUserDataDto() {
-		this.sessionLoginUser = new SessionLoginUser();
-	}
 
 	/**
 	 * loginIdを返す
@@ -179,27 +172,6 @@ public class LoginUserDataDto implements BaseDto {
 	 */
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
-	}
-
-	/**
-	 * sessionLoginUserを返す
-	 *
-	 * @return sessionLoginUser
-	 *
-	 */
-	public SessionLoginUser getSessionLoginUser() {
-		return sessionLoginUser;
-	}
-
-	/**
-	 * sessionLoginUserを設定する
-	 *
-	 * @param sessionLoginUser
-	 *            sessionLoginUser
-	 *
-	 */
-	public void setSessionLoginUser(SessionLoginUser sessionLoginUser) {
-		this.sessionLoginUser = sessionLoginUser;
 	}
 
 }

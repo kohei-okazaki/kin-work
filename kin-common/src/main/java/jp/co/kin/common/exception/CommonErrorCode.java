@@ -5,7 +5,10 @@ import jp.co.kin.common.log.type.LogLevel;
 public enum CommonErrorCode implements BaseErrorCode {
 
 	/** 予期せぬ例外 */
-	UNEXPECTED("EC0001", LogLevel.ERROR);
+	UNEXPECTED("EC0001", LogLevel.ERROR),
+
+	/** session例外 */
+	SESSION_ILLEGAL("WC0002", LogLevel.WARN);
 
 	/**
 	 * コンストラクタ
