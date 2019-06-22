@@ -24,6 +24,7 @@ import jp.co.kin.web.controller.BaseViewController;
 
 /**
  * ログインコントローラ
+ *
  */
 @Controller
 @RequestMapping("login")

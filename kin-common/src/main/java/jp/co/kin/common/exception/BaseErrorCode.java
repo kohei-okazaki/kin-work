@@ -3,7 +3,14 @@ package jp.co.kin.common.exception;
 import jp.co.kin.common.log.type.LogLevel;
 
 /**
- * エラーコードの基底インターフェース
+ * エラーコードの基底インターフェース<br>
+ * 以下のフォーマットでエラーコードとする<br>
+ * ABCDEF<br>
+ * <ul>
+ * <li>A:エラーレベル</li>
+ * <li>B:機能名</li>
+ * <li>CDEF:採番</li>
+ * </ul>
  */
 public interface BaseErrorCode {
 

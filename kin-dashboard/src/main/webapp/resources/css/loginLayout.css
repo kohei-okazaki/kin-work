@@ -3,10 +3,6 @@
 /*******************/
 @charset "UTF-8";
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
-
-@import url(https://fonts.googleapis.com/css?family=Raleway:700);
-
 * {
   padding: 0;
   margin: 0;
@@ -20,7 +16,6 @@ body {
 form {
   background: #f0f0f0;
   padding: 6% 4%;
-  border: solid 2px #e5e5e5;
 }
 
 input[type="password"],
@@ -60,7 +55,7 @@ input[type="button"] {
 input[type="submit"]:hover,
 input[type="button"]:hover {
   background: #FFFFFF;
-  color: #32cd32;
+  color: #F4491A;
 }
 
 .errorMessage {

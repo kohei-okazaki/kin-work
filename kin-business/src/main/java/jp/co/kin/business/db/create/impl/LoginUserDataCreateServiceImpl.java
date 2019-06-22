@@ -17,4 +17,5 @@ public class LoginUserDataCreateServiceImpl implements LoginUserDataCreateServic
 	public void create(LoginUserData entity) {
 		dao.insert(entity);
 	}
+
 }
