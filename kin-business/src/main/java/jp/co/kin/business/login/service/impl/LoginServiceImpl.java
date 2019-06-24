@@ -24,7 +24,7 @@ public class LoginServiceImpl implements LoginService {
 		if (BeanUtil.isNull(searchDto)) {
 			result.setHasError(true);
 			result.setMessage("validate.login.loginIdNoExist");
-		} else if (searchDto.getPassword().equals(dto.getPassword())) {
+		} else if (!searchDto.getPassword().equals(dto.getPassword())) {
 			result.setHasError(true);
 			result.setMessage("validate.login.inValidPassword");
 		}

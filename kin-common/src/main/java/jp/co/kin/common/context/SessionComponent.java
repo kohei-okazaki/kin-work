@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class SessionComponent {
 
-	public void removeValue(HttpSession session, String key) {
-		session.removeAttribute(key);
-	}
-
 	public void setValue(HttpSession session, String key, Object value) {
 		session.setAttribute(key, value);
+	}
+
+	public void removeValue(HttpSession session, String key) {
+		session.removeAttribute(key);
 	}
 
 	public void removeValues(HttpSession session) {

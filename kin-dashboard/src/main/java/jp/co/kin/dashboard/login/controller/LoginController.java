@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.co.kin.business.login.dto.LoginCheckResult;
 import jp.co.kin.business.login.dto.LoginUserDataDto;
 import jp.co.kin.business.login.service.LoginService;
+import jp.co.kin.business.session.SessionLoginUser;
+import jp.co.kin.business.session.annotation.SessionNonAuth;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.MessageSourceComponent;
 import jp.co.kin.common.context.SessionComponent;
+import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.dashboard.login.form.LoginForm;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
@@ -42,11 +45,13 @@ public class LoginController implements BaseViewController {
 		return new LoginForm();
 	}
 
+	@SessionNonAuth
 	@GetMapping("/index")
 	public String index() {
 		return getView(DashboardView.LOGIN);
 	}
 
+	@SessionNonAuth
 	@PostMapping("/top")
 	public String top(Model model, HttpServletRequest request, @Valid LoginForm form, BindingResult result) {
 
@@ -63,7 +68,9 @@ public class LoginController implements BaseViewController {
 			return getView(DashboardView.LOGIN);
 		}
 
-		sessionComponent.setValue(request.getSession(), "sessionUser", dto.getSessionLoginUser());
+		SessionLoginUser sessionUser = new SessionLoginUser();
+		BeanUtil.copy(dto, sessionUser);
+		sessionComponent.setValue(request.getSession(), "sessionUser", sessionUser);
 
 		return getView(DashboardView.TOP);
 	}

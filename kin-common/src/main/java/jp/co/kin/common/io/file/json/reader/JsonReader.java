@@ -58,7 +58,7 @@ public class JsonReader {
 	}
 
 	/**
-	 * 指定されたJSONからJSONオブジェクトに変換する
+	 * 指定されたJSON文字列からJSONオブジェクトに変換する
 	 *
 	 * @param <T>
 	 *            変換後のJavaクラス型

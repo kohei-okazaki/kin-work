@@ -28,7 +28,7 @@ input[type="button"]:hover {
 
 /* 入力タグの設定 */
 input[type="text"],
-input[type=password],
+input[type="password"],
 input[type="email"],
 textarea {
   padding: 0.8em;
@@ -42,7 +42,7 @@ textarea {
 
 /* 入力タグをクリックしたとき */
 input[type="text"]:focus,
-input[type=password]:focus,
+input[type="password"]:focus,
 input[type="email"]:focus,
 textarea:focus {
   box-shadow: 0 0 7px #FB6514;
@@ -92,6 +92,7 @@ textarea:focus {
   padding-left: 20px;
   position: relative;
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .checkbox-parts::before {

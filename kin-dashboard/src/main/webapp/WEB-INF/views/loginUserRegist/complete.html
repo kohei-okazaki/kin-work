@@ -20,27 +20,13 @@
             <p th:text="${errorMessage}"></p>
           </div>
         </div>
-        <div class="errorMessage" th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
-        <div class="errorMessage" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" data-sal="slide-up"></div>
-        <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
-        <div class="input-group input-group-lg unit">
-          <span class="input-group-addon">
-            <i class="fa fa-user"></i>
-          </span>
-          <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" placeholder="ログインID" required />
+        <!--/* table部ここから */-->
+        <div class="table">
+          <div class="table-row">
+            <div class="table-data">完了しました</div>
+          </div>
         </div>
-        <div class="input-group input-group-lg unit">
-          <span class="input-group-addon">
-            <i class="fa fa-lock"></i>
-          </span>
-          <input type="password" class="validate[required]"  th:field="*{password}" maxlength="16" placeholder="パスワード" required />
-        </div>
-        <div class="unit">
-          <input type="submit" value="ログイン" />
-        </div>
-        <div class="unit">
-          <input id="account-regist" type="button" value="アカウント作成" />
-        </div>
+        <!--/* table部ここまで */-->
       </form>
     </div>
   </div>

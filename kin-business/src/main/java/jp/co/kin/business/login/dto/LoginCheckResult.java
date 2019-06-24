@@ -2,10 +2,17 @@ package jp.co.kin.business.login.dto;
 
 import jp.co.kin.common.bean.BaseDto;
 
+/**
+ * ログインチェック情報保持クラス
+ *
+ */
 public class LoginCheckResult implements BaseDto {
 
+	/** エラー発生有無 */
 	private boolean hasError;
+	/** エラー対象のフィールド */
 	private String errorField;
+	/** エラーメッセージ */
 	private String message;
 
 	/**
@@ -31,7 +38,7 @@ public class LoginCheckResult implements BaseDto {
 
 	/**
 	 * errorFieldを返す
-	 * 
+	 *
 	 * @return errorField
 	 *
 	 */
@@ -41,7 +48,7 @@ public class LoginCheckResult implements BaseDto {
 
 	/**
 	 * errorFieldを設定する
-	 * 
+	 *
 	 * @param errorField
 	 *            errorField
 	 *

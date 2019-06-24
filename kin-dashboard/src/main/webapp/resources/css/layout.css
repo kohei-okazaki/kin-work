@@ -4,11 +4,10 @@
 @charset "UTF-8";
 
 .errorMessage {
-  background : #96ef10;
+  background : #f0f0f0;
   color : #ff0000;
   font-size : 15px;
-  padding : 10px 10px 10px 10px;
-  margin : 10px 200px;
+  padding : 5px 5px 5px 5px;
   text-align : center;
 }
 
@@ -17,9 +16,9 @@
   margin-left : auto;
   margin-right : auto;
   margin-bottom : auto;
-  width : 96%;
+  width : 99%;
   padding : 5px;
-  background : #d2e8d561;
+  background : #f0f0f0;
   box-shadow : 0 3px 4px rgba(0, 0, 0, 0.32);
 }
 
@@ -67,7 +66,7 @@ th.data, td.data {
 .table-header {
   margin : 5px 5px 5px 5px;
   padding : 5px 5px 5px 5px;
-  vertical-align: middle;
+  vertical-align : middle;
   display : table-cell;
 }
 
@@ -76,7 +75,7 @@ th.data, td.data {
   margin : 5px 5px 5px 5px;
   padding : 5px 5px 5px 5px;
   text-align : left;
-  vertical-align: middle;
+  vertical-align : middle;
   display : table-cell;
 }
 /* ▲divをテーブル構成にする▲ */
