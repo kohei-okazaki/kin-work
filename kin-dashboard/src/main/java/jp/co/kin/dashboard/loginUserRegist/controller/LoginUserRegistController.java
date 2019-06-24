@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.loginUserRegist.dto.LoginUserRegistDto;
 import jp.co.kin.business.loginUserRegist.service.LoginUserRegistService;
+import jp.co.kin.business.session.annotation.SessionNonAuth;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.dashboard.loginUserRegist.form.LoginUserRegistForm;
 import jp.co.kin.dashboard.type.DashboardView;
@@ -35,11 +36,13 @@ public class LoginUserRegistController implements BaseViewController {
 		return new LoginUserRegistForm();
 	}
 
+	@SessionNonAuth
 	@GetMapping("/input")
 	public String input() {
 		return getView(DashboardView.USER_REGIST_INPUT);
 	}
 
+	@SessionNonAuth
 	@PostMapping("/confirm")
 	public String confirm(Model model, HttpServletRequest request, @Valid LoginUserRegistForm form,
 			BindingResult result) {
@@ -51,8 +54,9 @@ public class LoginUserRegistController implements BaseViewController {
 		return getView(DashboardView.USER_REGIST_CONFIRM);
 	}
 
+	@SessionNonAuth
 	@PostMapping("/complete")
-	public String complete(Model model, @Valid LoginUserRegistForm form, BindingResult result) {
+	public String complete(Model model, LoginUserRegistForm form) {
 
 		LoginUserRegistDto dto = DtoFactory.getDto(LoginUserRegistDto.class, form);
 		loginUserRegistService.regist(dto);

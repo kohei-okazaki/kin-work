@@ -16,6 +16,7 @@ import jp.co.kin.business.login.dto.LoginCheckResult;
 import jp.co.kin.business.login.dto.LoginUserDataDto;
 import jp.co.kin.business.login.service.LoginService;
 import jp.co.kin.business.session.SessionLoginUser;
+import jp.co.kin.business.session.annotation.SessionNonAuth;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.MessageSourceComponent;
 import jp.co.kin.common.context.SessionComponent;
@@ -44,11 +45,13 @@ public class LoginController implements BaseViewController {
 		return new LoginForm();
 	}
 
+	@SessionNonAuth
 	@GetMapping("/index")
 	public String index() {
 		return getView(DashboardView.LOGIN);
 	}
 
+	@SessionNonAuth
 	@PostMapping("/top")
 	public String top(Model model, HttpServletRequest request, @Valid LoginForm form, BindingResult result) {
 

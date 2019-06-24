@@ -11,9 +11,12 @@ import org.seasar.doma.jdbc.entity.PreDeleteContext;
 import org.seasar.doma.jdbc.entity.PreInsertContext;
 import org.seasar.doma.jdbc.entity.PreUpdateContext;
 
+import jp.co.kin.common.bean.BeanFactory;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.db.crypt.EntityCrypter;
+import jp.co.kin.db.crypt.EntityCrypterImpl;
 import jp.co.kin.db.entity.BaseEntity;
 
 /**
@@ -30,6 +33,8 @@ import jp.co.kin.db.entity.BaseEntity;
 public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DaoListener.class);
+
+	private EntityCrypter entityCrypter = BeanFactory.getBean(EntityCrypterImpl.class);
 
 	@Override
 	public void preDelete(T entity, PreDeleteContext<T> context) {
@@ -48,6 +53,10 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			LOG.error("setterの実行に失敗しました", e);
 		}
+
+		// 暗号化
+		entityCrypter.encrypt(entity);
+
 		EntityListener.super.preInsert(entity, context);
 	}
 
@@ -63,6 +72,11 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			LOG.error("setterの実行に失敗しました", e);
 		}
+
+		// 暗号化
+		entityCrypter.encrypt(entity);
+
+		// 暗号化
 		EntityListener.super.preUpdate(entity, context);
 	}
 

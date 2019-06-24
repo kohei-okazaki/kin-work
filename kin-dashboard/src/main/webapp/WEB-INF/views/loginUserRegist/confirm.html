@@ -21,8 +21,30 @@
       <div class="errorMessage" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" data-sal="slide-up"></div>
+
+      <input type="hidden" th:field="*{loginId}">
+      <input type="hidden" th:field="*{password}">
+      <input type="hidden" th:field="*{userName}">
       <!--/* table部ここから */-->
       <div class="table">
+        <div class="table-row">
+          <div class="table-data" th:text="#{loginId}"></div>
+          <div class="table-data">
+            <p th:text="${loginId}"></p>
+          </div>
+        </div>
+        <div class="table-row">
+          <div class="table-data" th:text="#{password}"></div>
+          <div class="table-data">
+            <p th:text="${password}"></p>
+          </div>
+        </div>
+        <div class="table-row">
+          <div class="table-data" th:text="#{userName}"></div>
+          <div class="table-data">
+            <p th:text="${userName}"></p>
+          </div>
+        </div>
       </div>
       <!--/* table部ここまで */-->
 
@@ -49,6 +71,11 @@
   <script type="text/javascript" src="../resources/js/common/common.js" th:src="@{/resources/js/common/common.min.js}"></script>
   <script type="text/javascript">
     $(function() {
+
+      sal({
+        threshold: 1,
+        once: false
+      });
 
     });
   </script>
