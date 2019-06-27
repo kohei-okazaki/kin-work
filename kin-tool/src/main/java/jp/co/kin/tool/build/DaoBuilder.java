@@ -43,7 +43,7 @@ public class DaoBuilder extends SourceBuilder {
 
 				boolean isCreatedDeleteMethod = false;
 				boolean isCreatedUpdateMethod = false;
-				boolean isCreatedInsertMehod = false;
+				boolean isCreatedInsertMethod = false;
 				for (Row row : excel.getRowList()) {
 
 					if (!isTargetTable(row, table)) {
@@ -66,10 +66,10 @@ public class DaoBuilder extends SourceBuilder {
 						isCreatedUpdateMethod = true;
 					}
 
-					if (!isCreatedInsertMehod) {
+					if (!isCreatedInsertMethod) {
 						Method<T> insertMethod = getCreateMethod(field, source);
 						source.addMethod(insertMethod);
-						isCreatedInsertMehod = true;
+						isCreatedInsertMethod = true;
 					}
 
 				}
@@ -97,6 +97,7 @@ public class DaoBuilder extends SourceBuilder {
 	}
 
 	private Method<T> getDeleteMethod(Field<T> field, JavaSource source) {
+
 		Method<T> deleteMethod = new Method<T>(field, AccessType.PUBLIC) {
 
 			@Override
@@ -129,6 +130,7 @@ public class DaoBuilder extends SourceBuilder {
 	}
 
 	private Method<T> getUpdatMethod(Field<T> field, JavaSource source) {
+
 		Method<T> updateMethod = new Method<T>(field, AccessType.PUBLIC) {
 
 			@Override
@@ -161,6 +163,7 @@ public class DaoBuilder extends SourceBuilder {
 	}
 
 	private Method<T> getCreateMethod(Field<T> field, JavaSource source) {
+
 		Method<T> createMethod = new Method<T>(field, AccessType.PUBLIC) {
 
 			@Override

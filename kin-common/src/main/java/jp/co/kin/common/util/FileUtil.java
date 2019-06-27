@@ -253,42 +253,19 @@ public class FileUtil {
 		/** 値 */
 		private String value;
 
-		/**
-		 * コンストラクタ
-		 *
-		 * @param value
-		 *            値
-		 */
 		private FileExtension(String value) {
 			this.value = value;
 		}
 
-		/**
-		 * {@inheritDoc}
-		 */
 		@Override
 		public String getValue() {
 			return this.value;
 		}
 
-		/**
-		 * 指定したファイル拡張子列挙が自身と一致するか判定する<br>
-		 * 一致する場合true, それ以外の場合false<br>
-		 *
-		 * @param fileExtension
-		 *            ファイル拡張子列挙
-		 * @return 判定結果
-		 */
 		public boolean is(FileExtension fileExtension) {
 			return this == fileExtension;
 		}
 
-		/**
-		 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-		 * @param value
-		 *            値
-		 * @return FileExtension
-		 */
 		public static FileExtension of(String value) {
 			return BaseEnum.of(FileExtension.class, value);
 		}
@@ -306,12 +283,6 @@ public class FileUtil {
 		/** system */
 		SYSTEM(FileSystems.getDefault().getSeparator());
 
-		/**
-		 * コンストラクタ
-		 *
-		 * @param value
-		 *            セパレータ
-		 */
 		private FileSeparator(String value) {
 			this.value = value;
 		}
@@ -319,31 +290,15 @@ public class FileUtil {
 		/** セパレータ */
 		private String value;
 
-		/**
-		 * 指定したファイルセパレータが自身と一致するかどうか返す<br>
-		 *
-		 * @param separator
-		 *            セパレータ
-		 * @return 判定結果
-		 */
 		public boolean is(FileSeparator separator) {
 			return this == separator;
 		}
 
-		/**
-		 * {@inheritDoc}
-		 */
 		@Override
 		public String getValue() {
 			return this.value;
 		}
 
-		/**
-		 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-		 * @param value
-		 *            値
-		 * @return FileSeparator
-		 */
 		public static FileSeparator of(String value) {
 			return BaseEnum.of(FileSeparator.class, value);
 		}

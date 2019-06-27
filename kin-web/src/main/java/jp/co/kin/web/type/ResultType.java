@@ -14,22 +14,11 @@ public enum ResultType implements BaseEnum {
 	/** メッセージ */
 	private String message;
 
-	/**
-	 * コンストラクタ
-	 *
-	 * @param value
-	 *            値
-	 * @param message
-	 *            メッセージ
-	 */
 	private ResultType(String value, String message) {
 		this.value = value;
 		this.message = message;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public String getValue() {
 		return this.value;
@@ -44,12 +33,6 @@ public enum ResultType implements BaseEnum {
 		return this.message;
 	}
 
-	/**
-	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-	 * @param value
-	 *            値
-	 * @return ResultType
-	 */
 	public static ResultType of(String value) {
 		return BaseEnum.of(ResultType.class, value);
 	}
