@@ -1,10 +1,9 @@
 package jp.co.kin.common.io.file.csv.writer;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import jp.co.kin.common.bean.BaseDto;
 import jp.co.kin.common.io.file.csv.annotation.CsvColumn;
@@ -52,7 +51,7 @@ public class CsvWriter {
 			return result;
 		}
 
-		List<CsvUnitEntity> order = getCsvOrder(bean);
+		List<CsvUnitEntity> orderList = getCsvOrder(bean);
 
 		// TODO CSVに実際に書き込む処理を追加
 		return result;
@@ -64,20 +63,23 @@ public class CsvWriter {
 
 	private static List<CsvUnitEntity> getCsvOrder(Object bean) {
 
-		Map<Integer, CsvUnitEntity> map = new TreeMap<>();
+		List<CsvUnitEntity> csvEntityList = BeanUtil.getFieldList(bean.getClass()).stream().map(e -> {
 
-		for (Field field : BeanUtil.getFieldList(bean.getClass())) {
 			CsvUnitEntity entity = new CsvUnitEntity();
-			CsvColumn column = field.getAnnotation(CsvColumn.class);
+			CsvColumn column = e.getAnnotation(CsvColumn.class);
 
 			entity.setOrder(column.order());
-			entity.setField(field);
+			entity.setField(e);
 			entity.setLabel(column.label());
 
-			map.put(column.order(), entity);
-		}
+			return entity;
+		}).collect(Collectors.toList());
 
-		return new ArrayList<>(map.values());
+		// orderの昇順にソート
+		csvEntityList = csvEntityList.stream().sorted(Comparator.comparing(CsvUnitEntity::getOrder))
+				.collect(Collectors.toList());
+
+		return csvEntityList;
 	}
 
 	private static class CsvUnitEntity implements BaseDto {
