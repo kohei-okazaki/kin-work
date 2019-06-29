@@ -3,8 +3,6 @@ package jp.co.kin.common.util;
 import java.util.List;
 import java.util.stream.Stream;
 
-import jp.co.kin.common.exception.BaseException;
-
 /**
  * 文字列のUtilクラス
  */
@@ -93,11 +91,8 @@ public class StringUtil {
 	 * @param paddingType
 	 *            Paddingタイプ(右詰/左詰)
 	 * @return Padding後の文字列
-	 * @throws BaseException
-	 *             PaddingTypeの指定が不正の場合
 	 */
-	public static String paddingSpace(String target, int length, PaddingType paddingType)
-			throws BaseException {
+	public static String paddingSpace(String target, int length, PaddingType paddingType) {
 		return padding(target, length, SPACE, paddingType);
 	}
 
@@ -114,8 +109,6 @@ public class StringUtil {
 	 * @param paddingType
 	 *            Paddingタイプ(右詰/左詰)
 	 * @return Padding後の文字列
-	 * @throws BaseException
-	 *             PaddingTypeの指定が不正の場合
 	 */
 	public static String padding(String target, int length, String str, PaddingType paddingType) {
 		if (length <= target.length()) {

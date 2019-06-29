@@ -7,17 +7,12 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import jp.co.kin.common.exception.BaseException;
-import jp.co.kin.common.log.Logger;
-import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.util.StringUtil.PaddingType;
 
 /**
  * {@link StringUtil} のjUnit
  */
 public class StringUtilTest {
-
-	private static final Logger LOG = LoggerFactory.getLogger(StringUtilTest.class);
 
 	@Test
 	public void toStrListTest() {
@@ -98,45 +93,42 @@ public class StringUtilTest {
 
 	@Test
 	public void paddingSpaceTest() {
-		try {
-			{
-				String target = "";
-				int length = 5;
-				PaddingType paddingType = PaddingType.LEFT;
-				assertEquals(StringUtil.paddingSpace(target, length, paddingType), "     ");
-			}
-			{
-				String target = "";
-				int length = 5;
-				PaddingType paddingType = PaddingType.LEFT;
-				assertNotEquals(StringUtil.paddingSpace(target, length, paddingType), " ");
-			}
-			{
-				String target = "a";
-				int length = 5;
-				PaddingType paddingType = PaddingType.LEFT;
-				assertEquals(StringUtil.paddingSpace(target, length, paddingType), "a    ");
-			}
-			{
-				String target = "a";
-				int length = 5;
-				PaddingType paddingType = PaddingType.RIGHT;
-				assertEquals(StringUtil.paddingSpace(target, length, paddingType), "    a");
-			}
-			{
-				String target = "12345";
-				int length = 1;
-				PaddingType paddingType = PaddingType.LEFT;
-				assertEquals(StringUtil.paddingSpace(target, length, paddingType), "12345");
-			}
-			{
-				String target = "12345";
-				int length = 1;
-				PaddingType paddingType = PaddingType.RIGHT;
-				assertEquals(StringUtil.paddingSpace(target, length, paddingType), "12345");
-			}
-		} catch (BaseException e) {
-			LOG.error("PaddingTypeの指定が不正", e);
+
+		{
+			String target = "";
+			int length = 5;
+			PaddingType paddingType = PaddingType.LEFT;
+			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "     ");
+		}
+		{
+			String target = "";
+			int length = 5;
+			PaddingType paddingType = PaddingType.LEFT;
+			assertNotEquals(StringUtil.paddingSpace(target, length, paddingType), " ");
+		}
+		{
+			String target = "a";
+			int length = 5;
+			PaddingType paddingType = PaddingType.LEFT;
+			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "a    ");
+		}
+		{
+			String target = "a";
+			int length = 5;
+			PaddingType paddingType = PaddingType.RIGHT;
+			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "    a");
+		}
+		{
+			String target = "12345";
+			int length = 1;
+			PaddingType paddingType = PaddingType.LEFT;
+			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "12345");
+		}
+		{
+			String target = "12345";
+			int length = 1;
+			PaddingType paddingType = PaddingType.RIGHT;
+			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "12345");
 		}
 
 	}
