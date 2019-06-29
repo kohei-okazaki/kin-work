@@ -3,7 +3,6 @@ package jp.co.kin.common.validator;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.springframework.stereotype.Component;
 
 import jp.co.kin.common.log.Logger;
@@ -35,7 +34,7 @@ import jp.co.kin.common.validator.annotation.Required;
  *            検査対象クラス
  */
 @Component
-public class BeanValidator {
+public class BeanValidator<T> {
 
 	/** LOG */
 	private final static Logger LOG = LoggerFactory.getLogger(BeanValidator.class);
