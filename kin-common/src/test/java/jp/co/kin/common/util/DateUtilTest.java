@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 public class DateUtilTest {
 
-	// @Test
+	@Test
 	public void toDateTest() {
 		{
 			Date date = DateUtil.toDate("hoge");
@@ -66,6 +66,37 @@ public class DateUtilTest {
 			Date after = DateUtil.toDate("2000/01/01 12:34:56");
 			assertEquals(DateUtil.isAfter(before, after, false), true);
 		}
+	}
+
+	@Test
+	public void isSameDateTest() {
+		{
+			Date before = DateUtil.toDate("2000/01/01 12:34:56");
+			Date after = DateUtil.toDate("2000/01/01 12:34:56");
+			assertEquals(DateUtil.isSameDate(before, after), true);
+		}
+		{
+			Date before = DateUtil.toDate("2000/01/01 12:34:56");
+			Date after = DateUtil.toDate("2000/01/01 12:34:57");
+			assertEquals(DateUtil.isSameDate(before, after), false);
+		}
+	}
+
+	@Test
+	public void isBetWeenDateTest() {
+		{
+			Date startDate = DateUtil.toDate("2000/01/01 12:34:55");
+			Date target = DateUtil.toDate("2000/01/01 12:34:56");
+			Date endDate = DateUtil.toDate("2000/01/01 12:34:57");
+			assertEquals(DateUtil.isBetWeenDate(startDate, target, endDate), true);
+		}
+		{
+			Date startDate = DateUtil.toDate("2000/01/01 12:34:55");
+			Date target = DateUtil.toDate("2000/01/01 12:34:56");
+			Date endDate = DateUtil.toDate("2000/01/01 12:34:57");
+			assertEquals(DateUtil.isBetWeenDate(endDate, target, startDate), false);
+		}
+
 	}
 
 	@Test
