@@ -22,7 +22,7 @@
 
   <context:component-scan base-package="jp.co.kin.common.context" />
   <context:component-scan base-package="jp.co.kin.common.validator" />
-  <context:component-scan base-package="jp.co.kin.common.db" />
+  <context:component-scan base-package="jp.co.kin.common.crypt" />
 
   <bean id="properties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">

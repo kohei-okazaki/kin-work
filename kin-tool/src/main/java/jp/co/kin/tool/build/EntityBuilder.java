@@ -10,7 +10,7 @@ import org.seasar.doma.GeneratedValue;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
-import jp.co.kin.common.db.annotation.Crypt;
+import jp.co.kin.common.crypt.annotation.Crypt;
 import jp.co.kin.common.log.annotation.Mask;
 import jp.co.kin.common.type.LineFeedType;
 import jp.co.kin.common.util.FileUtil.FileExtension;

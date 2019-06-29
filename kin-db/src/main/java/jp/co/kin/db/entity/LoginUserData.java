@@ -6,7 +6,7 @@ import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
-import jp.co.kin.common.db.annotation.Crypt;
+import jp.co.kin.common.crypt.annotation.Crypt;
 import jp.co.kin.common.log.annotation.Mask;
 
 @Entity(naming = NamingType.SNAKE_UPPER_CASE)

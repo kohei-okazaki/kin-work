@@ -1,4 +1,4 @@
-package jp.co.kin.common.db;
+package jp.co.kin.common.crypt;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;

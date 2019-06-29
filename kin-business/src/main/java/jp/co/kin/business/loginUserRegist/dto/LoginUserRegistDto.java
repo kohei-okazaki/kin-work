@@ -1,6 +1,7 @@
 package jp.co.kin.business.loginUserRegist.dto;
 
 import jp.co.kin.common.bean.BaseDto;
+import jp.co.kin.common.log.annotation.Mask;
 
 /**
  * ログインユーザ登録DTO
@@ -11,8 +12,10 @@ public class LoginUserRegistDto implements BaseDto {
 	/** ログインID */
 	private String loginId;
 	/** パスワード */
+	@Mask
 	private String password;
-	/** 確認用明日ワード */
+	/** 確認用パスワード */
+	@Mask
 	private String confirmPassword;
 	/** ユーザ名 */
 	private String userName;
@@ -21,7 +24,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * loginIdを返す
-	 * 
+	 *
 	 * @return loginId
 	 *
 	 */
@@ -31,7 +34,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * loginIdを設定する
-	 * 
+	 *
 	 * @param loginId
 	 *            loginId
 	 *
@@ -42,7 +45,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * passwordを返す
-	 * 
+	 *
 	 * @return password
 	 *
 	 */
@@ -52,7 +55,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * passwordを設定する
-	 * 
+	 *
 	 * @param password
 	 *            password
 	 *
@@ -63,7 +66,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * confirmPasswordを返す
-	 * 
+	 *
 	 * @return confirmPassword
 	 *
 	 */
@@ -73,7 +76,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * confirmPasswordを設定する
-	 * 
+	 *
 	 * @param confirmPassword
 	 *            confirmPassword
 	 *
@@ -84,7 +87,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * userNameを返す
-	 * 
+	 *
 	 * @return userName
 	 *
 	 */
@@ -94,7 +97,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * userNameを設定する
-	 * 
+	 *
 	 * @param userName
 	 *            userName
 	 *
@@ -105,7 +108,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * isRegistSuccessを返す
-	 * 
+	 *
 	 * @return isRegistSuccess
 	 *
 	 */
@@ -115,7 +118,7 @@ public class LoginUserRegistDto implements BaseDto {
 
 	/**
 	 * isRegistSuccessを設定する
-	 * 
+	 *
 	 * @param isRegistSuccess
 	 *            isRegistSuccess
 	 *
