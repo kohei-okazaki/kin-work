@@ -19,7 +19,7 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public LoginCheckResult checkLogin(LoginUserDataDto dto) {
 
-		LoginUserDataDto searchDto = searchService.search(dto.getLoginId());
+		LoginUserDataDto searchDto = searchService.searchByLoginId(dto.getLoginId());
 		LoginCheckResult result = new LoginCheckResult();
 
 		if (BeanUtil.isNull(searchDto)) {

@@ -21,7 +21,7 @@ import jp.co.kin.common.util.StringUtil;
 @Component("aesCrypter")
 public class AesCrypter implements Crypter {
 
-	private static Logger LOG = LoggerFactory.getLogger(AesCrypter.class);
+	private static final Logger LOG = LoggerFactory.getLogger(AesCrypter.class);
 
 	private static final String MODE = "AES/ECB/PKCS5Padding";
 

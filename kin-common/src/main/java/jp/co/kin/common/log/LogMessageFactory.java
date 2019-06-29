@@ -20,7 +20,7 @@ import jp.co.kin.common.util.StringUtil;
 public class LogMessageFactory {
 
 	/** LOG */
-	private final static Logger LOG = LoggerFactory.getLogger(LogMessageFactory.class);
+	private static final Logger LOG = LoggerFactory.getLogger(LogMessageFactory.class);
 
 	private LogMessageFactory() {
 	}

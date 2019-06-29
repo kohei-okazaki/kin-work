@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.loginUserRegist.dto.LoginUserRegistDto;
 import jp.co.kin.business.loginUserRegist.service.LoginUserRegistService;
+import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.business.session.annotation.SessionNonAuth;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.dashboard.loginUserRegist.form.LoginUserRegistForm;
@@ -43,6 +44,7 @@ public class LoginUserRegistController implements BaseViewController {
 	}
 
 	@SessionNonAuth
+	@CsrfToken(factocy = true)
 	@PostMapping("/confirm")
 	public String confirm(Model model, HttpServletRequest request, @Valid LoginUserRegistForm form,
 			BindingResult result) {
@@ -51,10 +53,17 @@ public class LoginUserRegistController implements BaseViewController {
 			return getView(DashboardView.USER_REGIST_INPUT);
 		}
 
+		LoginUserRegistDto dto = DtoFactory.getDto(LoginUserRegistDto.class, form);
+		if (loginUserRegistService.isDuplicateLoginId(dto)) {
+			model.addAttribute("errorMessage", "指定されたログインIDは使用できません");
+			return getView(DashboardView.USER_REGIST_INPUT);
+		}
+
 		return getView(DashboardView.USER_REGIST_CONFIRM);
 	}
 
 	@SessionNonAuth
+	@CsrfToken(check = true)
 	@PostMapping("/complete")
 	public String complete(Model model, LoginUserRegistForm form) {
 

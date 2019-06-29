@@ -18,10 +18,15 @@ public class LoginUserDataSearchServiceImpl implements LoginUserDataSearchServic
 	private LoginUserDataDao dao;
 
 	@Override
-	public LoginUserDataDto search(String loginId) {
+	public LoginUserDataDto searchByLoginId(String loginId) {
 
 		LoginUserData entity = dao.selectById(loginId, BeanFactory.getBean(DecryptFunction.class));
 		return DtoFactory.getDto(LoginUserDataDto.class, entity);
+	}
+
+	@Override
+	public int searchCountByLoginId(String loginId) {
+		return dao.selectCountById(loginId);
 	}
 
 }

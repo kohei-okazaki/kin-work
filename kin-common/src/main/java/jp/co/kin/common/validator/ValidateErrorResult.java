@@ -53,7 +53,7 @@ public class ValidateErrorResult {
 		return this.get(() -> 0);
 	}
 
-	public class ValidateError {
+	public static class ValidateError {
 
 		/** フィールド名 */
 		private String name;

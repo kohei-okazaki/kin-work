@@ -27,4 +27,7 @@ public interface LoginUserDataDao extends BaseDao {
 	@Select(strategy = SelectType.STREAM)
 	public LoginUserData selectById(String loginId, DecryptFunction<LoginUserData> function);
 
+	@Select
+	public int selectCountById(String loginId);
+
 }

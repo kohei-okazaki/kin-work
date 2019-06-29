@@ -34,6 +34,10 @@
       <mvc:mapping path="/**" />
       <bean class="jp.co.kin.business.interceptor.SessionAuthInterceptor" />
     </mvc:interceptor>
+    <mvc:interceptor>
+      <mvc:mapping path="/**" />
+      <bean class="jp.co.kin.business.interceptor.CsrfTokenInterceptor" />
+    </mvc:interceptor>
   </mvc:interceptors>
 
 </beans>
