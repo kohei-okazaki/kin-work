@@ -23,6 +23,6 @@ public class PatternValidator implements ConstraintValidator<Pattern, Object> {
 		if (BeanUtil.isNull(value) || StringUtil.isEmpty(value.toString())) {
 			return true;
 		}
-		return this.regix.is(value.toString());
+		return value.toString().matches(this.regix.getValue());
 	}
 }
