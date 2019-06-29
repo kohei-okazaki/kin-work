@@ -13,14 +13,14 @@ import jp.co.kin.web.type.ResultType;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public abstract class BaseApiResponse implements BaseForm {
 
-	public BaseApiResponse() {
-		this.resultType = ResultType.SUCCESS;
-	}
-
 	/** API結果コード */
 	@JsonSerialize(using = ResultTypeSerializer.class)
 	@JsonProperty(value = "result")
 	private ResultType resultType;
+
+	public BaseApiResponse() {
+		this.resultType = ResultType.SUCCESS;
+	}
 
 	/**
 	 * resultTypeを返す

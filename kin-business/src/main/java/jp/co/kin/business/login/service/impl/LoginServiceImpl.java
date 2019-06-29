@@ -8,6 +8,7 @@ import jp.co.kin.business.login.dto.LoginCheckResult;
 import jp.co.kin.business.login.dto.LoginUserDataDto;
 import jp.co.kin.business.login.service.LoginService;
 import jp.co.kin.common.util.BeanUtil;
+import jp.co.kin.common.util.DateUtil;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -27,7 +28,11 @@ public class LoginServiceImpl implements LoginService {
 		} else if (!searchDto.getPassword().equals(dto.getPassword())) {
 			result.setHasError(true);
 			result.setMessage("validate.login.inValidPassword");
+		} else if (DateUtil.isBefore(searchDto.getPasswordExpire(), false)) {
+			result.setHasError(true);
+			result.setMessage("validate.login.expired");
 		}
+		BeanUtil.copy(searchDto, dto);
 
 		return result;
 	}

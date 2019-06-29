@@ -47,7 +47,8 @@ public class LoginController implements BaseViewController {
 
 	@SessionNonAuth
 	@GetMapping("/index")
-	public String index() {
+	public String index(HttpServletRequest request) {
+		sessionComponent.removeValues(request.getSession());
 		return getView(DashboardView.LOGIN);
 	}
 

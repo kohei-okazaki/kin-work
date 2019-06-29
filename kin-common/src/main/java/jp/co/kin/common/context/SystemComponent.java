@@ -3,7 +3,7 @@ package jp.co.kin.common.context;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SystemProperties {
+public class SystemComponent {
 
 	/** loglevel */
 	private String loglevel;

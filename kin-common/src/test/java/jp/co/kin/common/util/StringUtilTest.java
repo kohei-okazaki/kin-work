@@ -17,7 +17,7 @@ import jp.co.kin.common.util.StringUtil.PaddingType;
  */
 public class StringUtilTest {
 
-	private static Logger LOG = LoggerFactory.getLogger(StringUtilTest.class);
+	private static final Logger LOG = LoggerFactory.getLogger(StringUtilTest.class);
 
 	@Test
 	public void toStrListTest() {

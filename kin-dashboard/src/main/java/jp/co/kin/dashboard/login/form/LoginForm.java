@@ -5,6 +5,7 @@ import jp.co.kin.web.form.BaseForm;
 
 /**
  * ログイン画面form
+ *
  */
 public class LoginForm implements BaseForm {
 

@@ -206,7 +206,7 @@ public class DateUtil {
 		if (isEqual) {
 			return isSameDate(target, compareDate);
 		}
-		return compareDate.after(target);
+		return target.after(compareDate);
 	}
 
 	/**
@@ -239,6 +239,6 @@ public class DateUtil {
 		if (isEqual) {
 			return isSameDate(target, compareDate);
 		}
-		return compareDate.before(target);
+		return target.before(compareDate);
 	}
 }
