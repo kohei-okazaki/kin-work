@@ -214,9 +214,6 @@ public class BeanValidatorTest {
 				assertEquals(true, result.hasError());
 			}
 		}
-		{
-			//
-		}
 	}
 
 	@Test
@@ -242,7 +239,7 @@ public class BeanValidatorTest {
 			FlagTestBean bean = new FlagTestBean();
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
-			assertEquals(true, result.hasError());
+			assertEquals(false, result.hasError());
 		}
 		{
 			LOG.debug("#flagTest");

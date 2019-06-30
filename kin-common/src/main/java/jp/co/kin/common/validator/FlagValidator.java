@@ -15,6 +15,6 @@ public class FlagValidator implements ConstraintValidator<Flag, Object> {
 		if (BeanUtil.isNull(value) || StringUtil.isEmpty(value.toString())) {
 			return true;
 		}
-		return RegixType.FLAG.is(value.toString());
+		return value.toString().matches(RegixType.FLAG.getValue());
 	}
 }
