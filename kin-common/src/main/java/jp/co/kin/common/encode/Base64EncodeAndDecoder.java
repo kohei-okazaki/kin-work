@@ -1,8 +1,7 @@
 package jp.co.kin.common.encode;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
+import java.util.Base64;
 
 import org.springframework.stereotype.Component;
 
@@ -11,18 +10,18 @@ import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.Charset;
 
 /**
- * URLエンコード/デコードクラス
+ * Base64エンコード/デコードクラス
  *
  */
-@Component("urlEncodeAndDecoder")
-public class UrlEncodeAndDecoder implements BaseEncodeAndDecoder {
+@Component("base64EncodeAndDecoder")
+public class Base64EncodeAndDecoder implements BaseEncodeAndDecoder {
 
-	private static final Logger LOG = LoggerFactory.getLogger(UrlEncodeAndDecoder.class);
+	private static final Logger LOG = LoggerFactory.getLogger(Base64EncodeAndDecoder.class);
 
 	@Override
 	public String encode(String str, Charset charset) {
 		try {
-			return URLEncoder.encode(str, charset.getValue());
+			return Base64.getEncoder().encodeToString(str.getBytes(charset.getValue()));
 		} catch (UnsupportedEncodingException e) {
 			LOG.error("指定された文字コードが不正です charset=" + charset.getValue(), e);
 			return null;
@@ -32,11 +31,11 @@ public class UrlEncodeAndDecoder implements BaseEncodeAndDecoder {
 	@Override
 	public String decode(String str, Charset charset) {
 		try {
-			return URLDecoder.decode(str, charset.getValue());
+			return new String(Base64.getDecoder().decode(str.getBytes(charset.getValue())),
+					charset.getValue());
 		} catch (UnsupportedEncodingException e) {
 			LOG.error("指定された文字コードが不正です charset=" + charset.getValue(), e);
 			return null;
 		}
 	}
-
 }

@@ -39,8 +39,10 @@ public class Sha256HashEncodeAndDecoder implements BaseEncodeAndDecoder {
 			}
 			return sb.toString();
 
-		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			LOG.error("アルゴリズムが不正です", e);
+		} catch (NoSuchAlgorithmException e) {
+			LOG.error("アルゴリズムが不正です Algorithm = " + Algorithm.SHA_256.getValue(), e);
+		} catch (UnsupportedEncodingException e) {
+			LOG.error("指定された文字コードが不正です charset=" + charset.getValue(), e);
 		}
 
 		return str;
