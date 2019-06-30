@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.RegixType;
+import jp.co.kin.common.validator.annotation.Flag;
 import jp.co.kin.common.validator.annotation.Max;
 import jp.co.kin.common.validator.annotation.Min;
 import jp.co.kin.common.validator.annotation.Pattern;
@@ -36,7 +37,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#requiredTest");
 			RequiredTestBean bean = new RequiredTestBean();
-			bean.setName("test");
+			bean.setValue("test");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(false, result.hasError());
@@ -53,7 +54,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#minTest");
 			MinEqualsTestBean bean = new MinEqualsTestBean();
-			bean.setName("123");
+			bean.setValue("123");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(false, result.hasError());
@@ -61,7 +62,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#minTest");
 			MinEqualsTestBean bean = new MinEqualsTestBean();
-			bean.setName("12");
+			bean.setValue("12");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(true, result.hasError());
@@ -71,7 +72,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#minTest");
 			MinTestBean bean = new MinTestBean();
-			bean.setName("1234");
+			bean.setValue("1234");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(false, result.hasError());
@@ -79,7 +80,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#minTest");
 			MinTestBean bean = new MinTestBean();
-			bean.setName("123");
+			bean.setValue("123");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(true, result.hasError());
@@ -87,7 +88,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#minTest");
 			MinTestBean bean = new MinTestBean();
-			bean.setName("12");
+			bean.setValue("12");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(true, result.hasError());
@@ -104,7 +105,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#maxTest");
 			MaxEqualsTestBean bean = new MaxEqualsTestBean();
-			bean.setName("123");
+			bean.setValue("123");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(false, result.hasError());
@@ -112,7 +113,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#maxTest");
 			MaxEqualsTestBean bean = new MaxEqualsTestBean();
-			bean.setName("1234");
+			bean.setValue("1234");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(true, result.hasError());
@@ -122,7 +123,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#maxTest");
 			MaxTestBean bean = new MaxTestBean();
-			bean.setName("1234");
+			bean.setValue("1234");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(true, result.hasError());
@@ -130,7 +131,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#maxTest");
 			MaxTestBean bean = new MaxTestBean();
-			bean.setName("123");
+			bean.setValue("123");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(true, result.hasError());
@@ -138,7 +139,7 @@ public class BeanValidatorTest {
 		{
 			LOG.debug("#maxTest");
 			MaxTestBean bean = new MaxTestBean();
-			bean.setName("12");
+			bean.setValue("12");
 
 			ValidateErrorResult result = new BeanValidator<>().validate(bean);
 			assertEquals(false, result.hasError());
@@ -210,144 +211,181 @@ public class BeanValidatorTest {
 				bean.setValue("あ");
 
 				ValidateErrorResult result = new BeanValidator<>().validate(bean);
-				assertEquals(false, result.hasError());
+				assertEquals(true, result.hasError());
 			}
 		}
+		{
+			//
+		}
+	}
 
+	@Test
+	public void flagTest() {
+		{
+			LOG.debug("#flagTest");
+			FlagTestBean bean = new FlagTestBean();
+			bean.setValue("0");
+
+			ValidateErrorResult result = new BeanValidator<>().validate(bean);
+			assertEquals(false, result.hasError());
+		}
+		{
+			LOG.debug("#flagTest");
+			FlagTestBean bean = new FlagTestBean();
+			bean.setValue("1");
+
+			ValidateErrorResult result = new BeanValidator<>().validate(bean);
+			assertEquals(false, result.hasError());
+		}
+		{
+			LOG.debug("#flagTest");
+			FlagTestBean bean = new FlagTestBean();
+
+			ValidateErrorResult result = new BeanValidator<>().validate(bean);
+			assertEquals(true, result.hasError());
+		}
+		{
+			LOG.debug("#flagTest");
+			FlagTestBean bean = new FlagTestBean();
+			bean.setValue("2");
+
+			ValidateErrorResult result = new BeanValidator<>().validate(bean);
+			assertEquals(true, result.hasError());
+		}
 	}
 
 	private static class RequiredTestBean {
 
 		@Required
-		private String name;
+		private String value;
 
 		/**
-		 * nameを返す
+		 * valueを返す
 		 *
-		 * @return name
+		 * @return value
 		 *
 		 */
-		public String getName() {
-			return name;
+		public String getValue() {
+			return value;
 		}
 
 		/**
-		 * nameを設定する
+		 * valueを設定する
 		 *
-		 * @param name
-		 *            name
+		 * @param value
+		 *            value
 		 *
 		 */
-		public void setName(String name) {
-			this.name = name;
+		public void setValue(String value) {
+			this.value = value;
 		}
 	}
 
 	private static class MinEqualsTestBean {
 
 		@Min(size = 3)
-		private String name;
+		private String value;
 
 		/**
-		 * nameを返す
+		 * valueを返す
 		 *
-		 * @return name
+		 * @return value
 		 *
 		 */
-		public String getName() {
-			return name;
+		public String getValue() {
+			return value;
 		}
 
 		/**
-		 * nameを設定する
+		 * valueを設定する
 		 *
-		 * @param name
-		 *            name
+		 * @param value
+		 *            value
 		 *
 		 */
-		public void setName(String name) {
-			this.name = name;
+		public void setValue(String value) {
+			this.value = value;
 		}
 	}
 
 	private static class MinTestBean {
 
 		@Min(size = 3, isEqual = false)
-		private String name;
+		private String value;
 
 		/**
-		 * nameを返す
+		 * valueを返す
 		 *
-		 * @return name
+		 * @return value
 		 *
 		 */
-		public String getName() {
-			return name;
+		public String getValue() {
+			return value;
 		}
 
 		/**
-		 * nameを設定する
+		 * valueを設定する
 		 *
-		 * @param name
-		 *            name
+		 * @param value
+		 *            value
 		 *
 		 */
-		public void setName(String name) {
-			this.name = name;
+		public void setValue(String value) {
+			this.value = value;
 		}
 	}
 
 	private static class MaxEqualsTestBean {
 
 		@Max(size = 3)
-		private String name;
+		private String value;
 
 		/**
-		 * nameを返す
+		 * valueを返す
 		 *
-		 * @return name
+		 * @return value
 		 *
 		 */
-		public String getName() {
-			return name;
+		public String getValue() {
+			return value;
 		}
 
 		/**
-		 * nameを設定する
+		 * valueを設定する
 		 *
-		 * @param name
-		 *            name
+		 * @param value
+		 *            value
 		 *
 		 */
-		public void setName(String name) {
-			this.name = name;
+		public void setValue(String value) {
+			this.value = value;
 		}
 	}
 
 	private static class MaxTestBean {
 
 		@Max(size = 3, isEqual = false)
-		private String name;
+		private String value;
 
 		/**
-		 * nameを返す
+		 * valueを返す
 		 *
-		 * @return name
+		 * @return value
 		 *
 		 */
-		public String getName() {
-			return name;
+		public String getValue() {
+			return value;
 		}
 
 		/**
-		 * nameを設定する
+		 * valueを設定する
 		 *
-		 * @param name
-		 *            name
+		 * @param value
+		 *            value
 		 *
 		 */
-		public void setName(String name) {
-			this.name = name;
+		public void setValue(String value) {
+			this.value = value;
 		}
 	}
 
@@ -381,6 +419,33 @@ public class BeanValidatorTest {
 	private static class HalfCharPatternTestBean {
 
 		@Pattern(regixPattern = RegixType.HALF_CHAR)
+		private String value;
+
+		/**
+		 * valueを返す
+		 *
+		 * @return value
+		 *
+		 */
+		public String getValue() {
+			return value;
+		}
+
+		/**
+		 * valueを設定する
+		 *
+		 * @param value
+		 *            value
+		 *
+		 */
+		public void setValue(String value) {
+			this.value = value;
+		}
+	}
+
+	private static class FlagTestBean {
+
+		@Flag
 		private String value;
 
 		/**
