@@ -19,6 +19,31 @@
     <form id="attendRegistForm" action="./confirm" th:action="@{./confirm}" method="post" th:object="${attendRegistForm}" data-sal="slide-up" novalidate>
 
       <!--/* table部ここから */-->
+
+      <div class="table">
+        <div class="table-row">
+          <div class="table-data" th:text="#{weekDay}"></div>
+          <div class="table-data" th:text="#{day}"></div>
+          <div class="table-data" th:text="#{workStartTime}"></div>
+          <div class="table-data" th:text="#{workEndTime}"></div>
+        </div>
+
+        <div class="table-row" th:each="calendor, status : ${calendorList}">
+          <div class="table-data" th:text="${calendor.weekDay}"></div>
+          <div class="table-data" th:text="${calendor.day}"></div>
+          <!--
+          <div class="table-data">
+            <input type="text" name="workStartTime" th:name="'workStartTime[' + ${status.index} + ']'" />
+          </div>
+          <div class="table-data">
+            <input type="text" name="workEndTime" th:name="'workEndTime[' + ${status.index} + ']'" />
+          </div>
+           -->
+        </div>
+      </div>
+      <!--/* table部ここまで */-->
+
+      <!--/* table部ここから */-->
       <div class="table">
         <div class="table-row">
           <div class="table-data">
@@ -48,100 +73,10 @@
       });
 
       // validate処理
-      jQuery("#loginUserRegistForm").validationEngine({
+      jQuery("#attendRegistForm").validationEngine({
         promptPosition : "topLeft:0"
       });
 
-      var password = $('#password').get(0);
-      var passwordCheck = $('#password-check').get(0);
-      passwordCheck.addEventListener('change', function() {
-        if (passwordCheck.checked) {
-          password.setAttribute('type', 'text');
-        } else {
-          password.setAttribute('type', 'password');
-        }
-      }, false);
-
-      var confirmPassword = $('#confirmPassword').get(0);
-      var confirmPasswordCheck = $('#confirmPassword-check').get(0);
-      confirmPasswordCheck.addEventListener('change', function() {
-        if (confirmPasswordCheck.checked) {
-          confirmPassword.setAttribute('type', 'text');
-        } else {
-          confirmPassword.setAttribute('type', 'password');
-        }
-      }, false);
-
-      // 進捗バーの処理
-      var mprogress = new Mprogress();
-      $("#loginId").on("change", function() {
-        var value = 0;
-        if ($("#loginId").val() !== "") {
-          value += 1;
-        }
-        if ($("#password").val() !== "") {
-          value += 1;
-        }
-        if ($("#confirmPassword").val() !== "") {
-          value += 1;
-        }
-        if ($("#userName").val() !== "") {
-          value += 1;
-        }
-        var progressValue = value / 4;
-        mprogress.set(progressValue);
-      });
-      $("#password").on("change", function() {
-        var value = 0;
-        if ($("#loginId").val() !== "") {
-          value += 1;
-        }
-        if ($("#password").val() !== "") {
-          value += 1;
-        }
-        if ($("#confirmPassword").val() !== "") {
-          value += 1;
-        }
-        if ($("#userName").val() !== "") {
-          value += 1;
-        }
-        var progressValue = value / 4;
-        mprogress.set(progressValue);
-      });
-      $("#confirmPassword").on("change", function() {
-        var value = 0;
-        if ($("#loginId").val() !== "") {
-          value += 1;
-        }
-        if ($("#password").val() !== "") {
-          value += 1;
-        }
-        if ($("#confirmPassword").val() !== "") {
-          value += 1;
-        }
-        if ($("#userName").val() !== "") {
-          value += 1;
-        }
-        var progressValue = value / 4;
-        mprogress.set(progressValue);
-      });
-      $("#userName").on("change", function() {
-        var value = 0;
-        if ($("#loginId").val() !== "") {
-          value += 1;
-        }
-        if ($("#password").val() !== "") {
-          value += 1;
-        }
-        if ($("#confirmPassword").val() !== "") {
-          value += 1;
-        }
-        if ($("#userName").val() !== "") {
-          value += 1;
-        }
-        var progressValue = value / 4;
-        mprogress.set(progressValue);
-      });
     });
   </script>
 </body>
