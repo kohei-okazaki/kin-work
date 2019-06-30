@@ -42,7 +42,7 @@ public class DtoFactory {
 
 	/**
 	 * DTOを返す
-	 * 
+	 *
 	 * @param <T>
 	 *            DTO具象クラス
 	 * @param dtoClass
@@ -52,6 +52,7 @@ public class DtoFactory {
 	 * @return DTO
 	 */
 	public static <T extends BaseDto> Optional<T> getNullableDto(Class<T> dtoClass, Object bean) {
+
 		if (BeanUtil.isNull(bean)) {
 			return Optional.ofNullable(null);
 		}

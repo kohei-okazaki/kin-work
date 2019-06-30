@@ -1,4 +1,4 @@
-package jp.co.kin.common.db;
+package jp.co.kin.common.crypt;
 
 /**
  * 暗号/復号インターフェース

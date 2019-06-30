@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.kin.business.db.create.LoginUserDataCreateService;
+import jp.co.kin.business.db.search.LoginUserDataSearchService;
 import jp.co.kin.business.loginUserRegist.dto.LoginUserBusinessProperties;
 import jp.co.kin.business.loginUserRegist.dto.LoginUserRegistDto;
 import jp.co.kin.business.loginUserRegist.service.LoginUserRegistService;
@@ -17,6 +18,8 @@ public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 	private LoginUserDataCreateService loginUserDataCreateService;
 	@Autowired
 	private LoginUserBusinessProperties loginUserBusinessProperties;
+	@Autowired
+	private LoginUserDataSearchService loginUserDataSearchService;
 
 	@Override
 	public void regist(LoginUserRegistDto dto) {
@@ -29,6 +32,11 @@ public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 		loginUserDataCreateService.create(entity);
 
 		dto.setRegistSuccess(true);
+	}
+
+	@Override
+	public boolean isDuplicateLoginId(LoginUserRegistDto dto) {
+		return loginUserDataSearchService.searchCountByLoginId(dto.getLoginId()) != 0;
 	}
 
 }

@@ -15,6 +15,6 @@ public class UrlValidator implements ConstraintValidator<Url, Object> {
 		if (BeanUtil.isNull(value) || StringUtil.isEmpty(value.toString())) {
 			return true;
 		}
-		return RegixType.URL.is(value.toString());
+		return value.toString().matches(RegixType.URL.getValue());
 	}
 }

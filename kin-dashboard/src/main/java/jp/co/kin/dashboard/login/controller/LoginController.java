@@ -38,7 +38,7 @@ public class LoginController implements BaseViewController {
 	@Autowired
 	private SessionComponent sessionComponent;
 	@Autowired
-	private MessageSourceComponent messageSourceComponnt;
+	private MessageSourceComponent messageSourceComponent;
 
 	@ModelAttribute("loginForm")
 	public LoginForm setUpForm() {
@@ -47,7 +47,8 @@ public class LoginController implements BaseViewController {
 
 	@SessionNonAuth
 	@GetMapping("/index")
-	public String index() {
+	public String index(HttpServletRequest request) {
+		sessionComponent.removeValues(request.getSession());
 		return getView(DashboardView.LOGIN);
 	}
 
@@ -63,7 +64,7 @@ public class LoginController implements BaseViewController {
 
 		LoginCheckResult loginCheckResult = loginService.checkLogin(dto);
 		if (loginCheckResult.hasError()) {
-			String message = messageSourceComponnt.getMessage(loginCheckResult.getMessage());
+			String message = messageSourceComponent.getMessage(loginCheckResult.getMessage());
 			model.addAttribute("errorMessage", message);
 			return getView(DashboardView.LOGIN);
 		}

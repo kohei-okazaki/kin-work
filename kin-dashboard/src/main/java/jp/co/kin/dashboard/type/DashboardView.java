@@ -19,6 +19,13 @@ public enum DashboardView implements BaseView {
 	/** ログインユーザ登録完了画面 */
 	USER_REGIST_COMPLETE("loginUserRegist/complete"),
 
+	/** 勤怠登録画面 */
+	ATTEND_REGIST_INPUT("attendRegist/input"),
+	/** 勤怠登録確認画面 */
+	ATTEND_REGIST_CONFIRM("attendRegist/confirm"),
+	/** 勤怠登録完了画面 */
+	ATTEND_REGIST_COMPLETE("attendRegist/complete"),
+
 	/** Error画面 */
 	ERROR("error/index");
 

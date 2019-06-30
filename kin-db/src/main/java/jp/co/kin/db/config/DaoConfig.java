@@ -14,7 +14,7 @@ import org.slf4j.event.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import jp.co.kin.common.context.SystemProperties;
+import jp.co.kin.common.context.SystemComponent;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 
@@ -31,7 +31,7 @@ public class DaoConfig implements Config {
 	@Autowired
 	private SqlFileRepository sqlFileRepository;
 	@Autowired
-	private SystemProperties systemProperties;
+	private SystemComponent systemComponent;
 
 	public DaoConfig() {
 	}
@@ -66,7 +66,7 @@ public class DaoConfig implements Config {
 	@Override
 	public JdbcLogger getJdbcLogger() {
 		return new DaoLogger(Stream.of(Level.class.getEnumConstants())
-				.filter(e -> e.toString().equals(systemProperties.getLoglevel())).findFirst()
+				.filter(e -> e.toString().equals(systemComponent.getLoglevel())).findFirst()
 				.orElse(Level.INFO));
 	}
 

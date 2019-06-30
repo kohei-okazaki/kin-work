@@ -5,8 +5,8 @@ import java.lang.reflect.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jp.co.kin.common.db.Crypter;
-import jp.co.kin.common.db.annotation.Crypt;
+import jp.co.kin.common.crypt.Crypter;
+import jp.co.kin.common.crypt.annotation.Crypt;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.util.BeanUtil;

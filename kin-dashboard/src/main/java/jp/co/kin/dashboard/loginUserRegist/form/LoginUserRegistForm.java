@@ -1,5 +1,6 @@
 package jp.co.kin.dashboard.loginUserRegist.form;
 
+import jp.co.kin.common.log.annotation.Mask;
 import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;
 
@@ -13,6 +14,7 @@ public class LoginUserRegistForm implements BaseForm {
 	@Required
 	private String loginId;
 	/** パスワード */
+	@Mask
 	@Required
 	private String password;
 	/** パスワード */

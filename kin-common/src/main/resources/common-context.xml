@@ -22,7 +22,8 @@
 
   <context:component-scan base-package="jp.co.kin.common.context" />
   <context:component-scan base-package="jp.co.kin.common.validator" />
-  <context:component-scan base-package="jp.co.kin.common.db" />
+  <context:component-scan base-package="jp.co.kin.common.crypt" />
+  <context:component-scan base-package="jp.co.kin.common.encode" />
 
   <bean id="properties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">
@@ -32,7 +33,7 @@
       </list>
     </property>
   </bean>
-  <bean id="systemProperties" class="jp.co.kin.common.context.SystemProperties" lazy-init="true">
+  <bean id="systemComponent" class="jp.co.kin.common.context.SystemComponent" lazy-init="true">
     <property name="loglevel" value="${system.loglevel}" />
     <property name="paging" value="${system.paging}" />
   </bean>

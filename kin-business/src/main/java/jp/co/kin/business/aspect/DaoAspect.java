@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
-import jp.co.kin.common.db.Crypter;
+import jp.co.kin.common.crypt.Crypter;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 
@@ -29,9 +29,10 @@ public class DaoAspect {
 	@Around("execution(* jp.co.kin.db.dao.*Dao.select*(..))")
 	public Object select(ProceedingJoinPoint pjp) throws Throwable {
 
-		LOG.info(this.getClass() + " select called...");
+		String daoName = pjp.getThis().getClass().getName();
+		LOG.info(daoName + " select called...");
 		Object result = pjp.proceed();
-		LOG.info(this.getClass() + " select success");
+		LOG.info(daoName + " select success");
 
 		return result;
 	}

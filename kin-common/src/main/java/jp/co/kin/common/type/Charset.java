@@ -22,12 +22,6 @@ public enum Charset implements BaseEnum {
 		return this.value;
 	}
 
-	/**
-	 * @see jp.co.kin.common.type.BaseEnum#of(Class, String)
-	 * @param value
-	 *            値
-	 * @return Charset
-	 */
 	public static Charset of(String value) {
 		return BaseEnum.of(Charset.class, value);
 	}

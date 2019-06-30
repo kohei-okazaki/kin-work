@@ -1,4 +1,4 @@
-package jp.co.kin.common.db;
+package jp.co.kin.common.crypt;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
@@ -21,7 +21,7 @@ import jp.co.kin.common.util.StringUtil;
 @Component("aesCrypter")
 public class AesCrypter implements Crypter {
 
-	private static Logger LOG = LoggerFactory.getLogger(AesCrypter.class);
+	private static final Logger LOG = LoggerFactory.getLogger(AesCrypter.class);
 
 	private static final String MODE = "AES/ECB/PKCS5Padding";
 
