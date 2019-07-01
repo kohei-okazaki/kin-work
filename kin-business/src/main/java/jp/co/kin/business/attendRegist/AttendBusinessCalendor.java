@@ -9,7 +9,7 @@ public class AttendBusinessCalendor {
 
 	/**
 	 * dayを返す
-	 * 
+	 *
 	 * @return day
 	 *
 	 */
@@ -19,7 +19,7 @@ public class AttendBusinessCalendor {
 
 	/**
 	 * dayを設定する
-	 * 
+	 *
 	 * @param day
 	 *            day
 	 *
@@ -30,7 +30,7 @@ public class AttendBusinessCalendor {
 
 	/**
 	 * weekDayを返す
-	 * 
+	 *
 	 * @return weekDay
 	 *
 	 */
@@ -40,7 +40,7 @@ public class AttendBusinessCalendor {
 
 	/**
 	 * weekDayを設定する
-	 * 
+	 *
 	 * @param weekDay
 	 *            weekDay
 	 *

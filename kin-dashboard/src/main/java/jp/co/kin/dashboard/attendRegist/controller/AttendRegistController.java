@@ -30,19 +30,20 @@ public class AttendRegistController implements BaseViewController {
 		AttendRegistForm form = new AttendRegistForm();
 
 		// FIXME DBから取得
-		List<String> weekDayList = List.of("monday", "tuesDay", "wednesDay", "thursDay", "friDay", "stursDay",
-				"sunDay");
-
-		int weedDayPosition = 0;
-		for (int i = 0; i < 15; i++) {
-			String weekDay = weekDayList.get(weedDayPosition);
-			weedDayPosition++;
-			if (weedDayPosition == 7) {
-				weedDayPosition = 0;
-			}
-			form.addDay(BigDecimal.valueOf(i + 1));
-			form.addWeekDay(weekDay);
-		}
+		// List<String> weekDayList = List.of("monday", "tuesDay", "wednesDay",
+		// "thursDay", "friDay", "stursDay",
+		// "sunDay");
+		//
+		// int weedDayPosition = 0;
+		// for (int i = 0; i < 15; i++) {
+		// String weekDay = weekDayList.get(weedDayPosition);
+		// weedDayPosition++;
+		// if (weedDayPosition == 7) {
+		// weedDayPosition = 0;
+		// }
+		// form.addDay(BigDecimal.valueOf(i + 1));
+		// form.addWeekDay(weekDay);
+		// }
 
 		return form;
 	}
@@ -56,7 +57,7 @@ public class AttendRegistController implements BaseViewController {
 
 		List<AttendBusinessCalendor> calendorList = new ArrayList<>();
 		int weedDayPosition = 0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 7; i++) {
 			String weekDay = weekDayList.get(weedDayPosition);
 			weedDayPosition++;
 			if (weedDayPosition == 7) {
@@ -65,10 +66,12 @@ public class AttendRegistController implements BaseViewController {
 			AttendBusinessCalendor calendor = new AttendBusinessCalendor();
 			calendor.setDay(BigDecimal.valueOf(i + 1));
 			calendor.setWeekDay(weekDay);
+			calendorList.add(calendor);
 		}
 
 		model.addAttribute("calendorList", calendorList);
 		calendorList.stream().forEach(e -> {
+			LoggerFactory.getLogger(this.getClass()).infoRes(e);
 			LoggerFactory.getLogger(this.getClass()).debugRes(e);
 		});
 
@@ -76,10 +79,17 @@ public class AttendRegistController implements BaseViewController {
 	}
 
 	@PostMapping("/confirm")
-	public String confirm(Model model, @Valid AttendRegistForm form, BindingResult result) {
+	public String confirm(Model model, @ModelAttribute @Valid AttendRegistForm form, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return getView(DashboardView.ATTEND_REGIST_INPUT);
+		}
+
+		for (int i = 0; i < form.getDayList().size(); i++) {
+			LoggerFactory.getLogger(this.getClass()).debug(form.getDayList().get(i).toPlainString());
+			LoggerFactory.getLogger(this.getClass()).debug(form.getWeekDayList().get(i));
+			LoggerFactory.getLogger(this.getClass()).debug(form.getWorkStartTimeList().get(i));
+			LoggerFactory.getLogger(this.getClass()).debug(form.getWorkEndTimeList().get(i));
 		}
 
 		return getView(DashboardView.ATTEND_REGIST_CONFIRM);

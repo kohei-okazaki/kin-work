@@ -19,26 +19,27 @@
     <form id="attendRegistForm" action="./confirm" th:action="@{./confirm}" method="post" th:object="${attendRegistForm}" data-sal="slide-up" novalidate>
 
       <!--/* table部ここから */-->
-
       <div class="table">
-        <div class="table-row">
-          <div class="table-data" th:text="#{weekDay}"></div>
-          <div class="table-data" th:text="#{day}"></div>
-          <div class="table-data" th:text="#{workStartTime}"></div>
-          <div class="table-data" th:text="#{workEndTime}"></div>
+        <div class="table-row" align="center">
+          <div class="table-data" th:text="#{weekDay}" align="center"></div>
+          <div class="table-data" th:text="#{day}" align="center"></div>
+          <div class="table-data" th:text="#{workStartTime}" align="center"></div>
+          <div class="table-data" th:text="#{workEndTime}" align="center"></div>
         </div>
 
         <div class="table-row" th:each="calendor, status : ${calendorList}">
-          <div class="table-data" th:text="${calendor.weekDay}"></div>
-          <div class="table-data" th:text="${calendor.day}"></div>
-          <!--
+          <div class="table-data" th:text="#{${calendor.weekDay}}">
+            <input type="hidden" th:name="weekDay[${status.index}]" th:value="${calendor.weekDay}" />
+          </div>
+          <div class="table-data" th:text="${calendor.day}">
+            <input type="hidden" th:name="day[${status.index}]" th:value="${calendor.day}" />
+          </div>
           <div class="table-data">
             <input type="text" name="workStartTime" th:name="'workStartTime[' + ${status.index} + ']'" />
           </div>
           <div class="table-data">
             <input type="text" name="workEndTime" th:name="'workEndTime[' + ${status.index} + ']'" />
           </div>
-           -->
         </div>
       </div>
       <!--/* table部ここまで */-->
