@@ -46,4 +46,4 @@ appender("FILE", RollingFileAppender) {
 
 }
 
-root(DEBUG, ["STDOUT", "FILE"])
+root(INFO, ["STDOUT", "FILE"])

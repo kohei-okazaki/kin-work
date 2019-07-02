@@ -13,10 +13,10 @@
 </head>
 <body>
 
-  <div align="center" class="contentLayout" data-sal="slide-up">
+  <div align="center" class="contentLayout">
 
     <h2>勤怠登録画面</h2>
-    <form id="attendRegistForm" action="./confirm" th:action="@{./confirm}" method="post" th:object="${attendRegistForm}" data-sal="slide-up" novalidate>
+    <form id="attendRegistForm" action="./confirm" th:action="@{./confirm}" method="post" th:object="${attendRegistForm}" novalidate>
 
       <!--/* table部ここから */-->
       <div class="table">
@@ -28,17 +28,18 @@
         </div>
 
         <div class="table-row" th:each="calendor, status : ${calendorList}">
-          <div class="table-data" th:text="#{${calendor.weekDay}}">
-            <input type="hidden" th:name="weekDay[${status.index}]" th:value="${calendor.weekDay}" />
-          </div>
-          <div class="table-data" th:text="${calendor.day}">
-            <input type="hidden" th:name="day[${status.index}]" th:value="${calendor.day}" />
+
+          <div class="table-data" th:text="#{${calendor.weekDay}}"></div>
+          <input type="hidden" th:name="${'registFormList[' + status.index + '].weekDay'}" th:value="${calendor.weekDay}" />
+
+          <div class="table-data" th:text="${calendor.day}"></div>
+          <input type="hidden" th:name="${'registFormList[' + status.index + '].day'}" th:value="${calendor.day}" />
+
+          <div class="table-data">
+            <input type="text" th:name="${'registFormList[' + status.index + '].workStartTime'}" />
           </div>
           <div class="table-data">
-            <input type="text" name="workStartTime" th:name="'workStartTime[' + ${status.index} + ']'" />
-          </div>
-          <div class="table-data">
-            <input type="text" name="workEndTime" th:name="'workEndTime[' + ${status.index} + ']'" />
+            <input type="text" th:name="${'registFormList[' + status.index + '].workEndTime'}" />
           </div>
         </div>
       </div>
@@ -64,6 +65,7 @@
   <script type="text/javascript" src="../resources/js/lib/jquery.validationEngine.js" th:src="@{/resources/js/lib/jquery.validationEngine.min.js}"></script>
   <script type="text/javascript" src="../resources/js/lib/mprogress.js" th:src="@{/resources/js/lib/mprogress.min.js}"></script>
   <script type="text/javascript" src="../resources/js/lib/sal.js" th:src="@{/resources/js/lib/sal.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/list.js" th:src="@{/resources/js/lib/list.min.js}"></script>
   <script type="text/javascript" src="../resources/js/common/common.js" th:src="@{/resources/js/common/common.min.js}"></script>
   <script type="text/javascript">
     $(function() {
@@ -77,6 +79,16 @@
       jQuery("#attendRegistForm").validationEngine({
         promptPosition : "topLeft:0"
       });
+
+      // paging
+      var options = {
+        page : 16,
+        pagination : {
+          pageationClass : "pagination",
+          innerWindow : 1,
+          outerWindow : 1
+        }
+      };
 
     });
   </script>

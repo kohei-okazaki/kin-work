@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.co.kin.business.attendRegist.AttendBusinessCalendor;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
+import jp.co.kin.dashboard.attendRegist.form.AttendRegistUnitForm;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 
@@ -57,7 +58,7 @@ public class AttendRegistController implements BaseViewController {
 
 		List<AttendBusinessCalendor> calendorList = new ArrayList<>();
 		int weedDayPosition = 0;
-		for (int i = 0; i < 7; i++) {
+		for (int i = 0; i < 31; i++) {
 			String weekDay = weekDayList.get(weedDayPosition);
 			weedDayPosition++;
 			if (weedDayPosition == 7) {
@@ -70,26 +71,23 @@ public class AttendRegistController implements BaseViewController {
 		}
 
 		model.addAttribute("calendorList", calendorList);
-		calendorList.stream().forEach(e -> {
-			LoggerFactory.getLogger(this.getClass()).infoRes(e);
-			LoggerFactory.getLogger(this.getClass()).debugRes(e);
-		});
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}
 
 	@PostMapping("/confirm")
-	public String confirm(Model model, @ModelAttribute @Valid AttendRegistForm form, BindingResult result) {
+	public String confirm(Model model, @Valid AttendRegistForm form, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return getView(DashboardView.ATTEND_REGIST_INPUT);
 		}
 
-		for (int i = 0; i < form.getDayList().size(); i++) {
-			LoggerFactory.getLogger(this.getClass()).debug(form.getDayList().get(i).toPlainString());
-			LoggerFactory.getLogger(this.getClass()).debug(form.getWeekDayList().get(i));
-			LoggerFactory.getLogger(this.getClass()).debug(form.getWorkStartTimeList().get(i));
-			LoggerFactory.getLogger(this.getClass()).debug(form.getWorkEndTimeList().get(i));
+		for (int i = 0; i < form.getRegistFormList().size(); i++) {
+			AttendRegistUnitForm f = form.getRegistFormList().get(i);
+			LoggerFactory.getLogger(this.getClass()).info(f.getDay().toPlainString());
+			LoggerFactory.getLogger(this.getClass()).info(f.getWeekDay());
+			LoggerFactory.getLogger(this.getClass()).info(f.getWorkStartTime());
+			LoggerFactory.getLogger(this.getClass()).info(f.getWorkEndTime());
 		}
 
 		return getView(DashboardView.ATTEND_REGIST_CONFIRM);
