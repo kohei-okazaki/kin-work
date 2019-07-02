@@ -8,13 +8,11 @@ import jp.co.kin.tool.type.AccessType;
 /**
  * Method
  *
- * @param <T>
- *            任意の型
  */
-public abstract class Method<T> {
+public abstract class Method {
 
 	/** 当メソッドのフィールド情報 */
-	protected Field<T> field;
+	protected Field field;
 	/** メソッドのアクセスタイプ */
 	protected AccessType accessType;
 	/** AnnotationMap */
@@ -34,7 +32,7 @@ public abstract class Method<T> {
 	 * @param accessType
 	 *            メソッドのアクセスタイプ
 	 */
-	public Method(Field<T> field, AccessType accessType) {
+	public Method(Field field, AccessType accessType) {
 		this.field = field;
 		this.accessType = accessType;
 	}

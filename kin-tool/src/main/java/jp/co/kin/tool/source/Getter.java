@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.type.AccessType;
 
-public class Getter<T> extends Method<T> {
+public class Getter extends Method {
 
 	/** 接頭語 */
 	private static final String PREFIX = "get";
@@ -18,7 +18,7 @@ public class Getter<T> extends Method<T> {
 	 * @param field
 	 *            Field
 	 */
-	public Getter(Field<T> field) {
+	public Getter(Field field) {
 		this(field, AccessType.PUBLIC);
 	}
 
@@ -30,7 +30,7 @@ public class Getter<T> extends Method<T> {
 	 * @param accessType
 	 *            アクセスタイプ
 	 */
-	public Getter(Field<T> field, AccessType accessType) {
+	public Getter(Field field, AccessType accessType) {
 		super(field, accessType);
 	}
 
