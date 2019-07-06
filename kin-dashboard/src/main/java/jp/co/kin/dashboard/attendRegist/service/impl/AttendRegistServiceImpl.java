@@ -1,5 +1,6 @@
 package jp.co.kin.dashboard.attendRegist.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,16 +15,16 @@ import jp.co.kin.dashboard.attendRegist.service.AttendRegistService;
 public class AttendRegistServiceImpl implements AttendRegistService {
 
 	@Override
-	public List<String> getYearList() {
+	public List<BigDecimal> getYearList() {
 
 		int sysdate = Integer.valueOf(DateUtil.toString(DateUtil.getSysDate(), DateFormatType.YYYY));
-		return Stream.iterate(0, i -> ++i).limit(10).map(e -> String.valueOf(sysdate + e))
+		return Stream.iterate(0, i -> ++i).limit(10).map(e -> new BigDecimal(sysdate + e))
 				.collect(Collectors.toList());
 	}
 
 	@Override
-	public List<String> getMonthList() {
-		return Stream.iterate(0, i -> ++i).limit(12).map(e -> String.valueOf(e + 1))
+	public List<BigDecimal> getMonthList() {
+		return Stream.iterate(0, i -> ++i).limit(12).map(e -> new BigDecimal(e + 1))
 				.collect(Collectors.toList());
 	}
 

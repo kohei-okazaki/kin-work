@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.kin.common.context.MessageSourceComponent;
+import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseErrorCode;
 import jp.co.kin.common.exception.BaseExceptionHander;
 import jp.co.kin.common.log.Logger;
@@ -21,11 +22,16 @@ public class DashboardExceptionHandler extends BaseExceptionHander {
 	private static final Logger LOG = LoggerFactory.getLogger(DashboardExceptionHandler.class);
 
 	@Autowired
-	private MessageSourceComponent messageCompenent;
+	private MessageSourceComponent messageComponent;
+	@Autowired
+	private SessionComponent sessionComponent;
 
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
 			Object handler, Exception e) {
+
+		// session情報をクリアする
+		sessionComponent.removeValues(request.getSession());
 
 		ModelAndView modelView = new ModelAndView();
 		// error画面を設定
@@ -33,7 +39,7 @@ public class DashboardExceptionHandler extends BaseExceptionHander {
 
 		LogLevel loglevel = getLogLevel(e);
 		BaseErrorCode errorCode = getErrorCode(e);
-		String errorMessage = messageCompenent.getMessage(errorCode.getOuterErrorCode());
+		String errorMessage = messageComponent.getMessage(errorCode.getOuterErrorCode());
 		String detail = getDetail(e);
 
 		modelView.addObject("errorMessage", errorMessage);

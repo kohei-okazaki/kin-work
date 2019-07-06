@@ -64,7 +64,8 @@ public class AttendRegistController implements BaseViewController {
 
 		model.addAttribute("calendarList", calendarList);
 
-		model.addAttribute("selectedYear", DateUtil.toString(DateUtil.getSysDate(), DateFormatType.YYYY));
+		model.addAttribute("selectedYear",
+				new BigDecimal(DateUtil.toString(DateUtil.getSysDate(), DateFormatType.YYYY)));
 		model.addAttribute("yearList", attendRegistService.getYearList());
 
 		model.addAttribute("selectedMonth",
@@ -84,11 +85,31 @@ public class AttendRegistController implements BaseViewController {
 					"リクエスト情報が不正です. year=" + year + ", month=" + month);
 		}
 
-		model.addAttribute("selectedYear", year);
+		model.addAttribute("selectedYear", new BigDecimal(year));
 		model.addAttribute("yearList", attendRegistService.getYearList());
 
-		model.addAttribute("selectedMonth", month);
+		model.addAttribute("selectedMonth", new BigDecimal(month));
 		model.addAttribute("monthList", attendRegistService.getMonthList());
+
+		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
+		Calendar selectedCalendar = Calendar.getInstance();
+		selectedCalendar.set(Integer.valueOf(year), Integer.valueOf(month) + 1, 1);
+
+		for (int i = 0; i < selectedCalendar.getActualMaximum(Calendar.DATE); i++) {
+			Calendar cal = Calendar.getInstance();
+			cal.set(Integer.valueOf(year), Integer.valueOf(month) - 1, 1);
+			cal.set(Calendar.DATE, i + 1);
+
+			String day = DateUtil.toString(cal.getTime(), DateFormatType.DD);
+			String weekDay = CalendarUtil.getWeekDay(cal);
+
+			AttendBusinessCalendar calendar = new AttendBusinessCalendar();
+			calendar.setDay(new BigDecimal(day));
+			calendar.setWeekDay(weekDay);
+			calendarList.add(calendar);
+		}
+
+		model.addAttribute("calendarList", calendarList);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}
