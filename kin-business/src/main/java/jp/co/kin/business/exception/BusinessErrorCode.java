@@ -1,16 +1,13 @@
-package jp.co.kin.common.exception;
+package jp.co.kin.business.exception;
 
+import jp.co.kin.common.exception.BaseErrorCode;
 import jp.co.kin.common.log.type.LogLevel;
 
-public enum CommonErrorCode implements BaseErrorCode {
+public enum BusinessErrorCode implements BaseErrorCode {
 
-	/** 予期せぬ例外 */
-	UNEXPECTED("EC0001", LogLevel.ERROR),
+	;
 
-	/** session例外 */
-	SESSION_ILLEGAL("WC0002", LogLevel.WARN);
-
-	private CommonErrorCode(String outerErrorCode, LogLevel logLevel) {
+	private BusinessErrorCode(String outerErrorCode, LogLevel logLevel) {
 		this.outerErrorCode = outerErrorCode;
 		this.logLevel = logLevel;
 	}
@@ -29,4 +26,5 @@ public enum CommonErrorCode implements BaseErrorCode {
 	public LogLevel getLogLevel() {
 		return this.logLevel;
 	}
+
 }

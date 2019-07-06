@@ -16,11 +16,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.kin.business.attendRegist.AttendBusinessCalendar;
+import jp.co.kin.business.attendRegist.dto.AttendBusinessCalendar;
+import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.log.LoggerFactory;
+import jp.co.kin.common.type.DateFormatType;
+import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistUnitForm;
 import jp.co.kin.dashboard.attendRegist.service.AttendRegistService;
+import jp.co.kin.dashboard.exception.DashboardErrorCode;
+import jp.co.kin.dashboard.exception.DashboardException;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 
@@ -44,12 +50,12 @@ public class AttendRegistController implements BaseViewController {
 				"sunDay");
 
 		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
-		int weedDayPosition = 0;
+		int weekDayPosition = 0;
 		for (int i = 0; i < 31; i++) {
-			String weekDay = weekDayList.get(weedDayPosition);
-			weedDayPosition++;
-			if (weedDayPosition == 7) {
-				weedDayPosition = 0;
+			String weekDay = weekDayList.get(weekDayPosition);
+			weekDayPosition++;
+			if (weekDayPosition == 7) {
+				weekDayPosition = 0;
 			}
 			AttendBusinessCalendar calendar = new AttendBusinessCalendar();
 			calendar.setDay(BigDecimal.valueOf(i + 1));
@@ -59,18 +65,25 @@ public class AttendRegistController implements BaseViewController {
 
 		model.addAttribute("calendarList", calendarList);
 
+		model.addAttribute("selectedYear", DateUtil.toString(DateUtil.getSysDate(), DateFormatType.YYYY));
 		model.addAttribute("yearList", attendRegistService.getYearList());
 
+		model.addAttribute("selectedMonth",
+				DateUtil.toString(DateUtil.getSysDate(), DateFormatType.MM).replaceFirst("0", ""));
 		model.addAttribute("monthList", attendRegistService.getMonthList());
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}
 
 	@GetMapping("/changeCalendar")
-	public String changeCalendar(Model model, HttpServletRequest request) {
+	public String changeCalendar(Model model, HttpServletRequest request) throws BaseException {
 
 		String year = request.getParameter("year");
 		String month = request.getParameter("month");
+		if (StringUtil.isEmpty(year) || StringUtil.isEmpty(month)) {
+			throw new DashboardException(DashboardErrorCode.ILLEGAL_REQUEST,
+					"リクエスト情報が不正です. year=" + year + ", month=" + month);
+		}
 
 		model.addAttribute("selectedYear", year);
 		model.addAttribute("yearList", attendRegistService.getYearList());

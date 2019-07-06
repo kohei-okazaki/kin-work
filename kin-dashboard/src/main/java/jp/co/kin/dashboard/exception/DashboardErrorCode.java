@@ -1,16 +1,14 @@
-package jp.co.kin.common.exception;
+package jp.co.kin.dashboard.exception;
 
+import jp.co.kin.common.exception.BaseErrorCode;
 import jp.co.kin.common.log.type.LogLevel;
 
-public enum CommonErrorCode implements BaseErrorCode {
+public enum DashboardErrorCode implements BaseErrorCode {
 
-	/** 予期せぬ例外 */
-	UNEXPECTED("EC0001", LogLevel.ERROR),
+	/** 不正なリクエストエラー */
+	ILLEGAL_REQUEST("WD0003", LogLevel.WARN);
 
-	/** session例外 */
-	SESSION_ILLEGAL("WC0002", LogLevel.WARN);
-
-	private CommonErrorCode(String outerErrorCode, LogLevel logLevel) {
+	private DashboardErrorCode(String outerErrorCode, LogLevel logLevel) {
 		this.outerErrorCode = outerErrorCode;
 		this.logLevel = logLevel;
 	}
@@ -29,4 +27,5 @@ public enum CommonErrorCode implements BaseErrorCode {
 	public LogLevel getLogLevel() {
 		return this.logLevel;
 	}
+
 }

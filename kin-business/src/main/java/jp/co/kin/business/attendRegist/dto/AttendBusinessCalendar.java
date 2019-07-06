@@ -1,4 +1,4 @@
-package jp.co.kin.business.attendRegist;
+package jp.co.kin.business.attendRegist.dto;
 
 import java.math.BigDecimal;
 

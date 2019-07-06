@@ -4,6 +4,8 @@ public enum DateFormatType implements BaseEnum {
 
 	/** YYYY */
 	YYYY("YYYY"),
+	/** MM */
+	MM("MM"),
 	/** YYYYMMDD */
 	YYYYMMDD_NOSEP("YYYYMMDD"),
 	/** YYYY/MM/DD */

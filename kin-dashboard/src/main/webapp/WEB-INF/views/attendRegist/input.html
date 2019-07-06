@@ -53,7 +53,7 @@
 
         <div class="table-row" th:each="calendar, status : ${calendarList}">
 
-          <div class="table-data" th:text="#{${calendar.weekDay}}"></div>
+          <div class="table-data weekday" th:text="#{${calendar.weekDay}}"></div>
           <input type="hidden" th:name="${'registFormList[' + status.index + '].weekDay'}" th:value="${calendar.weekDay}" />
 
           <div class="table-data" th:text="${calendar.day}"></div>
@@ -120,6 +120,31 @@
 
         form.appendTo(document.body);
         form.submit();
+      });
+
+      $(window).on('load', function() {
+        $.each($("div.weekday"), function(i, val) {
+
+          console.log(i + ': ' + $(val).text());
+
+          if ($(val).text() == "土") {
+
+            $(val).addClass("saturday");
+            $(".saturday").css({
+              "color" : "#0000ff"
+            });
+
+          } else if ($(val).text() == "日") {
+
+            $(val).addClass("sunday");
+            $(".sunday").css({
+              "color" : "#ff0000"
+            });
+
+          } else {
+        	$(val).addClass("workday");
+          }
+        });
       });
 
     });
