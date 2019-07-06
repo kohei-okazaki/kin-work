@@ -22,6 +22,7 @@
       <list>
         <value>META-INF/messages</value>
         <value>META-INF/commonErrorCode</value>
+        <value>META-INF/dashboardErrorCode</value>
       </list>
     </property>
   </bean>
