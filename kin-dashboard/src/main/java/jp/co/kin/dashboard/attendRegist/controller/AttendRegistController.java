@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.attendRegist.dto.AttendBusinessCalendar;
+import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
@@ -94,6 +95,7 @@ public class AttendRegistController implements BaseViewController {
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}
 
+	@CsrfToken(factocy = true)
 	@PostMapping("/confirm")
 	public String confirm(Model model, @Valid AttendRegistForm form, BindingResult result) {
 
@@ -112,6 +114,7 @@ public class AttendRegistController implements BaseViewController {
 		return getView(DashboardView.ATTEND_REGIST_CONFIRM);
 	}
 
+	@CsrfToken(check = true)
 	@PostMapping("/complete")
 	public String complete() {
 		return getView(DashboardView.ATTEND_REGIST_COMPLETE);

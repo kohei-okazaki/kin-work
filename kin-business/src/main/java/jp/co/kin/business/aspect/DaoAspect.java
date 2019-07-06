@@ -26,13 +26,13 @@ public class DaoAspect {
 	@Qualifier("aesCrypter")
 	private Crypter crypter;
 
-	@Around("execution(* jp.co.kin.db.dao.*Dao.select*(..))")
+	@Around("execution(* jp.co.kin.db.dao.*Dao.*(..))")
 	public Object select(ProceedingJoinPoint pjp) throws Throwable {
 
 		String daoName = pjp.getThis().getClass().getName();
-		LOG.info(daoName + " select called...");
+		LOG.info(daoName + " called...");
 		Object result = pjp.proceed();
-		LOG.info(daoName + " select success");
+		LOG.info(daoName + " success");
 
 		return result;
 	}
