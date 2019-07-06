@@ -11,75 +11,77 @@
 </head>
 <body>
 
-  <!-- コンテナ -->
-  <div class="grid">
-    <!-- アイテム1 -->
-    <div class="item kintai">
-      <div class="item-content">
-        <!-- カスタムコンテンツ開始 -->
-        <div class="attendance-content">
-          <a href="/attendRegist/input" th:href="@{/attendRegist/input}" th:text="#{attendanceRegist}"></a>
-        </div>
-        <!-- カスタムコンテンツ終了 -->
-      </div>
-    </div>
-
-    <!-- アイテム2 -->
-    <div class="item kintai">
-      <div class="item-content">
-        <!-- カスタムコンテンツ開始 -->
-        <div class="attendance-content">
-          <a href="/login/index" th:href="@{/login/index}" th:text="#{attendanceRefer}"></a>
-        </div>
-        <!-- カスタムコンテンツ終了 -->
-      </div>
-    </div>
-
-    <!-- アイテム3 -->
-    <div class="item setting">
-      <div class="item-content">
-        <!-- カスタムコンテンツ開始 -->
-        <div class="user-content">
-          <a href="/login/index" th:href="@{/login/index}" th:text="#{userCustomize}"></a>
-        </div>
-        <!-- カスタムコンテンツ終了 -->
-      </div>
-    </div>
-
-    <!-- アイテム4 -->
-    <div class="item logout">
-      <div class="item-content">
-        <!-- カスタムコンテンツ開始 -->
-        <div class="session-content">
-          <!--/* table部ここから */-->
-          <div class="table">
-            <div class="table-row">
-              <div class="table-data" th:text="#{loginId}"></div>
-              <div class="table-data">
-                <p th:text="${session['sessionUser'].loginId}"></p>
-              </div>
-            </div>
-            <div class="table-row">
-              <div class="table-data" th:text="#{userName}"></div>
-              <div class="table-data">
-                <p th:text="${session['sessionUser'].userName}"></p>
-              </div>
-            </div>
+  <div align="center" class="contentLayout">
+    <!-- コンテナ -->
+    <div class="grid">
+      <!-- アイテム1 -->
+      <div class="item kintai">
+        <div class="item-content">
+          <!-- カスタムコンテンツ開始 -->
+          <div class="attendance-content">
+            <a href="/attendRegist/input" th:href="@{/attendRegist/input}" th:text="#{attendanceRegist}"></a>
           </div>
-          <!--/* table部ここまで */-->
+          <!-- カスタムコンテンツ終了 -->
         </div>
-        <!-- カスタムコンテンツ終了 -->
       </div>
-    </div>
 
-    <!-- アイテム5 -->
-    <div class="item logout">
-      <div class="item-content">
-        <!-- カスタムコンテンツ開始 -->
-        <div class="common-content">
-          <a href="/login/index" th:href="@{/login/index}" th:text="#{logout}"></a>
+      <!-- アイテム2 -->
+      <div class="item kintai">
+        <div class="item-content">
+          <!-- カスタムコンテンツ開始 -->
+          <div class="attendance-content">
+            <a href="/login/index" th:href="@{/login/index}" th:text="#{attendanceRefer}"></a>
+          </div>
+          <!-- カスタムコンテンツ終了 -->
         </div>
-        <!-- カスタムコンテンツ終了 -->
+      </div>
+
+      <!-- アイテム3 -->
+      <div class="item setting">
+        <div class="item-content">
+          <!-- カスタムコンテンツ開始 -->
+          <div class="user-content">
+            <a href="/login/index" th:href="@{/login/index}" th:text="#{userCustomize}"></a>
+          </div>
+          <!-- カスタムコンテンツ終了 -->
+        </div>
+      </div>
+
+      <!-- アイテム4 -->
+      <div class="item logout">
+        <div class="item-content">
+          <!-- カスタムコンテンツ開始 -->
+          <div class="session-content">
+            <!--/* table部ここから */-->
+            <div class="table">
+              <div class="table-row">
+                <div class="table-data" th:text="#{loginId}"></div>
+                <div class="table-data">
+                  <p th:text="${session['sessionUser'].loginId}"></p>
+                </div>
+              </div>
+              <div class="table-row">
+                <div class="table-data" th:text="#{userName}"></div>
+                <div class="table-data">
+                  <p th:text="${session['sessionUser'].userName}"></p>
+                </div>
+              </div>
+            </div>
+            <!--/* table部ここまで */-->
+          </div>
+          <!-- カスタムコンテンツ終了 -->
+        </div>
+      </div>
+
+      <!-- アイテム5 -->
+      <div class="item logout">
+        <div class="item-content">
+          <!-- カスタムコンテンツ開始 -->
+          <div class="common-content">
+            <a href="/login/index" th:href="@{/login/index}" th:text="#{logout}"></a>
+          </div>
+          <!-- カスタムコンテンツ終了 -->
+        </div>
       </div>
     </div>
   </div>

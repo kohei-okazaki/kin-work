@@ -27,13 +27,13 @@
           <div class="table-data" th:text="#{workEndTime}" align="center"></div>
         </div>
 
-        <div class="table-row" th:each="calendor, status : ${calendorList}">
+        <div class="table-row" th:each="calendar, status : ${calendarList}">
 
-          <div class="table-data" th:text="#{${calendor.weekDay}}"></div>
-          <input type="hidden" th:name="${'registFormList[' + status.index + '].weekDay'}" th:value="${calendor.weekDay}" />
+          <div class="table-data" th:text="#{${calendar.weekDay}}"></div>
+          <input type="hidden" th:name="${'registFormList[' + status.index + '].weekDay'}" th:value="${calendar.weekDay}" />
 
-          <div class="table-data" th:text="${calendor.day}"></div>
-          <input type="hidden" th:name="${'registFormList[' + status.index + '].day'}" th:value="${calendor.day}" />
+          <div class="table-data" th:text="${calendar.day}"></div>
+          <input type="hidden" th:name="${'registFormList[' + status.index + '].day'}" th:value="${calendar.day}" />
 
           <div class="table-data">
             <input type="text" th:name="${'registFormList[' + status.index + '].workStartTime'}" />

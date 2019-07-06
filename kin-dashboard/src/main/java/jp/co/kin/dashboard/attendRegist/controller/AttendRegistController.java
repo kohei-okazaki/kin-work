@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.kin.business.attendRegist.AttendBusinessCalendor;
+import jp.co.kin.business.attendRegist.AttendBusinessCalendar;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistUnitForm;
@@ -56,7 +56,7 @@ public class AttendRegistController implements BaseViewController {
 		List<String> weekDayList = List.of("monday", "tuesDay", "wednesDay", "thursDay", "friDay", "stursDay",
 				"sunDay");
 
-		List<AttendBusinessCalendor> calendorList = new ArrayList<>();
+		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
 		int weedDayPosition = 0;
 		for (int i = 0; i < 31; i++) {
 			String weekDay = weekDayList.get(weedDayPosition);
@@ -64,13 +64,13 @@ public class AttendRegistController implements BaseViewController {
 			if (weedDayPosition == 7) {
 				weedDayPosition = 0;
 			}
-			AttendBusinessCalendor calendor = new AttendBusinessCalendor();
-			calendor.setDay(BigDecimal.valueOf(i + 1));
-			calendor.setWeekDay(weekDay);
-			calendorList.add(calendor);
+			AttendBusinessCalendar calendar = new AttendBusinessCalendar();
+			calendar.setDay(BigDecimal.valueOf(i + 1));
+			calendar.setWeekDay(weekDay);
+			calendarList.add(calendar);
 		}
 
-		model.addAttribute("calendorList", calendorList);
+		model.addAttribute("calendarList", calendarList);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}

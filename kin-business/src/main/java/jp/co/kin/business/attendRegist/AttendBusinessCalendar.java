@@ -2,7 +2,7 @@ package jp.co.kin.business.attendRegist;
 
 import java.math.BigDecimal;
 
-public class AttendBusinessCalendor {
+public class AttendBusinessCalendar {
 
 	private BigDecimal day;
 	private String weekDay;
