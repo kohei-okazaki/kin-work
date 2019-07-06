@@ -93,11 +93,12 @@ public class AttendRegistController implements BaseViewController {
 
 		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
 		Calendar selectedCalendar = Calendar.getInstance();
-		selectedCalendar.set(Integer.valueOf(year), Integer.valueOf(month) + 1, 1);
+		selectedCalendar.set(Calendar.YEAR, Integer.valueOf(year));
+		selectedCalendar.set(Calendar.MONTH, Integer.valueOf(month) - 1);
 
-		for (int i = 0; i < selectedCalendar.getActualMaximum(Calendar.DATE); i++) {
-			Calendar cal = Calendar.getInstance();
-			cal.set(Integer.valueOf(year), Integer.valueOf(month) - 1, 1);
+		System.out.println("最終日=" + selectedCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+		for (int i = 0; i < selectedCalendar.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
+			Calendar cal = selectedCalendar;
 			cal.set(Calendar.DATE, i + 1);
 
 			String day = DateUtil.toString(cal.getTime(), DateFormatType.DD);
@@ -119,7 +120,8 @@ public class AttendRegistController implements BaseViewController {
 	public String confirm(Model model, @Valid AttendRegistForm form, BindingResult result) {
 
 		if (result.hasErrors()) {
-			return getView(DashboardView.ATTEND_REGIST_INPUT);
+			result.getFieldErrors().parallelStream().forEach(e -> System.out.println(e.getField()));
+			return getRedirectView(DashboardView.ATTEND_REGIST_INPUT);
 		}
 
 		for (int i = 0; i < form.getRegistFormList().size(); i++) {
