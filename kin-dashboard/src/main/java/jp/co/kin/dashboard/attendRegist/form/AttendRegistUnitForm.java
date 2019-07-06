@@ -8,7 +8,7 @@ import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;
 
 /**
- * 1行あたりの勤怠データ
+ * 1日あたりの勤怠データ
  *
  */
 public class AttendRegistUnitForm implements BaseForm {

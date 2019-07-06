@@ -21,6 +21,30 @@
       <!--/* table部ここから */-->
       <div class="table">
         <div class="table-row" align="center">
+          <div class="table-data">
+            <div class="cp_ipselect cp_sl01">
+              <select id="year" name="year">
+                <option th:each="year : ${yearList}" th:value="${year}" th:selected="${year == selectedYear}" th:inline="text">[[${year}]]</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-data">
+            <div class="cp_ipselect cp_sl01">
+              <select id="month" name="month">
+                <option th:each="month : ${monthList}" th:value="${month}" th:selected="${month == selectedMonth}" th:inline="text">[[${month}]]</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-data">
+            <input type="button" id="changeCalendar" name="changeCalendar" value="反 映" />
+          </div>
+        </div>
+      </div>
+      <!--/* table部ここまで */-->
+
+      <!--/* table部ここから */-->
+      <div class="table">
+        <div class="table-row" align="center">
           <div class="table-data" th:text="#{weekDay}" align="center"></div>
           <div class="table-data" th:text="#{day}" align="center"></div>
           <div class="table-data" th:text="#{workStartTime}" align="center"></div>
@@ -70,25 +94,33 @@
   <script type="text/javascript">
     $(function() {
 
-      sal({
-        threshold: 1,
-        once: false
-      });
-
       // validate処理
       jQuery("#attendRegistForm").validationEngine({
         promptPosition : "topLeft:0"
       });
 
-      // paging
-      var options = {
-        page : 16,
-        pagination : {
-          pageationClass : "pagination",
-          innerWindow : 1,
-          outerWindow : 1
-        }
-      };
+      // Calendarを変更するリクエストを送信
+      $("#changeCalendar").on("click", function() {
+        var form = $("<form></form>", {
+          method : "get",
+          action : "../attendRegist/changeCalendar"
+        });
+
+        form.append($("<input />", {
+          type : "hidden",
+          name : "year",
+          value : $("[name=year]").val()
+        }));
+
+        form.append($("<input />", {
+          type : "hidden",
+          name : "month",
+          value : $("[name=month]").val()
+        }));
+
+        form.appendTo(document.body);
+        form.submit();
+      });
 
     });
   </script>

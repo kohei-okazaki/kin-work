@@ -4,8 +4,10 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +20,7 @@ import jp.co.kin.business.attendRegist.AttendBusinessCalendar;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistUnitForm;
+import jp.co.kin.dashboard.attendRegist.service.AttendRegistService;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 
@@ -25,28 +28,12 @@ import jp.co.kin.web.controller.BaseViewController;
 @RequestMapping("attendRegist")
 public class AttendRegistController implements BaseViewController {
 
+	@Autowired
+	private AttendRegistService attendRegistService;
+
 	@ModelAttribute("attendRegistForm")
 	public AttendRegistForm setUpForm() {
-
-		AttendRegistForm form = new AttendRegistForm();
-
-		// FIXME DBから取得
-		// List<String> weekDayList = List.of("monday", "tuesDay", "wednesDay",
-		// "thursDay", "friDay", "stursDay",
-		// "sunDay");
-		//
-		// int weedDayPosition = 0;
-		// for (int i = 0; i < 15; i++) {
-		// String weekDay = weekDayList.get(weedDayPosition);
-		// weedDayPosition++;
-		// if (weedDayPosition == 7) {
-		// weedDayPosition = 0;
-		// }
-		// form.addDay(BigDecimal.valueOf(i + 1));
-		// form.addWeekDay(weekDay);
-		// }
-
-		return form;
+		return new AttendRegistForm();
 	}
 
 	@GetMapping("/input")
@@ -71,6 +58,25 @@ public class AttendRegistController implements BaseViewController {
 		}
 
 		model.addAttribute("calendarList", calendarList);
+
+		model.addAttribute("yearList", attendRegistService.getYearList());
+
+		model.addAttribute("monthList", attendRegistService.getMonthList());
+
+		return getView(DashboardView.ATTEND_REGIST_INPUT);
+	}
+
+	@GetMapping("/changeCalendar")
+	public String changeCalendar(Model model, HttpServletRequest request) {
+
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+
+		model.addAttribute("selectedYear", year);
+		model.addAttribute("yearList", attendRegistService.getYearList());
+
+		model.addAttribute("selectedMonth", month);
+		model.addAttribute("monthList", attendRegistService.getMonthList());
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}

@@ -2,6 +2,8 @@ package jp.co.kin.common.type;
 
 public enum DateFormatType implements BaseEnum {
 
+	/** YYYY */
+	YYYY("YYYY"),
 	/** YYYYMMDD */
 	YYYYMMDD_NOSEP("YYYYMMDD"),
 	/** YYYY/MM/DD */
