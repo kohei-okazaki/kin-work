@@ -1,5 +1,6 @@
 package jp.co.kin.dashboard.ontimeRegist.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.ontimeRegist.dto.OntimeRegistDto;
 import jp.co.kin.business.ontimeRegist.service.OntimeRegistService;
+import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.common.bean.DtoFactory;
+import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.dashboard.ontimeRegist.form.OntimeRegistForm;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
@@ -29,6 +32,8 @@ public class OntimeRegistController implements BaseViewController {
 
 	@Autowired
 	private OntimeRegistService ontimeRegistService;
+	@Autowired
+	private SessionComponent sessionComponent;
 
 	@ModelAttribute("ontimeRegistForm")
 	public OntimeRegistForm setUpForm() {
@@ -53,9 +58,15 @@ public class OntimeRegistController implements BaseViewController {
 
 	@CsrfToken(check = true)
 	@PostMapping("/complete")
-	public String complete(Model model, OntimeRegistForm form) {
+	public String complete(Model model, OntimeRegistForm form, HttpServletRequest request) {
+
+		// sessionからログインIDを取得
+		String loginId = sessionComponent.getValue(request.getSession(), "sessionUser",
+				SessionLoginUser.class).get().getLoginId();
 
 		OntimeRegistDto dto = DtoFactory.getDto(OntimeRegistDto.class, form);
+		dto.setLoginId(loginId);
+
 		ontimeRegistService.regist(dto);
 
 		return getView(DashboardView.ONTIME_REGIST_COMPLETE);

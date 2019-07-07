@@ -5,6 +5,8 @@ import jp.co.kin.common.validator.annotation.Required;
 
 public class OntimeRegistDto implements BaseDto {
 
+	/** ログインID */
+	private String loginId;
 	/** 始業時間(時) */
 	@Required
 	private String workStartHour;
@@ -19,8 +21,29 @@ public class OntimeRegistDto implements BaseDto {
 	private String workEndMinute;
 
 	/**
+	 * loginIdを返す
+	 *
+	 * @return loginId
+	 *
+	 */
+	public String getLoginId() {
+		return loginId;
+	}
+
+	/**
+	 * loginIdを設定する
+	 *
+	 * @param loginId
+	 *            loginId
+	 *
+	 */
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
+
+	/**
 	 * workStartHourを返す
-	 * 
+	 *
 	 * @return workStartHour
 	 *
 	 */
@@ -30,7 +53,7 @@ public class OntimeRegistDto implements BaseDto {
 
 	/**
 	 * workStartHourを設定する
-	 * 
+	 *
 	 * @param workStartHour
 	 *            workStartHour
 	 *
@@ -41,7 +64,7 @@ public class OntimeRegistDto implements BaseDto {
 
 	/**
 	 * workStartMinuteを返す
-	 * 
+	 *
 	 * @return workStartMinute
 	 *
 	 */
@@ -51,7 +74,7 @@ public class OntimeRegistDto implements BaseDto {
 
 	/**
 	 * workStartMinuteを設定する
-	 * 
+	 *
 	 * @param workStartMinute
 	 *            workStartMinute
 	 *
@@ -62,7 +85,7 @@ public class OntimeRegistDto implements BaseDto {
 
 	/**
 	 * workEndHourを返す
-	 * 
+	 *
 	 * @return workEndHour
 	 *
 	 */
@@ -72,7 +95,7 @@ public class OntimeRegistDto implements BaseDto {
 
 	/**
 	 * workEndHourを設定する
-	 * 
+	 *
 	 * @param workEndHour
 	 *            workEndHour
 	 *
@@ -83,7 +106,7 @@ public class OntimeRegistDto implements BaseDto {
 
 	/**
 	 * workEndMinuteを返す
-	 * 
+	 *
 	 * @return workEndMinute
 	 *
 	 */
@@ -93,7 +116,7 @@ public class OntimeRegistDto implements BaseDto {
 
 	/**
 	 * workEndMinuteを設定する
-	 * 
+	 *
 	 * @param workEndMinute
 	 *            workEndMinute
 	 *
