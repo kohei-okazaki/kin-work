@@ -13,11 +13,12 @@ public enum ClassType implements BaseEnum {
 	/** 列挙 */
 	ENUM("enum");
 
+	/** 値 */
+	private String value;
+
 	private ClassType(String value) {
 		this.value = value;
 	}
-
-	private String value;
 
 	@Override
 	public String getValue() {

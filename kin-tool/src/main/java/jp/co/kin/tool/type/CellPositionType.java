@@ -32,24 +32,11 @@ public enum CellPositionType implements BaseEnum {
 	/** ヘッダ名 */
 	private String value;
 
-	/**
-	 * コンストラクタ
-	 *
-	 * @param position
-	 *            位置
-	 * @param value
-	 *            ヘッダ名
-	 */
 	private CellPositionType(int position, String value) {
 		this.position = position;
 		this.value = value;
 	}
 
-	/**
-	 * positionを返す
-	 *
-	 * @return 位置
-	 */
 	public int getPosition() {
 		return this.position;
 	}
