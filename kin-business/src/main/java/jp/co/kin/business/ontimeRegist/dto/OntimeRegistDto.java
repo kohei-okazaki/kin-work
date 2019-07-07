@@ -6,18 +6,15 @@ import jp.co.kin.common.validator.annotation.Required;
 public class OntimeRegistDto implements BaseDto {
 
 	/** ログインID */
+	@Required
 	private String loginId;
 	/** 始業時間(時) */
-	@Required
 	private String workStartHour;
 	/** 始業時間(分) */
-	@Required
 	private String workStartMinute;
 	/** 終業時間(時) */
-	@Required
 	private String workEndHour;
 	/** 終業時間(分) */
-	@Required
 	private String workEndMinute;
 
 	/**
