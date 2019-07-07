@@ -69,7 +69,6 @@ public class AttendRegistController implements BaseViewController {
 			calendar.setWeekDay(weekDay);
 			calendarList.add(calendar);
 		}
-
 		model.addAttribute("calendarList", calendarList);
 
 		model.addAttribute("selectedYear",
@@ -106,7 +105,7 @@ public class AttendRegistController implements BaseViewController {
 		model.addAttribute("monthList", attendRegistService.getMonthList());
 
 		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
-		Calendar selectedCalendar = Calendar.getInstance();
+		Calendar selectedCalendar = CalendarUtil.getSysCalendar();
 		selectedCalendar.set(Calendar.YEAR, Integer.valueOf(year));
 		selectedCalendar.set(Calendar.MONTH, Integer.valueOf(month) - 1);
 
