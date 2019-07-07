@@ -49,7 +49,7 @@
           <div class="table-data" th:text="#{day}"></div>
           <div class="table-data" th:text="#{workStartTime}"></div>
           <div class="table-data" th:text="#{workEndTime}"></div>
-          <div class="table-data" th:text="#{onTImeLeave}"></div>
+          <div class="table-data" th:text="#{ontimeLeave}"></div>
         </div>
 
         <div class="table-row" th:each="calendar, status : ${calendarList}">
@@ -70,7 +70,7 @@
             <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndMinute'}" size="2" maxlength="2" />
           </div>
           <div class="table-data">
-            <input type="button" th:id="${'applyOnTimeLeave['  + status.index + ']'}" value="反 映" />
+            <input type="button" th:id="${'applyOntimeLeave['  + status.index + ']'}" value="反 映" />
           </div>
         </div>
       </div>
@@ -131,7 +131,7 @@
 
 
       // 定時退社を反映するボタン押下時の処理
-      $("#applyOnTimeLeave[0]").on("click", function() {
+      $("#applyOntimeLeave[0]").on("click", function() {
 
       });
 

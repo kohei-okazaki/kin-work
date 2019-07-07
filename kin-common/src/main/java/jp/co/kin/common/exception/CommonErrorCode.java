@@ -10,15 +10,15 @@ public enum CommonErrorCode implements BaseErrorCode {
 	/** session例外 */
 	SESSION_ILLEGAL("WC0002", LogLevel.WARN);
 
-	private CommonErrorCode(String outerErrorCode, LogLevel logLevel) {
-		this.outerErrorCode = outerErrorCode;
-		this.logLevel = logLevel;
-	}
-
 	/** 外部用エラーコード */
 	private String outerErrorCode;
 	/** ログレベル */
 	private LogLevel logLevel;
+
+	private CommonErrorCode(String outerErrorCode, LogLevel logLevel) {
+		this.outerErrorCode = outerErrorCode;
+		this.logLevel = logLevel;
+	}
 
 	@Override
 	public String getOuterErrorCode() {
