@@ -16,9 +16,9 @@ public class OntimeDataSearchServiceImpl implements OntimeDataSearchService {
 	private UserOntimeDataDao dao;
 
 	@Override
-	public OntimeRegistDto searchByLoginId(OntimeRegistDto dto) {
+	public OntimeRegistDto searchByLoginId(String loginId) {
 
-		UserOntimeData entity = dao.selectById(dto.getLoginId());
+		UserOntimeData entity = dao.selectById(loginId);
 		return DtoFactory.getDto(OntimeRegistDto.class, entity);
 	}
 

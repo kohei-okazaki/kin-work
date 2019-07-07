@@ -19,7 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.attendRegist.dto.AttendBusinessCalendar;
 import jp.co.kin.business.attendRegist.service.AttendRegistService;
+import jp.co.kin.business.db.search.OntimeDataSearchService;
+import jp.co.kin.business.ontimeRegist.dto.OntimeRegistDto;
+import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.business.session.annotation.CsrfToken;
+import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
@@ -38,7 +42,11 @@ import jp.co.kin.web.controller.BaseViewController;
 public class AttendRegistController implements BaseViewController {
 
 	@Autowired
+	private SessionComponent sessionComponent;
+	@Autowired
 	private AttendRegistService attendRegistService;
+	@Autowired
+	private OntimeDataSearchService ontimeDataSearchService;
 
 	@ModelAttribute("attendRegistForm")
 	public AttendRegistForm setUpForm() {
@@ -46,7 +54,7 @@ public class AttendRegistController implements BaseViewController {
 	}
 
 	@GetMapping("/input")
-	public String input(Model model) {
+	public String input(Model model, HttpServletRequest request) {
 
 		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
 		for (int i = 0; i < Calendar.getInstance().getActualMaximum(Calendar.DATE); i++) {
@@ -71,6 +79,12 @@ public class AttendRegistController implements BaseViewController {
 		model.addAttribute("selectedMonth",
 				new BigDecimal(DateUtil.toString(DateUtil.getSysDate(), DateFormatType.MM)));
 		model.addAttribute("monthList", attendRegistService.getMonthList());
+
+		// 定時情報を取得する
+		String loginId = sessionComponent.getValue(request.getSession(), "sessionUser",
+				SessionLoginUser.class).get().getLoginId();
+		OntimeRegistDto ontimeDto = ontimeDataSearchService.searchByLoginId(loginId);
+		model.addAttribute("ontimeDto", ontimeDto);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}
@@ -108,8 +122,13 @@ public class AttendRegistController implements BaseViewController {
 			calendar.setWeekDay(weekDay);
 			calendarList.add(calendar);
 		}
-
 		model.addAttribute("calendarList", calendarList);
+
+		// 定時情報を取得する
+		String loginId = sessionComponent.getValue(request.getSession(), "sessionUser",
+				SessionLoginUser.class).get().getLoginId();
+		OntimeRegistDto ontimeDto = ontimeDataSearchService.searchByLoginId(loginId);
+		model.addAttribute("ontimeDto", ontimeDto);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}

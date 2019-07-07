@@ -69,7 +69,7 @@
             :
             <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndMinute'}" size="2" maxlength="2" />
           </div>
-          <div class="table-data">
+          <div class="table-data applyOntimeLeave">
             <input type="button" th:id="${'applyOntimeLeave['  + status.index + ']'}" value="反 映" />
           </div>
         </div>
@@ -129,11 +129,13 @@
         form.submit();
       });
 
-
-      // 定時退社を反映するボタン押下時の処理
-      $("#applyOntimeLeave[0]").on("click", function() {
-
-      });
+      /*<![CDATA[*/
+      var ontimeDto = /*[[ ${ontimeDto} ]]*/;
+      var ontimeStartHour = ontimeDto.workStartHour;
+      var ontimeStartMinute = ontimeDto.workStartMinute;
+      var ontimeEndHour = ontimeDto.workEndHour;
+      var ontimeEndMinute = ontimeDto.workEndMinute;
+      /*]]>*/
 
       $(window).on('load', function() {
         $.each($("div.weekday"), function(i, val) {
@@ -157,6 +159,17 @@
         	$(val).addClass("workday");
           }
         });
+
+        $.each($("div.applyOntimeLeave"), function(i, val) {
+          $(val).children("input").on("click", function() {
+            $("input[name='registFormList[" + i + "].workStartHour']").val(ontimeStartHour);
+            $("input[name='registFormList[" + i + "].workStartMinute']").val(ontimeStartMinute);
+            $("input[name='registFormList[" + i + "].workEndHour']").val(ontimeEndHour);
+            $("input[name='registFormList[" + i + "].workEndMinute']").val(ontimeEndMinute);
+            console.log($("input[name='registFormList[" + i + "].workStartHour']").val());
+          });
+        });
+
       });
 
     });

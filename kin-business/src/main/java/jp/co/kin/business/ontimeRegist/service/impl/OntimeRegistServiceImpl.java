@@ -36,7 +36,7 @@ public class OntimeRegistServiceImpl implements OntimeRegistService {
 	}
 
 	private OntimeRegistDto selectById(OntimeRegistDto dto) {
-		return ontimeDataSearchService.searchByLoginId(dto);
+		return ontimeDataSearchService.searchByLoginId(dto.getLoginId());
 	}
 
 }

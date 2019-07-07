@@ -5,7 +5,7 @@ import jp.co.kin.web.service.BaseService;
 
 public interface OntimeDataSearchService extends BaseService {
 
-	OntimeRegistDto searchByLoginId(OntimeRegistDto dto);
+	OntimeRegistDto searchByLoginId(String loginId);
 
 	int searchCountByLoginId(String loginId);
 }
