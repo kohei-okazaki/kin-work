@@ -12,10 +12,14 @@ public class UserOntimeData extends BaseEntity {
 	/** ログインID */
 	@Id
 	private String loginId;
-	/** 始業時間 */
-	private String startTime;
-	/** 終業時間 */
-	private String endTime;
+	/** 始業時間(時) */
+	private String workStartTimeHour;
+	/** 始業時間(分) */
+	private String workStartTimeMinute;
+	/** 終業時間(時) */
+	private String workEndTimeHour;
+	/** 終業時間(分) */
+	private String workEndTimeMinute;
 	/** 登録日時 */
 	private Date regDate;
 	/** 更新日時 */
@@ -29,20 +33,36 @@ public class UserOntimeData extends BaseEntity {
 		return loginId;
 	}
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
+	public void setWorkStartTimeHour(String workStartTimeHour) {
+		this.workStartTimeHour = workStartTimeHour;
 	}
 
-	public String getStartTime() {
-		return startTime;
+	public String getWorkStartTimeHour() {
+		return workStartTimeHour;
 	}
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
+	public void setWorkStartTimeMinute(String workStartTimeMinute) {
+		this.workStartTimeMinute = workStartTimeMinute;
 	}
 
-	public String getEndTime() {
-		return endTime;
+	public String getWorkStartTimeMinute() {
+		return workStartTimeMinute;
+	}
+
+	public void setWorkEndTimeHour(String workEndTimeHour) {
+		this.workEndTimeHour = workEndTimeHour;
+	}
+
+	public String getWorkEndTimeHour() {
+		return workEndTimeHour;
+	}
+
+	public void setWorkEndTimeMinute(String workEndTimeMinute) {
+		this.workEndTimeMinute = workEndTimeMinute;
+	}
+
+	public String getWorkEndTimeMinute() {
+		return workEndTimeMinute;
 	}
 
 	public void setRegDate(Date regDate) {

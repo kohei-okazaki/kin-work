@@ -24,56 +24,34 @@
         </div>
       </div>
 
-      <div class="errorMessage" th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
-      <div class="errorMessage" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" data-sal="slide-up"></div>
-      <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
-      <div class="errorMessage" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('workStartHour')}" th:errors="*{workStartHour}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('workStartMinute')}" th:errors="*{workStartMinute}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('workEndHour')}" th:errors="*{workEndHour}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('workEndMinute')}" th:errors="*{workEndMinute}" data-sal="slide-up"></div>
 
       <!--/* table部ここから */-->
       <div class="table">
         <div class="table-row">
-          <div class="table-header" th:text="#{loginId}"></div>
+          <div class="table-header" th:text="#{workStartTime}"></div>
           <div class="table-data">
-            <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" />
+            <input type="text" class="validate[required]" th:field="*{workStartHour}" size="10" maxlength="2" />
+          </div>
+          <div class="table-data">:</div>
+          <div class="table-data">
+            <input type="text" class="validate[required]" th:field="*{workStartMinute}" size="10" maxlength="2" />
           </div>
         </div>
 
         <div class="table-row">&ensp;</div>
 
         <div class="table-row">
-          <div class="table-header" th:text="#{password}"></div>
+          <div class="table-header" th:text="#{workEndTime}"></div>
           <div class="table-data">
-            <div class="checkbox">
-              <input type="password" class="validate[required]" th:field="*{password}" maxlength="16" />
-              <label>
-                <input type="checkbox" id="password-check" class="checkbox-input" />
-                <span class="checkbox-parts">パスワードを表示する</span>
-              </label>
-            </div>
+            <input type="text" class="validate[required]" th:field="*{workEndHour}" size="10" maxlength="2" />
           </div>
-        </div>
-
-        <div class="table-row">&ensp;</div>
-
-        <div class="table-row">
-          <div class="table-header" th:text="#{confirmPassword}"></div>
+          <div class="table-data">:</div>
           <div class="table-data">
-            <div class="checkbox">
-              <input type="password" class="validate[required,equals[password]]" th:field="*{confirmPassword}" maxlength="16" />
-              <label>
-                <input type="checkbox" id="confirmPassword-check" class="checkbox-input" />
-                <span class="checkbox-parts">パスワードを表示する</span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="table-row">&ensp;</div>
-
-        <div class="table-row">
-          <div class="table-header" th:text="#{userName}"></div>
-          <div class="table-data">
-            <input type="text" class="validate[required]" th:field="*{userName}" maxlength="16" />
+            <input type="text" class="validate[required]" th:field="*{workEndMinute}" size="10" maxlength="2" />
           </div>
         </div>
       </div>
@@ -109,98 +87,32 @@
       });
 
       // validate処理
-      jQuery("#loginUserRegistForm").validationEngine({
+      jQuery("#ontimeRegistForm").validationEngine({
         promptPosition : "topLeft:0"
       });
 
-      var password = $('#password').get(0);
-      var passwordCheck = $('#password-check').get(0);
-      passwordCheck.addEventListener('change', function() {
-        if (passwordCheck.checked) {
-          password.setAttribute('type', 'text');
-        } else {
-          password.setAttribute('type', 'password');
-        }
-      }, false);
-
-      var confirmPassword = $('#confirmPassword').get(0);
-      var confirmPasswordCheck = $('#confirmPassword-check').get(0);
-      confirmPasswordCheck.addEventListener('change', function() {
-        if (confirmPasswordCheck.checked) {
-          confirmPassword.setAttribute('type', 'text');
-        } else {
-          confirmPassword.setAttribute('type', 'password');
-        }
-      }, false);
-
       // 進捗バーの処理
       var mprogress = new Mprogress();
-      $("#loginId").on("change", function() {
+      $("#workStartTime").on("change", function() {
         var value = 0;
-        if ($("#loginId").val() !== "") {
+        if ($("#workStartTime").val() !== "") {
           value += 1;
         }
-        if ($("#password").val() !== "") {
+        if ($("#workEndTime").val() !== "") {
           value += 1;
         }
-        if ($("#confirmPassword").val() !== "") {
-          value += 1;
-        }
-        if ($("#userName").val() !== "") {
-          value += 1;
-        }
-        var progressValue = value / 4;
+        var progressValue = value / 2;
         mprogress.set(progressValue);
       });
-      $("#password").on("change", function() {
+      $("#workEndTime").on("change", function() {
         var value = 0;
-        if ($("#loginId").val() !== "") {
+        if ($("#workStartTime").val() !== "") {
           value += 1;
         }
-        if ($("#password").val() !== "") {
+        if ($("#workEndTime").val() !== "") {
           value += 1;
         }
-        if ($("#confirmPassword").val() !== "") {
-          value += 1;
-        }
-        if ($("#userName").val() !== "") {
-          value += 1;
-        }
-        var progressValue = value / 4;
-        mprogress.set(progressValue);
-      });
-      $("#confirmPassword").on("change", function() {
-        var value = 0;
-        if ($("#loginId").val() !== "") {
-          value += 1;
-        }
-        if ($("#password").val() !== "") {
-          value += 1;
-        }
-        if ($("#confirmPassword").val() !== "") {
-          value += 1;
-        }
-        if ($("#userName").val() !== "") {
-          value += 1;
-        }
-        var progressValue = value / 4;
-        mprogress.set(progressValue);
-      });
-      $("#userName").on("change", function() {
-        var value = 0;
-        if ($("#loginId").val() !== "") {
-          value += 1;
-        }
-        if ($("#password").val() !== "") {
-          value += 1;
-        }
-        if ($("#confirmPassword").val() !== "") {
-          value += 1;
-        }
-        if ($("#userName").val() !== "") {
-          value += 1;
-        }
-        var progressValue = value / 4;
+        var progressValue = value / 2;
         mprogress.set(progressValue);
       });
     });
