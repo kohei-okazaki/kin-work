@@ -28,4 +28,7 @@ public interface UserOntimeDataDao extends BaseDao {
 	@Select
 	public int selectCountById(String loginId);
 
+	@Update(sqlFile = true)
+	public int updateEntity(UserOntimeData entity);
+
 }

@@ -15,7 +15,8 @@ public class OntimeDataUpdateServiceImpl implements OntimeDataUpdateService {
 
 	@Override
 	public void update(UserOntimeData entity) {
-		dao.update(entity);
+		dao.updateEntity(entity);
+		// dao.update(entity);
 	}
 
 }

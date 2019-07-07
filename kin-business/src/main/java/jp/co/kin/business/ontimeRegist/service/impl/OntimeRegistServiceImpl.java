@@ -26,17 +26,17 @@ public class OntimeRegistServiceImpl implements OntimeRegistService {
 
 		UserOntimeData entity = new UserOntimeData();
 		BeanUtil.copy(dto, entity);
-
-		if (existEntity(dto)) {
-			ontimeDataUpdateService.update(entity);
-		} else {
+		OntimeRegistDto searchDto = selectById(dto);
+		if (BeanUtil.isNull(searchDto)) {
 			ontimeDataCreateService.create(entity);
+		} else {
+			ontimeDataUpdateService.update(entity);
 		}
 
 	}
 
-	private boolean existEntity(OntimeRegistDto dto) {
-		return ontimeDataSearchService.searchCountByLoginId(dto.getLoginId()) != 0;
+	private OntimeRegistDto selectById(OntimeRegistDto dto) {
+		return ontimeDataSearchService.searchByLoginId(dto);
 	}
 
 }
