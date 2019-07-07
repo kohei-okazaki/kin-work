@@ -2,7 +2,9 @@ package jp.co.kin.business.attendRegist.dto;
 
 import java.math.BigDecimal;
 
-public class AttendBusinessCalendar {
+import jp.co.kin.common.bean.BaseDto;
+
+public class AttendBusinessCalendar implements BaseDto {
 
 	private BigDecimal day;
 	private String weekDay;

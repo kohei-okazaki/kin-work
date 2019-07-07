@@ -49,6 +49,7 @@
           <div class="table-data" th:text="#{day}"></div>
           <div class="table-data" th:text="#{workStartTime}"></div>
           <div class="table-data" th:text="#{workEndTime}"></div>
+          <div class="table-data" th:text="#{onTImeLeave}"></div>
         </div>
 
         <div class="table-row" th:each="calendar, status : ${calendarList}">
@@ -63,6 +64,9 @@
           </div>
           <div class="table-data">
             <input type="text" th:name="${'registFormList[' + status.index + '].workEndTime'}" />
+          </div>
+          <div class="table-data">
+            <input type="button" th:id="${'applyOnTimeLeave['  + status.index + ']'}" value="反 映" />
           </div>
         </div>
       </div>
@@ -90,7 +94,7 @@
   <script type="text/javascript" src="../resources/js/lib/sal.js" th:src="@{/resources/js/lib/sal.min.js}"></script>
   <script type="text/javascript" src="../resources/js/lib/list.js" th:src="@{/resources/js/lib/list.min.js}"></script>
   <script type="text/javascript" src="../resources/js/common/common.js" th:src="@{/resources/js/common/common.min.js}"></script>
-  <script type="text/javascript">
+  <script type="text/javascript" th:inline="javascript">
     $(function() {
 
       // validate処理
@@ -119,6 +123,15 @@
 
         form.appendTo(document.body);
         form.submit();
+      });
+
+      /*<![CDATA[*/
+      // var onTineStartTime = /*[[ ${userOntimeData.startTime} ]]*/;
+      // var onTimeEndTime = /*[[ ${userOntimeData.endTime} ]]*/;
+      /*]]>*/
+      // 定時退社を反映するボタン押下時の処理
+      $("#applyOnTimeLeave[0]").on("click", function() {
+
       });
 
       $(window).on('load', function() {
