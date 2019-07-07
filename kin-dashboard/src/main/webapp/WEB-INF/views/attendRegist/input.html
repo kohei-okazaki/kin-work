@@ -60,10 +60,14 @@
           <input type="hidden" th:name="${'registFormList[' + status.index + '].day'}" th:value="${calendar.day}" />
 
           <div class="table-data">
-            <input type="text" th:name="${'registFormList[' + status.index + '].workStartTime'}" />
+            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workStartHour'}" size="2" maxlength="2" />
+            :
+            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workStartMinute'}" size="2" maxlength="2" />
           </div>
           <div class="table-data">
-            <input type="text" th:name="${'registFormList[' + status.index + '].workEndTime'}" />
+            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndHour'}" size="2" maxlength="2" />
+            :
+            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndMinute'}" size="2" maxlength="2" />
           </div>
           <div class="table-data">
             <input type="button" th:id="${'applyOnTimeLeave['  + status.index + ']'}" value="反 映" />
@@ -125,10 +129,7 @@
         form.submit();
       });
 
-      /*<![CDATA[*/
-      // var onTineStartTime = /*[[ ${userOntimeData.startTime} ]]*/;
-      // var onTimeEndTime = /*[[ ${userOntimeData.endTime} ]]*/;
-      /*]]>*/
+
       // 定時退社を反映するボタン押下時の処理
       $("#applyOnTimeLeave[0]").on("click", function() {
 

@@ -8,10 +8,11 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/menu.css" th:href="@{/resources/css/menu.min.css}">
 <link rel="stylesheet" type="text/css" href="../resources/css/input.css" th:href="@{/resources/css/input.min.css}">
 <link rel="stylesheet" type="text/css" href="../resources/css/layout.css" th:href="@{/resources/css/layout.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/lib/sal.css" th:href="@{/resources/css/lib/sal.min.css}">
 </head>
 <body>
 
-  <div align="center" class="contentLayout">
+  <div class="contentLayout" data-sal="slide-up">
     <!-- コンテナ -->
     <div class="grid">
       <!-- アイテム1 -->
@@ -48,13 +49,14 @@
       </div>
 
       <!-- アイテム4 -->
-      <div class="item setting">
+      <!-- 管理ユーザの場合のみ -->
+      <div class="item setting" th:if="${session['sessionUser'].userAuth} == 1">
         <div class="item-content">
           <!-- カスタムコンテンツ開始 -->
           <div class="user-content">
             <a href="/ontimeRegist/input" th:href="@{/ontimeRegist/input}" th:text="#{ontimeRegist}"></a>
           </div>
-          <!-- カスタムコンテンツ終了 -->
+         <!-- カスタムコンテンツ終了 -->
         </div>
       </div>
 
@@ -104,8 +106,15 @@
   <script type="text/javascript" src="../resources/js/lib/hammer.js" th:src="@{/resources/js/lib/hammer.min.js}"></script>
   <script type="text/javascript" src="../resources/js/lib/web-animations.min.js" th:src="@{/resources/js/lib/web-animations.min.js}"></script>
   <script type="text/javascript" src="../resources/js/lib/muuri.js" th:src="@{/resources/js/lib/muuri.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/sal.js" th:src="@{/resources/js/lib/sal.min.js}"></script>
   <script type="text/javascript">
     $(function() {
+
+      sal({
+        threshold: 1,
+        once: false
+      });
+
       var grid = new Muuri('.grid', {
         dragEnabled: true
       });

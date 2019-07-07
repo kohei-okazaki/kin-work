@@ -21,12 +21,18 @@ public class AttendRegistUnitForm implements BaseForm {
 	@Required
 	@Pattern(regixPattern = RegixType.HALF_CHAR)
 	private String weekDay;
-	/** 始業時間 */
+	/** 始業時間(時) */
 	@Required
-	private String workStartTime;
-	/** 終業時間 */
+	private String workStartHour;
+	/** 始業時間(分) */
 	@Required
-	private String workEndTime;
+	private String workStartMinute;
+	/** 終業時間(時) */
+	@Required
+	private String workEndHour;
+	/** 終業時間(分) */
+	@Required
+	private String workEndMinute;
 
 	/**
 	 * dayを返す
@@ -71,45 +77,87 @@ public class AttendRegistUnitForm implements BaseForm {
 	}
 
 	/**
-	 * workStartTimeを返す
-	 *
-	 * @return workStartTime
+	 * workStartHourを返す
+	 * 
+	 * @return workStartHour
 	 *
 	 */
-	public String getWorkStartTime() {
-		return workStartTime;
+	public String getWorkStartHour() {
+		return workStartHour;
 	}
 
 	/**
-	 * workStartTimeを設定する
-	 *
-	 * @param workStartTime
-	 *            workStartTime
+	 * workStartHourを設定する
+	 * 
+	 * @param workStartHour
+	 *            workStartHour
 	 *
 	 */
-	public void setWorkStartTime(String workStartTime) {
-		this.workStartTime = workStartTime;
+	public void setWorkStartHour(String workStartHour) {
+		this.workStartHour = workStartHour;
 	}
 
 	/**
-	 * workEndTimeを返す
-	 *
-	 * @return workEndTime
+	 * workStartMinuteを返す
+	 * 
+	 * @return workStartMinute
 	 *
 	 */
-	public String getWorkEndTime() {
-		return workEndTime;
+	public String getWorkStartMinute() {
+		return workStartMinute;
 	}
 
 	/**
-	 * workEndTimeを設定する
-	 *
-	 * @param workEndTime
-	 *            workEndTime
+	 * workStartMinuteを設定する
+	 * 
+	 * @param workStartMinute
+	 *            workStartMinute
 	 *
 	 */
-	public void setWorkEndTime(String workEndTime) {
-		this.workEndTime = workEndTime;
+	public void setWorkStartMinute(String workStartMinute) {
+		this.workStartMinute = workStartMinute;
+	}
+
+	/**
+	 * workEndHourを返す
+	 * 
+	 * @return workEndHour
+	 *
+	 */
+	public String getWorkEndHour() {
+		return workEndHour;
+	}
+
+	/**
+	 * workEndHourを設定する
+	 * 
+	 * @param workEndHour
+	 *            workEndHour
+	 *
+	 */
+	public void setWorkEndHour(String workEndHour) {
+		this.workEndHour = workEndHour;
+	}
+
+	/**
+	 * workEndMinuteを返す
+	 * 
+	 * @return workEndMinute
+	 *
+	 */
+	public String getWorkEndMinute() {
+		return workEndMinute;
+	}
+
+	/**
+	 * workEndMinuteを設定する
+	 * 
+	 * @param workEndMinute
+	 *            workEndMinute
+	 *
+	 */
+	public void setWorkEndMinute(String workEndMinute) {
+		this.workEndMinute = workEndMinute;
 	}
 
 }

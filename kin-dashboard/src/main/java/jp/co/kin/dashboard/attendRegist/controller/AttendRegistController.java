@@ -128,8 +128,10 @@ public class AttendRegistController implements BaseViewController {
 			AttendRegistUnitForm f = form.getRegistFormList().get(i);
 			LoggerFactory.getLogger(this.getClass()).info(f.getDay().toPlainString());
 			LoggerFactory.getLogger(this.getClass()).info(f.getWeekDay());
-			LoggerFactory.getLogger(this.getClass()).info(f.getWorkStartTime());
-			LoggerFactory.getLogger(this.getClass()).info(f.getWorkEndTime());
+			LoggerFactory.getLogger(this.getClass()).info(f.getWorkStartHour());
+			LoggerFactory.getLogger(this.getClass()).info(f.getWorkStartMinute());
+			LoggerFactory.getLogger(this.getClass()).info(f.getWorkEndHour());
+			LoggerFactory.getLogger(this.getClass()).info(f.getWorkEndMinute());
 		}
 
 		return getView(DashboardView.ATTEND_REGIST_CONFIRM);

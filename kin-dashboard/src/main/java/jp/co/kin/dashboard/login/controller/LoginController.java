@@ -20,7 +20,6 @@ import jp.co.kin.business.session.annotation.SessionNonAuth;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.MessageSourceComponent;
 import jp.co.kin.common.context.SessionComponent;
-import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.dashboard.login.form.LoginForm;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
@@ -69,8 +68,7 @@ public class LoginController implements BaseViewController {
 			return getView(DashboardView.LOGIN);
 		}
 
-		SessionLoginUser sessionUser = new SessionLoginUser();
-		BeanUtil.copy(dto, sessionUser);
+		SessionLoginUser sessionUser = DtoFactory.getDto(SessionLoginUser.class, dto);
 		sessionComponent.setValue(request.getSession(), "sessionUser", sessionUser);
 
 		return getView(DashboardView.TOP);
