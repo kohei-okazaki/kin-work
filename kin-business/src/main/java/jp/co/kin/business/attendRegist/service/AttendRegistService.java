@@ -1,4 +1,4 @@
-package jp.co.kin.dashboard.attendRegist.service;
+package jp.co.kin.business.attendRegist.service;
 
 import java.math.BigDecimal;
 import java.util.List;

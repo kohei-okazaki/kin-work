@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.attendRegist.dto.AttendBusinessCalendar;
+import jp.co.kin.business.attendRegist.service.AttendRegistService;
 import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.log.LoggerFactory;
@@ -27,7 +28,6 @@ import jp.co.kin.common.util.DateUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistUnitForm;
-import jp.co.kin.dashboard.attendRegist.service.AttendRegistService;
 import jp.co.kin.dashboard.exception.DashboardErrorCode;
 import jp.co.kin.dashboard.exception.DashboardException;
 import jp.co.kin.dashboard.type.DashboardView;
@@ -96,7 +96,6 @@ public class AttendRegistController implements BaseViewController {
 		selectedCalendar.set(Calendar.YEAR, Integer.valueOf(year));
 		selectedCalendar.set(Calendar.MONTH, Integer.valueOf(month) - 1);
 
-		System.out.println("最終日=" + selectedCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
 		for (int i = 0; i < selectedCalendar.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
 			Calendar cal = selectedCalendar;
 			cal.set(Calendar.DATE, i + 1);
@@ -120,7 +119,6 @@ public class AttendRegistController implements BaseViewController {
 	public String confirm(Model model, @Valid AttendRegistForm form, BindingResult result) {
 
 		if (result.hasErrors()) {
-			result.getFieldErrors().parallelStream().forEach(e -> System.out.println(e.getField()));
 			return getRedirectView(DashboardView.ATTEND_REGIST_INPUT);
 		}
 

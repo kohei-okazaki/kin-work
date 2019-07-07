@@ -1,4 +1,4 @@
-package jp.co.kin.dashboard.attendRegist.service.impl;
+package jp.co.kin.business.attendRegist.service.impl;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -7,9 +7,9 @@ import java.util.stream.Stream;
 
 import org.springframework.stereotype.Service;
 
+import jp.co.kin.business.attendRegist.service.AttendRegistService;
 import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.util.DateUtil;
-import jp.co.kin.dashboard.attendRegist.service.AttendRegistService;
 
 @Service
 public class AttendRegistServiceImpl implements AttendRegistService {
