@@ -12,12 +12,33 @@ public class CalendarUtil {
 	private CalendarUtil() {
 	}
 
+	/**
+	 * システム日付のカレンダーを返す
+	 *
+	 * @return カレンダー
+	 */
 	public static Calendar getSysCalendar() {
 		return Calendar.getInstance();
 	}
 
+	/**
+	 * システム日付のカレンダーの最終日を返す
+	 *
+	 * @return 最終日
+	 */
 	public static int getLastDay() {
-		return getSysCalendar().getActualMaximum(Calendar.DATE);
+		return getLastDay(getSysCalendar());
+	}
+
+	/**
+	 * 指定されたカレンダーの最終日を返す
+	 *
+	 * @param c
+	 *            カレンダー
+	 * @return 最終日
+	 */
+	public static int getLastDay(Calendar c) {
+		return c.getActualMaximum(Calendar.DATE);
 	}
 
 	public static Calendar toCalendar(Date date) {
@@ -26,6 +47,14 @@ public class CalendarUtil {
 		return calendar;
 	}
 
+	/**
+	 * 指定したカレンダーから対応する曜日を返す
+	 *
+	 * @see CalendarUtil#WEEK_DAY
+	 * @param c
+	 *            カレンダー
+	 * @return 曜日
+	 */
 	public static String getWeekDay(Calendar c) {
 		return WEEK_DAY.get(c.get(Calendar.DAY_OF_WEEK) - 1);
 	}
