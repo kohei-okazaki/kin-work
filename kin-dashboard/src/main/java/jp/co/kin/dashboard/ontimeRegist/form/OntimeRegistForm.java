@@ -1,4 +1,4 @@
-package jp.co.kin.dashboard.ontime.form;
+package jp.co.kin.dashboard.ontimeRegist.form;
 
 import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;

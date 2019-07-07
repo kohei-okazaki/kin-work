@@ -1,4 +1,4 @@
-package jp.co.kin.dashboard.ontime.controller;
+package jp.co.kin.dashboard.ontimeRegist.controller;
 
 import javax.validation.Valid;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.session.annotation.CsrfToken;
-import jp.co.kin.dashboard.ontime.form.OntimeRegistForm;
+import jp.co.kin.dashboard.ontimeRegist.form.OntimeRegistForm;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 
