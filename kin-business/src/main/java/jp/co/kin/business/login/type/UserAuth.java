@@ -17,6 +17,7 @@ public enum UserAuth implements BaseEnum {
 	/** 管理者 */
 	MANAGE("1");
 
+	/** 値 */
 	private String value;
 
 	private UserAuth(String value) {

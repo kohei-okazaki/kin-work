@@ -10,10 +10,9 @@ import jp.co.kin.tool.type.AccessType;
 /**
  * Setter
  *
- * @param <T>
- *            任意の型
+ * @param 任意の型
  */
-public class Setter<T> extends Method<T> {
+public class Setter extends Method {
 
 	/** 接頭語 */
 	private static final String PREFIX = "set";
@@ -24,7 +23,7 @@ public class Setter<T> extends Method<T> {
 	 * @param field
 	 *            Field
 	 */
-	public Setter(Field<T> field) {
+	public Setter(Field field) {
 		this(field, AccessType.PUBLIC);
 	}
 
@@ -36,7 +35,7 @@ public class Setter<T> extends Method<T> {
 	 * @param accessType
 	 *            アクセスタイプ
 	 */
-	public Setter(Field<T> field, AccessType accessType) {
+	public Setter(Field field, AccessType accessType) {
 		super(field, accessType);
 	}
 

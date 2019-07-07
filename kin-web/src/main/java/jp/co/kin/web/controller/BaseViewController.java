@@ -1,5 +1,6 @@
 package jp.co.kin.web.controller;
 
+import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.web.view.BaseView;
 
 /**
@@ -12,6 +13,6 @@ public interface BaseViewController extends BaseController {
 	}
 
 	public default String getRedirectView(BaseView view) {
-		return "redirect:" + view.getName();
+		return "redirect:" + view.getName().split(StringUtil.THRASH)[1];
 	}
 }

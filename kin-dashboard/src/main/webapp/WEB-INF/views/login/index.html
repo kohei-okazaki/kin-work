@@ -13,8 +13,8 @@
 </head>
 <body>
 
-  <div class="login">
-    <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}" data-sal="slide-up" novalidate>
+  <div class="login" data-sal="slide-up">
+    <form id="loginForm" action="./top" th:action="@{./top}" method="post" th:object="${loginForm}" novalidate>
 
       <div th:if="${errorMessage} != null" data-sal="slide-up">
         <div class="errorMessage" data-sal="slide-up">

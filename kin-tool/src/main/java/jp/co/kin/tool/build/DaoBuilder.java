@@ -3,7 +3,6 @@ package jp.co.kin.tool.build;
 import java.util.Map.Entry;
 import java.util.StringJoiner;
 
-import org.apache.poi.ss.formula.functions.T;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Delete;
 import org.seasar.doma.Insert;
@@ -30,7 +29,6 @@ import jp.co.kin.tool.type.ExecuteType;
 
 public class DaoBuilder extends SourceBuilder {
 
-	@SuppressWarnings("unchecked")
 	@Build
 	public void execute() {
 		Excel excel = super.reader.read();
@@ -51,23 +49,23 @@ public class DaoBuilder extends SourceBuilder {
 					}
 					source.setClassName(toJavaFileName(getPhysicalName(row)) + "Dao");
 
-					Class<T> entityClass = (Class<T>) Class
+					Class<?> entityClass = Class
 							.forName("jp.co.kin.db.entity." + toJavaFileName(getPhysicalName(row)));
-					Field<T> field = new Field<T>("", "", entityClass, null);
+					Field field = new Field("", "", entityClass, null);
 
 					if (!isCreatedDeleteMethod) {
-						Method<T> deleteMethod = getDeleteMethod(field, source);
+						Method deleteMethod = getDeleteMethod(field, source);
 						source.addMethod(deleteMethod);
 						isCreatedDeleteMethod = true;
 					}
 					if (!isCreatedUpdateMethod) {
-						Method<T> updatMethod = getUpdatMethod(field, source);
+						Method updatMethod = getUpdatMethod(field, source);
 						source.addMethod(updatMethod);
 						isCreatedUpdateMethod = true;
 					}
 
 					if (!isCreatedInsertMethod) {
-						Method<T> insertMethod = getCreateMethod(field, source);
+						Method insertMethod = getCreateMethod(field, source);
 						source.addMethod(insertMethod);
 						isCreatedInsertMethod = true;
 					}
@@ -96,9 +94,9 @@ public class DaoBuilder extends SourceBuilder {
 		source.addImport(new Import(DaoRepository.class));
 	}
 
-	private Method<T> getDeleteMethod(Field<T> field, JavaSource source) {
+	private Method getDeleteMethod(Field field, JavaSource source) {
 
-		Method<T> deleteMethod = new Method<T>(field, AccessType.PUBLIC) {
+		Method deleteMethod = new Method(field, AccessType.PUBLIC) {
 
 			@Override
 			protected String getMethodName() {
@@ -129,9 +127,9 @@ public class DaoBuilder extends SourceBuilder {
 		return deleteMethod;
 	}
 
-	private Method<T> getUpdatMethod(Field<T> field, JavaSource source) {
+	private Method getUpdatMethod(Field field, JavaSource source) {
 
-		Method<T> updateMethod = new Method<T>(field, AccessType.PUBLIC) {
+		Method updateMethod = new Method(field, AccessType.PUBLIC) {
 
 			@Override
 			protected String getMethodName() {
@@ -162,9 +160,9 @@ public class DaoBuilder extends SourceBuilder {
 		return updateMethod;
 	}
 
-	private Method<T> getCreateMethod(Field<T> field, JavaSource source) {
+	private Method getCreateMethod(Field field, JavaSource source) {
 
-		Method<T> createMethod = new Method<T>(field, AccessType.PUBLIC) {
+		Method createMethod = new Method(field, AccessType.PUBLIC) {
 
 			@Override
 			protected String getMethodName() {

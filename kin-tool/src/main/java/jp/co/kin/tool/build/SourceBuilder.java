@@ -169,7 +169,7 @@ public abstract class SourceBuilder extends BaseBuilder {
 		return " " + prefix + " " + body.toString();
 	}
 
-	protected String buildMethods(List<Method<?>> methodList) {
+	protected String buildMethods(List<Method> methodList) {
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE + StringUtil.NEW_LINE);
 		methodList.stream().forEach(e -> body.add(e.toString()));
 		return body.toString();

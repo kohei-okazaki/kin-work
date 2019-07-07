@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ログインユーザ登録画面</title>
+<title>勤怠登録画面</title>
 <link rel="icon" type="image/png" href="../resources/image/favicon.ico" th:href="@{/resources/image/favicon.ico}">
 <link rel="stylesheet" type="text/css" href="../resources/css/loginLayout.css" th:href="@{/resources/css/loginLayout.min.css}">
 <link rel="stylesheet" type="text/css" href="../resources/css/lib/validationEngine.jquery.css" th:href="@{/resources/css/lib/validationEngine.jquery.min.css}">
@@ -12,23 +12,23 @@
 </head>
 <body>
 
-  <div class="login">
-    <div class="heading">
-      <form id="attendRegistForm" action="./top" th:action="@{./top}" method="post" th:object="${attendRegistForm}"  data-sal="slide-up">
-        <div th:if="${errorMessage} != null" data-sal="slide-up">
-          <div class="errorMessage" data-sal="slide-up">
-            <p th:text="${errorMessage}"></p>
-          </div>
+  <div align="center" class="contentLayout" data-sal="slide-up">
+
+    <h2>勤怠登録完了画面</h2>
+    <form id="attendRegistForm" action="./top" th:action="@{./top}" method="post" th:object="${attendRegistForm}" novalidate>
+      <div th:if="${errorMessage} != null" data-sal="slide-up">
+        <div class="errorMessage" data-sal="slide-up">
+          <p th:text="${errorMessage}"></p>
         </div>
-        <!--/* table部ここから */-->
-        <div class="table">
-          <div class="table-row">
-            <div class="table-data">完了しました</div>
-          </div>
+      </div>
+      <!--/* table部ここから */-->
+      <div class="table">
+        <div class="table-row">
+          <div class="table-data">完了しました</div>
         </div>
-        <!--/* table部ここまで */-->
-      </form>
-    </div>
+      </div>
+      <!--/* table部ここまで */-->
+    </form>
   </div>
 
   <br>

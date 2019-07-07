@@ -24,11 +24,6 @@ public enum ResultType implements BaseEnum {
 		return this.value;
 	}
 
-	/**
-	 * messageを返す
-	 *
-	 * @return message
-	 */
 	public String getMessage() {
 		return this.message;
 	}

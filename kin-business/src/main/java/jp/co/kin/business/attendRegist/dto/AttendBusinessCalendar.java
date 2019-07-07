@@ -1,15 +1,17 @@
-package jp.co.kin.business.attendRegist;
+package jp.co.kin.business.attendRegist.dto;
 
 import java.math.BigDecimal;
 
-public class AttendBusinessCalendor {
+import jp.co.kin.common.bean.BaseDto;
+
+public class AttendBusinessCalendar implements BaseDto {
 
 	private BigDecimal day;
 	private String weekDay;
 
 	/**
 	 * dayを返す
-	 * 
+	 *
 	 * @return day
 	 *
 	 */
@@ -19,7 +21,7 @@ public class AttendBusinessCalendor {
 
 	/**
 	 * dayを設定する
-	 * 
+	 *
 	 * @param day
 	 *            day
 	 *
@@ -30,7 +32,7 @@ public class AttendBusinessCalendor {
 
 	/**
 	 * weekDayを返す
-	 * 
+	 *
 	 * @return weekDay
 	 *
 	 */
@@ -40,7 +42,7 @@ public class AttendBusinessCalendor {
 
 	/**
 	 * weekDayを設定する
-	 * 
+	 *
 	 * @param weekDay
 	 *            weekDay
 	 *

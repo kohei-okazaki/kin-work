@@ -18,15 +18,15 @@ public enum ColumnType implements BaseEnum {
 	/** INT */
 	INT("INT", BigDecimal.class);
 
-	private ColumnType(String value, Class<?> classType) {
-		this.value = value;
-		this.classType = classType;
-	}
-
 	/** 値 */
 	private String value;
 	/** クラス型 */
 	private Class<?> classType;
+
+	private ColumnType(String value, Class<?> classType) {
+		this.value = value;
+		this.classType = classType;
+	}
 
 	@Override
 	public String getValue() {

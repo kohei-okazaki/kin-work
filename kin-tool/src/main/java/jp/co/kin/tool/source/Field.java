@@ -3,23 +3,23 @@ package jp.co.kin.tool.source;
 import java.util.Map;
 import java.util.StringJoiner;
 
+import org.apache.poi.ss.formula.functions.T;
+
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.type.AccessType;
 
 /**
  * Field
  *
- * @param <T>
- *            任意の型
  */
-public class Field<T> {
+public class Field {
 
 	/** フィールド名 */
 	private String name;
 	/** コメント */
 	private String comment;
 	/** 型 */
-	private Class<T> classType;
+	private Class<?> classType;
 	/** アクセスタイプ */
 	private AccessType accessType;
 	/** AnnotationMap */
@@ -37,7 +37,7 @@ public class Field<T> {
 	 * @param annotationMap
 	 *            AnnotationMap
 	 */
-	public Field(String name, String comment, Class<T> classType, Map<Class<?>, String> annotationMap) {
+	public Field(String name, String comment, Class<?> classType, Map<Class<?>, String> annotationMap) {
 		this(name, comment, classType, AccessType.PRIVATE, annotationMap);
 	}
 
@@ -55,7 +55,7 @@ public class Field<T> {
 	 * @param annotationMap
 	 *            AnnotationMap
 	 */
-	public Field(String name, String comment, Class<T> classType, AccessType accessType,
+	public Field(String name, String comment, Class<?> classType, AccessType accessType,
 			Map<Class<?>, String> annotationMap) {
 		this.name = name;
 		this.comment = comment;

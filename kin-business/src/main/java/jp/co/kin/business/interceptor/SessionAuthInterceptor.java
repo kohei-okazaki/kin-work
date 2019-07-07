@@ -16,9 +16,13 @@ import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.CommonErrorCode;
 import jp.co.kin.common.exception.SystemException;
+import jp.co.kin.common.log.Logger;
+import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.web.iterceptor.BaseWebInterceptor;
 
 public class SessionAuthInterceptor extends BaseWebInterceptor {
+
+	private static final Logger LOG = LoggerFactory.getLogger(SessionAuthInterceptor.class);
 
 	@Autowired
 	private SessionComponent sessionComponent;
@@ -40,6 +44,7 @@ public class SessionAuthInterceptor extends BaseWebInterceptor {
 			SessionLoginUser sessionLoginUser = sessionComponent
 					.getValue(session, "sessionUser", SessionLoginUser.class).orElseThrow(
 							() -> new SystemException(CommonErrorCode.SESSION_ILLEGAL, "session情報が不正です"));
+			LOG.infoRes(sessionLoginUser);
 
 			LoginUserDataDto dto = DtoFactory.getNullableDto(LoginUserDataDto.class, sessionLoginUser)
 					.orElseThrow(

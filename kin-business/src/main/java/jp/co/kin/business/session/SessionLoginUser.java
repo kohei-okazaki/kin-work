@@ -1,12 +1,13 @@
 package jp.co.kin.business.session;
 
+import jp.co.kin.common.bean.BaseDto;
 import jp.co.kin.common.log.annotation.Mask;
 
 /**
- * session上で保持するログインユーザ
+ * session上で保持するログインユーザ情報
  *
  */
-public class SessionLoginUser {
+public class SessionLoginUser implements BaseDto {
 
 	/** ログインID */
 	private String loginId;
@@ -15,6 +16,8 @@ public class SessionLoginUser {
 	private String password;
 	/** ユーザ名 */
 	private String userName;
+	/** ユーザ権限 */
+	private String userAuth;
 
 	/**
 	 * loginIdを返す
@@ -77,6 +80,27 @@ public class SessionLoginUser {
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	/**
+	 * userAuthを返す
+	 *
+	 * @return userAuth
+	 *
+	 */
+	public String getUserAuth() {
+		return userAuth;
+	}
+
+	/**
+	 * userAuthを設定する
+	 *
+	 * @param userAuth
+	 *            userAuth
+	 *
+	 */
+	public void setUserAuth(String userAuth) {
+		this.userAuth = userAuth;
 	}
 
 }

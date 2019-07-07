@@ -14,6 +14,7 @@
   <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver" />
 
   <context:component-scan base-package="jp.co.kin.dashboard.*.controller" />
+  <context:component-scan base-package="jp.co.kin.dashboard.*.service.impl" />
   <context:component-scan base-package="jp.co.kin.dashboard.exception" />
 
   <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
@@ -21,6 +22,7 @@
       <list>
         <value>META-INF/messages</value>
         <value>META-INF/commonErrorCode</value>
+        <value>META-INF/dashboardErrorCode</value>
       </list>
     </property>
   </bean>

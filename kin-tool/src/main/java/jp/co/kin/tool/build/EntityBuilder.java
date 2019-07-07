@@ -36,7 +36,6 @@ import jp.co.kin.tool.type.ExecuteType;
 public class EntityBuilder extends SourceBuilder {
 
 	@Build
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void execute() {
 
 		Excel excel = super.reader.read();
@@ -53,7 +52,7 @@ public class EntityBuilder extends SourceBuilder {
 				source.setClassName(toJavaFileName(getPhysicalName(row)));
 
 				// fieldの設定
-				Field<?> field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
+				Field field = new Field(toCamelCase(getFieldName(row)), getColumnComment(row),
 						getClassType(row), getFieldAnnotationMap(row, source));
 				source.addField(field);
 
@@ -62,11 +61,11 @@ public class EntityBuilder extends SourceBuilder {
 				source.addImport(im);
 
 				// setterの設定
-				Setter<?> setter = new Setter(field);
+				Setter setter = new Setter(field);
 				source.addMethod(setter);
 
 				// getterの設定
-				Getter<?> getter = new Getter(field);
+				Getter getter = new Getter(field);
 				source.addMethod(getter);
 			}
 
@@ -156,7 +155,7 @@ public class EntityBuilder extends SourceBuilder {
 		return result.toString();
 	}
 
-	private String buildFields(List<Field<?>> fieldList) {
+	private String buildFields(List<Field> fieldList) {
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
 		fieldList.stream().forEach(e -> body.add(e.toString()));
 		return body.toString();

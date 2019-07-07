@@ -27,9 +27,9 @@ public class JavaSource {
 	/** クラスに付与するアノテーションのリスト */
 	private Map<Class<?>, String> classAnnotationMap;
 	/** フィールド情報のリスト */
-	private List<Field<?>> fieldList;
+	private List<Field> fieldList;
 	/** メソッドのリスト */
-	private List<Method<?>> methodList;
+	private List<Method> methodList;
 
 	/**
 	 * コンストラクタ
@@ -142,7 +142,7 @@ public class JavaSource {
 	 *
 	 * @return extendsClass
 	 */
-	public Class<?> getExtendsClass() {
+	public Class getExtendsClass() {
 		return extendsClass;
 	}
 
@@ -152,7 +152,7 @@ public class JavaSource {
 	 * @param extendsClass
 	 *            継承クラス
 	 */
-	public void setExtendsClass(Class<?> extendsClass) {
+	public void setExtendsClass(Class extendsClass) {
 		this.extendsClass = extendsClass;
 	}
 
@@ -161,7 +161,7 @@ public class JavaSource {
 	 *
 	 * @return fieldList
 	 */
-	public List<Field<?>> getFieldList() {
+	public List<Field> getFieldList() {
 		return fieldList;
 	}
 
@@ -171,7 +171,7 @@ public class JavaSource {
 	 * @param field
 	 *            フィールド
 	 */
-	public void addField(Field<?> field) {
+	public void addField(Field field) {
 		this.fieldList.add(field);
 	}
 
@@ -180,7 +180,7 @@ public class JavaSource {
 	 *
 	 * @return methodList
 	 */
-	public List<Method<?>> getMethodList() {
+	public List<Method> getMethodList() {
 		return methodList;
 	}
 
@@ -190,7 +190,7 @@ public class JavaSource {
 	 * @param method
 	 *            メソッド
 	 */
-	public void addMethod(Method<?> method) {
+	public void addMethod(Method method) {
 		this.methodList.add(method);
 	}
 
@@ -225,7 +225,7 @@ public class JavaSource {
 
 	/**
 	 * クラスアノテーションを追加する
-	 * 
+	 *
 	 * @param clazz
 	 *            アノテーションのクラス型
 	 * @param value

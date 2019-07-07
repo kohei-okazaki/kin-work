@@ -3,6 +3,8 @@ package jp.co.kin.common.util;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.springframework.util.StringUtils;
+
 /**
  * 文字列のUtilクラス
  */
@@ -141,6 +143,17 @@ public class StringUtil {
 		StringBuilder result = new StringBuilder();
 		Stream.of(bArray).forEach(b -> result.append(String.format("%02x", b)));
 		return result.toString();
+	}
+
+	/**
+	 * {@link org.springframework.util.StringUtils#capitalize(String)} のラッパーメソッド
+	 * 
+	 * @param str
+	 *            対象文字列
+	 * @return
+	 */
+	public static String capitalize(String str) {
+		return StringUtils.capitalize(str);
 	}
 
 	/**

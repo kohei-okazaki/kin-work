@@ -1,8 +1,9 @@
 package jp.co.kin.dashboard.attendRegist.form;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import jp.co.kin.web.form.BaseForm;
 
@@ -12,112 +13,33 @@ import jp.co.kin.web.form.BaseForm;
  */
 public class AttendRegistForm implements BaseForm {
 
-	/** 日にちリスト */
-	private List<BigDecimal> dayList;
-	/** 曜日リスト */
-	private List<String> weekDayList;
-	/** 始業時間リスト */
-	private List<String> workStartTimeList;
-	/** 終業時間リスト */
-	private List<String> workEndTimeList;
+	/** 1行あたりの勤怠データ */
+	@Valid
+	private List<AttendRegistUnitForm> registFormList;
 
 	public AttendRegistForm() {
-		this.dayList = new ArrayList<>();
-		this.weekDayList = new ArrayList<>();
-		this.workStartTimeList = new ArrayList<>();
-		this.workEndTimeList = new ArrayList<>();
+		this.registFormList = new ArrayList<>();
 	}
 
 	/**
-	 * dayListを返す
+	 * registFormListを返す
 	 *
-	 * @return dayList
+	 * @return registFormList
 	 *
 	 */
-	public List<BigDecimal> getDayList() {
-		return dayList;
+	public List<AttendRegistUnitForm> getRegistFormList() {
+		return registFormList;
 	}
 
 	/**
-	 * dayListを設定する
+	 * registFormListを設定する
 	 *
-	 * @param dayList
-	 *            dayList
-	 *
-	 */
-	public void setDayList(List<BigDecimal> dayList) {
-		this.dayList = dayList;
-	}
-
-	public void addDay(BigDecimal day) {
-		this.dayList.add(day);
-	}
-
-	/**
-	 * weekDayListを返す
-	 *
-	 * @return weekDayList
+	 * @param registFormList
+	 *            registFormList
 	 *
 	 */
-	public List<String> getWeekDayList() {
-		return weekDayList;
-	}
-
-	/**
-	 * weekDayListを設定する
-	 *
-	 * @param weekDayList
-	 *            weekDayList
-	 *
-	 */
-	public void setWeekDayList(List<String> weekDayList) {
-		this.weekDayList = weekDayList;
-	}
-
-	public void addWeekDay(String weekDay) {
-		this.weekDayList.add(weekDay);
-	}
-
-	/**
-	 * workStartTimeListを返す
-	 *
-	 * @return workStartTimeList
-	 *
-	 */
-	public List<String> getWorkStartTimeList() {
-		return workStartTimeList;
-	}
-
-	/**
-	 * workStartTimeListを設定する
-	 *
-	 * @param workStartTimeList
-	 *            workStartTimeList
-	 *
-	 */
-	public void setWorkStartTimeList(List<String> workStartTimeList) {
-		this.workStartTimeList = workStartTimeList;
-	}
-
-	/**
-	 * workEndTimeListを返す
-	 *
-	 * @return workEndTimeList
-	 *
-	 */
-	public List<String> getWorkEndTimeList() {
-		return workEndTimeList;
-	}
-
-	/**
-	 * workEndTimeListを設定する
-	 *
-	 * @param workEndTimeList
-	 *            workEndTimeList
-	 *
-	 */
-	public void setWorkEndTimeList(List<String> workEndTimeList) {
-		this.workEndTimeList = workEndTimeList;
+	public void setRegistFormList(List<AttendRegistUnitForm> registFormList) {
+		this.registFormList = registFormList;
 	}
 
 }

@@ -283,12 +283,12 @@ public class FileUtil {
 		/** system */
 		SYSTEM(FileSystems.getDefault().getSeparator());
 
+		/** セパレータ */
+		private String value;
+
 		private FileSeparator(String value) {
 			this.value = value;
 		}
-
-		/** セパレータ */
-		private String value;
 
 		public boolean is(FileSeparator separator) {
 			return this == separator;
