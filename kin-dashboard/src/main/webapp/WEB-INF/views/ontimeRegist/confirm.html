@@ -17,32 +17,34 @@
     <h2>定時登録確認画面</h2>
     <form id="ontimeRegistForm" action="./complete" th:action="@{./complete}" method="post" th:object="${ontimeRegistForm}" novalidate>
 
-      <div class="errorMessage" th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
-      <div class="errorMessage" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" data-sal="slide-up"></div>
-      <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
-      <div class="errorMessage" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" data-sal="slide-up"></div>
+      <div th:if="${errorMessage} != null" data-sal="slide-up">
+        <div class="errorMessage" data-sal="slide-up">
+          <p th:text="${errorMessage}"></p>
+        </div>
+      </div>
 
-      <input type="hidden" th:field="*{loginId}">
-      <input type="hidden" th:field="*{password}">
-      <input type="hidden" th:field="*{userName}">
+      <div class="errorMessage" th:if="${#fields.hasErrors('workStartHour')}" th:errors="*{workStartHour}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('workStartMinute')}" th:errors="*{workStartMinute}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('workEndHour')}" th:errors="*{workEndHour}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('workEndMinute')}" th:errors="*{workEndMinute}" data-sal="slide-up"></div>
+
+      <input type="hidden" th:field="*{workStartHour}">
+      <input type="hidden" th:field="*{workStartMinute}">
+      <input type="hidden" th:field="*{workEndHour}">
+      <input type="hidden" th:field="*{workEndMinute}">
+
       <!--/* table部ここから */-->
       <div class="table">
         <div class="table-row">
-          <div class="table-data" th:text="#{loginId}"></div>
+          <div class="table-data" th:text="#{workStartTime}"></div>
           <div class="table-data">
-            <p th:text="*{loginId}"></p>
+            <p th:text="*{workStartHour} + ' : ' + *{workStartMinute}"></p>
           </div>
         </div>
         <div class="table-row">
-          <div class="table-data" th:text="#{password}"></div>
+          <div class="table-data" th:text="#{workEndTime}"></div>
           <div class="table-data">
-            <p th:text="*{password}"></p>
-          </div>
-        </div>
-        <div class="table-row">
-          <div class="table-data" th:text="#{userName}"></div>
-          <div class="table-data">
-            <p th:text="*{userName}"></p>
+            <p th:text="*{workEndHour} + ' : ' + *{workEndMinute}"></p>
           </div>
         </div>
       </div>
