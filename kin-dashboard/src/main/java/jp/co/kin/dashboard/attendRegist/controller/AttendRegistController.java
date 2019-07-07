@@ -57,7 +57,7 @@ public class AttendRegistController implements BaseViewController {
 	public String input(Model model, HttpServletRequest request) {
 
 		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
-		for (int i = 0; i < Calendar.getInstance().getActualMaximum(Calendar.DATE); i++) {
+		for (int i = 0; i < CalendarUtil.getLastDay(); i++) {
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.DATE, i + 1);
 
@@ -110,7 +110,7 @@ public class AttendRegistController implements BaseViewController {
 		selectedCalendar.set(Calendar.YEAR, Integer.valueOf(year));
 		selectedCalendar.set(Calendar.MONTH, Integer.valueOf(month) - 1);
 
-		for (int i = 0; i < selectedCalendar.getActualMaximum(Calendar.DAY_OF_MONTH); i++) {
+		for (int i = 0; i < CalendarUtil.getLastDay(selectedCalendar); i++) {
 			Calendar cal = selectedCalendar;
 			cal.set(Calendar.DATE, i + 1);
 
