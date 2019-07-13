@@ -1,5 +1,7 @@
 package jp.co.kin.db.dao;
 
+import java.util.List;
+
 import org.seasar.doma.Dao;
 import org.seasar.doma.Delete;
 import org.seasar.doma.Insert;
@@ -30,5 +32,8 @@ public interface OntimeMtDao extends BaseDao {
 
 	@Update(sqlFile = true)
 	public int updateEntity(OntimeMt entity);
+
+	@Select
+	public List<OntimeMt> select();
 
 }

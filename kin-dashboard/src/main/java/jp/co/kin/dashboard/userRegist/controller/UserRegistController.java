@@ -1,5 +1,8 @@
 package jp.co.kin.dashboard.userRegist.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -12,11 +15,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.kin.business.db.search.OntimeMtSearchService;
 import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.business.session.annotation.SessionNonAuth;
 import jp.co.kin.business.userRegist.dto.UserRegistDto;
 import jp.co.kin.business.userRegist.service.LoginUserRegistService;
 import jp.co.kin.common.bean.DtoFactory;
+import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.dashboard.userRegist.form.UserRegistForm;
 import jp.co.kin.web.controller.BaseViewController;
@@ -31,6 +36,8 @@ public class UserRegistController implements BaseViewController {
 
 	@Autowired
 	private LoginUserRegistService loginUserRegistService;
+	@Autowired
+	private OntimeMtSearchService ontimeMtSearchService;
 
 	@ModelAttribute("userRegistForm")
 	public UserRegistForm setUpForm() {
@@ -39,7 +46,12 @@ public class UserRegistController implements BaseViewController {
 
 	@SessionNonAuth
 	@GetMapping("/input")
-	public String input() {
+	public String input(Model model) {
+		// 定時情報を取得
+		List<String> companyCodeList = ontimeMtSearchService.search().stream().map(e -> e.getCompanyCode())
+				.collect(Collectors.toList());
+		companyCodeList.stream().forEach(e -> LoggerFactory.getLogger(UserRegistController.class).info(e));
+		model.addAttribute("companyCodeList", companyCodeList);
 		return getView(DashboardView.USER_REGIST_INPUT);
 	}
 

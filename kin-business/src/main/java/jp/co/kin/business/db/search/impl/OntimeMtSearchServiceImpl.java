@@ -1,5 +1,8 @@
 package jp.co.kin.business.db.search.impl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,13 @@ public class OntimeMtSearchServiceImpl implements OntimeMtSearchService {
 
 	@Autowired
 	private OntimeMtDao dao;
+
+	@Override
+	public List<OntimeDto> search() {
+		List<OntimeMt> mtList = dao.select();
+		return mtList.stream().map(e -> DtoFactory.getDto(OntimeDto.class, e))
+				.collect(Collectors.toList());
+	}
 
 	@Override
 	public OntimeDto searchByCompanyCode(String companyCode) {
