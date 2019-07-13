@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.attendRegist.dto.AttendBusinessCalendar;
 import jp.co.kin.business.attendRegist.service.AttendRegistService;
-import jp.co.kin.business.db.search.OntimeMtSearchService;
 import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.business.session.annotation.CsrfToken;
@@ -45,8 +44,6 @@ public class AttendRegistController implements BaseViewController {
 	private SessionComponent sessionComponent;
 	@Autowired
 	private AttendRegistService attendRegistService;
-	@Autowired
-	private OntimeMtSearchService ontimeMtSearchService;
 
 	@ModelAttribute("attendRegistForm")
 	public AttendRegistForm setUpForm() {
@@ -80,9 +77,9 @@ public class AttendRegistController implements BaseViewController {
 		model.addAttribute("monthList", attendRegistService.getMonthList());
 
 		// 定時情報を取得する
-		String loginId = sessionComponent.getValue(request.getSession(), "sessionUser",
-				SessionLoginUser.class).get().getLoginId();
-		OntimeDto ontimeDto = ontimeMtSearchService.searchByCompanyCode(loginId);
+		String userId = sessionComponent.getValue(request.getSession(), "sessionUser",
+				SessionLoginUser.class).get().getUserId();
+		OntimeDto ontimeDto = attendRegistService.getOntimeDto(userId);
 		model.addAttribute("ontimeDto", ontimeDto);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
@@ -124,9 +121,9 @@ public class AttendRegistController implements BaseViewController {
 		model.addAttribute("calendarList", calendarList);
 
 		// 定時情報を取得する
-		String loginId = sessionComponent.getValue(request.getSession(), "sessionUser",
-				SessionLoginUser.class).get().getLoginId();
-		OntimeDto ontimeDto = ontimeMtSearchService.searchByCompanyCode(loginId);
+		String userId = sessionComponent.getValue(request.getSession(), "sessionUser",
+				SessionLoginUser.class).get().getUserId();
+		OntimeDto ontimeDto = attendRegistService.getOntimeDto(userId);
 		model.addAttribute("ontimeDto", ontimeDto);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
@@ -142,12 +139,7 @@ public class AttendRegistController implements BaseViewController {
 
 		for (int i = 0; i < form.getRegistFormList().size(); i++) {
 			AttendRegistUnitForm f = form.getRegistFormList().get(i);
-			LoggerFactory.getLogger(this.getClass()).info(f.getDay().toPlainString());
-			LoggerFactory.getLogger(this.getClass()).info(f.getWeekDay());
-			LoggerFactory.getLogger(this.getClass()).info(f.getWorkStartHour());
-			LoggerFactory.getLogger(this.getClass()).info(f.getWorkStartMinute());
-			LoggerFactory.getLogger(this.getClass()).info(f.getWorkEndHour());
-			LoggerFactory.getLogger(this.getClass()).info(f.getWorkEndMinute());
+			LoggerFactory.getLogger(this.getClass()).infoRes(f);
 		}
 
 		return getView(DashboardView.ATTEND_REGIST_CONFIRM);

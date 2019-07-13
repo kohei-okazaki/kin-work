@@ -18,6 +18,8 @@ public class SessionLoginUser implements BaseDto {
 	private String userName;
 	/** ユーザ権限 */
 	private String userAuth;
+	/** ユーザID */
+	private String userId;
 
 	/**
 	 * loginIdを返す
@@ -101,6 +103,27 @@ public class SessionLoginUser implements BaseDto {
 	 */
 	public void setUserAuth(String userAuth) {
 		this.userAuth = userAuth;
+	}
+
+	/**
+	 * userIdを返す
+	 *
+	 * @return userId
+	 *
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * userIdを設定する
+	 *
+	 * @param userId
+	 *            userId
+	 *
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 }

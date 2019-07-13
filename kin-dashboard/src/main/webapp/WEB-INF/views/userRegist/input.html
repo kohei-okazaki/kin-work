@@ -78,14 +78,12 @@
           </div>
         </div>
 
-        <div class="table-row">&ensp;</div>
-
         <div class="table-row">
           <div class="table-header" th:text="#{companyCode}"></div>
           <div class="table-data">
             <div class="cp_ipselect cp_sl01">
               <select th:field="*{companyCode}">
-                <option th:each="companyCode : ${companyCodeList}" th:value="${companyCode}" th:inline="text">[[${companyCode}]]</option>
+                <option th:each="companyCode : ${companyCodeList}" th:value="${companyCode}" th:selected="${companyCode == selectedCompanyCode}" th:inline="text">[[${companyCode}]]</option>
               </select>
             </div>
           </div>

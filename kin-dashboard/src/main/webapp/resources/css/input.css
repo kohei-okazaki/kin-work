@@ -126,7 +126,7 @@ textarea:focus {
 
 .cp_ipselect {
   overflow: hidden;
-  width: 90%;
+  width: 100%;
   margin: 2em auto;
   text-align: center;
 }

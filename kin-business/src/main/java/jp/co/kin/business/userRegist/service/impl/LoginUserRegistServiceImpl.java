@@ -41,10 +41,13 @@ public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 	private void registLoginUserData(UserRegistDto dto) {
 
 		LoginUserData entity = new LoginUserData();
+
+		dto.setUserId("KC" + dto.getLoginId());
 		BeanUtil.copy(dto, entity);
 
 		entity.setPasswordExpire(loginUserBusinessProperties.getAuthDate());
 		entity.setUserAuth(loginUserBusinessProperties.getUserAuth().getValue());
+
 		loginUserDataCreateService.create(entity);
 
 	}
@@ -53,8 +56,6 @@ public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 
 		UserBaseData entity = new UserBaseData();
 		BeanUtil.copy(dto, entity);
-		String userId = "KC" + dto.getLoginId();
-		entity.setUserId(userId);
 		userBaseDataCreateService.create(entity);
 
 	}

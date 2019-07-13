@@ -22,16 +22,16 @@ public class AttendRegistUnitForm implements BaseForm {
 	@Pattern(regixPattern = RegixType.HALF_CHAR)
 	private String weekDay;
 	/** 始業時間(時) */
-	@Required
+	// @Required
 	private String workStartHour;
 	/** 始業時間(分) */
-	@Required
+	// @Required
 	private String workStartMinute;
 	/** 終業時間(時) */
-	@Required
+	// @Required
 	private String workEndHour;
 	/** 終業時間(分) */
-	@Required
+	// @Required
 	private String workEndMinute;
 
 	/**
@@ -78,7 +78,7 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/**
 	 * workStartHourを返す
-	 * 
+	 *
 	 * @return workStartHour
 	 *
 	 */
@@ -88,7 +88,7 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/**
 	 * workStartHourを設定する
-	 * 
+	 *
 	 * @param workStartHour
 	 *            workStartHour
 	 *
@@ -99,7 +99,7 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/**
 	 * workStartMinuteを返す
-	 * 
+	 *
 	 * @return workStartMinute
 	 *
 	 */
@@ -109,7 +109,7 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/**
 	 * workStartMinuteを設定する
-	 * 
+	 *
 	 * @param workStartMinute
 	 *            workStartMinute
 	 *
@@ -120,7 +120,7 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/**
 	 * workEndHourを返す
-	 * 
+	 *
 	 * @return workEndHour
 	 *
 	 */
@@ -130,7 +130,7 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/**
 	 * workEndHourを設定する
-	 * 
+	 *
 	 * @param workEndHour
 	 *            workEndHour
 	 *
@@ -141,7 +141,7 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/**
 	 * workEndMinuteを返す
-	 * 
+	 *
 	 * @return workEndMinute
 	 *
 	 */
@@ -151,7 +151,7 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/**
 	 * workEndMinuteを設定する
-	 * 
+	 *
 	 * @param workEndMinute
 	 *            workEndMinute
 	 *

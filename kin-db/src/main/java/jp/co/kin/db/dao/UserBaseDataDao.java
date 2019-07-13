@@ -3,6 +3,7 @@ package jp.co.kin.db.dao;
 import org.seasar.doma.Dao;
 import org.seasar.doma.Delete;
 import org.seasar.doma.Insert;
+import org.seasar.doma.Select;
 import org.seasar.doma.Update;
 
 import jp.co.kin.db.config.DaoRepository;
@@ -20,5 +21,8 @@ public interface UserBaseDataDao extends BaseDao {
 
 	@Insert
 	public int insert(UserBaseData entity);
+
+	@Select
+	public UserBaseData selectById(String userId);
 
 }

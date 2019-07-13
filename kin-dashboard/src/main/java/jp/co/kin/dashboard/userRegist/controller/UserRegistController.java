@@ -21,7 +21,6 @@ import jp.co.kin.business.session.annotation.SessionNonAuth;
 import jp.co.kin.business.userRegist.dto.UserRegistDto;
 import jp.co.kin.business.userRegist.service.LoginUserRegistService;
 import jp.co.kin.common.bean.DtoFactory;
-import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.dashboard.userRegist.form.UserRegistForm;
 import jp.co.kin.web.controller.BaseViewController;
@@ -50,7 +49,6 @@ public class UserRegistController implements BaseViewController {
 		// 定時情報を取得
 		List<String> companyCodeList = ontimeMtSearchService.search().stream().map(e -> e.getCompanyCode())
 				.collect(Collectors.toList());
-		companyCodeList.stream().forEach(e -> LoggerFactory.getLogger(UserRegistController.class).info(e));
 		model.addAttribute("companyCodeList", companyCodeList);
 		return getView(DashboardView.USER_REGIST_INPUT);
 	}
@@ -60,6 +58,12 @@ public class UserRegistController implements BaseViewController {
 	@PostMapping("/confirm")
 	public String confirm(Model model, HttpServletRequest request, @Valid UserRegistForm form,
 			BindingResult result) {
+
+		// 定時情報を取得
+		List<String> companyCodeList = ontimeMtSearchService.search().stream().map(e -> e.getCompanyCode())
+				.collect(Collectors.toList());
+		model.addAttribute("companyCodeList", companyCodeList);
+		model.addAttribute("selectedCompanyCode", form.getCompanyCode());
 
 		if (result.hasErrors()) {
 			return getView(DashboardView.USER_REGIST_INPUT);
