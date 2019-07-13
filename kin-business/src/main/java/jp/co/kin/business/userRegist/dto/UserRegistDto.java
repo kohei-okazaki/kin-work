@@ -19,6 +19,10 @@ public class UserRegistDto implements BaseDto {
 	private String confirmPassword;
 	/** ユーザ名 */
 	private String userName;
+	/** 企業コード */
+	private String companyCode;
+	/** ユーザID */
+	private String userId;
 	/** 登録成功フラグ */
 	private boolean isRegistSuccess;
 
@@ -104,6 +108,48 @@ public class UserRegistDto implements BaseDto {
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	/**
+	 * companyCodeを返す
+	 *
+	 * @return companyCode
+	 *
+	 */
+	public String getCompanyCode() {
+		return companyCode;
+	}
+
+	/**
+	 * companyCodeを設定する
+	 *
+	 * @param companyCode
+	 *            companyCode
+	 *
+	 */
+	public void setCompanyCode(String companyCode) {
+		this.companyCode = companyCode;
+	}
+
+	/**
+	 * userIdを返す
+	 *
+	 * @return userId
+	 *
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * userIdを設定する
+	 *
+	 * @param userId
+	 *            userId
+	 *
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**

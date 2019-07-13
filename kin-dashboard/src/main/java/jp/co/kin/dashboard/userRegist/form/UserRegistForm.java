@@ -1,11 +1,13 @@
 package jp.co.kin.dashboard.userRegist.form;
 
 import jp.co.kin.common.log.annotation.Mask;
+import jp.co.kin.common.type.RegixType;
+import jp.co.kin.common.validator.annotation.Pattern;
 import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;
 
 /**
- * ログインユーザ登録画面form
+ * ユーザ登録画面form
  *
  */
 public class UserRegistForm implements BaseForm {
@@ -23,6 +25,10 @@ public class UserRegistForm implements BaseForm {
 	/** ユーザ名 */
 	@Required
 	private String userName;
+	/** 企業コード */
+	@Required
+	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	private String companyCode;
 
 	/**
 	 * loginIdを返す
@@ -106,6 +112,27 @@ public class UserRegistForm implements BaseForm {
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	/**
+	 * companyCodeを返す
+	 *
+	 * @return companyCode
+	 *
+	 */
+	public String getCompanyCode() {
+		return companyCode;
+	}
+
+	/**
+	 * companyCodeを設定する
+	 *
+	 * @param companyCode
+	 *            companyCode
+	 *
+	 */
+	public void setCompanyCode(String companyCode) {
+		this.companyCode = companyCode;
 	}
 
 }

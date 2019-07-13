@@ -21,10 +21,13 @@
       <div class="errorMessage" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('companyCode')}" th:errors="*{companyCode}" data-sal="slide-up"></div>
 
       <input type="hidden" th:field="*{loginId}">
       <input type="hidden" th:field="*{password}">
       <input type="hidden" th:field="*{userName}">
+      <input type="hidden" th:field="*{companyCode}">
+
       <!--/* table部ここから */-->
       <div class="table">
         <div class="table-row">
@@ -43,6 +46,12 @@
           <div class="table-data" th:text="#{userName}"></div>
           <div class="table-data">
             <p th:text="*{userName}"></p>
+          </div>
+        </div>
+        <div class="table-row">
+          <div class="table-data" th:text="#{companyCode}"></div>
+          <div class="table-data">
+            <p th:text="*{companyCode}"></p>
           </div>
         </div>
       </div>

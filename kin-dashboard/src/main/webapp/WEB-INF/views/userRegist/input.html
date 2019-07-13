@@ -28,6 +28,7 @@
       <div class="errorMessage" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('companyCode')}" th:errors="*{companyCode}" data-sal="slide-up"></div>
 
       <!--/* table部ここから */-->
       <div class="table">
@@ -74,6 +75,15 @@
           <div class="table-header" th:text="#{userName}"></div>
           <div class="table-data">
             <input type="text" class="validate[required]" th:field="*{userName}" maxlength="16" />
+          </div>
+        </div>
+
+        <div class="table-row">&ensp;</div>
+
+        <div class="table-row">
+          <div class="table-header" th:text="#{companyCode}"></div>
+          <div class="table-data">
+            <input type="text" class="validate[required]" th:field="*{companyCode}" maxlength="16" />
           </div>
         </div>
       </div>

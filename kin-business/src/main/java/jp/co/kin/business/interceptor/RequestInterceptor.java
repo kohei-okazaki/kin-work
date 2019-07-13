@@ -13,7 +13,6 @@ import jp.co.kin.web.iterceptor.BaseWebInterceptor;
 
 public class RequestInterceptor extends BaseWebInterceptor {
 
-	/** LOG */
 	private static final Logger LOG = LoggerFactory.getLogger(RequestInterceptor.class);
 
 	@Override
