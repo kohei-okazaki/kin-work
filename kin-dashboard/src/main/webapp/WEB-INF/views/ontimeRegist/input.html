@@ -24,6 +24,7 @@
         </div>
       </div>
 
+      <div class="errorMessage" th:if="${#fields.hasErrors('companyCode')}" th:errors="*{companyCode}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('workStartHour')}" th:errors="*{workStartHour}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('workStartMinute')}" th:errors="*{workStartMinute}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('workEndHour')}" th:errors="*{workEndHour}" data-sal="slide-up"></div>
@@ -31,6 +32,12 @@
 
       <!--/* table部ここから */-->
       <div class="table">
+        <div class="table-row">
+          <div class="table-header" th:text="#{companyCode}"></div>
+          <div class="table-data">
+            <input type="text" class="validate[required]" th:field="*{companyCode}" size="10" maxlength="5" />
+          </div>
+        </div>
         <div class="table-row">
           <div class="table-header" th:text="#{workStartTime}"></div>
           <div class="table-data">

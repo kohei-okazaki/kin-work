@@ -1,24 +1,18 @@
-package jp.co.kin.dashboard.ontimeRegist.form;
+package jp.co.kin.business.ontime.dto;
 
-import jp.co.kin.common.validator.annotation.Required;
-import jp.co.kin.web.form.BaseForm;
+import jp.co.kin.common.bean.BaseDto;
 
-public class OntimeRegistForm implements BaseForm {
+public class OntimeDto implements BaseDto {
 
-	/** 企業コード */
-	@Required
+	/** ログインID */
 	private String companyCode;
 	/** 始業時間(時) */
-	@Required
 	private String workStartHour;
 	/** 始業時間(分) */
-	@Required
 	private String workStartMinute;
 	/** 終業時間(時) */
-	@Required
 	private String workEndHour;
 	/** 終業時間(分) */
-	@Required
 	private String workEndMinute;
 
 	/**

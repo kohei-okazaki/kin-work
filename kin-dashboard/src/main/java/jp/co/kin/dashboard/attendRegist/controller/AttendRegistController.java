@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.attendRegist.dto.AttendBusinessCalendar;
 import jp.co.kin.business.attendRegist.service.AttendRegistService;
-import jp.co.kin.business.db.search.OntimeDataSearchService;
-import jp.co.kin.business.ontimeRegist.dto.OntimeRegistDto;
+import jp.co.kin.business.db.search.OntimeMtSearchService;
+import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.common.context.SessionComponent;
@@ -46,7 +46,7 @@ public class AttendRegistController implements BaseViewController {
 	@Autowired
 	private AttendRegistService attendRegistService;
 	@Autowired
-	private OntimeDataSearchService ontimeDataSearchService;
+	private OntimeMtSearchService ontimeMtSearchService;
 
 	@ModelAttribute("attendRegistForm")
 	public AttendRegistForm setUpForm() {
@@ -82,7 +82,7 @@ public class AttendRegistController implements BaseViewController {
 		// 定時情報を取得する
 		String loginId = sessionComponent.getValue(request.getSession(), "sessionUser",
 				SessionLoginUser.class).get().getLoginId();
-		OntimeRegistDto ontimeDto = ontimeDataSearchService.searchByLoginId(loginId);
+		OntimeDto ontimeDto = ontimeMtSearchService.searchByCompanyCode(loginId);
 		model.addAttribute("ontimeDto", ontimeDto);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
@@ -126,7 +126,7 @@ public class AttendRegistController implements BaseViewController {
 		// 定時情報を取得する
 		String loginId = sessionComponent.getValue(request.getSession(), "sessionUser",
 				SessionLoginUser.class).get().getLoginId();
-		OntimeRegistDto ontimeDto = ontimeDataSearchService.searchByLoginId(loginId);
+		OntimeDto ontimeDto = ontimeMtSearchService.searchByCompanyCode(loginId);
 		model.addAttribute("ontimeDto", ontimeDto);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);

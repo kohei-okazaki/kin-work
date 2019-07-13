@@ -15,6 +15,8 @@ public class LoginUserData extends BaseEntity {
 	/** ログインID */
 	@Id
 	private String loginId;
+	/** ユーザID */
+	private String userId;
 	/** ユーザ名 */
 	private String userName;
 	/** パスワード */
@@ -36,6 +38,14 @@ public class LoginUserData extends BaseEntity {
 
 	public String getLoginId() {
 		return loginId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getUserId() {
+		return userId;
 	}
 
 	public void setUserName(String userName) {

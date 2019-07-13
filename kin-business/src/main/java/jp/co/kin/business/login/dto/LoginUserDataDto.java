@@ -6,7 +6,7 @@ import jp.co.kin.common.bean.BaseDto;
 import jp.co.kin.common.log.annotation.Mask;
 
 /**
- * ログイン画面のDTO
+ * ログインユーザのDTO
  *
  */
 public class LoginUserDataDto implements BaseDto {
