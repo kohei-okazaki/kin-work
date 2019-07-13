@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/lib/validationEngine.jquery.css" th:href="@{/resources/css/lib/validationEngine.jquery.min.css}">
 <link rel="stylesheet" type="text/css" href="../resources/css/lib/mprogress.css" th:href="@{/resources/css/lib/mprogress.min.css}">
 <link rel="stylesheet" type="text/css" href="../resources/css/lib/sal.css" th:href="@{/resources/css/lib/sal.min.css}">
-<link rel="stylesheet" type="text/css" href="../resources/css/input.css" th:href="@{/resources/css/input.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/input.css" th:href="@{/resources/css/input.css}">
 </head>
 <body>
 
@@ -20,7 +20,7 @@
 
       <!--/* table部ここから */-->
       <div class="table">
-        <div class="table-row" align="center">
+        <div class="table-row">
           <div class="table-data">
             <div class="cp_ipselect cp_sl01">
               <select id="year" name="year">
@@ -28,6 +28,7 @@
               </select>
             </div>
           </div>
+          <div class="table-data">&nbsp;</div>
           <div class="table-data">
             <div class="cp_ipselect cp_sl01">
               <select id="month" name="month">
@@ -35,6 +36,7 @@
               </select>
             </div>
           </div>
+          <div class="table-data">&nbsp;</div>
           <div class="table-data">
             <input type="button" id="changeCalendar" name="changeCalendar" value="反 映" />
           </div>
@@ -44,7 +46,7 @@
 
       <!--/* table部ここから */-->
       <div class="table">
-        <div class="table-row" align="center">
+        <div class="table-row">
           <div class="table-data" th:text="#{weekDay}"></div>
           <div class="table-data" th:text="#{day}"></div>
           <div class="table-data" th:text="#{workStartTime}"></div>

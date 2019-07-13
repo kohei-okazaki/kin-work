@@ -6,13 +6,15 @@ import jp.co.kin.common.bean.BaseDto;
 import jp.co.kin.common.log.annotation.Mask;
 
 /**
- * ログイン画面のDTO
+ * ログインユーザのDTO
  *
  */
 public class LoginUserDataDto implements BaseDto {
 
 	/** ログインID */
 	private String loginId;
+	/** ユーザID */
+	private String userId;
 	/** パスワード */
 	@Mask
 	private String password;
@@ -46,6 +48,27 @@ public class LoginUserDataDto implements BaseDto {
 	 */
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
+	}
+
+	/**
+	 * userIdを返す
+	 *
+	 * @return userId
+	 *
+	 */
+	public String getUserId() {
+		return userId;
+	}
+
+	/**
+	 * userIdを設定する
+	 *
+	 * @param userId
+	 *            userId
+	 *
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**

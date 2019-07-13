@@ -32,7 +32,10 @@ public class LoginServiceImpl implements LoginService {
 			result.setHasError(true);
 			result.setMessage("validate.login.expired");
 		}
-		BeanUtil.copy(searchDto, dto);
+
+		if (BeanUtil.notNull(searchDto)) {
+			BeanUtil.copy(searchDto, dto);
+		}
 
 		return result;
 	}

@@ -23,11 +23,13 @@
         </div>
       </div>
 
+      <div class="errorMessage" th:if="${#fields.hasErrors('companyCode')}" th:errors="*{companyCode}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('workStartHour')}" th:errors="*{workStartHour}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('workStartMinute')}" th:errors="*{workStartMinute}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('workEndHour')}" th:errors="*{workEndHour}" data-sal="slide-up"></div>
       <div class="errorMessage" th:if="${#fields.hasErrors('workEndMinute')}" th:errors="*{workEndMinute}" data-sal="slide-up"></div>
 
+      <input type="hidden" th:field="*{companyCode}">
       <input type="hidden" th:field="*{workStartHour}">
       <input type="hidden" th:field="*{workStartMinute}">
       <input type="hidden" th:field="*{workEndHour}">
@@ -35,6 +37,12 @@
 
       <!--/* table部ここから */-->
       <div class="table">
+        <div class="table-row">
+          <div class="table-data" th:text="#{companyCode}"></div>
+          <div class="table-data">
+            <p th:text="*{companyCode}">
+          </div>
+        </div>
         <div class="table-row">
           <div class="table-data" th:text="#{workStartTime}"></div>
           <div class="table-data">
@@ -55,6 +63,9 @@
         <div class="table-row">
           <div class="table-data">
             <input type="submit" value="確 認" />
+          </div>
+          <div class="table-data">
+            <input id="reset" type="button" value="戻 る" />
           </div>
         </div>
       </div>
@@ -77,6 +88,10 @@
       sal({
         threshold: 1,
         once: false
+      });
+
+      $("#reset").on("click", function() {
+        history.back();
       });
 
     });

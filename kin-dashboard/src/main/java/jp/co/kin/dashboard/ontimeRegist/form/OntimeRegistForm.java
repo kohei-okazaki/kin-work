@@ -5,6 +5,9 @@ import jp.co.kin.web.form.BaseForm;
 
 public class OntimeRegistForm implements BaseForm {
 
+	/** 企業コード */
+	@Required
+	private String companyCode;
 	/** 始業時間(時) */
 	@Required
 	private String workStartHour;
@@ -19,8 +22,29 @@ public class OntimeRegistForm implements BaseForm {
 	private String workEndMinute;
 
 	/**
+	 * companyCodeを返す
+	 *
+	 * @return companyCode
+	 *
+	 */
+	public String getCompanyCode() {
+		return companyCode;
+	}
+
+	/**
+	 * companyCodeを設定する
+	 *
+	 * @param companyCode
+	 *            companyCode
+	 *
+	 */
+	public void setCompanyCode(String companyCode) {
+		this.companyCode = companyCode;
+	}
+
+	/**
 	 * workStartHourを返す
-	 * 
+	 *
 	 * @return workStartHour
 	 *
 	 */
@@ -30,7 +54,7 @@ public class OntimeRegistForm implements BaseForm {
 
 	/**
 	 * workStartHourを設定する
-	 * 
+	 *
 	 * @param workStartHour
 	 *            workStartHour
 	 *
@@ -41,7 +65,7 @@ public class OntimeRegistForm implements BaseForm {
 
 	/**
 	 * workStartMinuteを返す
-	 * 
+	 *
 	 * @return workStartMinute
 	 *
 	 */
@@ -51,7 +75,7 @@ public class OntimeRegistForm implements BaseForm {
 
 	/**
 	 * workStartMinuteを設定する
-	 * 
+	 *
 	 * @param workStartMinute
 	 *            workStartMinute
 	 *
@@ -62,7 +86,7 @@ public class OntimeRegistForm implements BaseForm {
 
 	/**
 	 * workEndHourを返す
-	 * 
+	 *
 	 * @return workEndHour
 	 *
 	 */
@@ -72,7 +96,7 @@ public class OntimeRegistForm implements BaseForm {
 
 	/**
 	 * workEndHourを設定する
-	 * 
+	 *
 	 * @param workEndHour
 	 *            workEndHour
 	 *
@@ -83,7 +107,7 @@ public class OntimeRegistForm implements BaseForm {
 
 	/**
 	 * workEndMinuteを返す
-	 * 
+	 *
 	 * @return workEndMinute
 	 *
 	 */
@@ -93,7 +117,7 @@ public class OntimeRegistForm implements BaseForm {
 
 	/**
 	 * workEndMinuteを設定する
-	 * 
+	 *
 	 * @param workEndMinute
 	 *            workEndMinute
 	 *

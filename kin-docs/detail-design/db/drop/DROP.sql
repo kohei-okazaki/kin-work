@@ -1,4 +1,6 @@
 -- ログインユーザ情報
 DROP TABLE LOGIN_USER_DATA;
--- ユーザ定時情報
-DROP TABLE USER_ONTIME_DATA;
+-- 定時情報マスタ
+DROP TABLE ONTIME_MT;
+-- ユーザ基本情報
+DROP TABLE USER_BASE_DATA;

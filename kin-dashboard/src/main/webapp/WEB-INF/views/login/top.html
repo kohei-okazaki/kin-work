@@ -15,7 +15,7 @@
   <div class="contentLayout" data-sal="slide-up">
     <!-- コンテナ -->
     <div class="grid">
-      <!-- アイテム1 -->
+
       <div class="item kintai">
         <div class="item-content">
           <!-- カスタムコンテンツ開始 -->
@@ -26,7 +26,6 @@
         </div>
       </div>
 
-      <!-- アイテム2 -->
       <div class="item kintai">
         <div class="item-content">
           <!-- カスタムコンテンツ開始 -->
@@ -37,7 +36,17 @@
         </div>
       </div>
 
-      <!-- アイテム3 -->
+      <!-- 管理ユーザの場合のみ -->
+      <div class="item setting" th:if="${session['sessionUser'].userAuth} == 1">
+        <div class="item-content">
+          <!-- カスタムコンテンツ開始 -->
+          <div class="user-content">
+            <a href="/ontimeRegist/input" th:href="@{/userRegist/input}" th:text="#{userRegist}"></a>
+          </div>
+         <!-- カスタムコンテンツ終了 -->
+        </div>
+      </div>
+
       <div class="item setting">
         <div class="item-content">
           <!-- カスタムコンテンツ開始 -->
@@ -48,7 +57,6 @@
         </div>
       </div>
 
-      <!-- アイテム4 -->
       <!-- 管理ユーザの場合のみ -->
       <div class="item setting" th:if="${session['sessionUser'].userAuth} == 1">
         <div class="item-content">
@@ -60,7 +68,6 @@
         </div>
       </div>
 
-      <!-- アイテム5 -->
       <div class="item logout">
         <div class="item-content">
           <!-- カスタムコンテンツ開始 -->
@@ -79,6 +86,12 @@
                   <p th:text="${session['sessionUser'].userName}"></p>
                 </div>
               </div>
+              <div class="table-row">
+                <div class="table-data" th:text="#{userId}"></div>
+                <div class="table-data">
+                  <p th:text="${session['sessionUser'].userId}"></p>
+                </div>
+              </div>
             </div>
             <!--/* table部ここまで */-->
           </div>
@@ -86,7 +99,6 @@
         </div>
       </div>
 
-      <!-- アイテム6 -->
       <div class="item logout">
         <div class="item-content">
           <!-- カスタムコンテンツ開始 -->

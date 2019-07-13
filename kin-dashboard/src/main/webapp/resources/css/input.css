@@ -126,7 +126,7 @@ textarea:focus {
 
 .cp_ipselect {
   overflow: hidden;
-  width: 90%;
+  width: 100%;
   margin: 2em auto;
   text-align: center;
 }
@@ -147,7 +147,7 @@ textarea:focus {
 }
 
 .cp_ipselect select::-ms-expand {
-    display: none;
+  display: none;
 }
 
 .cp_ipselect.cp_sl01 {

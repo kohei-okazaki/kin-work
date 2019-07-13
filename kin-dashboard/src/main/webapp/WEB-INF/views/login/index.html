@@ -39,9 +39,6 @@
       <div class="unit">
         <input type="submit" value="ログイン" />
       </div>
-      <div class="unit">
-        <input type="button" id="loginUserRegist" value="アカウント作成" />
-      </div>
     </form>
   </div>
 
@@ -91,16 +88,6 @@
         }
         var progressValue = value / 2;
         mprogress.set(progressValue);
-      });
-
-      $("#loginUserRegist").on("click", function() {
-    	// ログインユーザ登録処理のformを作成
-        var form = $("<form></form>", {
-          method : "get",
-          action : "../loginUserRegist/input"
-        });
-        form.appendTo(document.body);
-        form.submit();
       });
 
       var password = $('#password').get(0);
