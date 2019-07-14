@@ -15,7 +15,7 @@ public abstract class BaseApiResponse implements BaseForm {
 
 	/** API結果コード */
 	@JsonSerialize(using = ResultTypeSerializer.class)
-	@JsonProperty(value = "result")
+	@JsonProperty("result")
 	private ResultType resultType;
 
 	public BaseApiResponse() {

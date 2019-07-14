@@ -10,9 +10,10 @@ import jp.co.kin.web.type.ResultType;
 public class ErrorResponse extends BaseApiResponse {
 
 	/** 外部エラーコード */
-	@JsonProperty(value = "errorCode")
+	@JsonProperty("errorCode")
 	private String outerErrorCode;
 	/** 詳細 */
+	@JsonProperty("detail")
 	private String detail;
 
 	/**
