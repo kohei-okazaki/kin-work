@@ -12,7 +12,7 @@ public enum CellPositionType implements BaseEnum {
 	PRIMARY_KEY(2, "primaryKey"),
 	/** シーケンス */
 	SEQUENCE(3, "sequence"),
-	/** シーケンス */
+	/** 暗号化 */
 	CRYPT(4, "crypt"),
 	/** カラム名(コメント) */
 	COLUMN_NAME_COMMENT(5, "columnNameComment"),
