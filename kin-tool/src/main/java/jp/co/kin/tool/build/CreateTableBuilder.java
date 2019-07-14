@@ -53,7 +53,8 @@ public class CreateTableBuilder extends BaseBuilder {
 		Table table = new Table();
 		table.setPhysicalName(tableName);
 		String logicalName = rowList.stream().filter(e -> isTargetTable(e, tableName))
-				.map(e -> e.getCell(CellPositionType.LOGICAL_NAME)).collect(Collectors.toList()).get(0).getValue();
+				.map(e -> e.getCell(CellPositionType.LOGICAL_NAME)).collect(Collectors.toList()).get(0)
+				.getValue();
 		table.setLogicalName(logicalName);
 		table.setColumnList(rowList.stream().filter(e -> isTargetTable(e, tableName)).map(e -> {
 			Column column = new Column();
@@ -80,6 +81,9 @@ public class CreateTableBuilder extends BaseBuilder {
 	private String getColumnType(Row row) {
 		StringJoiner body = new StringJoiner(StringUtil.SPACE);
 		String columnType = row.getCell(CellPositionType.COLUMN_TYPE).getValue();
+		if (isCrypt(row)) {
+			columnType = "VARBINARY";
+		}
 		String size = getSize(row);
 		body.add(columnType + size);
 		if (isSequence(row)) {
@@ -93,7 +97,18 @@ public class CreateTableBuilder extends BaseBuilder {
 
 	private String getSize(Row row) {
 		String size = row.getCell(CellPositionType.COLUMN_SIZE).getValue();
-		return StringUtil.isBrank(size) ? StringUtil.EMPTY : "(" + size + ")";
+		if (StringUtil.isBrank(size)) {
+			return StringUtil.EMPTY;
+		} else if (isCrypt(row)) {
+			return "(" + String.valueOf(Integer.valueOf(size) * 4) + ")";
+		} else {
+			return "(" + size + ")";
+		}
+	}
+
+	private boolean isCrypt(Row row) {
+		Predicate<Row> function = e -> CommonFlag.TRUE.is(e.getCell(CellPositionType.CRYPT).getValue());
+		return function.test(row);
 	}
 
 	private boolean isSequence(Row row) {
