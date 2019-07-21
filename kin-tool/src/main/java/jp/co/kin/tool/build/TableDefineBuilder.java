@@ -16,7 +16,7 @@ import jp.co.kin.tool.factory.FileFactory;
 import jp.co.kin.tool.type.CellPositionType;
 import jp.co.kin.tool.type.ExecuteType;
 
-public class TableDefineBuilder extends BaseBuilder {
+public class TableDefineBuilder extends SqlSourceBuilder {
 
 	@Build
 	public void execute() {
@@ -27,8 +27,8 @@ public class TableDefineBuilder extends BaseBuilder {
 		List<Table> tableList = getTableList(excel.getRowList());
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
 		tableList.stream().forEach(e -> {
-			body.add(buildComment(e.getLogicalName()));
-			body.add(buildTableDefineSql(e.getPhysicalName()));
+			body.add(getTableComment(e.getLogicalName()));
+			body.add(getTableDefineSql(e.getPhysicalName()));
 		});
 
 		FileConfig conf = getFileConfig(ExecuteType.TABLE_DEFINE);
@@ -62,14 +62,10 @@ public class TableDefineBuilder extends BaseBuilder {
 		return tableList.contains(tblName);
 	}
 
-	private String buildTableDefineSql(String physicalName) {
+	private String getTableDefineSql(String physicalName) {
 		String prefix = "SHOW COLUMNS FROM ";
 		String suffix = ";";
 		return prefix + physicalName + suffix;
 	}
 
-	private String buildComment(String logicalName) {
-		String prefix = "-- ";
-		return prefix + logicalName;
-	}
 }

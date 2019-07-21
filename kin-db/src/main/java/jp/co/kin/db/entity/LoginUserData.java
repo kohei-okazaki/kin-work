@@ -1,5 +1,6 @@
 package jp.co.kin.db.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.seasar.doma.Entity;
@@ -20,13 +21,17 @@ public class LoginUserData extends BaseEntity {
 	/** ユーザ名 */
 	private String userName;
 	/** パスワード */
-	@Mask
 	@Crypt
+	@Mask
 	private String password;
 	/** パスワード有効期限 */
 	private Date passwordExpire;
 	/** ユーザ権限 */
 	private String userAuth;
+	/** アカウントロックフラグ */
+	private String accountLockFlg;
+	/** ログイン失敗回数 */
+	private BigDecimal loginFailCount;
 	/** 登録日時 */
 	private Date regDate;
 	/** 更新日時 */
@@ -78,6 +83,22 @@ public class LoginUserData extends BaseEntity {
 
 	public String getUserAuth() {
 		return userAuth;
+	}
+
+	public void setAccountLockFlg(String accountLockFlg) {
+		this.accountLockFlg = accountLockFlg;
+	}
+
+	public String getAccountLockFlg() {
+		return accountLockFlg;
+	}
+
+	public void setLoginFailCount(BigDecimal loginFailCount) {
+		this.loginFailCount = loginFailCount;
+	}
+
+	public BigDecimal getLoginFailCount() {
+		return loginFailCount;
 	}
 
 	public void setRegDate(Date regDate) {

@@ -45,7 +45,7 @@ public class CsvWriter {
 	public CsvWriteResult write(Object bean) {
 
 		CsvWriteResult result = new CsvWriteResult();
-		if (isCsvEntity(bean)) {
+		if (!isCsvEntity(bean)) {
 			result.setHasError(true);
 			result.setErrorMessage("CSV出力対象Entityに@CsvEntityを設定してください");
 			return result;
