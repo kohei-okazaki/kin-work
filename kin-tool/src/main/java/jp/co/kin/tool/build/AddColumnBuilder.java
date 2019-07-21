@@ -28,7 +28,7 @@ import jp.co.kin.tool.type.ExecuteType;
  * <code>ALTER TABLE HOGE ADD PIYO FUGA;</code><br>
  * のDDLを作成
  */
-public class AddColumnBuilder extends BaseBuilder {
+public class AddColumnBuilder extends SqlSourceBuilder {
 
 	@Build
 	public void execute() {
@@ -61,17 +61,6 @@ public class AddColumnBuilder extends BaseBuilder {
 		return rowList.stream()
 				.filter(e -> CommonFlag.TRUE.is(e.getCell(CellPositionType.ADD_FLG).getValue()))
 				.collect(Collectors.toList());
-	}
-
-	private String getColumnType(Row row) {
-		String columnType = row.getCell(CellPositionType.COLUMN_TYPE).getValue();
-		String size = getSize(row);
-		return columnType + size;
-	}
-
-	private String getSize(Row row) {
-		String size = row.getCell(CellPositionType.COLUMN_SIZE).getValue();
-		return StringUtil.isBrank(size) ? StringUtil.EMPTY : "(" + size + ")";
 	}
 
 }

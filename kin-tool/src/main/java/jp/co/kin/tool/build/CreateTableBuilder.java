@@ -2,10 +2,8 @@ package jp.co.kin.tool.build;
 
 import java.util.List;
 import java.util.StringJoiner;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import jp.co.kin.common.type.CommonFlag;
 import jp.co.kin.common.type.LineFeedType;
 import jp.co.kin.common.util.FileUtil.FileExtension;
 import jp.co.kin.common.util.StringUtil;
@@ -19,7 +17,7 @@ import jp.co.kin.tool.factory.FileFactory;
 import jp.co.kin.tool.type.CellPositionType;
 import jp.co.kin.tool.type.ExecuteType;
 
-public class CreateTableBuilder extends BaseBuilder {
+public class CreateTableBuilder extends SqlSourceBuilder {
 
 	@Build
 	public void execute() {
@@ -64,61 +62,6 @@ public class CreateTableBuilder extends BaseBuilder {
 			return column;
 		}).collect(Collectors.toList()));
 		return table;
-	}
-
-	private String getTableComment(String tableName) {
-		return "-- " + tableName;
-	}
-
-	private String getColumnComment(Row row) {
-		return "-- " + row.getCell(CellPositionType.COLUMN_NAME_COMMENT).getValue();
-	}
-
-	private String getColumnName(Row row) {
-		return row.getCell(CellPositionType.COLUMN_NAME).getValue();
-	}
-
-	private String getColumnType(Row row) {
-		StringJoiner body = new StringJoiner(StringUtil.SPACE);
-		String columnType = row.getCell(CellPositionType.COLUMN_TYPE).getValue();
-		if (isCrypt(row)) {
-			columnType = "VARBINARY";
-		}
-		String size = getSize(row);
-		body.add(columnType + size);
-		if (isSequence(row)) {
-			body.add("AUTO_INCREMENT");
-		}
-		if (isPrimaryKey(row)) {
-			body.add("NOT NULL PRIMARY KEY");
-		}
-		return body.toString();
-	}
-
-	private String getSize(Row row) {
-		String size = row.getCell(CellPositionType.COLUMN_SIZE).getValue();
-		if (StringUtil.isBrank(size)) {
-			return StringUtil.EMPTY;
-		} else if (isCrypt(row)) {
-			return "(" + String.valueOf(Integer.valueOf(size) * 4) + ")";
-		} else {
-			return "(" + size + ")";
-		}
-	}
-
-	private boolean isCrypt(Row row) {
-		Predicate<Row> function = e -> CommonFlag.TRUE.is(e.getCell(CellPositionType.CRYPT).getValue());
-		return function.test(row);
-	}
-
-	private boolean isSequence(Row row) {
-		Predicate<Row> function = e -> CommonFlag.TRUE.is(e.getCell(CellPositionType.SEQUENCE).getValue());
-		return function.test(row);
-	}
-
-	private boolean isPrimaryKey(Row row) {
-		Predicate<Row> function = e -> CommonFlag.TRUE.is(e.getCell(CellPositionType.PRIMARY_KEY).getValue());
-		return function.test(row);
 	}
 
 }
