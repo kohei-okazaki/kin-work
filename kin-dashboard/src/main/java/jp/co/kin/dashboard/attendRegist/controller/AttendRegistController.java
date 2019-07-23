@@ -1,8 +1,7 @@
 package jp.co.kin.dashboard.attendRegist.controller;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,8 +25,7 @@ import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
-import jp.co.kin.common.util.CalendarUtil;
-import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.common.type.RegixType;
 import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
@@ -54,19 +52,8 @@ public class AttendRegistController implements BaseViewController {
 	@GetMapping("/input")
 	public String input(Model model, HttpServletRequest request) {
 
-		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
-		for (int i = 0; i < CalendarUtil.getLastDay(); i++) {
-			Calendar cal = Calendar.getInstance();
-			cal.set(Calendar.DATE, i + 1);
-
-			String day = DateUtil.toString(cal.getTime(), DateFormatType.DD);
-			String weekDay = CalendarUtil.getWeekDay(cal);
-
-			AttendBusinessCalendar calendar = new AttendBusinessCalendar();
-			calendar.setDay(new BigDecimal(day));
-			calendar.setWeekDay(weekDay);
-			calendarList.add(calendar);
-		}
+		LocalDate sysDate = LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate());
+		List<AttendBusinessCalendar> calendarList = attendRegistService.getBusinessCalendarList(sysDate);
 		model.addAttribute("calendarList", calendarList);
 
 		model.addAttribute("selectedYear",
@@ -96,6 +83,10 @@ public class AttendRegistController implements BaseViewController {
 		if (StringUtil.isEmpty(year) || StringUtil.isEmpty(month)) {
 			throw new DashboardException(DashboardErrorCode.ILLEGAL_REQUEST,
 					"リクエスト情報が不正です. year=" + year + ", month=" + month);
+		} else if (!year.matches(RegixType.HALF_NUMBER.getValue())
+				|| !month.matches(RegixType.HALF_NUMBER.getValue())) {
+			throw new DashboardException(DashboardErrorCode.ILLEGAL_REQUEST,
+					"yearまたはmonthが半角数字でありません. year=" + year + ", month=" + month);
 		}
 
 		model.addAttribute("selectedYear", new BigDecimal(year));
@@ -104,23 +95,8 @@ public class AttendRegistController implements BaseViewController {
 		model.addAttribute("selectedMonth", new BigDecimal(month));
 		model.addAttribute("monthList", attendRegistService.getMonthList());
 
-		List<AttendBusinessCalendar> calendarList = new ArrayList<>();
-		Calendar selectedCalendar = CalendarUtil.getSysCalendar();
-		selectedCalendar.set(Calendar.YEAR, Integer.valueOf(year));
-		selectedCalendar.set(Calendar.MONTH, Integer.valueOf(month) - 1);
-
-		for (int i = 0; i < CalendarUtil.getLastDay(selectedCalendar); i++) {
-			Calendar cal = selectedCalendar;
-			cal.set(Calendar.DATE, i + 1);
-
-			String day = DateUtil.toString(cal.getTime(), DateFormatType.DD);
-			String weekDay = CalendarUtil.getWeekDay(cal);
-
-			AttendBusinessCalendar calendar = new AttendBusinessCalendar();
-			calendar.setDay(new BigDecimal(day));
-			calendar.setWeekDay(weekDay);
-			calendarList.add(calendar);
-		}
+		LocalDate targetDate = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), 1);
+		List<AttendBusinessCalendar> calendarList = attendRegistService.getBusinessCalendarList(targetDate);
 		model.addAttribute("calendarList", calendarList);
 
 		// 定時情報を取得する

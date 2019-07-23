@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.kin.business.attendRegist.dto.AttendBusinessCalendar;
 import jp.co.kin.business.attendRegist.service.AttendRegistService;
 import jp.co.kin.business.db.search.OntimeMtSearchService;
 import jp.co.kin.business.db.search.UserBaseDataSearchService;
@@ -31,7 +32,7 @@ public class AttendRegistServiceImpl implements AttendRegistService {
 		LocalDate sysdate = LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate());
 		List<LocalDate> list = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
-			list.add(LocalDateTimeUtil.addYear(sysdate, 1));
+			list.add(LocalDateTimeUtil.addYear(sysdate, i));
 		}
 		return list.stream().map(e -> LocalDateTimeUtil.toString(e, DateFormatType.YYYY))
 				.map(e -> new BigDecimal(e)).collect(Collectors.toList());
@@ -50,6 +51,16 @@ public class AttendRegistServiceImpl implements AttendRegistService {
 		OntimeDto ontimeDto = ontimeMtSearchService.searchByCompanyCode(userBaseDataDto.getCompanyCode());
 		return ontimeDto;
 
+	}
+
+	@Override
+	public List<AttendBusinessCalendar> getBusinessCalendarList(LocalDate targetDate) {
+		return LocalDateTimeUtil.getLocalDateList(targetDate).stream().map(e -> {
+			AttendBusinessCalendar calendar = new AttendBusinessCalendar();
+			calendar.setDay(new BigDecimal(e.getDayOfMonth()));
+			calendar.setWeekDay(e.getDayOfWeek().toString().toLowerCase());
+			return calendar;
+		}).collect(Collectors.toList());
 	}
 
 }
