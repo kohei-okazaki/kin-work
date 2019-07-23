@@ -14,7 +14,7 @@ import org.seasar.doma.jdbc.entity.PreUpdateContext;
 import jp.co.kin.common.bean.BeanFactory;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
-import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.db.crypt.EntityCrypter;
 import jp.co.kin.db.crypt.EntityCrypterImpl;
 import jp.co.kin.db.entity.BaseEntity;
@@ -47,7 +47,7 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 			for (Method m : entity.getClass().getDeclaredMethods()) {
 				if ("setRegDate".equals(m.getName()) || "setUpdateDate".equals(m.getName())) {
 					// 登録日時/更新日時の設定
-					m.invoke(entity, DateUtil.getSysDate());
+					m.invoke(entity, LocalDateTimeUtil.toDate(LocalDateTimeUtil.getSysDate()));
 				}
 			}
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -66,7 +66,7 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 			for (Method m : entity.getClass().getDeclaredMethods()) {
 				if ("setUpdateDate".equals(m.getName())) {
 					// 登録日時/更新日時の設定
-					m.invoke(entity, DateUtil.getSysDate());
+					m.invoke(entity, LocalDateTimeUtil.toDate(LocalDateTimeUtil.getSysDate()));
 				}
 			}
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {

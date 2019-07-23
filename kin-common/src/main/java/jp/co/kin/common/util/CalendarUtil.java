@@ -6,6 +6,13 @@ import java.util.List;
 
 import jp.co.kin.common.type.BaseEnum;
 
+/**
+ * カレンダー処理のUtilクラス
+ *
+ * @see LocalDateTimeUtil
+ * @deprecated
+ */
+@Deprecated(since = "1.0.0")
 public class CalendarUtil {
 
 	private static final List<String> WEEK_DAY = List.of("sunday", "monday", "tuesday", "wednesday",
