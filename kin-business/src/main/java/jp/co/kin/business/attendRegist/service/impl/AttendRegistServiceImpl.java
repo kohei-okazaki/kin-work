@@ -1,6 +1,8 @@
 package jp.co.kin.business.attendRegist.service.impl;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -14,7 +16,7 @@ import jp.co.kin.business.db.search.UserBaseDataSearchService;
 import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.userRegist.UserBaseDataDto;
 import jp.co.kin.common.type.DateFormatType;
-import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.common.util.LocalDateTimeUtil;
 
 @Service
 public class AttendRegistServiceImpl implements AttendRegistService {
@@ -26,10 +28,13 @@ public class AttendRegistServiceImpl implements AttendRegistService {
 
 	@Override
 	public List<BigDecimal> getYearList() {
-
-		int sysdate = Integer.valueOf(DateUtil.toString(DateUtil.getSysDate(), DateFormatType.YYYY));
-		return Stream.iterate(0, i -> ++i).limit(10).map(e -> new BigDecimal(sysdate + e))
-				.collect(Collectors.toList());
+		LocalDate sysdate = LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate());
+		List<LocalDate> list = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			list.add(LocalDateTimeUtil.addYear(sysdate, 1));
+		}
+		return list.stream().map(e -> LocalDateTimeUtil.toString(e, DateFormatType.YYYY))
+				.map(e -> new BigDecimal(e)).collect(Collectors.toList());
 	}
 
 	@Override

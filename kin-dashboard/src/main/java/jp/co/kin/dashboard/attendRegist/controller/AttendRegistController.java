@@ -28,6 +28,7 @@ import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.util.CalendarUtil;
 import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistUnitForm;
@@ -69,11 +70,13 @@ public class AttendRegistController implements BaseViewController {
 		model.addAttribute("calendarList", calendarList);
 
 		model.addAttribute("selectedYear",
-				new BigDecimal(DateUtil.toString(DateUtil.getSysDate(), DateFormatType.YYYY)));
+				new BigDecimal(
+						LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(), DateFormatType.YYYY)));
 		model.addAttribute("yearList", attendRegistService.getYearList());
 
 		model.addAttribute("selectedMonth",
-				new BigDecimal(DateUtil.toString(DateUtil.getSysDate(), DateFormatType.MM)));
+				new BigDecimal(
+						LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(), DateFormatType.MM)));
 		model.addAttribute("monthList", attendRegistService.getMonthList());
 
 		// 定時情報を取得する

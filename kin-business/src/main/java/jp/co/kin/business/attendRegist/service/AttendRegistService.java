@@ -9,7 +9,7 @@ import jp.co.kin.web.service.BaseService;
 public interface AttendRegistService extends BaseService {
 
 	/**
-	 * システム日時から20年分の月をリストを返す
+	 * システム日時から10年分の月をリストを返す
 	 *
 	 * @return
 	 */
@@ -24,7 +24,7 @@ public interface AttendRegistService extends BaseService {
 
 	/**
 	 * 指定されたユーザIDと一致する定時情報を取得
-	 * 
+	 *
 	 * @param userId
 	 *            ユーザID
 	 * @return

@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 import jp.co.kin.common.type.CommonFlag;
 import jp.co.kin.common.type.DateFormatType;
-import jp.co.kin.common.util.DateUtil;
 import jp.co.kin.common.util.FileUtil.FileExtension;
+import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.build.annotation.Build;
 import jp.co.kin.tool.config.FileConfig;
@@ -51,8 +51,8 @@ public class AddColumnBuilder extends SqlSourceBuilder {
 		});
 
 		FileConfig fileConf = getFileConfig(ExecuteType.DDL);
-		fileConf.setFileName(DateUtil.toString(DateUtil.getSysDate(), DateFormatType.YYYYMMDD_HHMMSS_NOSEP)
-				+ FileExtension.SQL.getValue());
+		fileConf.setFileName(LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(),
+				DateFormatType.YYYYMMDD_HHMMSS_NOSEP) + FileExtension.SQL.getValue());
 		fileConf.setData(body.toString());
 		FileFactory.create(fileConf);
 	}
