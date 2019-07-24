@@ -1,4 +1,4 @@
-package jp.co.kin.business.userRegist;
+package jp.co.kin.business.userRegist.dto;
 
 import java.time.LocalDateTime;
 

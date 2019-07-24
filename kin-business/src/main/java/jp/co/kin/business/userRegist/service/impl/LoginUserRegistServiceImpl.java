@@ -1,11 +1,14 @@
 package jp.co.kin.business.userRegist.service.impl;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.kin.business.db.create.LoginUserDataCreateService;
 import jp.co.kin.business.db.create.UserBaseDataCreateService;
 import jp.co.kin.business.db.search.LoginUserDataSearchService;
+import jp.co.kin.business.login.type.AccountLockFlg;
 import jp.co.kin.business.userRegist.dto.UserBusinessProperties;
 import jp.co.kin.business.userRegist.dto.UserRegistDto;
 import jp.co.kin.business.userRegist.service.LoginUserRegistService;
@@ -47,6 +50,8 @@ public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 
 		entity.setPasswordExpire(loginUserBusinessProperties.getAuthDate());
 		entity.setUserAuth(loginUserBusinessProperties.getUserAuth().getValue());
+		entity.setAccountLockFlg(AccountLockFlg.USABLE.getValue());
+		entity.setLoginFailCount(BigDecimal.ZERO);
 
 		loginUserDataCreateService.create(entity);
 	}
