@@ -15,9 +15,10 @@ public interface LoginUserDataUpdateService extends BaseService {
 
 	/**
 	 * ログイン失敗回数とアカウントロックフラグを更新する
-	 * 
+	 *
 	 * @param entity
 	 *            ログインユーザ情報
 	 */
 	void updateAccountLock(LoginUserData entity);
+
 }

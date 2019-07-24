@@ -69,4 +69,15 @@ public class LoginServiceImpl implements LoginService {
 		}
 	}
 
+	@Override
+	public void updateClearloginFailCount(LoginUserDataDto dto) {
+
+		LoginUserData entity = new LoginUserData();
+
+		dto.setLoginFailCount(BigDecimal.ZERO);
+		BeanUtil.copy(dto, entity);
+
+		updateService.updateFailCount(entity);
+	}
+
 }

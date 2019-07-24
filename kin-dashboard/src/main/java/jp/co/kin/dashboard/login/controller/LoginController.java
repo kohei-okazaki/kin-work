@@ -73,6 +73,9 @@ public class LoginController implements BaseViewController {
 			return getView(DashboardView.LOGIN);
 		}
 
+		// ログイン失敗回数を0に更新
+		loginService.updateClearloginFailCount(dto);
+
 		SessionLoginUser sessionUser = DtoFactory.getDto(SessionLoginUser.class, dto);
 		sessionComponent.setValue(request.getSession(), "sessionUser", sessionUser);
 
