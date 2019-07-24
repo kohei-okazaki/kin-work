@@ -63,8 +63,13 @@ public class LoginController implements BaseViewController {
 
 		LoginCheckResult loginCheckResult = loginService.checkLogin(dto);
 		if (loginCheckResult.hasError()) {
+
+			// ログイン失敗回数をインクリメントし、失敗回数が3回になった場合アカウントをロックする
+			loginService.updateFailLoginUserData(dto);
+
 			String message = messageSourceComponent.getMessage(loginCheckResult.getMessage());
 			model.addAttribute("errorMessage", message);
+
 			return getView(DashboardView.LOGIN);
 		}
 

@@ -8,10 +8,18 @@ public interface LoginService extends BaseService {
 
 	/**
 	 * ログインユーザ情報のログインチェックを行う
-	 * 
+	 *
 	 * @param dto
 	 *            ログインユーザのDTO
 	 * @return
 	 */
 	LoginCheckResult checkLogin(LoginUserDataDto dto);
+
+	/**
+	 * ログイン失敗回数をインクリメントし、更新後のログイン失敗回数が3回目の場合、アカウントロックフラグを1に更新する
+	 *
+	 * @param result
+	 *            LoginCheckResult
+	 */
+	void updateFailLoginUserData(LoginUserDataDto dto);
 }

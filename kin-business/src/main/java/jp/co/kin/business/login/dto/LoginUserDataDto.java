@@ -1,5 +1,6 @@
 package jp.co.kin.business.login.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jp.co.kin.common.bean.BaseDto;
@@ -24,6 +25,10 @@ public class LoginUserDataDto implements BaseDto {
 	private LocalDateTime passwordExpire;
 	/** ユーザ権限 */
 	private String userAuth;
+	/** アカウントロックフラグ */
+	private String accountLockFlg;
+	/** ログイン失敗回数 */
+	private BigDecimal loginFailCount;
 	/** 登録日時 */
 	private LocalDateTime regDate;
 	/** 更新日時 */
@@ -153,6 +158,48 @@ public class LoginUserDataDto implements BaseDto {
 	 */
 	public void setUserAuth(String userAuth) {
 		this.userAuth = userAuth;
+	}
+
+	/**
+	 * accountLockFlgを返す
+	 * 
+	 * @return accountLockFlg
+	 *
+	 */
+	public String getAccountLockFlg() {
+		return accountLockFlg;
+	}
+
+	/**
+	 * accountLockFlgを設定する
+	 * 
+	 * @param accountLockFlg
+	 *            accountLockFlg
+	 *
+	 */
+	public void setAccountLockFlg(String accountLockFlg) {
+		this.accountLockFlg = accountLockFlg;
+	}
+
+	/**
+	 * loginFailCountを返す
+	 * 
+	 * @return loginFailCount
+	 *
+	 */
+	public BigDecimal getLoginFailCount() {
+		return loginFailCount;
+	}
+
+	/**
+	 * loginFailCountを設定する
+	 * 
+	 * @param loginFailCount
+	 *            loginFailCount
+	 *
+	 */
+	public void setLoginFailCount(BigDecimal loginFailCount) {
+		this.loginFailCount = loginFailCount;
 	}
 
 	/**
