@@ -1,11 +1,10 @@
 package jp.co.kin.db.entity;
 
-import jp.co.kin.db.entity.BaseEntity;
+import java.time.LocalDateTime;
+
 import org.seasar.doma.Entity;
-import org.seasar.doma.jdbc.entity.NamingType;
 import org.seasar.doma.Id;
-import java.lang.String;
-import java.util.Date;
+import org.seasar.doma.jdbc.entity.NamingType;
 
 @Entity(naming = NamingType.SNAKE_UPPER_CASE)
 public class OntimeMt extends BaseEntity {
@@ -22,9 +21,9 @@ public class OntimeMt extends BaseEntity {
 	/** 終業時間(分) */
 	private String workEndMinute;
 	/** 登録日時 */
-	private Date regDate;
+	private LocalDateTime regDate;
 	/** 更新日時 */
-	private Date updateDate;
+	private LocalDateTime updateDate;
 
 	public void setCompanyCode(String companyCode) {
 		this.companyCode = companyCode;
@@ -66,19 +65,19 @@ public class OntimeMt extends BaseEntity {
 		return workEndMinute;
 	}
 
-	public void setRegDate(Date regDate) {
+	public void setRegDate(LocalDateTime regDate) {
 		this.regDate = regDate;
 	}
 
-	public Date getRegDate() {
+	public LocalDateTime getRegDate() {
 		return regDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
 	}
 
-	public Date getUpdateDate() {
+	public LocalDateTime getUpdateDate() {
 		return updateDate;
 	}
 

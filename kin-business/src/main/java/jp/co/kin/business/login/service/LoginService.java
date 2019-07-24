@@ -6,5 +6,12 @@ import jp.co.kin.web.service.BaseService;
 
 public interface LoginService extends BaseService {
 
+	/**
+	 * ログインユーザ情報のログインチェックを行う
+	 * 
+	 * @param dto
+	 *            ログインユーザのDTO
+	 * @return
+	 */
 	LoginCheckResult checkLogin(LoginUserDataDto dto);
 }
