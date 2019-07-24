@@ -39,6 +39,9 @@ public class LoginServiceImpl implements LoginService {
 				false)) {
 			result.setHasError(true);
 			result.setMessage("validate.login.expired");
+		} else if (AccountLockFlg.UNUSABLE == AccountLockFlg.of(searchDto.getAccountLockFlg())) {
+			result.setHasError(true);
+			result.setMessage("validate.login.accountLock");
 		}
 
 		if (BeanUtil.notNull(searchDto)) {
