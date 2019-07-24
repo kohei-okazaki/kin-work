@@ -1,6 +1,6 @@
 package jp.co.kin.business.login.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jp.co.kin.common.bean.BaseDto;
 import jp.co.kin.common.log.annotation.Mask;
@@ -21,13 +21,13 @@ public class LoginUserDataDto implements BaseDto {
 	/** ユーザ名 */
 	private String userName;
 	/** パスワード有効期限 */
-	private Date passwordExpire;
+	private LocalDateTime passwordExpire;
 	/** ユーザ権限 */
 	private String userAuth;
 	/** 登録日時 */
-	private Date regDate;
+	private LocalDateTime regDate;
 	/** 更新日時 */
-	private Date updateDate;
+	private LocalDateTime updateDate;
 
 	/**
 	 * loginIdを返す
@@ -119,7 +119,7 @@ public class LoginUserDataDto implements BaseDto {
 	 * @return passwordExpire
 	 *
 	 */
-	public Date getPasswordExpire() {
+	public LocalDateTime getPasswordExpire() {
 		return passwordExpire;
 	}
 
@@ -130,7 +130,7 @@ public class LoginUserDataDto implements BaseDto {
 	 *            passwordExpire
 	 *
 	 */
-	public void setPasswordExpire(Date passwordExpire) {
+	public void setPasswordExpire(LocalDateTime passwordExpire) {
 		this.passwordExpire = passwordExpire;
 	}
 
@@ -161,7 +161,7 @@ public class LoginUserDataDto implements BaseDto {
 	 * @return regDate
 	 *
 	 */
-	public Date getRegDate() {
+	public LocalDateTime getRegDate() {
 		return regDate;
 	}
 
@@ -172,7 +172,7 @@ public class LoginUserDataDto implements BaseDto {
 	 *            regDate
 	 *
 	 */
-	public void setRegDate(Date regDate) {
+	public void setRegDate(LocalDateTime regDate) {
 		this.regDate = regDate;
 	}
 
@@ -182,7 +182,7 @@ public class LoginUserDataDto implements BaseDto {
 	 * @return updateDate
 	 *
 	 */
-	public Date getUpdateDate() {
+	public LocalDateTime getUpdateDate() {
 		return updateDate;
 	}
 
@@ -193,7 +193,7 @@ public class LoginUserDataDto implements BaseDto {
 	 *            updateDate
 	 *
 	 */
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
 	}
 

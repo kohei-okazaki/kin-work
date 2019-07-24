@@ -301,17 +301,6 @@ public class LocalDateTimeUtil {
 	}
 
 	/**
-	 * 指定した<code>java.time.LocalDateTime</code>型の日付を<code>java.time.LocalDate</code>型の日付に変換する
-	 *
-	 * @param localDateTime
-	 *            日付
-	 * @return
-	 */
-	public static LocalDate toLocalDate(LocalDateTime localDateTime) {
-		return LocalDate.of(localDateTime.getYear(), localDateTime.getMonth(), localDateTime.getDayOfMonth());
-	}
-
-	/**
 	 * 指定した<code>java.time.LocalDate</code>型の日付を<code>formatType</code>で整形した文字列を返す
 	 *
 	 * @param localDate
@@ -394,6 +383,57 @@ public class LocalDateTimeUtil {
 		ZoneId zone = ZoneId.systemDefault();
 		ZonedDateTime zonedDateTime = instant.atZone(zone);
 		return zonedDateTime.toLocalDate();
+	}
+
+	/**
+	 * 文字列型の日付を<code>java.time.LocalDateTime</code>型の日付に変換する
+	 *
+	 * @param strDate
+	 *            日付
+	 * @param formatType
+	 *            フォーマット
+	 * @return
+	 */
+	public static LocalDateTime toLocalDateTime(String strDate, DateFormatType formatType) {
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(formatType.getValue());
+		return LocalDateTime.parse(strDate, dateTimeFormatter);
+	}
+
+	/**
+	 * 文字列型の日付を<code>java.time.LocalDate</code>型の日付に変換する
+	 *
+	 * @param strDate
+	 *            日付
+	 * @param formatType
+	 *            フォーマット
+	 * @return
+	 */
+	public static LocalDate toLocalDate(String strDate, DateFormatType formatType) {
+		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(formatType.getValue());
+		return LocalDate.parse(strDate, dateTimeFormatter);
+	}
+
+	/**
+	 * 指定した<code>java.time.LocalDate</code>型の日付を<code>java.time.LocalDateTime</code>型の日付に変換する
+	 *
+	 * @param localDate
+	 *            日付
+	 * @return
+	 */
+	public static LocalDateTime toLocalDateTime(LocalDate localDate) {
+		return LocalDateTime.of(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(), 0,
+				0, 0);
+	}
+
+	/**
+	 * 指定した<code>java.time.LocalDateTime</code>型の日付を<code>java.time.LocalDate</code>型の日付に変換する
+	 *
+	 * @param localDateTime
+	 *            日付
+	 * @return
+	 */
+	public static LocalDate toLocalDate(LocalDateTime localDateTime) {
+		return LocalDate.of(localDateTime.getYear(), localDateTime.getMonth(), localDateTime.getDayOfMonth());
 	}
 
 }

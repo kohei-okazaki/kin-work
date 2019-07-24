@@ -35,7 +35,7 @@ public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 
 	@Override
 	public boolean isDuplicateLoginId(UserRegistDto dto) {
-		return loginUserDataSearchService.searchCountByLoginId(dto.getLoginId()) != 0;
+		return loginUserDataSearchService.searchCountByLoginId(dto.getLoginId()) > 1;
 	}
 
 	private void registLoginUserData(UserRegistDto dto) {
@@ -49,7 +49,6 @@ public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 		entity.setUserAuth(loginUserBusinessProperties.getUserAuth().getValue());
 
 		loginUserDataCreateService.create(entity);
-
 	}
 
 	private void registUserBaseData(UserRegistDto dto) {
@@ -57,7 +56,6 @@ public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 		UserBaseData entity = new UserBaseData();
 		BeanUtil.copy(dto, entity);
 		userBaseDataCreateService.create(entity);
-
 	}
 
 }

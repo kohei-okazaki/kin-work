@@ -1,6 +1,6 @@
 package jp.co.kin.business.userRegist;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jp.co.kin.common.bean.BaseDto;
 
@@ -11,9 +11,9 @@ public class UserBaseDataDto implements BaseDto {
 	/** 企業コード */
 	private String companyCode;
 	/** 登録日時 */
-	private Date regDate;
+	private LocalDateTime regDate;
 	/** 更新日時 */
-	private Date updateDate;
+	private LocalDateTime updateDate;
 
 	public void setUserId(String userId) {
 		this.userId = userId;
@@ -31,20 +31,46 @@ public class UserBaseDataDto implements BaseDto {
 		return companyCode;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-
-	public Date getRegDate() {
+	/**
+	 * regDateを返す
+	 *
+	 * @return regDate
+	 *
+	 */
+	public LocalDateTime getRegDate() {
 		return regDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
-		this.updateDate = updateDate;
+	/**
+	 * regDateを設定する
+	 *
+	 * @param regDate
+	 *            regDate
+	 *
+	 */
+	public void setRegDate(LocalDateTime regDate) {
+		this.regDate = regDate;
 	}
 
-	public Date getUpdateDate() {
+	/**
+	 * updateDateを返す
+	 *
+	 * @return updateDate
+	 *
+	 */
+	public LocalDateTime getUpdateDate() {
 		return updateDate;
+	}
+
+	/**
+	 * updateDateを設定する
+	 *
+	 * @param updateDate
+	 *            updateDate
+	 *
+	 */
+	public void setUpdateDate(LocalDateTime updateDate) {
+		this.updateDate = updateDate;
 	}
 
 }

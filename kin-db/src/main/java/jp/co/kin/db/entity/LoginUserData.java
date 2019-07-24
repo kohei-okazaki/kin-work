@@ -1,7 +1,7 @@
 package jp.co.kin.db.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
@@ -21,11 +21,11 @@ public class LoginUserData extends BaseEntity {
 	/** ユーザ名 */
 	private String userName;
 	/** パスワード */
-	@Crypt
 	@Mask
+	@Crypt
 	private String password;
 	/** パスワード有効期限 */
-	private Date passwordExpire;
+	private LocalDateTime passwordExpire;
 	/** ユーザ権限 */
 	private String userAuth;
 	/** アカウントロックフラグ */
@@ -33,9 +33,9 @@ public class LoginUserData extends BaseEntity {
 	/** ログイン失敗回数 */
 	private BigDecimal loginFailCount;
 	/** 登録日時 */
-	private Date regDate;
+	private LocalDateTime regDate;
 	/** 更新日時 */
-	private Date updateDate;
+	private LocalDateTime updateDate;
 
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
@@ -69,11 +69,11 @@ public class LoginUserData extends BaseEntity {
 		return password;
 	}
 
-	public void setPasswordExpire(Date passwordExpire) {
+	public void setPasswordExpire(LocalDateTime passwordExpire) {
 		this.passwordExpire = passwordExpire;
 	}
 
-	public Date getPasswordExpire() {
+	public LocalDateTime getPasswordExpire() {
 		return passwordExpire;
 	}
 
@@ -101,19 +101,19 @@ public class LoginUserData extends BaseEntity {
 		return loginFailCount;
 	}
 
-	public void setRegDate(Date regDate) {
+	public void setRegDate(LocalDateTime regDate) {
 		this.regDate = regDate;
 	}
 
-	public Date getRegDate() {
+	public LocalDateTime getRegDate() {
 		return regDate;
 	}
 
-	public void setUpdateDate(Date updateDate) {
+	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
 	}
 
-	public Date getUpdateDate() {
+	public LocalDateTime getUpdateDate() {
 		return updateDate;
 	}
 

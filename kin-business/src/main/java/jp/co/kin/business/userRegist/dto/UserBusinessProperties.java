@@ -1,15 +1,15 @@
 package jp.co.kin.business.userRegist.dto;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jp.co.kin.business.login.type.UserAuth;
 import jp.co.kin.common.type.DateFormatType;
-import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.common.util.LocalDateTimeUtil;
 
 public class UserBusinessProperties {
 
 	/** 有効期限日時 */
-	private Date authDate;
+	private LocalDateTime authDate;
 	/** ユーザ権限 */
 	private UserAuth userAuth;
 
@@ -19,7 +19,7 @@ public class UserBusinessProperties {
 	 * @return authDate
 	 *
 	 */
-	public Date getAuthDate() {
+	public LocalDateTime getAuthDate() {
 		return authDate;
 	}
 
@@ -31,7 +31,8 @@ public class UserBusinessProperties {
 	 *
 	 */
 	public void setAuthDate(String authDate) {
-		this.authDate = DateUtil.toDate(authDate, DateFormatType.YYYYMMDD_NOSEP);
+		this.authDate = LocalDateTimeUtil
+				.toLocalDateTime(LocalDateTimeUtil.toLocalDate(authDate, DateFormatType.YYYYMMDD_NOSEP));
 	}
 
 	/**
