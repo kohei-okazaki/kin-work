@@ -33,8 +33,6 @@ public class UserBusinessProperties {
 	public void setAuthDate(String authDate) {
 		this.authDate = LocalDateTimeUtil
 				.toLocalDateTime(LocalDateTimeUtil.toLocalDate(authDate, DateFormatType.YYYYMMDD_NOSEP));
-		// this.authDate = DateUtil.toDate(authDate,
-		// DateFormatType.YYYYMMDD_NOSEP);
 	}
 
 	/**

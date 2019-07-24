@@ -115,7 +115,7 @@ public class LoginUserDataDto implements BaseDto {
 
 	/**
 	 * passwordExpireを返す
-	 * 
+	 *
 	 * @return passwordExpire
 	 *
 	 */
@@ -125,7 +125,7 @@ public class LoginUserDataDto implements BaseDto {
 
 	/**
 	 * passwordExpireを設定する
-	 * 
+	 *
 	 * @param passwordExpire
 	 *            passwordExpire
 	 *

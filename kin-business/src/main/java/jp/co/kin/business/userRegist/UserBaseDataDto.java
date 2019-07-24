@@ -33,7 +33,7 @@ public class UserBaseDataDto implements BaseDto {
 
 	/**
 	 * regDateを返す
-	 * 
+	 *
 	 * @return regDate
 	 *
 	 */
@@ -43,7 +43,7 @@ public class UserBaseDataDto implements BaseDto {
 
 	/**
 	 * regDateを設定する
-	 * 
+	 *
 	 * @param regDate
 	 *            regDate
 	 *
@@ -54,7 +54,7 @@ public class UserBaseDataDto implements BaseDto {
 
 	/**
 	 * updateDateを返す
-	 * 
+	 *
 	 * @return updateDate
 	 *
 	 */
@@ -64,7 +64,7 @@ public class UserBaseDataDto implements BaseDto {
 
 	/**
 	 * updateDateを設定する
-	 * 
+	 *
 	 * @param updateDate
 	 *            updateDate
 	 *
