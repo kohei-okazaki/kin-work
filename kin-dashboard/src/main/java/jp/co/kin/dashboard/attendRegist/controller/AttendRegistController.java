@@ -23,13 +23,11 @@ import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseException;
-import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.type.RegixType;
 import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
-import jp.co.kin.dashboard.attendRegist.form.AttendRegistUnitForm;
 import jp.co.kin.dashboard.exception.DashboardErrorCode;
 import jp.co.kin.dashboard.exception.DashboardException;
 import jp.co.kin.dashboard.type.DashboardView;
@@ -114,11 +112,6 @@ public class AttendRegistController implements BaseViewController {
 
 		if (result.hasErrors()) {
 			return getRedirectView(DashboardView.ATTEND_REGIST_INPUT);
-		}
-
-		for (int i = 0; i < form.getRegistFormList().size(); i++) {
-			AttendRegistUnitForm f = form.getRegistFormList().get(i);
-			LoggerFactory.getLogger(this.getClass()).infoRes(f);
 		}
 
 		return getView(DashboardView.ATTEND_REGIST_CONFIRM);
