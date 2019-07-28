@@ -18,16 +18,16 @@
     <org.springframework-version>5.1.8.RELEASE</org.springframework-version>
     <org.aspectj-version>1.9.4</org.aspectj-version>
     <org.slf4j-version>1.7.26</org.slf4j-version>
-    <logback-version>1.2.3</logback-version>
+    <org.logback-version>1.2.3</org.logback-version>
     <org.jackson-version>2.9.9</org.jackson-version>
-    <poi-version>4.1.0</poi-version>
-    <mysql-version>8.0.17</mysql-version>
-    <doma-version>2.24.0</doma-version>
-    <hibernate-version>6.0.17.Final</hibernate-version>
-    <groovy-version>2.5.7</groovy-version>
+    <org.poi-version>4.1.0</org.poi-version>
+    <org.mysql-version>8.0.17</org.mysql-version>
+    <org.doma-version>2.24.0</org.doma-version>
+    <org.hibernate-version>6.0.17.Final</org.hibernate-version>
+    <org.groovy-version>2.5.7</org.groovy-version>
     <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
     <org.thymeleaf-layout-version>2.4.1</org.thymeleaf-layout-version>
-    <dbcp2-version>2.6.0</dbcp2-version>
+    <org.dbcp2-version>2.6.0</org.dbcp2-version>
   </properties>
 
   <modules>
@@ -112,12 +112,12 @@
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi</artifactId>
-      <version>${poi-version}</version>
+      <version>${org.poi-version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
-      <version>${poi-version}</version>
+      <version>${org.poi-version}</version>
     </dependency>
     <!-- jackson -->
     <dependency>
@@ -144,17 +144,17 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>${mysql-version}</version>
+      <version>${org.mysql-version}</version>
     </dependency>
     <dependency>
       <groupId>org.seasar.doma</groupId>
       <artifactId>doma</artifactId>
-      <version>${doma-version}</version>
+      <version>${org.doma-version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-dbcp2</artifactId>
-      <version>${dbcp2-version}</version>
+      <version>${org.dbcp2-version}</version>
     </dependency>
     <!-- Logging -->
     <dependency>
@@ -171,13 +171,13 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>${logback-version}</version>
+      <version>${org.logback-version}</version>
     </dependency>
     <!-- logback用のGroovy -->
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy</artifactId>
-      <version>${groovy-version}</version>
+      <version>${org.groovy-version}</version>
     </dependency>
 
     <!-- @Inject -->
@@ -195,7 +195,7 @@
     <dependency>
       <groupId>org.hibernate.validator</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>${hibernate-version}</version>
+      <version>${org.hibernate-version}</version>
     </dependency>
     <!-- Servlet -->
     <dependency>
