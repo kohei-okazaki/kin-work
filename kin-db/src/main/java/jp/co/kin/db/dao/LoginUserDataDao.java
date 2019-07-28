@@ -30,4 +30,10 @@ public interface LoginUserDataDao extends BaseDao {
 	@Select
 	public int selectCountById(String loginId);
 
+	@Update(sqlFile = true)
+	public int updateFailCount(LoginUserData entity);
+
+	@Update(sqlFile = true)
+	public int updateAccountLock(LoginUserData entity);
+
 }

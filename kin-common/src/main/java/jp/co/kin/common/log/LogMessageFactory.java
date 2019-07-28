@@ -3,6 +3,8 @@ package jp.co.kin.common.log;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.StringJoiner;
 
@@ -12,6 +14,7 @@ import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.BeanUtil.AccessorType;
 import jp.co.kin.common.util.DateUtil;
+import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.common.util.StringUtil;
 
 /**
@@ -114,6 +117,10 @@ public class LogMessageFactory {
 			strValue = StringUtil.EMPTY;
 		} else if (value instanceof Date) {
 			strValue = DateUtil.toString((Date) value, DateFormatType.YYYYMMDD_HHMMSS);
+		} else if (value instanceof LocalDate) {
+			strValue = LocalDateTimeUtil.toString((LocalDate) value, DateFormatType.YYYYMMDD);
+		} else if (value instanceof LocalDateTime) {
+			strValue = LocalDateTimeUtil.toString((LocalDateTime) value, DateFormatType.YYYYMMDD_HHMMSS);
 		} else {
 			strValue = value.toString();
 		}

@@ -142,7 +142,7 @@ public class JavaSource {
 	 *
 	 * @return extendsClass
 	 */
-	public Class getExtendsClass() {
+	public Class<?> getExtendsClass() {
 		return extendsClass;
 	}
 
@@ -152,7 +152,7 @@ public class JavaSource {
 	 * @param extendsClass
 	 *            継承クラス
 	 */
-	public void setExtendsClass(Class extendsClass) {
+	public void setExtendsClass(Class<?> extendsClass) {
 		this.extendsClass = extendsClass;
 	}
 

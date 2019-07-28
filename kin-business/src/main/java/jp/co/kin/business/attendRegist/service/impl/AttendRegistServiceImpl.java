@@ -15,7 +15,7 @@ import jp.co.kin.business.attendRegist.service.AttendRegistService;
 import jp.co.kin.business.db.search.OntimeMtSearchService;
 import jp.co.kin.business.db.search.UserBaseDataSearchService;
 import jp.co.kin.business.ontime.dto.OntimeDto;
-import jp.co.kin.business.userRegist.UserBaseDataDto;
+import jp.co.kin.business.userRegist.dto.UserBaseDataDto;
 import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.util.LocalDateTimeUtil;
 

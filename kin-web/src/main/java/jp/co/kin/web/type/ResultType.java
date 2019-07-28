@@ -9,7 +9,7 @@ public enum ResultType implements BaseEnum {
 	/** FAILURE */
 	FAILURE("1", "失敗");
 
-	/** コード値 */
+	/** 値 */
 	private String value;
 	/** メッセージ */
 	private String message;

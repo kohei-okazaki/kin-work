@@ -10,7 +10,6 @@ import jp.co.kin.tool.type.AccessType;
 /**
  * Setter
  *
- * @param 任意の型
  */
 public class Setter extends Method {
 

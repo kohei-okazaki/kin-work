@@ -6,8 +6,8 @@ import jp.co.kin.common.type.BaseEnum;
  * 勤怠管理サイトのユーザ権限の列挙<br>
  * 今後、権限を追加する場合、本列挙に追加してください
  * <ul>
- * <li>一般</li>
- * <li>管理者</li>
+ * <li>0:一般</li>
+ * <li>1:管理者</li>
  * </ul>
  */
 public enum UserAuth implements BaseEnum {

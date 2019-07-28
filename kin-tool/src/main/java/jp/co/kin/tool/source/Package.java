@@ -1,5 +1,9 @@
 package jp.co.kin.tool.source;
 
+/**
+ * Package
+ *
+ */
 public class Package {
 
 	/** 値 */
