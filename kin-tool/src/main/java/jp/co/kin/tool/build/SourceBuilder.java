@@ -53,7 +53,7 @@ public abstract class SourceBuilder extends BaseBuilder {
 		String result = toCamelCase(fileName);
 		// 先頭の文字列を大文字に変換
 		Character startChar = result.charAt(0);
-		Character large = Character.toUpperCase(result.charAt(0));
+		Character large = Character.toUpperCase(startChar);
 
 		return result.replaceFirst(startChar.toString(), large.toString());
 	}
@@ -95,15 +95,14 @@ public abstract class SourceBuilder extends BaseBuilder {
 	 * クラスに付与するアノテーション部分を組み立てる
 	 *
 	 * @param classAnnotationList
-	 *            クラスに付与するアノテーションのリスト
+	 *            クラスに付与するアノテーションのMap
 	 * @return クラスに付与するアノテーション部分
 	 */
 	protected String buildClassAnnotation(Map<Class<?>, String> annotationMap) {
 
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		annotationMap.entrySet().stream().forEach(e -> {
-			body.add("@" + e.getKey().getSimpleName() + e.getValue());
-		});
+		annotationMap.entrySet().stream()
+				.forEach(e -> body.add("@" + e.getKey().getSimpleName() + e.getValue()));
 
 		return body.toString();
 	}

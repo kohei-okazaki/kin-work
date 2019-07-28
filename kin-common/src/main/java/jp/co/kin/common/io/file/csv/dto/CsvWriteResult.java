@@ -5,7 +5,6 @@ import jp.co.kin.common.bean.BaseDto;
 public class CsvWriteResult implements BaseDto {
 
 	private boolean hasError;
-
 	private String errorMessage;
 
 	/**

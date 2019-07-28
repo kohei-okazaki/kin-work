@@ -7,6 +7,10 @@ import org.apache.commons.lang3.StringUtils;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.type.AccessType;
 
+/**
+ * Getter
+ *
+ */
 public class Getter extends Method {
 
 	/** 接頭語 */
