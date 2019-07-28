@@ -16,11 +16,12 @@ public enum AccountLockFlg implements BaseEnum {
 	/** 利用不可 */
 	UNUSABLE("1");
 
+	/** 値 */
+	private String value;
+
 	private AccountLockFlg(String value) {
 		this.value = value;
 	}
-
-	private String value;
 
 	@Override
 	public String getValue() {
