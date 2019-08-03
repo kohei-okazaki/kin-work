@@ -27,31 +27,31 @@ import jp.co.kin.common.util.BeanUtil;
 public class CsvWriter {
 
 	/** CSV設定情報 */
-	private CsvConfig config;
+	private CsvConfig conf;
 
 	/**
-	 * configを設定する<br>
-	 * config Methodチェイン用に自身を返却すること
+	 * confを設定する<br>
+	 * conf Methodチェイン用に自身を返却すること
 	 *
-	 * @param config
-	 *            config
-	 *
+	 * @param conf
+	 *            conf
 	 */
-	public CsvWriter setConfig(CsvConfig config) {
-		this.config = config;
+	public CsvWriter setConfig(CsvConfig conf) {
+		this.conf = conf;
 		return this;
 	}
 
 	public CsvWriteResult write(Object bean) {
 
 		CsvWriteResult result = new CsvWriteResult();
+
 		if (!isCsvEntity(bean)) {
 			result.setHasError(true);
-			result.setErrorMessage("CSV出力対象Entityに@CsvEntityを設定してください");
+			result.setErrorMessage("CSV出力対象Entityに@CsvEntityを付与してください");
 			return result;
 		}
 
-		List<CsvUnitEntity> orderList = getCsvOrder(bean);
+		List<CsvUnitDto> orderList = getCsvOrder(bean);
 
 		// TODO CSVに実際に書き込む処理を追加
 		return result;
@@ -61,11 +61,11 @@ public class CsvWriter {
 		return bean.getClass().isAnnotationPresent(CsvEntity.class);
 	}
 
-	private static List<CsvUnitEntity> getCsvOrder(Object bean) {
+	private static List<CsvUnitDto> getCsvOrder(Object bean) {
 
-		List<CsvUnitEntity> csvEntityList = BeanUtil.getFieldList(bean.getClass()).stream().map(e -> {
+		List<CsvUnitDto> csvEntityList = BeanUtil.getFieldList(bean.getClass()).stream().map(e -> {
 
-			CsvUnitEntity entity = new CsvUnitEntity();
+			CsvUnitDto entity = new CsvUnitDto();
 			CsvColumn column = e.getAnnotation(CsvColumn.class);
 
 			entity.setOrder(column.order());
@@ -76,13 +76,13 @@ public class CsvWriter {
 		}).collect(Collectors.toList());
 
 		// orderの昇順にソート
-		csvEntityList = csvEntityList.stream().sorted(Comparator.comparing(CsvUnitEntity::getOrder))
+		csvEntityList = csvEntityList.stream().sorted(Comparator.comparing(CsvUnitDto::getOrder))
 				.collect(Collectors.toList());
 
 		return csvEntityList;
 	}
 
-	private static class CsvUnitEntity implements BaseDto {
+	private static class CsvUnitDto implements BaseDto {
 
 		private Integer order;
 		private Field field;

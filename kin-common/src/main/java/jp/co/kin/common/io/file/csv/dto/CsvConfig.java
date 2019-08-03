@@ -1,75 +1,36 @@
 package jp.co.kin.common.io.file.csv.dto;
 
 import jp.co.kin.common.bean.BaseDto;
-import jp.co.kin.common.type.Charset;
+import jp.co.kin.common.io.file.BaseFileConfig;
 
-public class CsvConfig implements BaseDto {
+/**
+ * CSVファイル設定情報
+ *
+ */
+public class CsvConfig extends BaseFileConfig implements BaseDto {
 
-	private Charset charset;
-	private String filePath;
-	private String fileName;
+	/** 囲い文字 */
+	private String fileChar;
 
 	/**
-	 * charsetを返す
+	 * fileCharを返す
 	 * 
-	 * @return charset
+	 * @return fileChar
 	 *
 	 */
-	public Charset getCharset() {
-		return charset;
+	public String getFileChar() {
+		return fileChar;
 	}
 
 	/**
-	 * charsetを設定する
+	 * fileCharを設定する
 	 * 
-	 * @param charset
-	 *            charset
+	 * @param fileChar
+	 *            fileChar
 	 *
 	 */
-	public void setCharset(Charset charset) {
-		this.charset = charset;
-	}
-
-	/**
-	 * filePathを返す
-	 * 
-	 * @return filePath
-	 *
-	 */
-	public String getFilePath() {
-		return filePath;
-	}
-
-	/**
-	 * filePathを設定する
-	 * 
-	 * @param filePath
-	 *            filePath
-	 *
-	 */
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
-
-	/**
-	 * fileNameを返す
-	 * 
-	 * @return fileName
-	 *
-	 */
-	public String getFileName() {
-		return fileName;
-	}
-
-	/**
-	 * fileNameを設定する
-	 * 
-	 * @param fileName
-	 *            fileName
-	 *
-	 */
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFileChar(String fileChar) {
+		this.fileChar = fileChar;
 	}
 
 }
