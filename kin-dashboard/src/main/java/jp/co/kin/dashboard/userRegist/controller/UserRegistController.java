@@ -46,7 +46,7 @@ public class UserRegistController implements BaseViewController {
 	@SessionNonAuth
 	@GetMapping("/input")
 	public String input(Model model) {
-		// 定時情報を取得
+		// 定時情報マスタから企業コードを取得
 		List<String> companyCodeList = ontimeMtSearchService.search().stream().map(e -> e.getCompanyCode())
 				.collect(Collectors.toList());
 		model.addAttribute("companyCodeList", companyCodeList);

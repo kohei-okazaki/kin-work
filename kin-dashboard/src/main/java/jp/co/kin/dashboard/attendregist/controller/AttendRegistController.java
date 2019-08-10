@@ -33,6 +33,10 @@ import jp.co.kin.dashboard.exception.DashboardException;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 
+/**
+ * 勤怠登録画面コントローラ
+ *
+ */
 @Controller
 @RequestMapping("attendRegist")
 public class AttendRegistController implements BaseViewController {

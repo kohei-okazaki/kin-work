@@ -25,7 +25,7 @@ import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 
 /**
- * ログインコントローラ
+ * ログイン画面コントローラ
  *
  */
 @Controller

@@ -26,7 +26,7 @@ public class OntimeRegistServiceImpl implements OntimeRegistService {
 
 		OntimeMt entity = new OntimeMt();
 		BeanUtil.copy(dto, entity);
-		OntimeDto searchDto = selectByCompanyCode(dto);
+		OntimeDto searchDto = selectByCompanyCode(dto.getCompanyCode());
 		if (BeanUtil.isNull(searchDto)) {
 			ontimeMtCreateService.create(entity);
 		} else {
@@ -35,8 +35,15 @@ public class OntimeRegistServiceImpl implements OntimeRegistService {
 
 	}
 
-	private OntimeDto selectByCompanyCode(OntimeDto dto) {
-		return ontimeMtSearchService.searchByCompanyCode(dto.getCompanyCode());
+	/**
+	 * 指定した企業コードから定時情報マスタを返す
+	 *
+	 * @param companyCode
+	 *            企業コード
+	 * @return
+	 */
+	private OntimeDto selectByCompanyCode(String companyCode) {
+		return ontimeMtSearchService.searchByCompanyCode(companyCode);
 	}
 
 }
