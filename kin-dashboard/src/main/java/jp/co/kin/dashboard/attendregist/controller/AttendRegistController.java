@@ -1,4 +1,4 @@
-package jp.co.kin.dashboard.attendRegist.controller;
+package jp.co.kin.dashboard.attendregist.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.kin.business.attendRegist.dto.AttendBusinessCalendar;
-import jp.co.kin.business.attendRegist.service.AttendRegistService;
+import jp.co.kin.business.attendregist.dto.AttendBusinessCalendar;
+import jp.co.kin.business.attendregist.service.AttendRegistService;
 import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.business.session.annotation.CsrfToken;
@@ -27,12 +27,16 @@ import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.type.RegixType;
 import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.common.util.StringUtil;
-import jp.co.kin.dashboard.attendRegist.form.AttendRegistForm;
+import jp.co.kin.dashboard.attendregist.form.AttendRegistForm;
 import jp.co.kin.dashboard.exception.DashboardErrorCode;
 import jp.co.kin.dashboard.exception.DashboardException;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 
+/**
+ * 勤怠登録画面コントローラ
+ *
+ */
 @Controller
 @RequestMapping("attendRegist")
 public class AttendRegistController implements BaseViewController {

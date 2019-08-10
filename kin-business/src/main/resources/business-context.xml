@@ -24,7 +24,7 @@
       </list>
     </property>
   </bean>
-  <bean id="loginUserBusinessProperties" class="jp.co.kin.business.userRegist.dto.UserBusinessProperties" lazy-init="true">
+  <bean id="loginUserBusinessProperties" class="jp.co.kin.business.userregist.dto.UserBusinessProperties" lazy-init="true">
     <property name="authDate" value="${business.loginUser.authDate}" />
     <property name="userAuth" value="${business.loginUser.userAuth}" />
   </bean>

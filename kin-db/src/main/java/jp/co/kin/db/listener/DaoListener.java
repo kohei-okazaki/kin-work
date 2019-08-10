@@ -47,7 +47,7 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 			for (Method m : entity.getClass().getDeclaredMethods()) {
 				if ("setRegDate".equals(m.getName()) || "setUpdateDate".equals(m.getName())) {
 					// 登録日時/更新日時の設定
-					m.invoke(entity, LocalDateTimeUtil.toDate(LocalDateTimeUtil.getSysDate()));
+					m.invoke(entity, LocalDateTimeUtil.getSysDate());
 				}
 			}
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
@@ -65,8 +65,8 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 		try {
 			for (Method m : entity.getClass().getDeclaredMethods()) {
 				if ("setUpdateDate".equals(m.getName())) {
-					// 登録日時/更新日時の設定
-					m.invoke(entity, LocalDateTimeUtil.toDate(LocalDateTimeUtil.getSysDate()));
+					// 更新日時の設定
+					m.invoke(entity, LocalDateTimeUtil.getSysDate());
 				}
 			}
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
