@@ -1,4 +1,4 @@
-package jp.co.kin.dashboard.attendRegist.form;
+package jp.co.kin.dashboard.attendregist.form;
 
 import java.math.BigDecimal;
 
