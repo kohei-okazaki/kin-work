@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import jp.co.kin.business.attendregist.dto.AttendBusinessCalendar;
+import jp.co.kin.business.attendregist.dto.AttendRegistDto;
 import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.web.service.BaseService;
 
@@ -41,5 +42,13 @@ public interface AttendRegistService extends BaseService {
 	 * @return
 	 */
 	List<AttendBusinessCalendar> getBusinessCalendarList(LocalDate targetDate);
+
+	/**
+	 * 勤怠登録情報を登録する
+	 * 
+	 * @param dto
+	 *            勤怠登録情報
+	 */
+	void registDailyWorkData(AttendRegistDto dto);
 
 }
