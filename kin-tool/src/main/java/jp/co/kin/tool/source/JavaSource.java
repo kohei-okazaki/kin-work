@@ -14,6 +14,8 @@ public class JavaSource {
 	private Package pack;
 	/** import文のリスト */
 	private List<Import> importList;
+	/** クラスのJavadDoc */
+	private String classJavaDoc;
 	/** アクセス型 */
 	private AccessType accessType;
 	/** クラス型 */
@@ -78,6 +80,27 @@ public class JavaSource {
 	 */
 	public List<Import> getImportList() {
 		return importList;
+	}
+
+	/**
+	 * classJavaDocを返す
+	 *
+	 * @return classJavaDoc
+	 *
+	 */
+	public String getClassJavaDoc() {
+		return classJavaDoc;
+	}
+
+	/**
+	 * classJavaDocを設定する
+	 *
+	 * @param classJavaDoc
+	 *            classJavaDoc
+	 *
+	 */
+	public void setClassJavaDoc(String classJavaDoc) {
+		this.classJavaDoc = classJavaDoc;
 	}
 
 	/**

@@ -35,7 +35,7 @@ public interface AttendRegistService extends BaseService {
 
 	/**
 	 * 対象日付のカレンダー情報をリストを返す
-	 * 
+	 *
 	 * @param targetDate
 	 *            対象日付
 	 * @return

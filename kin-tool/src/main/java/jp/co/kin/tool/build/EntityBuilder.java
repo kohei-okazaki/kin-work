@@ -7,6 +7,7 @@ import java.util.StringJoiner;
 
 import org.seasar.doma.Entity;
 import org.seasar.doma.GeneratedValue;
+import org.seasar.doma.GenerationType;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
@@ -49,6 +50,8 @@ public class EntityBuilder extends SourceBuilder {
 				if (!isTargetTable(row, table)) {
 					continue;
 				}
+
+				source.setClassJavaDoc(getLogicalName(row) + " Entity");
 				source.setClassName(toJavaFileName(getPhysicalName(row)));
 
 				// fieldの設定
@@ -86,8 +89,9 @@ public class EntityBuilder extends SourceBuilder {
 		}
 		Cell sequenceCell = row.getCell(CellPositionType.SEQUENCE);
 		if (StringUtil.hasValue(sequenceCell.getValue())) {
-			map.put(GeneratedValue.class, "strategy = GenerationType.SEQUENCE");
+			map.put(GeneratedValue.class, "strategy = GenerationType.IDENTITY");
 			source.addImport(new Import(GeneratedValue.class));
+			source.addImport(new Import(GenerationType.class));
 		}
 		Cell cryptCell = row.getCell(CellPositionType.CRYPT);
 		if (StringUtil.hasValue(cryptCell.getValue())) {
@@ -141,7 +145,9 @@ public class EntityBuilder extends SourceBuilder {
 
 		// class情報
 		result.add(
-				buildClassAnnotation(source.getClassAnnotationMap()) + LineFeedType.CRLF.getValue()
+				buildClassJavaDoc(source) + LineFeedType.CRLF.getValue()
+						+ buildClassAnnotation(source.getClassAnnotationMap())
+						+ LineFeedType.CRLF.getValue()
 						+ buildClass(source) + buildExtendsClass(source) + buildInterfaces(source) + " {");
 
 		// field情報
@@ -153,6 +159,15 @@ public class EntityBuilder extends SourceBuilder {
 		result.add("}");
 
 		return result.toString();
+	}
+
+	private String buildClassJavaDoc(JavaSource source) {
+		StringJoiner sj = new StringJoiner(StringUtil.NEW_LINE);
+		sj.add("/**");
+		sj.add(" * " + source.getClassJavaDoc());
+		sj.add(" *");
+		sj.add(" */");
+		return sj.toString();
 	}
 
 	private String buildFields(List<Field> fieldList) {

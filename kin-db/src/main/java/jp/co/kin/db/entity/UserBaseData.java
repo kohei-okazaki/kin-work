@@ -6,6 +6,10 @@ import org.seasar.doma.Entity;
 import org.seasar.doma.Id;
 import org.seasar.doma.jdbc.entity.NamingType;
 
+/**
+ * ユーザ基本情報 Entity
+ *
+ */
 @Entity(naming = NamingType.SNAKE_UPPER_CASE)
 public class UserBaseData extends BaseEntity {
 
