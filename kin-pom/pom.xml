@@ -24,7 +24,7 @@
     <org.mysql-version>8.0.17</org.mysql-version>
     <org.doma-version>2.24.0</org.doma-version>
     <org.hibernate-version>6.0.17.Final</org.hibernate-version>
-    <org.groovy-version>2.5.7</org.groovy-version>
+    <org.groovy-version>2.5.8</org.groovy-version>
     <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
     <org.thymeleaf-layout-version>2.4.1</org.thymeleaf-layout-version>
     <org.dbcp2-version>2.7.0</org.dbcp2-version>
@@ -304,11 +304,13 @@
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.1.0</version>
       </plugin>
+ -->
     </plugins>
   </build>
 </project>

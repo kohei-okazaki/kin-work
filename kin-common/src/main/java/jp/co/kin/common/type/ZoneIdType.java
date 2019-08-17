@@ -11,6 +11,7 @@ public enum ZoneIdType implements BaseEnum {
 		this.value = value;
 	}
 
+	/** 値 */
 	private String value;
 
 	@Override

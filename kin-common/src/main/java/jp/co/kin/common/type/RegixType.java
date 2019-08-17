@@ -20,7 +20,7 @@ public enum RegixType implements BaseEnum {
 	/** 浮動小数 */
 	DECIMAL("^?(0|[1-9]\\d*)(\\.\\d+|)$");
 
-	/** 正規表現 */
+	/** 値 */
 	private String value;
 
 	private RegixType(String value) {

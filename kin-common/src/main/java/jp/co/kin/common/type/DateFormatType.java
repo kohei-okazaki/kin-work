@@ -17,7 +17,7 @@ public enum DateFormatType implements BaseEnum {
 	/** YYYYMMDD_HHmmss */
 	YYYYMMDD_HHMMSS_NOSEP("yyyyMMddHHmmss");
 
-	/** 名前 */
+	/** 値 */
 	private String value;
 
 	private DateFormatType(String value) {

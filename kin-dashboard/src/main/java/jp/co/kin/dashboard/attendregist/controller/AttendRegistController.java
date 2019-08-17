@@ -123,7 +123,7 @@ public class AttendRegistController implements BaseViewController {
 
 	@CsrfToken(check = true)
 	@PostMapping("/complete")
-	public String complete() {
+	public String complete(Model model, AttendRegistForm form) {
 		return getView(DashboardView.ATTEND_REGIST_COMPLETE);
 	}
 }
