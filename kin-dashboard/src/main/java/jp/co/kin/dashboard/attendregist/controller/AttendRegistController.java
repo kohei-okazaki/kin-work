@@ -90,6 +90,20 @@ public class AttendRegistController implements BaseViewController {
 		return getView(DashboardView.ATTEND_REGIST_COMPLETE);
 	}
 
+	/**
+	 * カレンダー情報をModelに表示させる
+	 *
+	 * @param model
+	 *            Model
+	 * @param request
+	 *            HttpServletRequest
+	 * @param year
+	 *            年
+	 * @param month
+	 *            月
+	 * @param targetDate
+	 *            対象日時
+	 */
 	private void viewCalendar(Model model, HttpServletRequest request, BigDecimal year, BigDecimal month,
 			LocalDate targetDate) {
 		model.addAttribute("selectedYear", year);
@@ -103,6 +117,14 @@ public class AttendRegistController implements BaseViewController {
 		model.addAttribute("ontimeDto", attendRegistService.getOntimeDto(userId));
 	}
 
+	/**
+	 * システム日時からカレンダー情報を初期化する
+	 *
+	 * @param model
+	 *            Model
+	 * @param request
+	 *            HttpServletRequest
+	 */
 	private void initCalendar(Model model, HttpServletRequest request) {
 		BigDecimal year = new BigDecimal(
 				LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(), DateFormatType.YYYY));
