@@ -1,8 +1,12 @@
 package jp.co.kin.db.dao;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import org.seasar.doma.Dao;
 import org.seasar.doma.Delete;
 import org.seasar.doma.Insert;
+import org.seasar.doma.Select;
 import org.seasar.doma.Update;
 
 import jp.co.kin.db.config.DaoRepository;
@@ -20,5 +24,9 @@ public interface DailyUserWorkDataDao extends BaseDao {
 
 	@Insert
 	public int insert(DailyUserWorkData entity);
+
+	@Select
+	public List<DailyUserWorkData> selectByWorkDate(LocalDate workStartDate, LocalDate workEndDate,
+			String userId);
 
 }

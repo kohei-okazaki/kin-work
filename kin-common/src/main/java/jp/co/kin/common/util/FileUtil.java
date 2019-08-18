@@ -164,14 +164,16 @@ public class FileUtil {
 	 * @return ファイル
 	 */
 	public static File convertPathFile(String srcPath, FileSeparator sep) {
-		if (FileSeparator.WINDOWS.is(sep)) {
+		switch (sep) {
+		case WINDOWS:
 			if (srcPath.contains(FileSeparator.WINDOWS.getValue())) {
 				return getFile(srcPath);
 			} else {
 				return getFile(
 						srcPath.replaceAll(FileSeparator.LINUX.getValue(), FileSeparator.WINDOWS.getValue()));
 			}
-		} else {
+
+		default:
 			if (srcPath.contains(FileSeparator.LINUX.getValue())) {
 				return getFile(srcPath);
 			} else {
@@ -262,10 +264,6 @@ public class FileUtil {
 			return this.value;
 		}
 
-		public boolean is(FileExtension fileExtension) {
-			return this == fileExtension;
-		}
-
 		public static FileExtension of(String value) {
 			return BaseEnum.of(FileExtension.class, value);
 		}
@@ -288,10 +286,6 @@ public class FileUtil {
 
 		private FileSeparator(String value) {
 			this.value = value;
-		}
-
-		public boolean is(FileSeparator separator) {
-			return this == separator;
 		}
 
 		@Override

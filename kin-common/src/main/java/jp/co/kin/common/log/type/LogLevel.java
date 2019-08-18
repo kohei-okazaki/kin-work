@@ -33,8 +33,4 @@ public enum LogLevel implements BaseEnum {
 		return BaseEnum.of(LogLevel.class, value);
 	}
 
-	public boolean is(LogLevel logLevel) {
-		return this == logLevel;
-	}
-
 }

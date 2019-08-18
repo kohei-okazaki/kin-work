@@ -13,20 +13,36 @@ public abstract class BaseExceptionHander implements HandlerExceptionResolver {
 
 	protected LogLevel getLogLevel(Exception e) {
 
-		LogLevel loglevel;
+		LogLevel loglevel = null;
 		if (e instanceof BaseException) {
 			BaseException be = (BaseException) e;
-			if (LogLevel.ERROR == be.getErrorCode().getLogLevel()) {
+			switch (be.getErrorCode().getLogLevel()) {
+			case FATAL:
+				loglevel = LogLevel.FATAL;
+				break;
+			case ERROR:
 				loglevel = LogLevel.ERROR;
-			} else {
+				break;
+			case WARN:
 				loglevel = LogLevel.WARN;
+				break;
+			default:
+				break;
 			}
 		} else if (e instanceof BaseRuntimeException) {
 			BaseRuntimeException be = (BaseRuntimeException) e;
-			if (LogLevel.ERROR == be.getErrorCode().getLogLevel()) {
+			switch (be.getErrorCode().getLogLevel()) {
+			case FATAL:
+				loglevel = LogLevel.FATAL;
+				break;
+			case ERROR:
 				loglevel = LogLevel.ERROR;
-			} else {
+				break;
+			case WARN:
 				loglevel = LogLevel.WARN;
+				break;
+			default:
+				break;
 			}
 		} else {
 			loglevel = LogLevel.ERROR;

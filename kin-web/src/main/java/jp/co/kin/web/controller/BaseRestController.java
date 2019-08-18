@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
-import jp.co.kin.common.log.type.LogLevel;
 import jp.co.kin.common.util.ThrowableBiConsumer;
 import jp.co.kin.web.form.BaseApiRequest;
 import jp.co.kin.web.form.BaseApiResponse;
@@ -65,10 +64,14 @@ public abstract class BaseRestController<Rq extends BaseApiRequest, Rs extends B
 	@ExceptionHandler(BaseException.class)
 	public Rs appExceptionHandle(BaseException e) {
 		Rs response = (Rs) new ErrorResponse(e);
-		if (LogLevel.WARN.is(e.getErrorCode().getLogLevel())) {
+		switch (e.getErrorCode().getLogLevel()) {
+		case WARN:
 			LOG.warnRes(response, e);
-		} else if (LogLevel.ERROR.is(e.getErrorCode().getLogLevel())) {
+			break;
+		case ERROR:
 			LOG.errorRes(response, e);
+		default:
+			break;
 		}
 		return response;
 	}

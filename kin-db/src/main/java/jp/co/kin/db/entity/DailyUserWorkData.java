@@ -1,6 +1,7 @@
 package jp.co.kin.db.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import org.seasar.doma.Entity;
@@ -24,6 +25,8 @@ public class DailyUserWorkData extends BaseEntity {
 	private String userId;
 	/** 企業コード */
 	private String companyCode;
+	/** 勤怠情報登録日時 */
+	private LocalDate workDataRegDate;
 	/** 始業日時 */
 	private LocalDateTime workStartDate;
 	/** 終業日時 */
@@ -57,6 +60,14 @@ public class DailyUserWorkData extends BaseEntity {
 
 	public String getCompanyCode() {
 		return companyCode;
+	}
+
+	public void setWorkDataRegDate(LocalDate workDataRegDate) {
+		this.workDataRegDate = workDataRegDate;
+	}
+
+	public LocalDate getWorkDataRegDate() {
+		return workDataRegDate;
 	}
 
 	public void setWorkStartDate(LocalDateTime workStartDate) {
