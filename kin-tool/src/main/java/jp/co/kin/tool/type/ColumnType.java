@@ -1,6 +1,7 @@
 package jp.co.kin.tool.type;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jp.co.kin.common.type.BaseEnum;
@@ -10,7 +11,7 @@ public enum ColumnType implements BaseEnum {
 	/** VARCHAR */
 	VARCHAR("VARCHAR", String.class),
 	/** DATE */
-	DATE("DATE", LocalDateTime.class),
+	DATE("DATE", LocalDate.class),
 	/** TIMESTAMP */
 	TIMESTAMP("TIMESTAMP", LocalDateTime.class),
 	/** DOUBLE */

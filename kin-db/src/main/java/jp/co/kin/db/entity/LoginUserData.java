@@ -10,6 +10,10 @@ import org.seasar.doma.jdbc.entity.NamingType;
 import jp.co.kin.common.crypt.annotation.Crypt;
 import jp.co.kin.common.log.annotation.Mask;
 
+/**
+ * ログインユーザ情報 Entity
+ *
+ */
 @Entity(naming = NamingType.SNAKE_UPPER_CASE)
 public class LoginUserData extends BaseEntity {
 

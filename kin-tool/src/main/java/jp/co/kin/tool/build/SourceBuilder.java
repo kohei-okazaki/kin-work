@@ -62,6 +62,10 @@ public abstract class SourceBuilder extends BaseBuilder {
 		return row.getCell(CellPositionType.PHYSICAL_NAME).getValue();
 	}
 
+	protected String getLogicalName(Row row) {
+		return row.getCell(CellPositionType.LOGICAL_NAME).getValue();
+	}
+
 	/**
 	 * Package部分を組み立てる
 	 *

@@ -63,29 +63,30 @@ public class CsvWriter {
 
 	private static List<CsvUnitDto> getCsvOrder(Object bean) {
 
-		List<CsvUnitDto> csvEntityList = BeanUtil.getFieldList(bean.getClass()).stream().map(e -> {
+		List<CsvUnitDto> csvDtoList = BeanUtil.getFieldList(bean.getClass()).stream().map(e -> {
 
-			CsvUnitDto entity = new CsvUnitDto();
+			CsvUnitDto csvUnitDto = new CsvUnitDto();
 			CsvColumn column = e.getAnnotation(CsvColumn.class);
 
-			entity.setOrder(column.order());
-			entity.setField(e);
-			entity.setLabel(column.label());
+			csvUnitDto.setOrder(column.order());
+			csvUnitDto.setField(e);
+			csvUnitDto.setLabel(column.label());
 
-			return entity;
+			return csvUnitDto;
 		}).collect(Collectors.toList());
 
 		// orderの昇順にソート
-		csvEntityList = csvEntityList.stream().sorted(Comparator.comparing(CsvUnitDto::getOrder))
+		return csvDtoList.stream().sorted(Comparator.comparing(CsvUnitDto::getOrder))
 				.collect(Collectors.toList());
-
-		return csvEntityList;
 	}
 
 	private static class CsvUnitDto implements BaseDto {
 
+		/** 表示順 */
 		private Integer order;
+		/** フィールド名 */
 		private Field field;
+		/** ラベル名 */
 		private String label;
 
 		/**

@@ -2,7 +2,6 @@ package jp.co.kin.dashboard.attendregist.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -16,20 +15,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jp.co.kin.business.attendregist.dto.AttendBusinessCalendar;
+import jp.co.kin.business.attendregist.dto.AttendRegistDto;
 import jp.co.kin.business.attendregist.service.AttendRegistService;
-import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.business.session.annotation.CsrfToken;
+import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.type.DateFormatType;
-import jp.co.kin.common.type.RegixType;
 import jp.co.kin.common.util.LocalDateTimeUtil;
-import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.dashboard.attendregist.form.AttendRegistForm;
-import jp.co.kin.dashboard.exception.DashboardErrorCode;
-import jp.co.kin.dashboard.exception.DashboardException;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 
@@ -53,59 +48,23 @@ public class AttendRegistController implements BaseViewController {
 
 	@GetMapping("/input")
 	public String input(Model model, HttpServletRequest request) {
-
-		LocalDate sysDate = LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate());
-		List<AttendBusinessCalendar> calendarList = attendRegistService.getBusinessCalendarList(sysDate);
-		model.addAttribute("calendarList", calendarList);
-
-		model.addAttribute("selectedYear",
-				new BigDecimal(
-						LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(), DateFormatType.YYYY)));
-		model.addAttribute("yearList", attendRegistService.getYearList());
-
-		model.addAttribute("selectedMonth",
-				new BigDecimal(
-						LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(), DateFormatType.MM)));
-		model.addAttribute("monthList", attendRegistService.getMonthList());
-
-		// 定時情報を取得する
-		String userId = sessionComponent.getValue(request.getSession(), "sessionUser",
-				SessionLoginUser.class).get().getUserId();
-		OntimeDto ontimeDto = attendRegistService.getOntimeDto(userId);
-		model.addAttribute("ontimeDto", ontimeDto);
-
+		initCalendar(model, request);
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}
 
 	@GetMapping("/changeCalendar")
-	public String changeCalendar(Model model, HttpServletRequest request) throws BaseException {
+	public String changeCalendar(Model model, HttpServletRequest request, @Valid AttendRegistForm form,
+			BindingResult result) throws BaseException {
 
-		String year = request.getParameter("year");
-		String month = request.getParameter("month");
-		if (StringUtil.isEmpty(year) || StringUtil.isEmpty(month)) {
-			throw new DashboardException(DashboardErrorCode.ILLEGAL_REQUEST,
-					"リクエスト情報が不正です. year=" + year + ", month=" + month);
-		} else if (!year.matches(RegixType.HALF_NUMBER.getValue())
-				|| !month.matches(RegixType.HALF_NUMBER.getValue())) {
-			throw new DashboardException(DashboardErrorCode.ILLEGAL_REQUEST,
-					"yearまたはmonthが半角数字でありません. year=" + year + ", month=" + month);
+		if (result.hasErrors()) {
+			initCalendar(model, request);
+			return getView(DashboardView.ATTEND_REGIST_INPUT);
 		}
 
-		model.addAttribute("selectedYear", new BigDecimal(year));
-		model.addAttribute("yearList", attendRegistService.getYearList());
-
-		model.addAttribute("selectedMonth", new BigDecimal(month));
-		model.addAttribute("monthList", attendRegistService.getMonthList());
-
+		String year = form.getYear();
+		String month = form.getMonth();
 		LocalDate targetDate = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), 1);
-		List<AttendBusinessCalendar> calendarList = attendRegistService.getBusinessCalendarList(targetDate);
-		model.addAttribute("calendarList", calendarList);
-
-		// 定時情報を取得する
-		String userId = sessionComponent.getValue(request.getSession(), "sessionUser",
-				SessionLoginUser.class).get().getUserId();
-		OntimeDto ontimeDto = attendRegistService.getOntimeDto(userId);
-		model.addAttribute("ontimeDto", ontimeDto);
+		this.viewCalendar(model, request, new BigDecimal(year), new BigDecimal(month), targetDate);
 
 		return getView(DashboardView.ATTEND_REGIST_INPUT);
 	}
@@ -123,7 +82,55 @@ public class AttendRegistController implements BaseViewController {
 
 	@CsrfToken(check = true)
 	@PostMapping("/complete")
-	public String complete() {
+	public String complete(Model model, AttendRegistForm form) {
+
+		// 勤怠登録formをdtoに変換する
+		AttendRegistDto dto = DtoFactory.getDto(AttendRegistDto.class, form);
+		attendRegistService.registDailyWorkData(dto);
 		return getView(DashboardView.ATTEND_REGIST_COMPLETE);
+	}
+
+	/**
+	 * カレンダー情報をModelに表示させる
+	 *
+	 * @param model
+	 *            Model
+	 * @param request
+	 *            HttpServletRequest
+	 * @param year
+	 *            年
+	 * @param month
+	 *            月
+	 * @param targetDate
+	 *            対象日時
+	 */
+	private void viewCalendar(Model model, HttpServletRequest request, BigDecimal year, BigDecimal month,
+			LocalDate targetDate) {
+		model.addAttribute("selectedYear", year);
+		model.addAttribute("yearList", attendRegistService.getYearList());
+		model.addAttribute("selectedMonth", month);
+		model.addAttribute("monthList", attendRegistService.getMonthList());
+		model.addAttribute("calendarList", attendRegistService.getBusinessCalendarList(targetDate));
+		// 定時情報を設定
+		String userId = sessionComponent.getValue(request.getSession(), "sessionUser",
+				SessionLoginUser.class).get().getUserId();
+		model.addAttribute("ontimeDto", attendRegistService.getOntimeDto(userId));
+	}
+
+	/**
+	 * システム日時からカレンダー情報を初期化する
+	 *
+	 * @param model
+	 *            Model
+	 * @param request
+	 *            HttpServletRequest
+	 */
+	private void initCalendar(Model model, HttpServletRequest request) {
+		BigDecimal year = new BigDecimal(
+				LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(), DateFormatType.YYYY));
+		BigDecimal month = new BigDecimal(
+				LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(), DateFormatType.MM));
+		LocalDate targetDate = LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate());
+		this.viewCalendar(model, request, year, month, targetDate);
 	}
 }
