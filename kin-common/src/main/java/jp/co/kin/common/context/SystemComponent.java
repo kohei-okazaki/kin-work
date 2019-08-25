@@ -2,6 +2,10 @@ package jp.co.kin.common.context;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * system.propertiesのBeanクラス
+ *
+ */
 @Component
 public class SystemComponent {
 

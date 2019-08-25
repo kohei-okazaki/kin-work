@@ -9,6 +9,10 @@ import org.seasar.doma.Update;
 import jp.co.kin.db.config.DaoRepository;
 import jp.co.kin.db.entity.UserBaseData;
 
+/**
+ * ユーザ基本情報 Dao
+ *
+ */
 @Dao
 @DaoRepository
 public interface UserBaseDataDao extends BaseDao {

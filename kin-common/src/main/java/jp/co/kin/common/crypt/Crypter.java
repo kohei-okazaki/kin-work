@@ -16,7 +16,7 @@ public interface Crypter {
 	String encrypt(String str);
 
 	/**
-	 * 復号処理を行う
+	 * 復号化を行う
 	 *
 	 * @param str
 	 *            復号したい文字列

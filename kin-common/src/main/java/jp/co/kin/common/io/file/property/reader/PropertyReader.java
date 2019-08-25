@@ -18,6 +18,10 @@ import jp.co.kin.common.util.BeanUtil.AccessorType;
 import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.common.util.FileUtil.FileSeparator;
 
+/**
+ * PropertiesファイルのReader
+ *
+ */
 public class PropertyReader {
 
 	/** LOG */
