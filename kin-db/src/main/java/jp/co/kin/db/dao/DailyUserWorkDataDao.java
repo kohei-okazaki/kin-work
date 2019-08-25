@@ -12,6 +12,10 @@ import org.seasar.doma.Update;
 import jp.co.kin.db.config.DaoRepository;
 import jp.co.kin.db.entity.DailyUserWorkData;
 
+/**
+ * 日別ユーザ勤怠情報 Dao
+ *
+ */
 @Dao
 @DaoRepository
 public interface DailyUserWorkDataDao extends BaseDao {

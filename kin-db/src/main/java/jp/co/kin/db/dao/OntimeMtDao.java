@@ -11,6 +11,10 @@ import org.seasar.doma.Update;
 import jp.co.kin.db.config.DaoRepository;
 import jp.co.kin.db.entity.OntimeMt;
 
+/**
+ * 定時情報マスタ Dao
+ *
+ */
 @Dao
 @DaoRepository
 public interface OntimeMtDao extends BaseDao {

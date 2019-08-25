@@ -90,16 +90,24 @@ public class DaoConfig implements Config {
 		public void log(Level level, String callerClassName, String callerMethodName, Throwable throwable,
 				Supplier<String> messageSupplier) {
 
-			if (Level.ERROR == level) {
+			switch (level) {
+			case ERROR:
 				LOG.error(messageSupplier.get(), throwable);
-			} else if (Level.WARN == level) {
+				break;
+			case WARN:
 				LOG.warn(messageSupplier.get(), throwable);
-			} else if (Level.INFO == level) {
+				break;
+			case INFO:
 				LOG.info(messageSupplier.get());
-			} else if (Level.DEBUG == level) {
+				break;
+			case DEBUG:
 				LOG.debug(messageSupplier.get());
-			} else if (Level.TRACE == level) {
+				break;
+			case TRACE:
 				LOG.trace(messageSupplier.get());
+				break;
+			default:
+				break;
 			}
 
 		}

@@ -47,6 +47,8 @@ public class DaoBuilder extends SourceBuilder {
 					if (!isTargetTable(row, table)) {
 						continue;
 					}
+
+					source.setClassJavaDoc(getLogicalName(row) + " Dao");
 					source.setClassName(toJavaFileName(getPhysicalName(row)) + "Dao");
 
 					Class<?> entityClass = Class

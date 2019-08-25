@@ -11,6 +11,10 @@ import jp.co.kin.db.config.DaoRepository;
 import jp.co.kin.db.crypt.DecryptFunction;
 import jp.co.kin.db.entity.LoginUserData;
 
+/**
+ * ログインユーザ情報 Dao
+ *
+ */
 @Dao
 @DaoRepository
 public interface LoginUserDataDao extends BaseDao {
