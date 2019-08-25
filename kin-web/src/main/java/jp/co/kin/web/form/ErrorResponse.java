@@ -6,6 +6,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.web.type.ResultType;
 
+/**
+ * Errorレスポンスクラス
+ *
+ */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class ErrorResponse extends BaseApiResponse {
 
