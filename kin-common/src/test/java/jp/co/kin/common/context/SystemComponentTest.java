@@ -18,7 +18,7 @@ public class SystemComponentTest extends BaseCommonTest {
 
 	@Test
 	public void valueTest() {
-		// pageing
+		// paging
 		assertEquals(Integer.valueOf(systemComponent.getPaging()), 10);
 
 		// loglevel
