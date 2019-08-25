@@ -4,13 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Date;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
+import jp.co.kin.common.test.BaseCommonTest;
 
 /**
  * {@link DateUtil} のjUnit
  *
  */
-public class DateUtilTest {
+public class DateUtilTest extends BaseCommonTest {
 
 	@Test
 	@SuppressWarnings("deprecation")

@@ -4,15 +4,17 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
+import jp.co.kin.common.test.BaseCommonTest;
 
 /**
  * {@link BeanUtil} のjUnit
+ *
  */
-public class BeanUtilTest {
+public class BeanUtilTest extends BaseCommonTest {
 
 	/** LOG */
 	private static final Logger LOG = LoggerFactory.getLogger(BeanUtilTest.class);

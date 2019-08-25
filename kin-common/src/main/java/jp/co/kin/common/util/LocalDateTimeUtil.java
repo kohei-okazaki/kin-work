@@ -16,6 +16,7 @@ import jp.co.kin.common.type.ZoneIdType;
 
 /**
  * {@link DateUtil}に代わる日付及び時間操作クラス
+ *
  */
 public class LocalDateTimeUtil {
 

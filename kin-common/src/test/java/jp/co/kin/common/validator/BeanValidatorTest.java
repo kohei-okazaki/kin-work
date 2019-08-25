@@ -2,10 +2,11 @@ package jp.co.kin.common.validator;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
+import jp.co.kin.common.test.BaseCommonTest;
 import jp.co.kin.common.type.RegixType;
 import jp.co.kin.common.validator.annotation.Flag;
 import jp.co.kin.common.validator.annotation.Max;
@@ -16,7 +17,7 @@ import jp.co.kin.common.validator.annotation.Required;
 /**
  * {@link BeanValidator} のjUnit
  */
-public class BeanValidatorTest {
+public class BeanValidatorTest extends BaseCommonTest {
 
 	/** LOG */
 	private final static Logger LOG = LoggerFactory.getLogger(BeanValidatorTest.class);

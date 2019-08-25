@@ -5,14 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
+import jp.co.kin.common.test.BaseCommonTest;
 import jp.co.kin.common.util.StringUtil.PaddingType;
 
 /**
  * {@link StringUtil} のjUnit
+ *
  */
-public class StringUtilTest {
+public class StringUtilTest extends BaseCommonTest {
 
 	@Test
 	public void toStrListTest() {
