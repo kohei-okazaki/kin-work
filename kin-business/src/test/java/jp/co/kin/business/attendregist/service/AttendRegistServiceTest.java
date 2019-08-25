@@ -1,4 +1,4 @@
-package jp.co.kin.business.attendregist;
+package jp.co.kin.business.attendregist.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
