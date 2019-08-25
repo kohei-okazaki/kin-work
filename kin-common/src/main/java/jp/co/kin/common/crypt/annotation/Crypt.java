@@ -7,6 +7,10 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+/**
+ * 暗号化されたフィールドであることを示すマーカーアノテーション
+ *
+ */
 @Documented
 @Retention(RUNTIME)
 @Target(FIELD)
