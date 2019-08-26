@@ -6,7 +6,9 @@ import jp.co.kin.common.bean.BaseDto;
 
 public class AttendBusinessCalendar implements BaseDto {
 
+	/** 日にち */
 	private BigDecimal day;
+	/** 曜日 */
 	private String weekDay;
 
 	/**
