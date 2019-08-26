@@ -1,8 +1,13 @@
 package jp.co.kin.business.test;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import jp.co.kin.common.log.Logger;
+import jp.co.kin.common.log.LoggerFactory;
 
 /**
  * businessプロジェクトの基底テストクラス<br>
@@ -18,5 +23,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 		"classpath:business-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BaseBusinessTest {
+
+	private static final Logger LOG = LoggerFactory.getLogger(BaseBusinessTest.class);
+
+	@Before
+	public void before() {
+		LOG.debug("BaseBusinessTest start");
+	}
+
+	@After
+	public void after() {
+		LOG.debug("BaseBusinessTest end");
+	}
 
 }
