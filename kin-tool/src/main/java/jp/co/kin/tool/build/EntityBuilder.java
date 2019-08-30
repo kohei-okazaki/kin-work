@@ -1,7 +1,6 @@
 package jp.co.kin.tool.build;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.StringJoiner;
 
@@ -159,21 +158,6 @@ public class EntityBuilder extends SourceBuilder {
 		result.add("}");
 
 		return result.toString();
-	}
-
-	private String buildClassJavaDoc(JavaSource source) {
-		StringJoiner sj = new StringJoiner(StringUtil.NEW_LINE);
-		sj.add("/**");
-		sj.add(" * " + source.getClassJavaDoc());
-		sj.add(" *");
-		sj.add(" */");
-		return sj.toString();
-	}
-
-	private String buildFields(List<Field> fieldList) {
-		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
-		fieldList.stream().forEach(e -> body.add(e.toString()));
-		return body.toString();
 	}
 
 }

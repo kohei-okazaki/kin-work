@@ -14,7 +14,7 @@ public class JavaSource {
 	private Package pack;
 	/** import文のリスト */
 	private List<Import> importList;
-	/** クラスのJavadDoc */
+	/** クラスのJavaDoc */
 	private String classJavaDoc;
 	/** アクセス型 */
 	private AccessType accessType;
