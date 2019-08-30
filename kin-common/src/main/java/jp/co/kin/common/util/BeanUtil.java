@@ -226,6 +226,23 @@ public class BeanUtil {
 	}
 
 	/**
+	 * 指定したクラス型に定義されているメソッドをリストで返す
+	 *
+	 * @param clazz
+	 *            クラス型
+	 * @return メソッドのリスト
+	 */
+	public static List<Method> getMethodList(Class<?> clazz) {
+		List<Method> methodList = new ArrayList<>();
+		Class<?> tmpClass = clazz;
+		while (BeanUtil.notNull(tmpClass)) {
+			methodList.addAll(List.of(tmpClass.getDeclaredMethods()));
+			tmpClass = tmpClass.getSuperclass();
+		}
+		return methodList;
+	}
+
+	/**
 	 * 指定したclazzのfieldNameのアクセサを返す
 	 *
 	 * @param fieldName
