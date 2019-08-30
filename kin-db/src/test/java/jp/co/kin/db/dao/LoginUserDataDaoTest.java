@@ -35,4 +35,12 @@ public class LoginUserDataDaoTest extends BaseDbTest {
 			assertEquals(null, entity);
 		}
 	}
+
+	@Test
+	public void selectCountById() {
+		{
+			String loginId = "test";
+			assertEquals(1, dao.selectCountById(loginId));
+		}
+	}
 }

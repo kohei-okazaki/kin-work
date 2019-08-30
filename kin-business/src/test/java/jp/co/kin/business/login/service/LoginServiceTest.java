@@ -29,12 +29,21 @@ public class LoginServiceTest extends BaseBusinessTest {
 
 	@Test
 	public void notFoundLoginIdTest() {
-		// LOGIN_USER_DATAが存在しない場合
 		LoginUserDataDto dto = new LoginUserDataDto();
 		dto.setLoginId("dummyId");
 		LoginCheckResult result = service.checkLogin(dto);
 		assertEquals(true, result.hasError());
 		assertEquals("validate.login.loginIdNoExist", result.getMessage());
+	}
+
+	@Test
+	public void notEqualPassword() {
+		LoginUserDataDto dto = new LoginUserDataDto();
+		dto.setLoginId("test");
+		dto.setPassword("hoge");
+		LoginCheckResult result = service.checkLogin(dto);
+		assertEquals(true, result.hasError());
+		assertEquals("validate.login.inValidPassword", result.getMessage());
 	}
 
 }
