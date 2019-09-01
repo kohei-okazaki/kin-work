@@ -17,7 +17,7 @@ public class EntityCrypterImplTest extends BaseDbTest {
 	private EntityCrypter entityCrypter;
 
 	@Test
-	public void encryptTest() {
+	public void cryptTest() {
 		TestCryptEntity entity = new TestCryptEntity();
 		entity.setName("平文");
 		entity.setCryptName("平文");
