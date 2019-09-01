@@ -22,6 +22,6 @@ public class SystemComponentTest extends BaseCommonTest {
 		assertEquals(Integer.valueOf(systemComponent.getPaging()), 10);
 
 		// loglevel
-		assertEquals(systemComponent.getLoglevel(), "INFO");
+		assertEquals(systemComponent.getLoglevel(), "DEBUG");
 	}
 }
