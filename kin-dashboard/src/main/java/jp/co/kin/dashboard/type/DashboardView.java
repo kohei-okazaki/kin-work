@@ -20,11 +20,11 @@ public enum DashboardView implements BaseView {
 	USER_REGIST_COMPLETE("userRegist/complete"),
 
 	/** ユーザ変更画面 */
-	USER_CHANGE_INPUT("/userChange/input"),
+	USER_CHANGE_INPUT("userChange/input"),
 	/** ユーザ変更確認画面 */
-	USER_CHANGE_CONFIRM("/userChange/confirm"),
+	USER_CHANGE_CONFIRM("userChange/confirm"),
 	/** ユーザ変更完了画面 */
-	USER_CHANGE_COMPLETE("/userChange/complete"),
+	USER_CHANGE_COMPLETE("userChange/complete"),
 
 	/** 勤怠登録画面 */
 	ATTEND_REGIST_INPUT("attendRegist/input"),
