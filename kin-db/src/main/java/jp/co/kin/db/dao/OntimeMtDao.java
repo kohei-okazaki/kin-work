@@ -32,7 +32,7 @@ public interface OntimeMtDao extends BaseDao {
 	public OntimeMt selectById(String companyCode);
 
 	@Select
-	public int selectCountById(String companyCode);
+	public Integer selectCountById(String companyCode);
 
 	@Update(sqlFile = true)
 	public int updateEntity(OntimeMt entity);

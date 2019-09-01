@@ -32,7 +32,7 @@ public interface LoginUserDataDao extends BaseDao {
 	public LoginUserData selectById(String loginId, DecryptFunction<LoginUserData> function);
 
 	@Select
-	public int selectCountById(String loginId);
+	public Integer selectCountById(String loginId);
 
 	@Update(sqlFile = true)
 	public int updateFailCount(LoginUserData entity);
