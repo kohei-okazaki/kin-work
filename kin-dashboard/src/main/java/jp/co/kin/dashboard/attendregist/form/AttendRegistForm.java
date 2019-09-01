@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import jp.co.kin.common.type.RegixType;
+import jp.co.kin.common.validator.annotation.Length;
 import jp.co.kin.common.validator.annotation.Pattern;
 import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;
@@ -19,10 +20,12 @@ public class AttendRegistForm implements BaseForm {
 	/** 年 */
 	@Required
 	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Length(length = 4)
 	private String year;
 	/** 月 */
 	@Required
 	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Length(length = 2)
 	private String month;
 	/** 1行あたりの勤怠データ */
 	@Valid
