@@ -59,7 +59,7 @@ public class BeanValidator<T> {
 					continue;
 				}
 				Object value = BeanUtil.getAccessor(f.getName(), clazz, AccessorType.GETTER).invoke(t);
-				String property = value == null ? "" : value.toString();
+				String property = BeanUtil.isNull(value) ? "" : value.toString();
 				if (f.isAnnotationPresent(Required.class)) {
 					validateRequired(property, f, result);
 				}
