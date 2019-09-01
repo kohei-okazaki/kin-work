@@ -3,6 +3,7 @@ package jp.co.kin.db.crypt;
 import java.lang.reflect.Field;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import jp.co.kin.common.crypt.Crypter;
@@ -19,6 +20,7 @@ public class EntityCrypterImpl implements EntityCrypter {
 	private static final Logger LOG = LoggerFactory.getLogger(EntityCrypterImpl.class);
 
 	@Autowired
+	@Qualifier("aesCrypter")
 	private Crypter crypter;
 
 	@Override

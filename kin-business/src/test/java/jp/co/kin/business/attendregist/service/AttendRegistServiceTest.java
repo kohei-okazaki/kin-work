@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import jp.co.kin.business.attendregist.dto.AttendBusinessCalendar;
 import jp.co.kin.business.attendregist.dto.AttendRegistDto;
-import jp.co.kin.business.attendregist.service.AttendRegistService;
 import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.test.BaseBusinessTest;
 
@@ -71,13 +70,12 @@ public class AttendRegistServiceTest extends BaseBusinessTest {
 		{
 			AttendRegistDto dto = new AttendRegistDto();
 			dto.setUserId("test");
-			dto.setCompanyCode("manual");
+			dto.setCompanyCode("98765");
 			dto.setActualWorkTime("10");
-			dto.setWorkStartDate(LocalDateTime.of(2019, 1, 2, 0, 0, 0));
 			dto.setWorkStartDate(LocalDateTime.of(2019, 1, 1, 0, 0, 0));
+			dto.setWorkEndDate(LocalDateTime.of(2019, 1, 2, 0, 0, 0));
 
-			// FIXME java.lang.ExceptionInInitializerError が起きる
-			// service.registDailyWorkData(dto);
+			service.registDailyWorkData(dto);
 		}
 	}
 }

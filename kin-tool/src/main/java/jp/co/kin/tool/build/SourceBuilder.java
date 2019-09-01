@@ -9,6 +9,7 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.excel.Row;
+import jp.co.kin.tool.source.Field;
 import jp.co.kin.tool.source.Import;
 import jp.co.kin.tool.source.JavaSource;
 import jp.co.kin.tool.source.Method;
@@ -96,6 +97,22 @@ public abstract class SourceBuilder extends BaseBuilder {
 	}
 
 	/**
+	 * クラスに付与するJavaDoc部分を組み立てる
+	 *
+	 * @param source
+	 *            生成するJavaファイルのリソース
+	 * @return クラスに付与するJavaDoc
+	 */
+	protected String buildClassJavaDoc(JavaSource source) {
+		StringJoiner sj = new StringJoiner(StringUtil.NEW_LINE);
+		sj.add("/**");
+		sj.add(" * " + source.getClassJavaDoc());
+		sj.add(" *");
+		sj.add(" */");
+		return sj.toString();
+	}
+
+	/**
 	 * クラスに付与するアノテーション部分を組み立てる
 	 *
 	 * @param classAnnotationList
@@ -135,7 +152,7 @@ public abstract class SourceBuilder extends BaseBuilder {
 	 * <cpde>extends AAAA</code>
 	 *
 	 * @param source
-	 *            JavaSource
+	 *            生成するJavaファイルのリソース
 	 * @return Classの継承部分
 	 */
 	protected String buildExtendsClass(JavaSource source) {
@@ -156,7 +173,7 @@ public abstract class SourceBuilder extends BaseBuilder {
 	 * <code>extends AAAA, BBBB</code>
 	 *
 	 * @param source
-	 *            JavaSource
+	 *            生成するJavaファイルのリソース
 	 * @return interfaceのリストの継承部分
 	 */
 	protected String buildInterfaces(JavaSource source) {
@@ -172,6 +189,26 @@ public abstract class SourceBuilder extends BaseBuilder {
 		return " " + prefix + " " + body.toString();
 	}
 
+	/**
+	 * フィールド部分を組み立てる
+	 *
+	 * @param fieldList
+	 *            フィールドリスト
+	 * @return フィールド部分
+	 */
+	protected String buildFields(List<Field> fieldList) {
+		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
+		fieldList.stream().forEach(e -> body.add(e.toString()));
+		return body.toString();
+	}
+
+	/**
+	 * メソッド部分を組み立てる
+	 *
+	 * @param methodList
+	 *            メソッドリスト
+	 * @return メソッド部分
+	 */
 	protected String buildMethods(List<Method> methodList) {
 		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE + StringUtil.NEW_LINE);
 		methodList.stream().forEach(e -> body.add(e.toString()));

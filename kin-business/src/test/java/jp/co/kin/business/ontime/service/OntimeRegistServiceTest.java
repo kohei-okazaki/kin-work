@@ -1,10 +1,9 @@
-package jp.co.kin.business.ontime;
+package jp.co.kin.business.ontime.service;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import jp.co.kin.business.ontime.dto.OntimeDto;
-import jp.co.kin.business.ontime.service.OntimeRegistService;
 import jp.co.kin.business.test.BaseBusinessTest;
 
 /**
@@ -19,7 +18,6 @@ public class OntimeRegistServiceTest extends BaseBusinessTest {
 	@Test
 	public void registTest() {
 		{
-			// TODO Listenerでエラー
 			OntimeDto dto = new OntimeDto();
 			dto.setCompanyCode("99999");
 			dto.setWorkStartHour("01");

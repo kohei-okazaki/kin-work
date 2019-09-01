@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import jp.co.kin.business.login.dto.LoginUserDataDto;
 import jp.co.kin.business.test.BaseBusinessTest;
 
 /**
@@ -18,11 +19,11 @@ public class LoginUserDataSearchServiceTest extends BaseBusinessTest {
 
 	@Test
 	public void searchByLoginIdTest() {
-		// TODO BeanFactory#getContextでエラーになる
-		// {
-		// String loginId = "dummyId";
-		// LoginUserDataDto dto = service.searchByLoginId(loginId);
-		// }
+		{
+			String loginId = "dummyId";
+			LoginUserDataDto dto = service.searchByLoginId(loginId);
+			assertEquals(true, dto == null);
+		}
 	}
 
 	@Test

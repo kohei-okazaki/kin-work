@@ -3,9 +3,11 @@ package jp.co.kin.common.test;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import jp.co.kin.common.bean.BeanFactory;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 
@@ -26,6 +28,7 @@ public class BaseCommonTest {
 	@Before
 	public void before() {
 		LOG.debug("BaseCommonTest start");
+		BeanFactory.setContext(new ClassPathXmlApplicationContext("classpath:common-context.xml"));
 	}
 
 	@After

@@ -19,23 +19,31 @@ public class LoginServiceTest extends BaseBusinessTest {
 	private LoginService service;
 
 	@Test
-	public void checkLoginTest() {
-		{
-			// TODO BeanFactory#getContextでエラーになる
-			// LOGIN_USER_DATAが存在しない場合
-			LoginUserDataDto dto = new LoginUserDataDto();
-			dto.setLoginId("dummyId");
-			LoginCheckResult result = service.checkLogin(dto);
-			assertEquals(true, result.hasError());
-			assertEquals("validate.login.loginIdNoExist", result.getMessage());
-		}
-		{
-			// TODO BeanFactory#getContextでエラーになる
-			// LOGIN_USER_DATAが存在する場合
-			LoginUserDataDto dto = new LoginUserDataDto();
-			dto.setLoginId("test");
-			LoginCheckResult result = service.checkLogin(dto);
-			assertEquals(false, result.hasError());
-		}
+	public void successTest() {
+		LoginUserDataDto dto = new LoginUserDataDto();
+		dto.setLoginId("test");
+		dto.setPassword("test");
+		LoginCheckResult result = service.checkLogin(dto);
+		assertEquals(false, result.hasError());
 	}
+
+	@Test
+	public void notFoundLoginIdTest() {
+		LoginUserDataDto dto = new LoginUserDataDto();
+		dto.setLoginId("dummyId");
+		LoginCheckResult result = service.checkLogin(dto);
+		assertEquals(true, result.hasError());
+		assertEquals("validate.login.loginIdNoExist", result.getMessage());
+	}
+
+	@Test
+	public void notEqualPassword() {
+		LoginUserDataDto dto = new LoginUserDataDto();
+		dto.setLoginId("test");
+		dto.setPassword("hoge");
+		LoginCheckResult result = service.checkLogin(dto);
+		assertEquals(true, result.hasError());
+		assertEquals("validate.login.inValidPassword", result.getMessage());
+	}
+
 }

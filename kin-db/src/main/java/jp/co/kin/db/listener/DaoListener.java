@@ -14,6 +14,7 @@ import org.seasar.doma.jdbc.entity.PreUpdateContext;
 import jp.co.kin.common.bean.BeanFactory;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
+import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.db.crypt.EntityCrypter;
 import jp.co.kin.db.crypt.EntityCrypterImpl;
@@ -44,7 +45,7 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 	@Override
 	public void preInsert(T entity, PreInsertContext<T> context) {
 		try {
-			for (Method m : entity.getClass().getDeclaredMethods()) {
+			for (Method m : BeanUtil.getMethodList(entity.getClass())) {
 				if ("setRegDate".equals(m.getName()) || "setUpdateDate".equals(m.getName())) {
 					// 登録日時/更新日時の設定
 					m.invoke(entity, LocalDateTimeUtil.getSysDate());
@@ -63,7 +64,7 @@ public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 	@Override
 	public void preUpdate(T entity, PreUpdateContext<T> context) {
 		try {
-			for (Method m : entity.getClass().getDeclaredMethods()) {
+			for (Method m : BeanUtil.getMethodList(entity.getClass())) {
 				if ("setUpdateDate".equals(m.getName())) {
 					// 更新日時の設定
 					m.invoke(entity, LocalDateTimeUtil.getSysDate());
