@@ -22,7 +22,7 @@
     <org.jackson-version>2.9.9</org.jackson-version>
     <org.poi-version>4.1.0</org.poi-version>
     <org.mysql-version>8.0.17</org.mysql-version>
-    <org.doma-version>2.25.1</org.doma-version>
+    <org.doma-version>2.24.0</org.doma-version>
     <org.hibernate-version>6.0.17.Final</org.hibernate-version>
     <org.groovy-version>2.5.8</org.groovy-version>
     <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
@@ -41,6 +41,33 @@
     <module>../kin-business</module>
     <module>../kin-dashboard</module>
   </modules>
+
+  <profiles>
+    <!-- local -->
+    <profile>
+      <id>local</id>
+      <properties>
+        <resources.directory>${basedir}/profile/local</resources.directory>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+    <!-- test -->
+    <profile>
+      <id>test</id>
+      <properties>
+        <resources.directory>${basedir}/profile/test</resources.directory>
+      </properties>
+    </profile>
+    <!-- live -->
+    <profile>
+      <id>live</id>
+      <properties>
+        <resources.directory>${basedir}/profile/live</resources.directory>
+      </properties>
+    </profile>
+  </profiles>
 
   <dependencies>
     <!-- Spring -->
