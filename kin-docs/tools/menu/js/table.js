@@ -142,6 +142,66 @@ var table = [
         size: ""
       }
     ]
+  },
+  {
+    physicalName: "DAILY_USER_WORK_DATA",
+    logicalName: "日別ユーザ勤怠情報",
+    column : [
+      {
+        logicalName: "日別勤怠データID",
+        physicalName: "DAILY_USER_WORK_DATA_ID",
+        type: "INT",
+        size: ""
+      },
+      {
+        logicalName: "ユーザID",
+        physicalName: "USER_ID",
+        type: "VARCHAR",
+        size: "16"
+      },
+      {
+        logicalName: "企業コード",
+        physicalName: "COMPANY_CODE",
+        type: "VARCHAR",
+        size: "5"
+      },
+      {
+        logicalName: "勤怠情報登録日時",
+        physicalName: "WORK_DATA_REG_DATE",
+        type: "DATE",
+        size: ""
+      },
+      {
+        logicalName: "始業日時",
+        physicalName: "WORK_START_DATE",
+        type: "TIMESTAMP",
+        size: ""
+      },
+      {
+        logicalName: "終業日時",
+        physicalName: "WORK_END_DATE",
+        type: "TIMESTAMP",
+        size: ""
+      },
+      {
+        logicalName: "実労働時間",
+        physicalName: "ACTUAL_WORK_TIME",
+        type: "VARCHAR",
+        size: "5"
+      },
+      {
+        logicalName: "登録日時",
+        physicalName: "REG_DATE",
+        type: "TIMESTAMP",
+        size: ""
+      },
+      {
+        logicalName: "更新日時",
+        physicalName: "UPDATE_DATE",
+        type: "TIMESTAMP",
+        size: ""
+      }
+    ]
   }
 ];
 

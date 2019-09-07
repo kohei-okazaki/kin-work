@@ -28,14 +28,21 @@
   <bean id="properties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
     <property name="locations">
       <list>
+        <value>classpath:crypt.properties</value>
         <value>classpath:system.properties</value>
         <value>classpath:jdbc.properties</value>
       </list>
     </property>
   </bean>
+  <!-- system.properties -->
   <bean id="systemComponent" class="jp.co.kin.common.context.SystemComponent" lazy-init="true">
     <property name="loglevel" value="${system.loglevel}" />
     <property name="paging" value="${system.paging}" />
+  </bean>
+  <!-- crypt.properties -->
+  <bean id="cryptComponent" class="jp.co.kin.common.crypt.CryptComponent" lazy-init="true">
+    <property name="mode" value="${crypt.mode}" />
+    <property name="key" value="${crypt.key}" />
   </bean>
 
 </beans>

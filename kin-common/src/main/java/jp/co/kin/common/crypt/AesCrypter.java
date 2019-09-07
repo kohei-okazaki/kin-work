@@ -6,6 +6,7 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import jp.co.kin.common.log.Logger;
@@ -22,8 +23,8 @@ import jp.co.kin.common.util.StringUtil;
 public class AesCrypter implements Crypter {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AesCrypter.class);
-
-	private static final String MODE = "AES/ECB/PKCS5Padding";
+	@Autowired
+	private CryptComponent cryptComponent;
 
 	@Override
 	public String encrypt(String str) {
@@ -38,7 +39,7 @@ public class AesCrypter implements Crypter {
 			byte[] input = str.getBytes(Charset.UTF_8.getValue());
 
 			// 暗号化
-			Cipher c = Cipher.getInstance(MODE);
+			Cipher c = Cipher.getInstance(cryptComponent.getMode());
 			c.init(Cipher.ENCRYPT_MODE, sks);
 
 			byte[] encrypted = c.doFinal(input);
@@ -63,7 +64,7 @@ public class AesCrypter implements Crypter {
 			byte[] input = Base64.getDecoder().decode(str);
 
 			// 復号
-			Cipher c = Cipher.getInstance(MODE);
+			Cipher c = Cipher.getInstance(cryptComponent.getMode());
 			c.init(Cipher.DECRYPT_MODE, sks);
 
 			byte[] decrypted = c.doFinal(input);
@@ -75,8 +76,14 @@ public class AesCrypter implements Crypter {
 		}
 	}
 
-	private static byte[] getKey() throws UnsupportedEncodingException {
-		String key = "1234567890123456";
-		return key.getBytes(Charset.UTF_8.getValue());
+	/**
+	 * 秘密鍵を返す
+	 *
+	 * @return 秘密鍵
+	 * @throws UnsupportedEncodingException
+	 *             文字コードの指定が不正の場合
+	 */
+	private byte[] getKey() throws UnsupportedEncodingException {
+		return cryptComponent.getKey().getBytes(Charset.UTF_8.getValue());
 	}
 }
