@@ -28,6 +28,7 @@
     <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
     <org.thymeleaf-layout-version>2.4.1</org.thymeleaf-layout-version>
     <org.dbcp2-version>2.7.0</org.dbcp2-version>
+    <org.junit-version>5.5.2</org.junit-version>
   </properties>
 
   <modules>
@@ -258,7 +259,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.5.1</version>
+      <version>${org.junit-version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
