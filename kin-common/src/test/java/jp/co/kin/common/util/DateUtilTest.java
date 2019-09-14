@@ -12,6 +12,7 @@ import jp.co.kin.common.test.BaseCommonTest;
  * {@link DateUtil} のjUnit
  *
  */
+@Deprecated(since = "1.0.0")
 public class DateUtilTest extends BaseCommonTest {
 
 	@Test

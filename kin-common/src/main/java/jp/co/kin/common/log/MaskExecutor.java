@@ -5,12 +5,9 @@ import java.lang.reflect.Field;
 import jp.co.kin.common.log.annotation.Mask;
 
 /**
- * マスク判定クラス
+ * マスク処理クラス
  */
 public class MaskExecutor {
-
-	/** マスク文字列 */
-	public static final String MASK = "****";
 
 	/**
 	 * マスク対象かどうか判定する<br>

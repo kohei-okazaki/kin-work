@@ -9,27 +9,13 @@ import static ch.qos.logback.classic.Level.*
 
 scan("30 seconds")
 
-def FILE_PATH = "D:/kin-app/testlogs";
+def FILE_PATH = "/var/logs";
 def ENCODE = "UTF-8";
-def appenderList = ["STDOUT", "FILE"];
-
-appender("STDOUT", ConsoleAppender) {
-
-  target = "System.out"
-
-  encoder(PatternLayoutEncoder) {
-    charset = Charset.forName("${ENCODE}")
-    pattern = "%d [%thread] %-5level %logger{10} - %msg%n"
-  }
-
-  filter(ThresholdFilter) {
-    level = DEBUG
-  }
-}
+def appenderList = ["FILE"];
 
 appender("FILE", RollingFileAppender) {
 
-  file = "${FILE_PATH}/tool.log"
+  file = "${FILE_PATH}/dashboard.log"
 
   rollingPolicy(TimeBasedRollingPolicy) {
     fileNamePattern = "dashboard_%d{yyyy-MM-dd}.log"
@@ -42,9 +28,9 @@ appender("FILE", RollingFileAppender) {
   }
 
   filter(ThresholdFilter) {
-    level = DEBUG
+    level = INFO
   }
 
 }
 
-root(DEBUG, appenderList)
+root(INFO, appenderList)

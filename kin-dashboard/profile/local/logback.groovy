@@ -9,7 +9,7 @@ import static ch.qos.logback.classic.Level.*
 
 scan("30 seconds")
 
-def FILE_PATH = "D:/kin-app/testlogs";
+def FILE_PATH = "D:/kin-app/logs";
 def ENCODE = "UTF-8";
 def appenderList = ["STDOUT", "FILE"];
 
@@ -29,7 +29,7 @@ appender("STDOUT", ConsoleAppender) {
 
 appender("FILE", RollingFileAppender) {
 
-  file = "${FILE_PATH}/tool.log"
+  file = "${FILE_PATH}/dashboard.log"
 
   rollingPolicy(TimeBasedRollingPolicy) {
     fileNamePattern = "dashboard_%d{yyyy-MM-dd}.log"

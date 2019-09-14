@@ -11,6 +11,7 @@ scan("30 seconds")
 
 def FILE_PATH = "D:/kin-app/logs";
 def ENCODE = "UTF-8";
+def appenderList = ["STDOUT", "FILE"];
 
 appender("STDOUT", ConsoleAppender) {
 
@@ -46,4 +47,4 @@ appender("FILE", RollingFileAppender) {
 
 }
 
-root(INFO, ["STDOUT", "FILE"])
+root(DEBUG, appenderList)
