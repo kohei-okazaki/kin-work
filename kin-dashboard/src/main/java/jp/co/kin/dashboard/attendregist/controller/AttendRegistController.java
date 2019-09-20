@@ -87,6 +87,7 @@ public class AttendRegistController implements BaseViewController {
 		// 勤怠登録formをdtoに変換する
 		AttendRegistDto dto = DtoFactory.getDto(AttendRegistDto.class, form);
 		attendRegistService.registDailyWorkData(dto);
+
 		return getView(DashboardView.ATTEND_REGIST_COMPLETE);
 	}
 
