@@ -1,5 +1,8 @@
 package jp.co.kin.dashboard.ontimeregist.form;
 
+import jp.co.kin.common.type.RegixType;
+import jp.co.kin.common.validator.annotation.Length;
+import jp.co.kin.common.validator.annotation.Pattern;
 import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;
 
@@ -7,18 +10,28 @@ public class OntimeRegistForm implements BaseForm {
 
 	/** 企業コード */
 	@Required
+	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Length(length = 5)
 	private String companyCode;
 	/** 始業時間(時) */
 	@Required
+	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Length(length = 2)
 	private String workStartHour;
 	/** 始業時間(分) */
 	@Required
+	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Length(length = 2)
 	private String workStartMinute;
 	/** 終業時間(時) */
 	@Required
+	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Length(length = 2)
 	private String workEndHour;
 	/** 終業時間(分) */
 	@Required
+	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Length(length = 2)
 	private String workEndMinute;
 
 	/**
