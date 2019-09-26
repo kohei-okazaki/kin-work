@@ -40,6 +40,7 @@ public class UserRegistController implements BaseViewController {
 
 	@ModelAttribute("userRegistForm")
 	public UserRegistForm setUpForm() {
+
 		return new UserRegistForm();
 	}
 
