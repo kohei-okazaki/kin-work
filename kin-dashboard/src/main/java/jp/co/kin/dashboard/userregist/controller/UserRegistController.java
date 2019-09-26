@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.db.search.OntimeMtSearchService;
-import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.business.session.annotation.SessionNonAuth;
 import jp.co.kin.business.userregist.dto.UserRegistDto;
 import jp.co.kin.business.userregist.service.LoginUserRegistService;
@@ -24,6 +23,7 @@ import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.dashboard.userregist.form.UserRegistForm;
 import jp.co.kin.web.controller.BaseViewController;
+import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 /**
  * ユーザ登録コントローラ

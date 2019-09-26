@@ -18,7 +18,7 @@ import jp.co.kin.common.exception.CommonErrorCode;
 import jp.co.kin.common.exception.SystemException;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
-import jp.co.kin.web.iterceptor.BaseWebInterceptor;
+import jp.co.kin.web.interceptor.BaseWebInterceptor;
 
 public class SessionAuthInterceptor extends BaseWebInterceptor {
 

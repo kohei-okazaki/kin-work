@@ -1,4 +1,4 @@
-package jp.co.kin.web.iterceptor;
+package jp.co.kin.web.interceptor;
 
 import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 

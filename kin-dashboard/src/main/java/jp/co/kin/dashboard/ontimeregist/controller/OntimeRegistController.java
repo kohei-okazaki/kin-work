@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.ontime.service.OntimeRegistService;
-import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.dashboard.ontimeregist.form.OntimeRegistForm;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
+import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 /**
  * 定時登録画面コントローラ
