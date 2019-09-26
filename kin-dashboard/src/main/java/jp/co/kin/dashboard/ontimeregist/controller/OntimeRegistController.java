@@ -46,6 +46,7 @@ public class OntimeRegistController implements BaseViewController {
 	public String confirm(Model model, @Valid OntimeRegistForm form, BindingResult result) {
 
 		if (result.hasErrors()) {
+
 			return getView(DashboardView.ONTIME_REGIST_INPUT);
 		}
 
