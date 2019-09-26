@@ -30,4 +30,11 @@
     <property name="userAuth" value="${business.loginUser.userAuth}" />
   </bean>
 
+  <mvc:interceptors>
+    <mvc:interceptor>
+      <mvc:mapping path="/**" />
+      <bean class="jp.co.kin.business.interceptor.SessionAuthInterceptor" />
+    </mvc:interceptor>
+  </mvc:interceptors>
+
 </beans>

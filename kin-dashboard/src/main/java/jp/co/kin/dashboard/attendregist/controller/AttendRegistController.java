@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jp.co.kin.business.attendregist.dto.AttendRegistDto;
 import jp.co.kin.business.attendregist.service.AttendRegistService;
 import jp.co.kin.business.session.SessionLoginUser;
-import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseException;
@@ -27,6 +26,7 @@ import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.dashboard.attendregist.form.AttendRegistForm;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
+import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 /**
  * 勤怠登録画面コントローラ

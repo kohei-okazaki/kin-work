@@ -1,4 +1,4 @@
-package jp.co.kin.business.interceptor;
+package jp.co.kin.web.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import jp.co.kin.business.session.annotation.CsrfToken;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.encode.BaseEncodeAndDecoder;
 import jp.co.kin.common.exception.CommonErrorCode;
@@ -17,7 +16,7 @@ import jp.co.kin.common.exception.SystemException;
 import jp.co.kin.common.type.Charset;
 import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.StringUtil;
-import jp.co.kin.web.iterceptor.BaseWebInterceptor;
+import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 public class CsrfTokenInterceptor extends BaseWebInterceptor {
 
