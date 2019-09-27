@@ -123,7 +123,7 @@ public class DaoBuilder extends SourceBuilder {
 
 			}
 		} catch (Exception e) {
-			LOG.error("", e);
+			LOG.error("Daoクラス or DaoTestクラスの生成に失敗しました", e);
 		}
 
 	}

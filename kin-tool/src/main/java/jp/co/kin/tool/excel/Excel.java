@@ -6,16 +6,9 @@ import java.util.List;
 public class Excel {
 
 	/** シートリスト */
-	private List<Sheet> sheetList;
+	private List<Sheet> sheetList = new ArrayList<>();
 	/** アクティブなシート */
 	private Sheet currentSheet;
-
-	/**
-	 * コンストラクタ
-	 */
-	public Excel() {
-		this.sheetList = new ArrayList<>();
-	}
 
 	private Sheet getSheet(String sheetName) {
 		return this.sheetList.stream()

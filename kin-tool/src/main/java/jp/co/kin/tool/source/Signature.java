@@ -8,11 +8,7 @@ import jp.co.kin.common.util.StringUtil;
 
 public class Signature {
 
-	private Map<Class<?>, String> argsMap;
-
-	public Signature() {
-		this.argsMap = new LinkedHashMap<>();
-	}
+	private Map<Class<?>, String> argsMap = new LinkedHashMap<>();
 
 	public void addArgs(Class<?> clazz, String name) {
 		argsMap.put(clazz, name);
