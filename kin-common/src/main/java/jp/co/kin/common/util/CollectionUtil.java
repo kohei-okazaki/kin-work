@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * Collection周りのUtilクラス
+ * CollectionのUtilクラス
  */
 public class CollectionUtil {
 
