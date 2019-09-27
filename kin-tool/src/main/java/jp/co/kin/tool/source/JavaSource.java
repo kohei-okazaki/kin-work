@@ -13,7 +13,7 @@ public class JavaSource {
 	/** パッケージ */
 	private Package pack;
 	/** import文のリスト */
-	private List<Import> importList;
+	private List<Import> importList = new ArrayList<>();;
 	/** クラスのJavaDoc */
 	private String classJavaDoc;
 	/** アクセス型 */
@@ -25,24 +25,13 @@ public class JavaSource {
 	/** 継承クラス */
 	private Class<?> extendsClass;
 	/** 実装インターフェース */
-	private List<Class<?>> implInterfaceList;
+	private List<Class<?>> implInterfaceList = new ArrayList<>();
 	/** クラスに付与するアノテーションのリスト */
-	private Map<Class<?>, String> classAnnotationMap;
+	private Map<Class<?>, String> classAnnotationMap = new LinkedHashMap<>();
 	/** フィールド情報のリスト */
-	private List<Field> fieldList;
+	private List<Field> fieldList = new ArrayList<>();
 	/** メソッドのリスト */
-	private List<Method> methodList;
-
-	/**
-	 * コンストラクタ
-	 */
-	public JavaSource() {
-		this.importList = new ArrayList<>();
-		this.implInterfaceList = new ArrayList<>();
-		this.classAnnotationMap = new LinkedHashMap<>();
-		this.fieldList = new ArrayList<>();
-		this.methodList = new ArrayList<>();
-	}
+	private List<Method> methodList = new ArrayList<>();
 
 	/**
 	 * packを返す

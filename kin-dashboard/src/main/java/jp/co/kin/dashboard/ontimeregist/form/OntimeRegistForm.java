@@ -10,7 +10,7 @@ public class OntimeRegistForm implements BaseForm {
 
 	/** 企業コード */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Pattern(regixPattern = RegixType.HALF_CHAR)
 	@Length(length = 5)
 	private String companyCode;
 	/** 始業時間(時) */

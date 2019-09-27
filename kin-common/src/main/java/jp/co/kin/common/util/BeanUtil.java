@@ -257,13 +257,16 @@ public class BeanUtil {
 		Method accessor = null;
 		try {
 			PropertyDescriptor pd = new PropertyDescriptor(fieldName, clazz);
-			if (AccessorType.SETTER == type) {
+			switch (type) {
+			case SETTER:
 				accessor = pd.getWriteMethod();
-			} else if (AccessorType.GETTER == type) {
+				break;
+			case GETTER:
 				accessor = pd.getReadMethod();
-			} else {
+				break;
+			default:
 				LOG.error("AccessTypeの指定が不正です。accessType = " + type);
-				accessor = null;
+				break;
 			}
 		} catch (IntrospectionException e) {
 			LOG.warn("メソッドがみつかりません", e);
