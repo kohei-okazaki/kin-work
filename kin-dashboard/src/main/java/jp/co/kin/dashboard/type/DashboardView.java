@@ -13,32 +13,32 @@ public enum DashboardView implements BaseView {
 	/** TOP画面 */
 	TOP("login/top"),
 	/** ユーザ登録画面 */
-	USER_REGIST_INPUT("userRegist/input"),
+	USER_REGIST_INPUT("userregist/input"),
 	/** ユーザ登録確認画面 */
-	USER_REGIST_CONFIRM("userRegist/confirm"),
+	USER_REGIST_CONFIRM("userregist/confirm"),
 	/** ユーザ登録完了画面 */
-	USER_REGIST_COMPLETE("userRegist/complete"),
+	USER_REGIST_COMPLETE("userregist/complete"),
 
 	/** ユーザ変更画面 */
-	USER_CHANGE_INPUT("userChange/input"),
+	USER_CHANGE_INPUT("userchange/input"),
 	/** ユーザ変更確認画面 */
-	USER_CHANGE_CONFIRM("userChange/confirm"),
+	USER_CHANGE_CONFIRM("userchange/confirm"),
 	/** ユーザ変更完了画面 */
-	USER_CHANGE_COMPLETE("userChange/complete"),
+	USER_CHANGE_COMPLETE("userchange/complete"),
 
 	/** 勤怠登録画面 */
-	ATTEND_REGIST_INPUT("attendRegist/input"),
+	ATTEND_REGIST_INPUT("attendregist/input"),
 	/** 勤怠登録確認画面 */
-	ATTEND_REGIST_CONFIRM("attendRegist/confirm"),
+	ATTEND_REGIST_CONFIRM("attendregist/confirm"),
 	/** 勤怠登録完了画面 */
-	ATTEND_REGIST_COMPLETE("attendRegist/complete"),
+	ATTEND_REGIST_COMPLETE("attendregist/complete"),
 
 	/** 勤怠登録画面 */
-	ONTIME_REGIST_INPUT("ontimeRegist/input"),
+	ONTIME_REGIST_INPUT("ontimeregist/input"),
 	/** 勤怠登録確認画面 */
-	ONTIME_REGIST_CONFIRM("ontimeRegist/confirm"),
+	ONTIME_REGIST_CONFIRM("ontimeregist/confirm"),
 	/** 勤怠登録完了画面 */
-	ONTIME_REGIST_COMPLETE("ontimeRegist/complete"),
+	ONTIME_REGIST_COMPLETE("ontimeregist/complete"),
 
 	/** Error画面 */
 	ERROR("error/index");
