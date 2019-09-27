@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>ユーザ登録画面</title>
+<link rel="icon" type="image/png" href="../resources/image/favicon.ico" th:href="@{/resources/image/favicon.ico}">
+<link rel="stylesheet" type="text/css" href="../resources/css/layout.css" th:href="@{/resources/css/layout.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/lib/validationEngine.jquery.css" th:href="@{/resources/css/lib/validationEngine.jquery.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/lib/mprogress.css" th:href="@{/resources/css/lib/mprogress.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/lib/sal.css" th:href="@{/resources/css/lib/sal.min.css}">
+<link rel="stylesheet" type="text/css" href="../resources/css/input.css" th:href="@{/resources/css/input.min.css}">
+</head>
+<body>
+
+  <div align="center" class="contentLayout" data-sal="slide-up">
+
+    <h2>ユーザ登録画面</h2>
+    <form id="userRegistForm" action="./confirm" th:action="@{./confirm}" method="post" th:object="${userRegistForm}" data-sal="slide-up" novalidate>
+
+      <div th:if="${errorMessage} != null" data-sal="slide-up">
+        <div class="errorMessage" data-sal="slide-up">
+          <p th:text="${errorMessage}"></p>
+        </div>
+      </div>
+
+      <div class="errorMessage" th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" data-sal="slide-up"></div>
+      <div class="errorMessage" th:if="${#fields.hasErrors('companyCode')}" th:errors="*{companyCode}" data-sal="slide-up"></div>
+
+      <!--/* table部ここから */-->
+      <div class="table">
+        <div class="table-row">
+          <div class="table-header" th:text="#{loginId}"></div>
+          <div class="table-data">
+            <input type="text" class="validate[required]" th:field="*{loginId}" maxlength="16" />
+          </div>
+        </div>
+
+        <div class="table-row">&ensp;</div>
+
+        <div class="table-row">
+          <div class="table-header" th:text="#{password}"></div>
+          <div class="table-data">
+            <div class="checkbox">
+              <input type="password" class="validate[required]" th:field="*{password}" maxlength="16" />
+              <label>
+                <input type="checkbox" id="password-check" class="checkbox-input" />
+                <span class="checkbox-parts">パスワードを表示する</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-row">&ensp;</div>
+
+        <div class="table-row">
+          <div class="table-header" th:text="#{confirmPassword}"></div>
+          <div class="table-data">
+            <div class="checkbox">
+              <input type="password" class="validate[required,equals[password]]" th:field="*{confirmPassword}" maxlength="16" />
+              <label>
+                <input type="checkbox" id="confirmPassword-check" class="checkbox-input" />
+                <span class="checkbox-parts">パスワードを表示する</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-row">&ensp;</div>
+
+        <div class="table-row">
+          <div class="table-header" th:text="#{userName}"></div>
+          <div class="table-data">
+            <input type="text" class="validate[required]" th:field="*{userName}" maxlength="16" />
+          </div>
+        </div>
+
+        <div class="table-row">
+          <div class="table-header" th:text="#{companyCode}"></div>
+          <div class="table-data">
+            <div class="cp_ipselect cp_sl01">
+              <select th:field="*{companyCode}">
+                <option th:each="companyCode : ${companyCodeList}" th:value="${companyCode}" th:selected="${companyCode == selectedCompanyCode}" th:inline="text">[[${companyCode}]]</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/* table部ここまで */-->
+
+      <!--/* table部ここから */-->
+      <div class="table">
+        <div class="table-row">
+          <div class="table-data">
+            <input type="submit" value="確 認" />
+          </div>
+        </div>
+      </div>
+      <!--/* table部ここまで */-->
+
+    </form>
+  </div>
+
+  <div th:replace="layout/layout :: footer"></div>
+
+  <script type="text/javascript" src="../resources/js/lib/jquery.js" th:src="@{/resources/js/lib/jquery.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/jquery.validationEngine-ja.js" th:src="@{/resources/js/lib/jquery.validationEngine-ja.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/jquery.validationEngine.js" th:src="@{/resources/js/lib/jquery.validationEngine.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/mprogress.js" th:src="@{/resources/js/lib/mprogress.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/lib/sal.js" th:src="@{/resources/js/lib/sal.min.js}"></script>
+  <script type="text/javascript" src="../resources/js/common/common.js" th:src="@{/resources/js/common/common.min.js}"></script>
+  <script type="text/javascript">
+    $(function() {
+
+      sal({
+        threshold: 1,
+        once: false
+      });
+
+      // validate処理
+      jQuery("#userRegistForm").validationEngine({
+        promptPosition : "topLeft:0"
+      });
+
+      var password = $('#password').get(0);
+      var passwordCheck = $('#password-check').get(0);
+      passwordCheck.addEventListener('change', function() {
+        if (passwordCheck.checked) {
+          password.setAttribute('type', 'text');
+        } else {
+          password.setAttribute('type', 'password');
+        }
+      }, false);
+
+      var confirmPassword = $('#confirmPassword').get(0);
+      var confirmPasswordCheck = $('#confirmPassword-check').get(0);
+      confirmPasswordCheck.addEventListener('change', function() {
+        if (confirmPasswordCheck.checked) {
+          confirmPassword.setAttribute('type', 'text');
+        } else {
+          confirmPassword.setAttribute('type', 'password');
+        }
+      }, false);
+
+      // 進捗バーの処理
+      var mprogress = new Mprogress();
+      $("#loginId").on("change", function() {
+        var value = 0;
+        if ($("#loginId").val() !== "") {
+          value += 1;
+        }
+        if ($("#password").val() !== "") {
+          value += 1;
+        }
+        if ($("#confirmPassword").val() !== "") {
+          value += 1;
+        }
+        if ($("#userName").val() !== "") {
+          value += 1;
+        }
+        var progressValue = value / 4;
+        mprogress.set(progressValue);
+      });
+      $("#password").on("change", function() {
+        var value = 0;
+        if ($("#loginId").val() !== "") {
+          value += 1;
+        }
+        if ($("#password").val() !== "") {
+          value += 1;
+        }
+        if ($("#confirmPassword").val() !== "") {
+          value += 1;
+        }
+        if ($("#userName").val() !== "") {
+          value += 1;
+        }
+        var progressValue = value / 4;
+        mprogress.set(progressValue);
+      });
+      $("#confirmPassword").on("change", function() {
+        var value = 0;
+        if ($("#loginId").val() !== "") {
+          value += 1;
+        }
+        if ($("#password").val() !== "") {
+          value += 1;
+        }
+        if ($("#confirmPassword").val() !== "") {
+          value += 1;
+        }
+        if ($("#userName").val() !== "") {
+          value += 1;
+        }
+        var progressValue = value / 4;
+        mprogress.set(progressValue);
+      });
+      $("#userName").on("change", function() {
+        var value = 0;
+        if ($("#loginId").val() !== "") {
+          value += 1;
+        }
+        if ($("#password").val() !== "") {
+          value += 1;
+        }
+        if ($("#confirmPassword").val() !== "") {
+          value += 1;
+        }
+        if ($("#userName").val() !== "") {
+          value += 1;
+        }
+        var progressValue = value / 4;
+        mprogress.set(progressValue);
+      });
+    });
+  </script>
+</body>
+</html>
