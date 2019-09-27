@@ -3,6 +3,7 @@ package jp.co.kin.common.util;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.util.StringUtils;
 
 /**
@@ -147,13 +148,26 @@ public class StringUtil {
 
 	/**
 	 * {@link org.springframework.util.StringUtils#capitalize(String)} のラッパーメソッド
-	 * 
+	 *
 	 * @param str
 	 *            対象文字列
 	 * @return
 	 */
 	public static String capitalize(String str) {
 		return StringUtils.capitalize(str);
+	}
+
+	/**
+	 * 指定して桁数のランダム文字列を返す<br>
+	 * {@link org.apache.commons.lang3.RandomStringUtils#randomAlphabetic(int)}
+	 * のラッパーメソッド
+	 *
+	 * @param length
+	 *            文字列長
+	 * @return ランダム文字列
+	 */
+	public static String getRandamStr(int length) {
+		return RandomStringUtils.randomAlphabetic(length);
 	}
 
 	/**

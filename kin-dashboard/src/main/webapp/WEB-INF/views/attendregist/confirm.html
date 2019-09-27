@@ -7,7 +7,6 @@
 <link rel="icon" type="image/png" href="../resources/image/favicon.ico" th:href="@{/resources/image/favicon.ico}">
 <link rel="stylesheet" type="text/css" href="../resources/css/layout.css" th:href="@{/resources/css/layout.min.css}">
 <link rel="stylesheet" type="text/css" href="../resources/css/lib/validationEngine.jquery.css" th:href="@{/resources/css/lib/validationEngine.jquery.min.css}">
-<link rel="stylesheet" type="text/css" href="../resources/css/lib/sal.css" th:href="@{/resources/css/lib/sal.min.css}">
 <link rel="stylesheet" type="text/css" href="../resources/css/input.css" th:href="@{/resources/css/input.min.css}">
 </head>
 <body>
@@ -25,7 +24,43 @@
           </div>
           <div class="table-data"></div>
           <div class="table-data">
-            <input type="button" value="戻る" onclick="history.back();" />
+            <input type="button" value="戻 る" onclick="history.back();" />
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="table-row">
+          <div class="table-data">
+            <div th:text="${form.year} + #{year} + ' ' + ${form.month} + #{month}"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="table-row">
+          <div class="table-data" th:text="#{weekDay}"></div>
+          <div class="table-data" th:text="#{day}"></div>
+          <div class="table-data" th:text="#{workStartTime}"></div>
+          <div class="table-data" th:text="#{workEndTime}"></div>
+        </div>
+
+        <div class="table-row" th:each="registForm, status : ${form.registFormList}">
+          <div class="table-data weekday" th:text="#{${registForm.weekDay}}"></div>
+          <div class="table-data" th:text="${registForm.day} + '日'"></div>
+          <div class="table-data" th:text="${registForm.workStartHour} + ' : ' + ${registForm.workStartMinute}"></div>
+          <div class="table-data" th:text="${registForm.workEndHour} + ' : ' + ${registForm.workEndMinute}"></div>
+        </div>
+      </div>
+
+      <div class="table">
+        <div class="table-row">
+          <div class="table-data">
+            <input type="submit" value="確 認" />
+          </div>
+          <div class="table-data"></div>
+          <div class="table-data">
+            <input type="button" value="戻 る" onclick="history.back();" />
           </div>
         </div>
       </div>
@@ -39,17 +74,33 @@
   <div th:replace="layout/layout :: footer"></div>
 
   <script type="text/javascript" src="../resources/js/lib/jquery.js" th:src="@{/resources/js/lib/jquery.min.js}"></script>
-  <script type="text/javascript" src="../resources/js/lib/jquery.validationEngine-ja.js" th:src="@{/resources/js/lib/jquery.validationEngine-ja.min.js}"></script>
-  <script type="text/javascript" src="../resources/js/lib/jquery.validationEngine.js" th:src="@{/resources/js/lib/jquery.validationEngine.min.js}"></script>
-  <script type="text/javascript" src="../resources/js/lib/sal.js" th:src="@{/resources/js/lib/sal.min.js}"></script>
   <script type="text/javascript" src="../resources/js/common/common.js" th:src="@{/resources/js/common/common.min.js}"></script>
   <script type="text/javascript">
     $(function() {
 
-      sal({
-        threshold: 1,
-        once: false
-      });
+        $(window).on('load', function() {
+            $.each($("div.weekday"), function(i, val) {
+
+              if ($(val).text() == "土") {
+                // 土曜日の場合
+                $(val).addClass("saturday");
+                $(".saturday").css({
+                  "color" : "#0000ff"
+                });
+
+              } else if ($(val).text() == "日") {
+                // 日曜日の場合
+                $(val).addClass("sunday");
+                $(".sunday").css({
+                  "color" : "#ff0000"
+                });
+
+              } else {
+                // 平日の場合
+                $(val).addClass("workday");
+              }
+            });
+          });
 
     });
   </script>

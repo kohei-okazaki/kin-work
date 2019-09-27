@@ -3,7 +3,6 @@ package jp.co.kin.web.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.method.HandlerMethod;
@@ -65,7 +64,7 @@ public class CsrfTokenInterceptor extends BaseWebInterceptor {
 
 		if (isCsrfTokenFactory(handler)) {
 			// CSRFトークンを作成する
-			String random = RandomStringUtils.randomAlphabetic(10);
+			String random = StringUtil.getRandamStr(16);
 			String csrfToken = encoder.encode(random, Charset.UTF_8);
 
 			sessionComponent.setValue(request.getSession(), "csrfToken", csrfToken);

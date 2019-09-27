@@ -2,6 +2,8 @@ package jp.co.kin.dashboard.attendregist.controller;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -22,8 +24,11 @@ import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.type.DateFormatType;
+import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.common.util.LocalDateTimeUtil;
+import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.dashboard.attendregist.form.AttendRegistForm;
+import jp.co.kin.dashboard.attendregist.form.AttendRegistUnitForm;
 import jp.co.kin.dashboard.type.DashboardView;
 import jp.co.kin.web.controller.BaseViewController;
 import jp.co.kin.web.interceptor.annotation.CsrfToken;
@@ -74,15 +79,30 @@ public class AttendRegistController implements BaseViewController {
 	public String confirm(Model model, @Valid AttendRegistForm form, BindingResult result) {
 
 		if (result.hasErrors()) {
+			// 初期表示を行うので入力画面へredirect
 			return getRedirectView(DashboardView.ATTEND_REGIST_INPUT);
 		}
+		// 登録しない日付情報を削除する
+		List<AttendRegistUnitForm> list = form.getRegistFormList().stream()
+				.filter(e -> !StringUtil.isEmpty(e.getWorkStartHour()))
+				.filter(e -> !StringUtil.isEmpty(e.getWorkStartMinute()))
+				.filter(e -> !StringUtil.isEmpty(e.getWorkEndHour()))
+				.filter(e -> !StringUtil.isEmpty(e.getWorkEndMinute()))
+				.collect(Collectors.toList());
+		if (CollectionUtil.isEmpty(list)) {
+			// 初期表示を行うので入力画面へredirect
+			return getRedirectView(DashboardView.ATTEND_REGIST_INPUT);
+		}
+		form.setRegistFormList(list);
+		// 確認画面に表示する情報を設定する
+		model.addAttribute("form", form);
 
 		return getView(DashboardView.ATTEND_REGIST_CONFIRM);
 	}
 
 	@CsrfToken(check = true)
 	@PostMapping("/complete")
-	public String complete(Model model, AttendRegistForm form) {
+	public String complete(Model model, @ModelAttribute AttendRegistForm form) {
 
 		// 勤怠登録formをdtoに変換する
 		AttendRegistDto dto = DtoFactory.getDto(AttendRegistDto.class, form);

@@ -5,25 +5,16 @@ import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.method.HandlerMethod;
 
-import jp.co.kin.common.encode.BaseEncodeAndDecoder;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.log.MDC;
-import jp.co.kin.common.type.Charset;
-import jp.co.kin.common.type.DateFormatType;
-import jp.co.kin.common.util.LocalDateTimeUtil;
+import jp.co.kin.common.util.StringUtil;
 
 public class RequestInterceptor extends BaseWebInterceptor {
 
 	private static final Logger LOG = LoggerFactory.getLogger(RequestInterceptor.class);
-
-	@Autowired
-	@Qualifier("sha256HashEncodeAndDecoder")
-	private BaseEncodeAndDecoder hashCreator;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -34,8 +25,7 @@ public class RequestInterceptor extends BaseWebInterceptor {
 			return true;
 		}
 		// MDCの設定を行う
-		MDC.put("id", hashCreator.encode(LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(),
-				DateFormatType.YYYYMMDD_HHMMSS_NOSEP), Charset.UTF_8));
+		MDC.put("id", StringUtil.getRandamStr(16));
 
 		Method method = ((HandlerMethod) handler).getMethod();
 		LOG.info("---> START " + method.getDeclaringClass().getName() + "#" + method.getName() + "[URI:"
