@@ -2,6 +2,8 @@ package jp.co.kin.common.context;
 
 import org.springframework.stereotype.Component;
 
+import jp.co.kin.common.log.type.LogLevel;
+
 /**
  * system.propertiesのBeanクラス
  *
@@ -10,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class SystemComponent {
 
 	/** loglevel */
-	private String loglevel;
+	private LogLevel loglevel;
 	/** ページング */
 	private String paging;
 
@@ -20,7 +22,7 @@ public class SystemComponent {
 	 * @return loglevel
 	 *
 	 */
-	public String getLoglevel() {
+	public LogLevel getLoglevel() {
 		return loglevel;
 	}
 
@@ -28,10 +30,11 @@ public class SystemComponent {
 	 * loglevelを設定する
 	 *
 	 * @param loglevel
-	 *            ログレベル
+	 *            loglevel
+	 *
 	 */
 	public void setLoglevel(String loglevel) {
-		this.loglevel = loglevel;
+		this.loglevel = LogLevel.of(loglevel);
 	}
 
 	/**

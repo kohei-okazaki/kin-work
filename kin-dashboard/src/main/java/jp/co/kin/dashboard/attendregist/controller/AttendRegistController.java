@@ -1,7 +1,9 @@
 package jp.co.kin.dashboard.attendregist.controller;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,10 +21,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.kin.business.attendregist.dto.AttendRegistDto;
 import jp.co.kin.business.attendregist.service.AttendRegistService;
+import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseException;
+import jp.co.kin.common.exception.CommonErrorCode;
+import jp.co.kin.common.exception.SystemException;
 import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.common.util.LocalDateTimeUtil;
@@ -76,7 +81,8 @@ public class AttendRegistController implements BaseViewController {
 
 	@CsrfToken(factocy = true)
 	@PostMapping("/confirm")
-	public String confirm(Model model, @Valid AttendRegistForm form, BindingResult result) {
+	public String confirm(Model model, @Valid AttendRegistForm form, BindingResult result,
+			HttpServletRequest request) {
 
 		if (result.hasErrors()) {
 			// 初期表示を行うので入力画面へredirect
@@ -97,16 +103,49 @@ public class AttendRegistController implements BaseViewController {
 		// 確認画面に表示する情報を設定する
 		model.addAttribute("form", form);
 
+		sessionComponent.setValue(request.getSession(), "requestForm", form);
+
 		return getView(DashboardView.ATTEND_REGIST_CONFIRM);
 	}
 
 	@CsrfToken(check = true)
 	@PostMapping("/complete")
-	public String complete(Model model, @ModelAttribute AttendRegistForm form) {
+	public String complete(Model model, HttpServletRequest request) {
 
-		// 勤怠登録formをdtoに変換する
-		AttendRegistDto dto = DtoFactory.getDto(AttendRegistDto.class, form);
-		attendRegistService.registDailyWorkData(dto);
+		// sessionから勤怠登録情報を取得
+		AttendRegistForm form = sessionComponent
+				.getValue(request.getSession(), "requestForm", AttendRegistForm.class)
+				.orElseThrow(() -> new SystemException(CommonErrorCode.SESSION_ILLEGAL, "session情報が不正です"));
+
+		// sessionからユーザ情報を取得
+		SessionLoginUser sessionLoginUser = sessionComponent
+				.getValue(request.getSession(), "sessionUser", SessionLoginUser.class).get();
+
+		OntimeDto ontimeDto = attendRegistService.getOntimeDto(sessionLoginUser.getUserId());
+
+		for (AttendRegistUnitForm regForm : form.getRegistFormList()) {
+			// 勤怠登録formをdtoに変換する
+			AttendRegistDto dto = DtoFactory.getDto(AttendRegistDto.class, form);
+			dto.setUserId(sessionLoginUser.getUserId());
+			dto.setCompanyCode(ontimeDto.getCompanyCode());
+			dto.setWorkDataRegDate(LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate()));
+			dto.setWorkStartDate(LocalDateTime.of(Integer.valueOf(form.getYear()).intValue(),
+					Integer.valueOf(form.getMonth()).intValue(), regForm.getDay().intValue(),
+					Integer.valueOf(regForm.getWorkStartHour()).intValue(),
+					Integer.valueOf(regForm.getWorkStartMinute()).intValue()));
+			dto.setWorkEndDate(LocalDateTime.of(Integer.valueOf(form.getYear()).intValue(),
+					Integer.valueOf(form.getMonth()).intValue(), regForm.getDay().intValue(),
+					Integer.valueOf(regForm.getWorkEndHour()).intValue(),
+					Integer.valueOf(regForm.getWorkEndMinute()).intValue()));
+
+			Duration diff = Duration.between(dto.getWorkStartDate(), dto.getWorkEndDate());
+			System.out.println(diff.toHoursPart() + ":" + diff.toMinutesPart());
+			dto.setActualWorkTime(diff.toHoursPart() + "." + diff.toMinutesPart());
+
+			attendRegistService.registDailyWorkData(dto);
+		}
+
+		sessionComponent.removeValue(request.getSession(), "requestForm");
 
 		return getView(DashboardView.ATTEND_REGIST_COMPLETE);
 	}

@@ -60,5 +60,6 @@
   <context:component-scan base-package="jp.co.kin.db.config" />
   <context:component-scan base-package="jp.co.kin.db.crypt" />
   <context:component-scan base-package="jp.co.kin.db.dao" />
+  <context:component-scan base-package="jp.co.kin.db.listener" />
 
 </beans>
