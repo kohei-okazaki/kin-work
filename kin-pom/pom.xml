@@ -19,7 +19,7 @@
     <org.aspectj-version>1.9.4</org.aspectj-version>
     <org.slf4j-version>1.7.26</org.slf4j-version>
     <org.logback-version>1.2.3</org.logback-version>
-    <org.jackson-version>2.9.9</org.jackson-version>
+    <org.jackson-version>2.9.10</org.jackson-version>
     <org.poi-version>4.1.0</org.poi-version>
     <org.mysql-version>8.0.17</org.mysql-version>
     <org.doma-version>2.24.0</org.doma-version>
@@ -161,11 +161,6 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>${org.jackson-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.dataformat</groupId>
-      <artifactId>jackson-dataformat-csv</artifactId>
       <version>${org.jackson-version}</version>
     </dependency>
     <!-- DB -->
