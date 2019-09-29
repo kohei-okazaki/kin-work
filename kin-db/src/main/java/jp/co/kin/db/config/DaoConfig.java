@@ -66,7 +66,7 @@ public class DaoConfig implements Config {
 	@Override
 	public JdbcLogger getJdbcLogger() {
 		return new DaoLogger(Stream.of(Level.class.getEnumConstants())
-				.filter(e -> e.toString().equals(systemComponent.getLoglevel())).findFirst()
+				.filter(e -> e.toString().equals(systemComponent.getLoglevel().getValue())).findFirst()
 				.orElse(Level.INFO));
 	}
 

@@ -269,7 +269,7 @@ public class BeanUtil {
 				break;
 			}
 		} catch (IntrospectionException e) {
-			LOG.warn("メソッドがみつかりません", e);
+			LOG.error("メソッドがみつかりません", e);
 		}
 		return accessor;
 	}

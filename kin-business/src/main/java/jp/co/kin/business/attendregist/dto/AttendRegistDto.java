@@ -1,5 +1,6 @@
 package jp.co.kin.business.attendregist.dto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import jp.co.kin.common.bean.BaseDto;
@@ -10,6 +11,8 @@ public class AttendRegistDto implements BaseDto {
 	private String userId;
 	/** 企業コード */
 	private String companyCode;
+	/** 勤怠情報登録日時 */
+	private LocalDate workDataRegDate;
 	/** 始業日時 */
 	private LocalDateTime workStartDate;
 	/** 終業日時 */
@@ -57,6 +60,27 @@ public class AttendRegistDto implements BaseDto {
 	 */
 	public void setCompanyCode(String companyCode) {
 		this.companyCode = companyCode;
+	}
+
+	/**
+	 * workDataRegDateを返す
+	 *
+	 * @return workDataRegDate
+	 *
+	 */
+	public LocalDate getWorkDataRegDate() {
+		return workDataRegDate;
+	}
+
+	/**
+	 * workDataRegDateを設定する
+	 *
+	 * @param workDataRegDate
+	 *            workDataRegDate
+	 *
+	 */
+	public void setWorkDataRegDate(LocalDate workDataRegDate) {
+		this.workDataRegDate = workDataRegDate;
 	}
 
 	/**
