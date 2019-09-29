@@ -121,6 +121,7 @@ public class AttendRegistController implements BaseViewController {
 		SessionLoginUser sessionLoginUser = sessionComponent
 				.getValue(request.getSession(), "sessionUser", SessionLoginUser.class).get();
 
+		// 定時情報を取得
 		OntimeDto ontimeDto = attendRegistService.getOntimeDto(sessionLoginUser.getUserId());
 
 		for (AttendRegistUnitForm regForm : form.getRegistFormList()) {
@@ -139,7 +140,6 @@ public class AttendRegistController implements BaseViewController {
 					Integer.valueOf(regForm.getWorkEndMinute()).intValue()));
 
 			Duration diff = Duration.between(dto.getWorkStartDate(), dto.getWorkEndDate());
-			System.out.println(diff.toHoursPart() + ":" + diff.toMinutesPart());
 			dto.setActualWorkTime(diff.toHoursPart() + "." + diff.toMinutesPart());
 
 			attendRegistService.registDailyWorkData(dto);

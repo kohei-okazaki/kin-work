@@ -67,6 +67,7 @@
           <div class="table-data" th:text="#{workStartTime}"></div>
           <div class="table-data" th:text="#{workEndTime}"></div>
           <div class="table-data" th:text="#{ontimeLeave}"></div>
+          <div class="table-data" th:text="#{clear}"></div>
         </div>
 
         <div class="table-row" th:each="calendar, status : ${calendarList}">
@@ -88,6 +89,9 @@
           </div>
           <div class="table-data applyOntimeLeave">
             <input type="button" th:id="${'applyOntimeLeave['  + status.index + ']'}" value="反 映" />
+          </div>
+          <div class="table-data clear">
+            <input type="button" th:id="${'clear['  + status.index + ']'}" value="クリア" />
           </div>
         </div>
       </div>
@@ -159,14 +163,14 @@
       $(window).on('load', function() {
         $.each($("div.weekday"), function(i, val) {
 
-          if ($(val).text() == "土") {
+          if ($(val).text() === "土") {
             // 土曜日の場合
             $(val).addClass("saturday");
             $(".saturday").css({
               "color" : "#0000ff"
             });
 
-          } else if ($(val).text() == "日") {
+          } else if ($(val).text() === "日") {
             // 日曜日の場合
             $(val).addClass("sunday");
             $(".sunday").css({
@@ -186,6 +190,15 @@
             $("input[name='registFormList[" + i + "].workEndHour']").val(ontimeEndHour);
             $("input[name='registFormList[" + i + "].workEndMinute']").val(ontimeEndMinute);
             console.log($("input[name='registFormList[" + i + "].workStartHour']").val());
+          });
+        });
+
+        $.each($("div.clear"), function(i, val) {
+          $(val).children("input").on("click", function() {
+            $("input[name='registFormList[" + i + "].workStartHour']").val("");
+            $("input[name='registFormList[" + i + "].workStartMinute']").val("");
+            $("input[name='registFormList[" + i + "].workEndHour']").val("");
+            $("input[name='registFormList[" + i + "].workEndMinute']").val("");
           });
         });
 
