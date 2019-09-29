@@ -78,20 +78,20 @@
           <input type="hidden" th:name="${'registFormList[' + status.index + '].day'}" th:value="${calendar.day}" />
 
           <div class="table-data">
-            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workStartHour'}" size="2" maxlength="2" />
+            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workStartHour'}" size="5" maxlength="2" />
             :
-            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workStartMinute'}" size="2" maxlength="2" />
+            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workStartMinute'}" size="5" maxlength="2" />
           </div>
           <div class="table-data">
-            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndHour'}" size="2" maxlength="2" />
+            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndHour'}" size="5" maxlength="2" />
             :
-            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndMinute'}" size="2" maxlength="2" />
+            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndMinute'}" size="5" maxlength="2" />
           </div>
           <div class="table-data applyOntimeLeave">
-            <input type="button" th:id="${'applyOntimeLeave['  + status.index + ']'}" value="反 映" />
+            <input type="button" th:id="${'applyOntimeLeave[' + status.index + ']'}" value="反 映" />
           </div>
           <div class="table-data clear">
-            <input type="button" th:id="${'clear['  + status.index + ']'}" value="クリア" />
+            <input type="button" th:id="${'clear[' + status.index + ']'}" value="反 映" />
           </div>
         </div>
       </div>
