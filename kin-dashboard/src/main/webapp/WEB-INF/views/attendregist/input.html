@@ -71,25 +71,46 @@
         </div>
 
         <div class="table-row" th:each="calendar, status : ${calendarList}">
+          <!--/* 曜日 */-->
           <div class="table-data weekday" th:text="#{${calendar.weekDay}}"></div>
           <input type="hidden" th:name="${'registFormList[' + status.index + '].weekDay'}" th:value="${calendar.weekDay}" />
 
+          <!--/* 日にち */-->
           <div class="table-data" th:text="${calendar.day}"></div>
           <input type="hidden" th:name="${'registFormList[' + status.index + '].day'}" th:value="${calendar.day}" />
 
+          <!--/* 始業時間 */-->
           <div class="table-data">
-            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workStartHour'}" size="5" maxlength="2" />
+            <span th:if="${calendar.workStartDateHour} == null">
+              <input type="text" class="validate[custom[number]]" th:value="${calendar.workStartDateHour}" th:name="${'registFormList[' + status.index + '].workStartHour'}" size="5" maxlength="2" />
+            </span >
+            <span th:if="${calendar.workStartDateHour} != null" th:text="${calendar.workStartDateHour}"></span >
             :
-            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workStartMinute'}" size="5" maxlength="2" />
+            <span th:if="${calendar.workStartDateMinute} == null">
+              <input type="text" class="validate[custom[number]]" th:value="${calendar.workStartDateMinute}" th:name="${'registFormList[' + status.index + '].workStartMinute'}" size="5" maxlength="2" />
+            </span >
+            <span th:if="${calendar.workStartDateMinute} != null" th:text="${calendar.workStartDateMinute}"></span >
           </div>
+
+          <!--/* 終業時間 */-->
           <div class="table-data">
-            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndHour'}" size="5" maxlength="2" />
+            <span th:if="${calendar.workEndDateHour} == null">
+              <input type="text" class="validate[custom[number]]" th:value="${calendar.workEndDateHour}" th:name="${'registFormList[' + status.index + '].workEndHour'}" size="5" maxlength="2" />
+            </span >
+            <span th:if="${calendar.workEndDateHour} != null" th:text="${calendar.workEndDateHour}"></span >
             :
-            <input type="text" class="validate[custom[number]]" th:name="${'registFormList[' + status.index + '].workEndMinute'}" size="5" maxlength="2" />
+            <span th:if="${calendar.workEndDateMinute} == null">
+              <input type="text" class="validate[custom[number]]" th:value="${calendar.workEndDateMinute}" th:name="${'registFormList[' + status.index + '].workEndMinute'}" size="5" maxlength="2" />
+            </span >
+            <span th:if="${calendar.workEndDateMinute} != null" th:text="${calendar.workEndDateMinute}"></span >
           </div>
+
+          <!--/* 定時退社 */-->
           <div class="table-data applyOntimeLeave">
             <input type="button" th:id="${'applyOntimeLeave[' + status.index + ']'}" value="反 映" />
           </div>
+
+          <!--/* クリア */-->
           <div class="table-data clear">
             <input type="button" th:id="${'clear[' + status.index + ']'}" value="反 映" />
           </div>

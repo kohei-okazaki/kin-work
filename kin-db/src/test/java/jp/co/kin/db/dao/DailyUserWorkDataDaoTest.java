@@ -27,7 +27,7 @@ public class DailyUserWorkDataDaoTest extends BaseDbTest {
 			LocalDate from = LocalDate.of(2019, 1, 1);
 			LocalDate to = LocalDate.of(2019, 1, 2);
 			String id = "dummyId";
-			List<DailyUserWorkData> entityList = dao.selectByWorkDate(from, to, id);
+			List<DailyUserWorkData> entityList = dao.selectByWorkDate(id, from, to);
 			assertEquals(0, entityList.size());
 		}
 		{
@@ -35,7 +35,7 @@ public class DailyUserWorkDataDaoTest extends BaseDbTest {
 			LocalDate from = LocalDate.of(2019, 1, 1);
 			LocalDate to = LocalDate.of(2019, 1, 2);
 			String id = "dummyId";
-			List<DailyUserWorkData> entityList = dao.selectByWorkDate(to, from, id);
+			List<DailyUserWorkData> entityList = dao.selectByWorkDate(id, from, to);
 			assertEquals(0, entityList.size());
 		}
 	}

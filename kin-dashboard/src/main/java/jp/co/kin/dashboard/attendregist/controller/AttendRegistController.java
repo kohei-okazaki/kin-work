@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.kin.business.attendregist.dto.AttendBusinessCalendar;
 import jp.co.kin.business.attendregist.dto.AttendRegistDto;
 import jp.co.kin.business.attendregist.service.AttendRegistService;
+import jp.co.kin.business.db.search.DailyUserWorkDataSearchService;
 import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.common.bean.DtoFactory;
@@ -28,6 +30,8 @@ import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.exception.CommonErrorCode;
 import jp.co.kin.common.exception.SystemException;
+import jp.co.kin.common.log.Logger;
+import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.common.util.LocalDateTimeUtil;
@@ -46,10 +50,14 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 @RequestMapping("attendRegist")
 public class AttendRegistController implements BaseViewController {
 
+	private static final Logger LOG = LoggerFactory.getLogger(AttendRegistController.class);
+
 	@Autowired
 	private SessionComponent sessionComponent;
 	@Autowired
 	private AttendRegistService attendRegistService;
+	@Autowired
+	private DailyUserWorkDataSearchService dailyUserWorkDataSearchService;
 
 	@ModelAttribute("attendRegistForm")
 	public AttendRegistForm setUpForm() {
@@ -151,7 +159,7 @@ public class AttendRegistController implements BaseViewController {
 	}
 
 	/**
-	 * カレンダー情報をModelに表示させる
+	 * カレンダー情報をModelに設定する
 	 *
 	 * @param model
 	 *            Model
@@ -170,11 +178,49 @@ public class AttendRegistController implements BaseViewController {
 		model.addAttribute("yearList", attendRegistService.getYearList());
 		model.addAttribute("selectedMonth", month);
 		model.addAttribute("monthList", attendRegistService.getMonthList());
-		model.addAttribute("calendarList", attendRegistService.getBusinessCalendarList(targetDate));
+
 		// 定時情報を設定
 		String userId = sessionComponent.getValue(request.getSession(), "sessionUser",
 				SessionLoginUser.class).get().getUserId();
 		model.addAttribute("ontimeDto", attendRegistService.getOntimeDto(userId));
+
+		// カレンダーを取得
+		List<AttendBusinessCalendar> calendarList = attendRegistService.getBusinessCalendarList(targetDate);
+		// 日別ユーザ勤怠情報を設定
+		List<AttendRegistDto> dtoList = dailyUserWorkDataSearchService.searchList(userId, targetDate);
+
+		for (int i = 0; i < calendarList.size(); i++) {
+			AttendBusinessCalendar attendBusinessCalendar = calendarList.get(i);
+			LOG.debugRes(attendBusinessCalendar);
+			int dtoListSize = dtoList.size();
+			if (CollectionUtil.isEmpty(dtoList) || dtoList.size() - 1 < i) {
+				LOG.debug("勤怠情報が登録されていない");
+				break;
+			}
+			AttendRegistDto attendRegistDto = dtoList.get(i);
+
+			// 始業日時(時)
+			attendBusinessCalendar
+					.setWorkStartDateHour(LocalDateTimeUtil.toString(attendRegistDto.getWorkStartDate(),
+							DateFormatType.HH));
+			// 始業日時(分)
+			attendBusinessCalendar
+					.setWorkStartDateMinute(LocalDateTimeUtil.toString(attendRegistDto.getWorkStartDate(),
+							DateFormatType.MI));
+			// 終業日時(時)
+			attendBusinessCalendar
+					.setWorkEndDateHour(LocalDateTimeUtil.toString(attendRegistDto.getWorkEndDate(),
+							DateFormatType.HH));
+			// 終業日時(分)
+			attendBusinessCalendar
+					.setWorkEndDateMinute(LocalDateTimeUtil.toString(attendRegistDto.getWorkEndDate(),
+							DateFormatType.MI));
+			LOG.debugRes(attendBusinessCalendar);
+		}
+		for (AttendBusinessCalendar c : calendarList) {
+			LOG.debugRes(c);
+		}
+		model.addAttribute("calendarList", calendarList);
 	}
 
 	/**
