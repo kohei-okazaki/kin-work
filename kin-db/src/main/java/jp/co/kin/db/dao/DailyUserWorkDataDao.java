@@ -30,7 +30,7 @@ public interface DailyUserWorkDataDao extends BaseDao {
 	public int insert(DailyUserWorkData entity);
 
 	@Select
-	public List<DailyUserWorkData> selectByWorkDate(LocalDate workStartDate, LocalDate workEndDate,
-			String userId);
+	public List<DailyUserWorkData> selectByWorkDate(String userId, LocalDate workStartDate,
+			LocalDate workEndDate);
 
 }

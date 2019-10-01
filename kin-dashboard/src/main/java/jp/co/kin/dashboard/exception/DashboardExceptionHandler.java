@@ -27,6 +27,7 @@ public class DashboardExceptionHandler extends BaseExceptionHander {
 	private SessionComponent sessionComponent;
 
 	@Override
+	@SuppressWarnings("incomplete-switch")
 	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
 			Object handler, Exception e) {
 
@@ -44,10 +45,14 @@ public class DashboardExceptionHandler extends BaseExceptionHander {
 
 		modelView.addObject("errorMessage", errorMessage);
 
-		if (LogLevel.ERROR == loglevel) {
+		// ERROR, WARB以外のログレベルは到達しない
+		switch (loglevel) {
+		case ERROR:
 			LOG.error(detail, e);
-		} else {
+			break;
+		case WARN:
 			LOG.warn(detail, e);
+			break;
 		}
 
 		return modelView;
