@@ -16,7 +16,6 @@ import jp.co.kin.common.test.BaseCommonTest;
 public class DateUtilTest extends BaseCommonTest {
 
 	@Test
-	@SuppressWarnings("deprecation")
 	public void toDateTest() {
 		{
 			Date date = DateUtil.toDate("hoge");
@@ -35,7 +34,6 @@ public class DateUtilTest extends BaseCommonTest {
 	}
 
 	@Test
-	@SuppressWarnings("deprecation")
 	public void isBeforeTest() {
 		{
 			Date before = DateUtil.toDate("2000/01/01 12:34:56");
@@ -55,7 +53,6 @@ public class DateUtilTest extends BaseCommonTest {
 	}
 
 	@Test
-	@SuppressWarnings("deprecation")
 	public void isAfterTest() {
 		{
 			Date before = DateUtil.toDate("2000/01/01 12:34:56");
@@ -75,7 +72,6 @@ public class DateUtilTest extends BaseCommonTest {
 	}
 
 	@Test
-	@SuppressWarnings("deprecation")
 	public void isSameDateTest() {
 		{
 			Date before = DateUtil.toDate("2000/01/01 12:34:56");
@@ -90,7 +86,6 @@ public class DateUtilTest extends BaseCommonTest {
 	}
 
 	@Test
-	@SuppressWarnings("deprecation")
 	public void isBetWeenDateTest() {
 		{
 			Date startDate = DateUtil.toDate("2000/01/01 12:34:55");
@@ -108,7 +103,6 @@ public class DateUtilTest extends BaseCommonTest {
 	}
 
 	@Test
-	@SuppressWarnings("deprecation")
 	public void toStartDateTest() {
 		{
 			Date date1 = DateUtil.toDate("2000/01/01 00:00:00");
@@ -118,7 +112,6 @@ public class DateUtilTest extends BaseCommonTest {
 	}
 
 	@Test
-	@SuppressWarnings("deprecation")
 	public void toEndDateTest() {
 		{
 			Date date1 = DateUtil.toDate("2000/01/01 23:59:59");
