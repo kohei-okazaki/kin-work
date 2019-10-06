@@ -44,11 +44,11 @@ public class LocalDateTimeUtil {
 	}
 
 	/**
-	 * 指定された日時の月末を返す
+	 * 指定された日付の月末を返す
 	 *
 	 * @param localDateTime
-	 *            日時
-	 * @return
+	 *            日付
+	 * @return 月末日
 	 */
 	public static int getLastDayOfMonth(LocalDateTime localDateTime) {
 		return getLastDayOfMonth(toLocalDate(localDateTime));
@@ -59,7 +59,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param localDate
 	 *            日付
-	 * @return
+	 * @return 月末日
 	 */
 	public static int getLastDayOfMonth(LocalDate localDate) {
 		return localDate.lengthOfMonth();
@@ -68,7 +68,7 @@ public class LocalDateTimeUtil {
 	/**
 	 * システム日付より取得した月の月初から月末までの日にちのリストを返す
 	 *
-	 * @return
+	 * @return 月初から月末までの日にちのリスト
 	 */
 	public static List<LocalDate> getLocalDateListThisMonth() {
 		return getLocalDateList(toLocalDate(getSysDate()));
@@ -79,7 +79,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param localDate
 	 *            日付
-	 * @return
+	 * @return 月初から月末までの日にちのリスト
 	 */
 	public static List<LocalDate> getLocalDateList(LocalDate localDate) {
 		List<LocalDate> list = new ArrayList<>();
@@ -271,7 +271,7 @@ public class LocalDateTimeUtil {
 	 *            比較日時
 	 * @param isEquals
 	 *            同時刻を超過したに含むかどうか
-	 * @return
+	 * @return 評価値
 	 */
 	public static boolean isBefore(LocalDateTime localDateTime, LocalDateTime when, boolean isEquals) {
 		if (isEquals) {
@@ -295,7 +295,7 @@ public class LocalDateTimeUtil {
 	 *            検査日時
 	 * @param endDate
 	 *            終了日時
-	 * @return
+	 * @return 評価値
 	 */
 	public static boolean isBetWeen(LocalDateTime startDate, LocalDateTime target, LocalDateTime endDate) {
 		return startDate.isBefore(target) && endDate.isAfter(target);
@@ -419,7 +419,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param localDate
 	 *            日付
-	 * @return
+	 * @return <code>java.time.LocalDateTime</code>型の日付
 	 */
 	public static LocalDateTime toLocalDateTime(LocalDate localDate) {
 		return LocalDateTime.of(localDate.getYear(), localDate.getMonthValue(), localDate.getDayOfMonth(), 0,
@@ -431,7 +431,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param localDateTime
 	 *            日付
-	 * @return
+	 * @return <code>java.time.LocalDate</code>型の日付
 	 */
 	public static LocalDate toLocalDate(LocalDateTime localDateTime) {
 		return LocalDate.of(localDateTime.getYear(), localDateTime.getMonth(), localDateTime.getDayOfMonth());
