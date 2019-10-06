@@ -19,6 +19,15 @@ public class ServiceAspect {
 	/** LOG */
 	private static final Logger LOG = LoggerFactory.getLogger(ServiceAspect.class);
 
+	/**
+	 * Service実行時のAspect
+	 *
+	 * @param pjp
+	 *            ProceedingJoinPoint
+	 * @return Service実行後のObject
+	 * @throws Throwable
+	 *             例外発生時、そのままthrow
+	 */
 	@Around("execution(* jp.co.kin.business.*.service.impl.*Impl.*(..))")
 	public Object executeLog(ProceedingJoinPoint pjp) throws Throwable {
 
