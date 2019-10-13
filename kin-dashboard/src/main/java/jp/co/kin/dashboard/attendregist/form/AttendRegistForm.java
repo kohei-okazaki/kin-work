@@ -19,13 +19,13 @@ public class AttendRegistForm implements BaseForm {
 
 	/** 年 */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
-	@Length(length = 4)
+	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "年は半角数字です")
+	@Length(length = 4, message = "年は4桁です")
 	private String year;
 	/** 月 */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
-	@Length(length = 2)
+	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "月は半角数字です")
+	@Length(length = 2, message = "月は2桁です")
 	private String month;
 	/** 1行あたりの勤怠データ */
 	@Valid

@@ -25,7 +25,7 @@ public @interface Pattern {
 	RegixType regixPattern();
 
 	/** message */
-	String message() default "";
+	String message();
 
 	/** groups */
 	Class<?>[] groups() default {};

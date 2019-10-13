@@ -27,7 +27,7 @@ public class UserRegistForm implements BaseForm {
 	private String userName;
 	/** 企業コード */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "企業コードは半角数字です")
 	private String companyCode;
 
 	/**

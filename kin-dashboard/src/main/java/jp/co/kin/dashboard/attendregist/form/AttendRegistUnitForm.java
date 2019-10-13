@@ -15,11 +15,11 @@ public class AttendRegistUnitForm implements BaseForm {
 
 	/** 日にち */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
+	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "日にちは半角数字です")
 	private BigDecimal day;
 	/** 曜日 */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_CHAR)
+	@Pattern(regixPattern = RegixType.HALF_CHAR, message = "曜日は半角英数字です")
 	private String weekDay;
 	/** 始業時間(時) */
 	private String workStartHour;
