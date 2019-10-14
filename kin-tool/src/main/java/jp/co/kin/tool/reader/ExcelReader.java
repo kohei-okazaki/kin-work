@@ -79,11 +79,11 @@ public class ExcelReader extends BaseFileReader {
 	}
 
 	/**
-	 * 指定されたシート名の場合、読み込みを中断する
+	 * 指定されたシート名以外の場合、true, それ以外はfalseを返す
 	 *
 	 * @param sheetName
 	 *            シート名
-	 * @return
+	 * @return 評価値
 	 */
 	private boolean isSkip(String sheetName) {
 		return !"TABLE_LIST".equals(sheetName);

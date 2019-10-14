@@ -49,7 +49,7 @@ public abstract class BaseBuilder {
 
 	protected ExcelConfig getExcelConfig() {
 		ExcelConfig conf = new ExcelConfig();
-		conf.setFilePath(baseDir + "\\kin-docs\\detail-design\\DB.xlsx");
+		conf.setFilePath(baseDir + "\\kin-docs\\detail-design\\90_DB設計.xlsx");
 		conf.setSheetName("TABLE_LIST");
 		return conf;
 	}
