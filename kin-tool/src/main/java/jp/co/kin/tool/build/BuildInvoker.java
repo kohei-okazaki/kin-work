@@ -31,7 +31,7 @@ public class BuildInvoker {
 				}
 			}
 		} catch (Exception e) {
-			LOG.error("SQLの生成処理が失敗しました", e);
+			LOG.error("ToolExecutorの実行に失敗しました", e);
 		}
 	}
 }

@@ -10,28 +10,28 @@ public class OntimeRegistForm implements BaseForm {
 
 	/** 企業コード */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_CHAR)
-	@Length(length = 5)
+	@Pattern(regixPattern = RegixType.HALF_CHAR, message = "企業コードは半角英数字です")
+	@Length(length = 5, message = "企業コードは5桁です")
 	private String companyCode;
 	/** 始業時間(時) */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
-	@Length(length = 2)
+	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "始業時間(時)は半角数字です")
+	@Length(length = 2, message = "始業時間(時)は2桁です")
 	private String workStartHour;
 	/** 始業時間(分) */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
-	@Length(length = 2)
+	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "始業時間(分)は半角数字です")
+	@Length(length = 2, message = "始業時間(分)は2桁です")
 	private String workStartMinute;
 	/** 終業時間(時) */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
-	@Length(length = 2)
+	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "終業時間(時)は半角数字です")
+	@Length(length = 2, message = "終業時間(時)は2桁です")
 	private String workEndHour;
 	/** 終業時間(分) */
 	@Required
-	@Pattern(regixPattern = RegixType.HALF_NUMBER)
-	@Length(length = 2)
+	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "終業時間(分)は半角数字です")
+	@Length(length = 2, message = "終業時間(分)は2桁です")
 	private String workEndMinute;
 
 	/**

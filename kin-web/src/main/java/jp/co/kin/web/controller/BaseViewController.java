@@ -15,4 +15,9 @@ public interface BaseViewController extends BaseController {
 	public default String getRedirectView(BaseView view) {
 		return "redirect:" + view.getName().split(StringUtil.THRASH)[1];
 	}
+
+	public default String getForwardView(BaseView view) {
+		return "forward:" + view.getName().split(StringUtil.THRASH)[1];
+	}
+
 }

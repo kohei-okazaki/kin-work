@@ -5,28 +5,35 @@ import jp.co.kin.common.type.BaseEnum;
 public enum ExecuteType implements BaseEnum {
 
 	/** entity作成 */
-	ENTITY("ENTITY"),
+	ENTITY("ENTITY", "\\kin-db\\src\\main\\java\\jp\\co\\kin\\db\\entity"),
 	/** DDL作成 */
-	DDL("DDL"),
+	DDL("DDL", "\\kin-docs\\detail-design\\sql\\ddl"),
 	/** DML作成 */
-	DML("DML"),
+	DML("DML", "\\kin-docs\\detail-design\\sql\\dml"),
 	/** DROP作成 */
-	DROP("DROP"),
+	DROP("DROP", "\\kin-docs\\detail-design\\sql\\drop"),
 	/** TABLE_DEFINE */
-	TABLE_DEFINE("TABLE_DEFINE"),
+	TABLE_DEFINE("TABLE_DEFINE", "\\kin-docs\\detail-design\\sql\\others"),
 	/** DAO */
-	DAO("DAO");
+	DAO("DAO", "\\kin-db\\src\\main\\java\\jp\\co\\kin\\db\\dao");
 
 	/** 値 */
 	private String value;
+	/** 出力先パス */
+	private String outputFilePath;
 
-	private ExecuteType(String value) {
+	private ExecuteType(String value, String outputFilePath) {
 		this.value = value;
+		this.outputFilePath = outputFilePath;
 	}
 
 	@Override
 	public String getValue() {
 		return this.value;
+	}
+
+	public String getOutputFilePath() {
+		return outputFilePath;
 	}
 
 	public static ExecuteType of(String value) {

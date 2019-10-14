@@ -49,36 +49,14 @@ public abstract class BaseBuilder {
 
 	protected ExcelConfig getExcelConfig() {
 		ExcelConfig conf = new ExcelConfig();
-		conf.setFilePath(baseDir + "\\kin-docs\\detail-design\\DB.xlsx");
+		conf.setFilePath(baseDir + "\\kin-docs\\detail-design\\90_DB設計.xlsx");
 		conf.setSheetName("TABLE_LIST");
 		return conf;
 	}
 
 	protected FileConfig getFileConfig(ExecuteType execType) {
 		FileConfig conf = new FileConfig();
-		switch (execType) {
-		case DDL:
-			conf.setOutputPath(this.baseDir + "\\kin-docs\\detail-design\\db\\ddl");
-			break;
-		case ENTITY:
-			conf.setOutputPath(this.baseDir + "\\kin-db\\src\\main\\java\\jp\\co\\kin\\db\\entity");
-			break;
-		case DROP:
-			conf.setOutputPath(this.baseDir + "\\kin-docs\\detail-design\\db\\drop");
-			break;
-		case DML:
-			conf.setOutputPath(this.baseDir + "\\kin-docs\\detail-design\\db\\dml");
-			break;
-		case TABLE_DEFINE:
-			conf.setOutputPath(this.baseDir + "\\kin-docs\\detail-design\\db\\others");
-			break;
-		case DAO:
-			conf.setOutputPath(this.baseDir + "\\kin-db\\src\\main\\java\\jp\\co\\kin\\db\\dao");
-			break;
-		default:
-			LOG.warn("SQL生成の指定が間違っています execType:" + execType.getValue());
-			break;
-		}
+		conf.setOutputPath(this.baseDir + execType.getOutputFilePath());
 		return conf;
 	}
 

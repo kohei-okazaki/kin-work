@@ -389,7 +389,7 @@ public class BeanValidatorTest extends BaseCommonTest {
 
 	private static class HalfNumberPatternTestBean {
 
-		@Pattern(regixPattern = RegixType.HALF_NUMBER)
+		@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "値は半角数字です")
 		private String value;
 
 		/**
@@ -416,7 +416,7 @@ public class BeanValidatorTest extends BaseCommonTest {
 
 	private static class HalfCharPatternTestBean {
 
-		@Pattern(regixPattern = RegixType.HALF_CHAR)
+		@Pattern(regixPattern = RegixType.HALF_CHAR, message = "値は半角英数字です")
 		private String value;
 
 		/**
