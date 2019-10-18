@@ -2,6 +2,11 @@ package jp.co.kin.web.type;
 
 import jp.co.kin.common.type.BaseEnum;
 
+/**
+ * Webリクエストの処理結果の列挙
+ *
+ * @since 1.0.0
+ */
 public enum ResultType implements BaseEnum {
 
 	/** SUCCESS */

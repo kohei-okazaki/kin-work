@@ -6,6 +6,13 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import jp.co.kin.common.context.MessageSourceComponent;
 import jp.co.kin.common.log.type.LogLevel;
 
+/**
+ * org.springframework.web.servlet.HandlerExceptionResolverのラッパークラス<br>
+ * 各アプリで例外ハンドリングをする場合、本クラスを継承して実装する
+ *
+ * @since 1.0.0
+ *
+ */
 public abstract class BaseExceptionHander implements HandlerExceptionResolver {
 
 	@Autowired

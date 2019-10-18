@@ -10,6 +10,7 @@ import jp.co.kin.common.exception.BaseException;
  *            T型
  * @param <U>
  *            U型
+ * @since 1.0.0
  */
 @FunctionalInterface
 public interface ThrowableBiConsumer<T, U> {

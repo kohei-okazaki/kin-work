@@ -17,6 +17,7 @@ import jp.co.kin.web.interceptor.CsrfTokenInterceptor;
  * </ul>
  *
  * @see CsrfTokenInterceptor
+ * @since 1.0.0
  */
 @Documented
 @Retention(RUNTIME)

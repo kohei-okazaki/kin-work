@@ -7,6 +7,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Session情報のComponent
+ *
+ * @since 1.0.0
+ */
 @Component
 public class SessionComponent {
 

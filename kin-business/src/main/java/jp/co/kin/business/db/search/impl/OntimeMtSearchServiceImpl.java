@@ -12,6 +12,12 @@ import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.db.dao.OntimeMtDao;
 import jp.co.kin.db.entity.OntimeMt;
 
+/**
+ * 定時情報マスタ検索サービス実装クラス
+ * 
+ * @since 1.0.0
+ *
+ */
 @Service
 public class OntimeMtSearchServiceImpl implements OntimeMtSearchService {
 

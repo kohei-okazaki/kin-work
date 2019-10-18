@@ -5,6 +5,8 @@ import jp.co.kin.web.view.BaseView;
 
 /**
  * 基底Viewコントローラ
+ * 
+ * @since 1.0.0
  */
 public interface BaseViewController extends BaseController {
 

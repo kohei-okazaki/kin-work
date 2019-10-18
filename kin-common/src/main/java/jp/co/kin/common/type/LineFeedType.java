@@ -1,5 +1,11 @@
 package jp.co.kin.common.type;
 
+/**
+ * 改行の列挙
+ * 
+ * @since 1.0.0
+ *
+ */
 public enum LineFeedType implements BaseEnum {
 
 	/** CR */

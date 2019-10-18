@@ -2,6 +2,8 @@ package jp.co.kin.common.type;
 
 /**
  * 正規表現の列挙
+ * 
+ * @since 1.0.0
  */
 public enum RegixType implements BaseEnum {
 

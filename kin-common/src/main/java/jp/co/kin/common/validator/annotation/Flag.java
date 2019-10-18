@@ -13,6 +13,12 @@ import javax.validation.Payload;
 
 import jp.co.kin.common.validator.FlagValidator;
 
+/**
+ * フラグ値の妥当性チェックのアノテーション
+ * 
+ * @since 1.0.0
+ *
+ */
 @Inherited
 @Documented
 @Retention(RUNTIME)

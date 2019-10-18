@@ -19,6 +19,8 @@ import jp.co.kin.common.util.StringUtil;
 
 /**
  * ログメッセージ作成クラス
+ * 
+ * @since 1.0.0
  */
 public class LogMessageFactory {
 

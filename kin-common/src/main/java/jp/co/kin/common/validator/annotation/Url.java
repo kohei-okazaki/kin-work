@@ -13,6 +13,12 @@ import javax.validation.Payload;
 
 import jp.co.kin.common.validator.UrlValidator;
 
+/**
+ * URL型の妥当性チェックアノテーション
+ * 
+ * @since 1.0.0
+ *
+ */
 @Inherited
 @Documented
 @Retention(RUNTIME)

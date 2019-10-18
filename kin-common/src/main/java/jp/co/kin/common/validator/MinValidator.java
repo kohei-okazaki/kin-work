@@ -7,6 +7,12 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.common.validator.annotation.Min;
 
+/**
+ * 最小値の妥当性チェッククラス
+ *
+ * @since 1.0.0
+ *
+ */
 public class MinValidator implements ConstraintValidator<Min, Object> {
 
 	private int size;

@@ -2,7 +2,8 @@ package jp.co.kin.business.session;
 
 /**
  * Session保持データ
- *
+ * 
+ * @since 1.0.0
  */
 public class SessionInfo {
 

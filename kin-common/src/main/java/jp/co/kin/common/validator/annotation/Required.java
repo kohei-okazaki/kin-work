@@ -13,6 +13,12 @@ import javax.validation.Payload;
 
 import jp.co.kin.common.validator.RequiredValidator;
 
+/**
+ * 必須チェックのアノテーション
+ * 
+ * @since 1.0.0
+ *
+ */
 @Inherited
 @Documented
 @Retention(RUNTIME)

@@ -6,6 +6,17 @@ import org.seasar.doma.AnnotationTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Dao実装クラスに付与するマーカーアノテーション<br>
+ * <code>
+ * &#64;Repository<br>
+ * &#64;Autowired<br>
+ * public class HogeDao {
+ * </code>
+ *
+ * @since 1.0.0
+ *
+ */
 @AnnotateWith(annotations = {
 		// 生成されたDAO実装クラスに@Repository
 		@Annotation(target = AnnotationTarget.CLASS, type = Repository.class),

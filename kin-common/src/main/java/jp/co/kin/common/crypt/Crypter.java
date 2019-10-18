@@ -2,7 +2,8 @@ package jp.co.kin.common.crypt;
 
 /**
  * 暗号/復号インターフェース
- *
+ * 
+ * @since 1.0.0
  */
 public interface Crypter {
 

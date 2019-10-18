@@ -7,6 +7,14 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import jp.co.kin.common.util.BeanUtil;
 
+/**
+ * SpringのDIを行うFactory<br>
+ * <code>
+ * Hoge hoge = BeanFactory.getBean(Hoge.class);
+ * </code>
+ * 
+ * @since 1.0.0
+ */
 public class BeanFactory {
 
 	/** ApplicationContext */
@@ -36,7 +44,8 @@ public class BeanFactory {
 		if (BeanUtil.notNull(context)) {
 			return context;
 		}
-		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder
+				.currentRequestAttributes();
 		context = RequestContextUtils.findWebApplicationContext(sra.getRequest());
 		return context;
 	}

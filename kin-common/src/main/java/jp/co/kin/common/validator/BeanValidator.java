@@ -32,6 +32,7 @@ import jp.co.kin.common.validator.annotation.Required;
  *
  * @param <T>
  *            検査対象クラス
+ * @since 1.0.0
  */
 @Component
 public class BeanValidator<T> {

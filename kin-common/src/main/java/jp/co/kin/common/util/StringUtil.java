@@ -8,6 +8,8 @@ import org.springframework.util.StringUtils;
 
 /**
  * 文字列のUtilクラス
+ * 
+ * @since 1.0.0
  */
 public class StringUtil {
 

@@ -5,6 +5,8 @@ import jp.co.kin.common.type.BaseEnum;
 /**
  * ViewEnumの基底インターフェース<br>
  * すべてのViewEnumはこのインターフェースを継承すること
+ * 
+ * @since 1.0.0
  */
 public interface BaseView extends BaseEnum {
 

@@ -5,7 +5,8 @@ import jp.co.kin.common.log.annotation.Mask;
 
 /**
  * session上で保持するログインユーザ情報
- *
+ * 
+ * @since 1.0.0
  */
 public class SessionLoginUser implements BaseDto {
 

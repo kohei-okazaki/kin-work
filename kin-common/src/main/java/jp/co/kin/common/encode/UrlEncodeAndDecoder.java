@@ -12,7 +12,8 @@ import jp.co.kin.common.type.Charset;
 
 /**
  * URLエンコード/デコードクラス
- *
+ * 
+ * @since 1.0.0
  */
 @Component("urlEncodeAndDecoder")
 public class UrlEncodeAndDecoder implements BaseEncodeAndDecoder {

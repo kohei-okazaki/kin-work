@@ -17,7 +17,8 @@ import jp.co.kin.common.util.StringUtil;
 
 /**
  * AESの可逆暗号クラス
- *
+ * 
+ * @since 1.0.0
  */
 @Component("aesCrypter")
 public class AesCrypter implements Crypter {

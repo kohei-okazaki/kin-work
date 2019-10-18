@@ -14,6 +14,12 @@ import javax.validation.Payload;
 import jp.co.kin.common.type.RegixType;
 import jp.co.kin.common.validator.PatternValidator;
 
+/**
+ * 文字種チェックのアノテーション
+ * 
+ * @since 1.0.0
+ *
+ */
 @Inherited
 @Documented
 @Retention(RUNTIME)

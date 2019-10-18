@@ -4,7 +4,8 @@ import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 /**
  * Webの基底インターセプタ－
- *
+ * 
+ * @since 1.0.0
  */
 public abstract class BaseWebInterceptor implements BaseInterceptor {
 

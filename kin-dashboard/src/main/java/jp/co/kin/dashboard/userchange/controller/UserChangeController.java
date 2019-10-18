@@ -16,7 +16,8 @@ import jp.co.kin.web.controller.BaseViewController;
 
 /**
  * ユーザ設定変更コントローラ
- *
+ * 
+ * @since 1.0.0
  */
 @Controller
 @RequestMapping("userChange")

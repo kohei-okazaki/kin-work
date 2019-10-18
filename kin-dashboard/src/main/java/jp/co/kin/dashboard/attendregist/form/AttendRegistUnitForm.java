@@ -9,7 +9,8 @@ import jp.co.kin.web.form.BaseForm;
 
 /**
  * 1日あたりの勤怠データ
- *
+ * 
+ * @since 1.0.0
  */
 public class AttendRegistUnitForm implements BaseForm {
 

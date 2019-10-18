@@ -8,6 +8,7 @@ import jp.co.kin.common.exception.BaseException;
  *
  * @param <T>
  *            T型
+ * @since 1.0.0
  */
 @FunctionalInterface
 public interface ThrowableConsumer<T> {

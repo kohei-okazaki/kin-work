@@ -8,6 +8,8 @@ import jp.co.kin.common.type.BaseEnum;
  * <li>0:利用可能</li>
  * <li>1:利用不可</li>
  * </ul>
+ * 
+ * @since 1.0.0
  */
 public enum AccountLockFlg implements BaseEnum {
 

@@ -3,6 +3,12 @@ package jp.co.kin.dashboard.exception;
 import jp.co.kin.common.exception.BaseErrorCode;
 import jp.co.kin.common.exception.BaseException;
 
+/**
+ * ダッシュボードの例外クラス
+ * 
+ * @since 1.0.0
+ *
+ */
 public class DashboardException extends BaseException {
 
 	private static final long serialVersionUID = 1L;

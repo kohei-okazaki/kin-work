@@ -4,7 +4,8 @@ import jp.co.kin.common.type.Charset;
 
 /**
  * Encode/Decodeの基底インターフェース
- *
+ * 
+ * @since 1.0.0
  */
 public interface BaseEncodeAndDecoder {
 

@@ -5,7 +5,8 @@ import jp.co.kin.common.io.file.BaseFileConfig;
 
 /**
  * CSVファイル設定情報
- *
+ * 
+ * @since 1.0.0
  */
 public class CsvConfig extends BaseFileConfig implements BaseDto {
 
@@ -14,7 +15,7 @@ public class CsvConfig extends BaseFileConfig implements BaseDto {
 
 	/**
 	 * fileCharを返す
-	 * 
+	 *
 	 * @return fileChar
 	 *
 	 */
@@ -24,7 +25,7 @@ public class CsvConfig extends BaseFileConfig implements BaseDto {
 
 	/**
 	 * fileCharを設定する
-	 * 
+	 *
 	 * @param fileChar
 	 *            fileChar
 	 *

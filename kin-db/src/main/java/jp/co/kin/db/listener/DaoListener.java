@@ -29,7 +29,8 @@ import jp.co.kin.db.entity.BaseEntity;
  * </ul>
  *
  * @param <T>
- *            Entity継承クラス
+ *            Entity
+ * @since 1.0.0
  */
 public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 

@@ -44,7 +44,8 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 /**
  * 勤怠登録画面コントローラ
- *
+ * 
+ * @since 1.0.0
  */
 @Controller
 @RequestMapping("attendRegist")

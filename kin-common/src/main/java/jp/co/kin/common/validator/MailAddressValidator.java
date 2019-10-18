@@ -8,6 +8,12 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.common.validator.annotation.MailAddress;
 
+/**
+ * メールアドレスの妥当性チェッククラス
+ *
+ * @since 1.0.0
+ *
+ */
 public class MailAddressValidator implements ConstraintValidator<MailAddress, Object> {
 
 	@Override
