@@ -1,5 +1,10 @@
 package jp.co.kin.common.exception;
 
+/**
+ * 非検査例外の基底クラス
+ *
+ * @since 1.0.0
+ */
 public abstract class BaseRuntimeException extends RuntimeException {
 
 	/** シリアルバージョンUID */

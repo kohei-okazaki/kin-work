@@ -4,7 +4,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * crypt.propertiesのBeanクラス
- *
+ * 
+ * @since 1.0.0
  */
 @Component
 public class CryptComponent {

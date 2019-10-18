@@ -14,6 +14,12 @@ import jp.co.kin.common.util.LocalDateTimeUtil;
 import jp.co.kin.db.dao.DailyUserWorkDataDao;
 import jp.co.kin.db.entity.DailyUserWorkData;
 
+/**
+ * 日別ユーザ勤怠情報検索サービス実装クラス
+ * 
+ * @since 1.0.0
+ *
+ */
 @Service
 public class DailyUserWorkDataSearchServiceImpl implements DailyUserWorkDataSearchService {
 

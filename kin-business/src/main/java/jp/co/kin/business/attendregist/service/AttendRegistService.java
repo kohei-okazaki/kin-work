@@ -9,6 +9,12 @@ import jp.co.kin.business.attendregist.dto.AttendRegistDto;
 import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.web.service.BaseService;
 
+/**
+ * 勤怠登録サービスインターフェース
+ * 
+ * @since 1.0.0
+ *
+ */
 public interface AttendRegistService extends BaseService {
 
 	/**
@@ -45,7 +51,7 @@ public interface AttendRegistService extends BaseService {
 
 	/**
 	 * 勤怠登録情報を登録する
-	 * 
+	 *
 	 * @param dto
 	 *            勤怠登録情報
 	 */

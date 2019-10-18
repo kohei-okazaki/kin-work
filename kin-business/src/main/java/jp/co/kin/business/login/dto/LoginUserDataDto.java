@@ -8,7 +8,8 @@ import jp.co.kin.common.log.annotation.Mask;
 
 /**
  * ログインユーザのDTO
- *
+ * 
+ * @since 1.0.0
  */
 public class LoginUserDataDto implements BaseDto {
 
@@ -162,7 +163,7 @@ public class LoginUserDataDto implements BaseDto {
 
 	/**
 	 * accountLockFlgを返す
-	 * 
+	 *
 	 * @return accountLockFlg
 	 *
 	 */
@@ -172,7 +173,7 @@ public class LoginUserDataDto implements BaseDto {
 
 	/**
 	 * accountLockFlgを設定する
-	 * 
+	 *
 	 * @param accountLockFlg
 	 *            accountLockFlg
 	 *
@@ -183,7 +184,7 @@ public class LoginUserDataDto implements BaseDto {
 
 	/**
 	 * loginFailCountを返す
-	 * 
+	 *
 	 * @return loginFailCount
 	 *
 	 */
@@ -193,7 +194,7 @@ public class LoginUserDataDto implements BaseDto {
 
 	/**
 	 * loginFailCountを設定する
-	 * 
+	 *
 	 * @param loginFailCount
 	 *            loginFailCount
 	 *

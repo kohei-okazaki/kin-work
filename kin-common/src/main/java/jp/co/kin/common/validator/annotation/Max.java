@@ -13,6 +13,12 @@ import javax.validation.Payload;
 
 import jp.co.kin.common.validator.MaxValidator;
 
+/**
+ * 最大値チェックのアノテーション
+ * 
+ * @since 1.0.0
+ *
+ */
 @Inherited
 @Documented
 @Retention(RUNTIME)

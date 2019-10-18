@@ -7,6 +7,12 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+/**
+ * CSVの1レコードのBeanに付与するマーカーアノテーション
+ * 
+ * @since 1.0.0
+ *
+ */
 @Documented
 @Retention(RUNTIME)
 @Target(TYPE)

@@ -11,7 +11,8 @@ import jp.co.kin.common.type.Charset;
 
 /**
  * Base64エンコード/デコードクラス
- *
+ * 
+ * @since 1.0.0
  */
 @Component("base64EncodeAndDecoder")
 public class Base64EncodeAndDecoder implements BaseEncodeAndDecoder {

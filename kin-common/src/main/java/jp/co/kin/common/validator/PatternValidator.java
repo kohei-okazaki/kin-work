@@ -8,6 +8,12 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.common.validator.annotation.Pattern;
 
+/**
+ * 文字種の妥当性チェッククラス
+ *
+ * @since 1.0.0
+ *
+ */
 public class PatternValidator implements ConstraintValidator<Pattern, Object> {
 
 	/** 正規表現の列挙 */

@@ -6,6 +6,12 @@ import jp.co.kin.common.validator.annotation.Pattern;
 import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;
 
+/**
+ * 定時情報登録画面のForm
+ * 
+ * @since 1.0.0
+ *
+ */
 public class OntimeRegistForm implements BaseForm {
 
 	/** 企業コード */

@@ -11,6 +11,14 @@ import org.springframework.stereotype.Component;
 import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.db.entity.BaseEntity;
 
+/**
+ * 復号処理をおこなうFunction<br>
+ * 暗号化カラムに対し、本クラスが復号処理を行う
+ * 
+ * @param <T>
+ *            Entity
+ * @since 1.0.0
+ */
 @Component
 public class DecryptFunction<T extends BaseEntity> implements Function<Stream<T>, T> {
 

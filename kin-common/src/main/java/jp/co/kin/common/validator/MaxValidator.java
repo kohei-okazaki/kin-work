@@ -7,6 +7,12 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.common.validator.annotation.Max;
 
+/**
+ * 最大値の妥当性チェッククラス
+ *
+ * @since 1.0.0
+ *
+ */
 public class MaxValidator implements ConstraintValidator<Max, Object> {
 
 	private int size;

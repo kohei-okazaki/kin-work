@@ -7,6 +7,8 @@ import java.util.stream.Stream;
 
 /**
  * CollectionのUtilクラス
+ * 
+ * @since 1.0.0
  */
 public class CollectionUtil {
 

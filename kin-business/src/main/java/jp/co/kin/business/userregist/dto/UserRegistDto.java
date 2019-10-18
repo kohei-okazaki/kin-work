@@ -5,7 +5,8 @@ import jp.co.kin.common.log.annotation.Mask;
 
 /**
  * ユーザ登録DTO
- *
+ * 
+ * @since 1.0.0
  */
 public class UserRegistDto implements BaseDto {
 

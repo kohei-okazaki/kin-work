@@ -6,6 +6,12 @@ import java.util.List;
 import jp.co.kin.business.attendregist.dto.AttendRegistDto;
 import jp.co.kin.web.service.BaseService;
 
+/**
+ * 日別ユーザ勤怠情報検索サービスインターフェース
+ * 
+ * @since 1.0.0
+ *
+ */
 public interface DailyUserWorkDataSearchService extends BaseService {
 
 	/**

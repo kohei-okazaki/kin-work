@@ -11,6 +11,12 @@ import jp.co.kin.business.ontime.service.OntimeRegistService;
 import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.db.entity.OntimeMt;
 
+/**
+ * 定時情報登録サービス実装クラス
+ *
+ * @since 1.0.0
+ *
+ */
 @Service
 public class OntimeRegistServiceImpl implements OntimeRegistService {
 
@@ -36,11 +42,11 @@ public class OntimeRegistServiceImpl implements OntimeRegistService {
 	}
 
 	/**
-	 * 指定した企業コードから定時情報マスタを返す
+	 * 指定した企業コードから定時情報Dtoを返す
 	 *
 	 * @param companyCode
 	 *            企業コード
-	 * @return
+	 * @return 定時情報Dto
 	 */
 	private OntimeDto selectByCompanyCode(String companyCode) {
 		return ontimeMtSearchService.searchByCompanyCode(companyCode);

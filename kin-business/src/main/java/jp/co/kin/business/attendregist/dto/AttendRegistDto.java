@@ -5,6 +5,12 @@ import java.time.LocalDateTime;
 
 import jp.co.kin.common.bean.BaseDto;
 
+/**
+ * 勤怠登録のDto
+ * 
+ * @since 1.0.0
+ *
+ */
 public class AttendRegistDto implements BaseDto {
 
 	/** ユーザID */

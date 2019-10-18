@@ -3,6 +3,12 @@ package jp.co.kin.dashboard.exception;
 import jp.co.kin.common.exception.BaseErrorCode;
 import jp.co.kin.common.log.type.LogLevel;
 
+/**
+ * ダッシュボードのエラーコードの列挙
+ * 
+ * @since 1.0.0
+ *
+ */
 public enum DashboardErrorCode implements BaseErrorCode {
 
 	/** 不正なリクエストエラー */

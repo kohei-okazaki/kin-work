@@ -14,7 +14,8 @@ import jp.co.kin.db.entity.BaseEntity;
 
 /**
  * DaoAspect
- *
+ * 
+ * @since 1.0.0
  */
 @Aspect
 @Component
@@ -29,7 +30,7 @@ public class DaoAspect {
 
 	/**
 	 * Dao実行時のAspect
-	 * 
+	 *
 	 * @param pjp
 	 *            ProceedingJoinPoint
 	 * @return Service実行後のObject

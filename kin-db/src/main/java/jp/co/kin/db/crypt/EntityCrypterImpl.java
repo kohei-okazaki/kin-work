@@ -14,6 +14,11 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.BeanUtil.AccessorType;
 import jp.co.kin.db.entity.BaseEntity;
 
+/**
+ * Entity暗号化処理クラス
+ *
+ * @since 1.0.0
+ */
 @Component
 public class EntityCrypterImpl implements EntityCrypter {
 

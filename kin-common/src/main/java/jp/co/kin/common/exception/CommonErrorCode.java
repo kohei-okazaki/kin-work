@@ -2,6 +2,12 @@ package jp.co.kin.common.exception;
 
 import jp.co.kin.common.log.type.LogLevel;
 
+/**
+ * 共通エラーコードの列挙
+ * 
+ * @since 1.0.0
+ *
+ */
 public enum CommonErrorCode implements BaseErrorCode {
 
 	/** 予期せぬ例外 */

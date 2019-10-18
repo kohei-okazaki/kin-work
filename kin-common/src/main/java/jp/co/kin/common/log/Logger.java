@@ -1,7 +1,10 @@
 package jp.co.kin.common.log;
 
 /**
- * Logger
+ * Logger<br>
+ * <code>org.slf4j.Logger</code>のラッパークラス
+ *
+ * @since 1.0.0
  */
 public class Logger {
 

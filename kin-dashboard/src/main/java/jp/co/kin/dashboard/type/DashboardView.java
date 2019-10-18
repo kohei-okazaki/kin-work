@@ -5,6 +5,8 @@ import jp.co.kin.web.view.BaseView;
 
 /**
  * 勤怠管理ダッシュボード列挙
+ * 
+ * @since 1.0.0
  */
 public enum DashboardView implements BaseView {
 

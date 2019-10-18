@@ -22,7 +22,8 @@ import jp.co.kin.common.util.BeanUtil;
  * // error処理<br>
  * }<br>
  * </code>
- *
+ * 
+ * @since 1.0.0
  */
 public class CsvWriter {
 

@@ -12,6 +12,11 @@ import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.log.MDC;
 import jp.co.kin.common.util.StringUtil;
 
+/**
+ * Webのリクエストのインターセプター
+ *
+ * @since 1.0.0
+ */
 public class RequestInterceptor extends BaseWebInterceptor {
 
 	private static final Logger LOG = LoggerFactory.getLogger(RequestInterceptor.class);

@@ -20,7 +20,8 @@ import jp.co.kin.common.util.FileUtil.FileSeparator;
 
 /**
  * PropertiesファイルのReader
- *
+ * 
+ * @since 1.0.0
  */
 public class PropertyReader {
 

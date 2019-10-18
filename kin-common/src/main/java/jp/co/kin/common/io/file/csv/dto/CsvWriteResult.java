@@ -2,6 +2,12 @@ package jp.co.kin.common.io.file.csv.dto;
 
 import jp.co.kin.common.bean.BaseDto;
 
+/**
+ * CSVへの書き込み結果を保持するクラス
+ * 
+ * @since 1.0.0
+ *
+ */
 public class CsvWriteResult implements BaseDto {
 
 	private boolean hasError;

@@ -8,7 +8,8 @@ import jp.co.kin.web.form.BaseForm;
 
 /**
  * ユーザ登録画面form
- *
+ * 
+ * @since 1.0.0
  */
 public class UserRegistForm implements BaseForm {
 

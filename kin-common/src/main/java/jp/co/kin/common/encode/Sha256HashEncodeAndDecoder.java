@@ -14,7 +14,8 @@ import jp.co.kin.common.util.StringUtil;
 
 /**
  * SHA256エンコードクラス
- *
+ * 
+ * @since 1.0.0
  */
 @Component("sha256HashEncodeAndDecoder")
 public class Sha256HashEncodeAndDecoder implements BaseEncodeAndDecoder {

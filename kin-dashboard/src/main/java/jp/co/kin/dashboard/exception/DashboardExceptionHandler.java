@@ -16,6 +16,12 @@ import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.log.type.LogLevel;
 import jp.co.kin.dashboard.type.DashboardView;
 
+/**
+ * ダッシュボードの例外ハンドラー
+ * 
+ * @since 1.0.0
+ *
+ */
 @Component
 public class DashboardExceptionHandler extends BaseExceptionHander {
 

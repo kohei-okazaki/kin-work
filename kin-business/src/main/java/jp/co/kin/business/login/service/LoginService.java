@@ -4,6 +4,12 @@ import jp.co.kin.business.login.dto.LoginCheckResult;
 import jp.co.kin.business.login.dto.LoginUserDataDto;
 import jp.co.kin.web.service.BaseService;
 
+/**
+ * ログイン処理サービスインターフェース
+ *
+ * @since 1.0.0
+ *
+ */
 public interface LoginService extends BaseService {
 
 	/**

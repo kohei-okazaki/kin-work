@@ -27,7 +27,8 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 /**
  * ユーザ登録コントローラ
- *
+ * 
+ * @since 1.0.0
  */
 @Controller
 @RequestMapping("userRegist")

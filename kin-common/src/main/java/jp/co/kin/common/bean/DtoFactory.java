@@ -6,6 +6,13 @@ import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.util.BeanUtil;
 
+/**
+ * DtoのFactory<br>
+ * beanのフィールドと対応したclassを指定してDtoを取得する
+ * 
+ * @since 1.0.0
+ *
+ */
 public class DtoFactory {
 
 	private static final Logger LOG = LoggerFactory.getLogger(DtoFactory.class);

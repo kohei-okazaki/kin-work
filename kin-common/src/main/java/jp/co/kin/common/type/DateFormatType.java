@@ -1,5 +1,11 @@
 package jp.co.kin.common.type;
 
+/**
+ * 日付型と文字列型の日時を変換する際に使用するフォーマットの列挙
+ * 
+ * @since 1.0.0
+ *
+ */
 public enum DateFormatType implements BaseEnum {
 
 	/** YYYY */

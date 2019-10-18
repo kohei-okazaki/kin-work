@@ -9,7 +9,8 @@ import java.lang.annotation.Target;
 
 /**
  * 暗号化されたフィールドであることを示すマーカーアノテーション
- *
+ * 
+ * @since 1.0.0
  */
 @Documented
 @Retention(RUNTIME)

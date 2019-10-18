@@ -20,6 +20,8 @@ import jp.co.kin.common.log.LoggerFactory;
 
 /**
  * Dao設定情報クラス
+ * 
+ * @since 1.0.0
  */
 @Configuration
 public class DaoConfig implements Config {

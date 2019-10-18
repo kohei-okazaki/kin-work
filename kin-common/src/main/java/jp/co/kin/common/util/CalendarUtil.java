@@ -10,6 +10,7 @@ import jp.co.kin.common.type.BaseEnum;
  * カレンダー処理のUtilクラス
  *
  * @see LocalDateTimeUtil
+ * @since 1.0.0
  */
 @Deprecated(since = "1.0.0")
 public class CalendarUtil {

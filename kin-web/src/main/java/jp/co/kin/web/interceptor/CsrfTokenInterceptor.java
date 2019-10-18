@@ -17,6 +17,12 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
+/**
+ * CSRF検証インターセプター
+ * 
+ * @since 1.0.0
+ *
+ */
 public class CsrfTokenInterceptor extends BaseWebInterceptor {
 
 	@Autowired

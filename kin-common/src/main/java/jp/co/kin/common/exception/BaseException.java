@@ -1,5 +1,11 @@
 package jp.co.kin.common.exception;
 
+/**
+ * 検査例外の基底クラス<br>
+ * 検知し、ハンドリングする必要のあるエラーの場合、本クラスを継承して実装する
+ *
+ * @since 1.0.0
+ */
 public abstract class BaseException extends Exception {
 
 	/** シリアルバージョンUID */

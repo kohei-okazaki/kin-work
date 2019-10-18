@@ -10,7 +10,8 @@ import jp.co.kin.common.log.LoggerFactory;
 
 /**
  * Serviceクラスの前後に呼ばれるAspect
- *
+ * 
+ * @since 1.0.0
  */
 @Aspect
 @Component

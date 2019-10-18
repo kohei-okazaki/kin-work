@@ -13,7 +13,8 @@ import jp.co.kin.web.form.BaseForm;
 
 /**
  * 勤怠登録画面form
- *
+ * 
+ * @since 1.0.0
  */
 public class AttendRegistForm implements BaseForm {
 

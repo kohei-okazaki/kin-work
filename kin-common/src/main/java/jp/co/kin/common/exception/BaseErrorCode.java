@@ -12,6 +12,7 @@ import jp.co.kin.common.log.type.LogLevel;
  * <li>B:機能名</li>
  * <li>CDEF:採番</li>
  * </ul>
+ * @since 1.0.0
  */
 public interface BaseErrorCode {
 

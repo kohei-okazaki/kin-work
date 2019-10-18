@@ -13,6 +13,11 @@ import jp.co.kin.common.exception.SystemException;
 import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 
+/**
+ * JSONファイルのReaderクラス
+ *
+ * @since 1.0.0
+ */
 public class JsonReader {
 
 	private static final Logger LOG = LoggerFactory.getLogger(JsonReader.class);

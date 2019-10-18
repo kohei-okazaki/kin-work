@@ -4,6 +4,12 @@ import java.math.BigDecimal;
 
 import jp.co.kin.common.bean.BaseDto;
 
+/**
+ * 勤怠カレンダー情報
+ * 
+ * @since 1.0.0
+ *
+ */
 public class AttendBusinessCalendar implements BaseDto {
 
 	/** 日にち */

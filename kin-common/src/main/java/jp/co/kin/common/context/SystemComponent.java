@@ -6,7 +6,8 @@ import jp.co.kin.common.log.type.LogLevel;
 
 /**
  * system.propertiesのBeanクラス
- *
+ * 
+ * @since 1.0.0
  */
 @Component
 public class SystemComponent {

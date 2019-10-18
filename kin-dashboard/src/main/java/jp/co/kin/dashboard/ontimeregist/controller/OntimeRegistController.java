@@ -22,7 +22,8 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 /**
  * 定時登録画面コントローラ
- *
+ * 
+ * @since 1.0.0
  */
 @Controller
 @RequestMapping("ontimeRegist")

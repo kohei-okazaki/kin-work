@@ -9,6 +9,8 @@ import jp.co.kin.common.type.BaseEnum;
  * <li>0:一般</li>
  * <li>1:管理者</li>
  * </ul>
+ * 
+ * @since 1.0.0
  */
 public enum UserAuth implements BaseEnum {
 

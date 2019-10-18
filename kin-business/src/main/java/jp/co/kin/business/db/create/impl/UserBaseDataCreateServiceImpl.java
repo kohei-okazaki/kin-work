@@ -7,6 +7,12 @@ import jp.co.kin.business.db.create.UserBaseDataCreateService;
 import jp.co.kin.db.dao.UserBaseDataDao;
 import jp.co.kin.db.entity.UserBaseData;
 
+/**
+ * ユーザ基本情報作成サービス実装クラス
+ * 
+ * @since 1.0.0
+ *
+ */
 @Service
 public class UserBaseDataCreateServiceImpl implements UserBaseDataCreateService {
 

@@ -8,7 +8,8 @@ import jp.co.kin.web.type.ResultType;
 
 /**
  * Errorレスポンスクラス
- *
+ * 
+ * @since 1.0.0
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.NONE)
 public class ErrorResponse extends BaseApiResponse {

@@ -6,6 +6,12 @@ import java.util.function.Supplier;
 
 import jp.co.kin.common.util.CollectionUtil;
 
+/**
+ * 妥当性チェック結果情報保持クラス
+ * 
+ * @since 1.0.0
+ *
+ */
 public class ValidateErrorResult {
 
 	private List<ValidateError> resultList;

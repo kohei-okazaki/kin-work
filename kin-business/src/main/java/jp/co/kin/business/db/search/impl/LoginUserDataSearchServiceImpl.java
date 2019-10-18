@@ -11,6 +11,12 @@ import jp.co.kin.db.crypt.DecryptFunction;
 import jp.co.kin.db.dao.LoginUserDataDao;
 import jp.co.kin.db.entity.LoginUserData;
 
+/**
+ * ログインユーザ情報検索サービス実装クラス
+ * 
+ * @since 1.0.0
+ *
+ */
 @Service
 public class LoginUserDataSearchServiceImpl implements LoginUserDataSearchService {
 

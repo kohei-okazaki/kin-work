@@ -13,6 +13,7 @@ import jp.co.kin.common.type.DateFormatType;
  * 日付Utilクラス
  *
  * @see LocalDateTimeUtil
+ * @since 1.0.0
  */
 @Deprecated(since = "1.0.0")
 public class DateUtil {

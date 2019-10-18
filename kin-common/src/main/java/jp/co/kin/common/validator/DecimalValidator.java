@@ -8,6 +8,12 @@ import jp.co.kin.common.util.BeanUtil;
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.common.validator.annotation.Decimal;
 
+/**
+ * 数字の妥当性チェッククラス
+ * 
+ * @since 1.0.0
+ *
+ */
 public class DecimalValidator implements ConstraintValidator<Decimal, Object> {
 
 	/** 最小桁数 */

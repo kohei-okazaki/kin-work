@@ -7,6 +7,12 @@ import jp.co.kin.business.db.update.OntimeMtUpdateService;
 import jp.co.kin.db.dao.OntimeMtDao;
 import jp.co.kin.db.entity.OntimeMt;
 
+/**
+ * 定時情報マスタ更新サービス実装クラス
+ * 
+ * @since 1.0.0
+ *
+ */
 @Service
 public class OntimeMtUpdateServiceImpl implements OntimeMtUpdateService {
 
