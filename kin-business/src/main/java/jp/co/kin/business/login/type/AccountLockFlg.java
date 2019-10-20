@@ -8,7 +8,7 @@ import jp.co.kin.common.type.BaseEnum;
  * <li>0:利用可能</li>
  * <li>1:利用不可</li>
  * </ul>
- * 
+ *
  * @since 1.0.0
  */
 public enum AccountLockFlg implements BaseEnum {
@@ -21,6 +21,12 @@ public enum AccountLockFlg implements BaseEnum {
 	/** 値 */
 	private String value;
 
+	/**
+	 * コンストラクタ
+	 *
+	 * @param value
+	 *            値
+	 */
 	private AccountLockFlg(String value) {
 		this.value = value;
 	}

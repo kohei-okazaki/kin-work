@@ -20,10 +20,13 @@ import jp.co.kin.db.entity.OntimeMt;
 @Service
 public class OntimeRegistServiceImpl implements OntimeRegistService {
 
+	/** 定時情報マスタ作成サービス */
 	@Autowired
 	private OntimeMtCreateService ontimeMtCreateService;
+	/** 定時情報マスタ検索サービス */
 	@Autowired
 	private OntimeMtSearchService ontimeMtSearchService;
+	/** 定時情報マスタ更新サービス */
 	@Autowired
 	private OntimeMtUpdateService ontimeMtUpdateService;
 

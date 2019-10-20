@@ -6,7 +6,7 @@ import jp.co.kin.common.bean.BaseDto;
 
 /**
  * ユーザ基本情報のDto
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -21,20 +21,46 @@ public class UserBaseDataDto implements BaseDto {
 	/** 更新日時 */
 	private LocalDateTime updateDate;
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
+	/**
+	 * userIdを返す
+	 *
+	 * @return userId
+	 *
+	 */
 	public String getUserId() {
 		return userId;
 	}
 
-	public void setCompanyCode(String companyCode) {
-		this.companyCode = companyCode;
+	/**
+	 * userIdを設定する
+	 *
+	 * @param userId
+	 *            userId
+	 *
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
+	/**
+	 * companyCodeを返す
+	 *
+	 * @return companyCode
+	 *
+	 */
 	public String getCompanyCode() {
 		return companyCode;
+	}
+
+	/**
+	 * companyCodeを設定する
+	 *
+	 * @param companyCode
+	 *            companyCode
+	 *
+	 */
+	public void setCompanyCode(String companyCode) {
+		this.companyCode = companyCode;
 	}
 
 	/**
