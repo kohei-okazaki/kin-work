@@ -26,7 +26,7 @@ import jp.co.kin.web.controller.BaseViewController;
 
 /**
  * ログイン画面コントローラ
- * 
+ *
  * @since 1.0.0
  */
 @Controller
