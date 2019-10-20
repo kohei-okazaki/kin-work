@@ -17,7 +17,7 @@ public interface LoginService extends BaseService {
 	 *
 	 * @param dto
 	 *            ログインユーザのDTO
-	 * @return
+	 * @return LoginCheckResult
 	 */
 	LoginCheckResult checkLogin(LoginUserDataDto dto);
 

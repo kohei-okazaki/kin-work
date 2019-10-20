@@ -11,5 +11,9 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface DailyUserWorkDataCreateService extends BaseService {
 
+	/**
+	 *
+	 * @param entity 日別ユーザ勤怠情報 Entity
+	 */
 	void create(DailyUserWorkData entity);
 }

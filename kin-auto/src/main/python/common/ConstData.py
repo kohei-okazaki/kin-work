@@ -6,6 +6,6 @@ Created on 2019/10/20
 
 '''
 # Driverパス
-SELENIUM_DRIVER_PATH = 'C:\kin-app/git/kin-work/kin-auto/bin/chromedriver.exe'
+SELENIUM_DRIVER_PATH = 'C:/kin-app/git/kin-work/kin-auto/bin/chromedriver.exe'
 # RequestベースURL
 BASE_REQUEST_URL = 'http://localhost:8080/kin-dashboard'
