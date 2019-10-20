@@ -11,7 +11,7 @@ import jp.co.kin.web.service.BaseService;
 
 /**
  * 勤怠登録サービスインターフェース
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -20,23 +20,23 @@ public interface AttendRegistService extends BaseService {
 	/**
 	 * システム日時から10年後までの年のリストを返す
 	 *
-	 * @return
+	 * @return 年のリスト
 	 */
 	List<BigDecimal> getYearList();
 
 	/**
 	 * 月のリストを返す
 	 *
-	 * @return
+	 * @return 月のリスト
 	 */
 	List<BigDecimal> getMonthList();
 
 	/**
-	 * 指定されたユーザIDに紐づくユーザ基本情報.企業コード の定時情報マスタを検索する
+	 * 指定されたユーザIDに紐づくユーザ基本情報.企業コードの定時情報マスタを検索する
 	 *
 	 * @param userId
-	 *            ユーザOD
-	 * @return
+	 *            ユーザID
+	 * @return 定時情報マスタ
 	 */
 	OntimeDto getOntimeDto(String userId);
 
@@ -45,7 +45,7 @@ public interface AttendRegistService extends BaseService {
 	 *
 	 * @param targetDate
 	 *            対象日付
-	 * @return
+	 * @return カレンダー情報をリスト
 	 */
 	List<AttendBusinessCalendar> getBusinessCalendarList(LocalDate targetDate);
 
