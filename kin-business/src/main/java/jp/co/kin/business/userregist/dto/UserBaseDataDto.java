@@ -8,7 +8,6 @@ import jp.co.kin.common.bean.BaseDto;
  * ユーザ基本情報のDto
  *
  * @since 1.0.0
- *
  */
 public class UserBaseDataDto implements BaseDto {
 

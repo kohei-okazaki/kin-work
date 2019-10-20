@@ -27,7 +27,6 @@ import jp.co.kin.business.ontime.dto.OntimeDto;
 import jp.co.kin.business.session.SessionLoginUser;
 import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.SessionComponent;
-import jp.co.kin.common.exception.BaseException;
 import jp.co.kin.common.exception.CommonErrorCode;
 import jp.co.kin.common.exception.SystemException;
 import jp.co.kin.common.log.Logger;
@@ -44,7 +43,7 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 /**
  * 勤怠登録画面コントローラ
- * 
+ *
  * @since 1.0.0
  */
 @Controller
@@ -73,7 +72,7 @@ public class AttendRegistController implements BaseViewController {
 
 	@GetMapping("/changeCalendar")
 	public String changeCalendar(Model model, HttpServletRequest request, @Valid AttendRegistForm form,
-			BindingResult result) throws BaseException {
+			BindingResult result) {
 
 		if (result.hasErrors()) {
 			initCalendar(model, request);
@@ -193,7 +192,7 @@ public class AttendRegistController implements BaseViewController {
 		for (int i = 0; i < calendarList.size(); i++) {
 			AttendBusinessCalendar attendBusinessCalendar = calendarList.get(i);
 			LOG.debugRes(attendBusinessCalendar);
-			int dtoListSize = dtoList.size();
+
 			if (CollectionUtil.isEmpty(dtoList) || dtoList.size() - 1 < i) {
 				LOG.debug("勤怠情報が登録されていない");
 				break;

@@ -5,7 +5,7 @@ import jp.co.kin.web.service.BaseService;
 
 /**
  * ログインユーザ情報更新サービスインターフェース
- * 
+ *
  * @since 1.0.0
  *
  */

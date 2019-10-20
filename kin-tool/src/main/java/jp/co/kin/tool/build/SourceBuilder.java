@@ -115,7 +115,7 @@ public abstract class SourceBuilder extends BaseBuilder {
 	/**
 	 * クラスに付与するアノテーション部分を組み立てる
 	 *
-	 * @param classAnnotationList
+	 * @param annotationMap
 	 *            クラスに付与するアノテーションのMap
 	 * @return クラスに付与するアノテーション部分
 	 */

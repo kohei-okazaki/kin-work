@@ -10,7 +10,6 @@ import jp.co.kin.common.util.LocalDateTimeUtil;
  * ユーザ業務設定ファイルのDtoクラス
  *
  * @since 1.0.0
- *
  */
 public class UserBusinessProperties {
 

@@ -22,7 +22,7 @@ import jp.co.kin.web.interceptor.BaseWebInterceptor;
 
 /**
  * Session認証を行うインターセプター
- * 
+ *
  * @since 1.0.0
  *
  */

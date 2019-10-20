@@ -9,7 +9,7 @@ import jp.co.kin.db.entity.OntimeMt;
 
 /**
  * 定時情報マスタ更新サービス実装クラス
- * 
+ *
  * @since 1.0.0
  *
  */

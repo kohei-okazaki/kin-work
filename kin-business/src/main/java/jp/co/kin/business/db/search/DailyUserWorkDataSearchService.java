@@ -8,7 +8,7 @@ import jp.co.kin.web.service.BaseService;
 
 /**
  * 日別ユーザ勤怠情報検索サービスインターフェース
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -21,7 +21,7 @@ public interface DailyUserWorkDataSearchService extends BaseService {
 	 *            ユーザID
 	 * @param targetDate
 	 *            対象日時
-	 * @return
+	 * @return 日別ユーザ勤怠情報Dtoリスト
 	 */
 	List<AttendRegistDto> searchList(String userId, LocalDate targetDate);
 }

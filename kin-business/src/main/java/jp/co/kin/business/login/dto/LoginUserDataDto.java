@@ -8,7 +8,7 @@ import jp.co.kin.common.log.annotation.Mask;
 
 /**
  * ログインユーザのDTO
- * 
+ *
  * @since 1.0.0
  */
 public class LoginUserDataDto implements BaseDto {

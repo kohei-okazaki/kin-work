@@ -8,7 +8,7 @@ import jp.co.kin.db.dao.UserBaseDataDao;
 
 /**
  * ユーザ基本情報更新サービス実装クラス
- * 
+ *
  * @since 1.0.0
  *
  */
