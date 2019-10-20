@@ -13,10 +13,9 @@ public interface LoginUserDataCreateService extends BaseService {
 
 	/**
 	 * 作成
-	 * 
+	 *
 	 * @param entity
 	 *            ログインユーザ情報 Entity
-	 *
 	 */
 	void create(LoginUserData entity);
 }

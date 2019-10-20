@@ -34,7 +34,7 @@ public abstract class BaseRestController<Rq extends BaseApiRequest, Rs extends B
 	 *
 	 * @param request
 	 *            APIリクエスト
-	 * @return
+	 * @return APIレスポンス
 	 * @throws BaseException
 	 *             API関連の例外
 	 */

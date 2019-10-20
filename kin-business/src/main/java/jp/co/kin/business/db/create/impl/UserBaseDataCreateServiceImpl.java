@@ -9,7 +9,7 @@ import jp.co.kin.db.entity.UserBaseData;
 
 /**
  * ユーザ基本情報作成サービス実装クラス
- * 
+ *
  * @since 1.0.0
  *
  */

@@ -4,7 +4,7 @@ import jp.co.kin.common.bean.BaseDto;
 
 /**
  * ログインチェック情報保持クラス
- * 
+ *
  * @since 1.0.0
  */
 public class LoginCheckResult implements BaseDto {
