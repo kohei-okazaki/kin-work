@@ -29,8 +29,6 @@ import jp.co.kin.common.bean.DtoFactory;
 import jp.co.kin.common.context.SessionComponent;
 import jp.co.kin.common.exception.CommonErrorCode;
 import jp.co.kin.common.exception.SystemException;
-import jp.co.kin.common.log.Logger;
-import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.DateFormatType;
 import jp.co.kin.common.util.CollectionUtil;
 import jp.co.kin.common.util.LocalDateTimeUtil;
@@ -49,8 +47,6 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 @Controller
 @RequestMapping("attendregist")
 public class AttendRegistController implements BaseViewController {
-
-	private static final Logger LOG = LoggerFactory.getLogger(AttendRegistController.class);
 
 	@Autowired
 	private SessionComponent sessionComponent;
@@ -138,14 +134,14 @@ public class AttendRegistController implements BaseViewController {
 			dto.setUserId(sessionLoginUser.getUserId());
 			dto.setCompanyCode(ontimeDto.getCompanyCode());
 			dto.setWorkDataRegDate(LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate()));
-			dto.setWorkStartDate(LocalDateTime.of(Integer.valueOf(form.getYear()).intValue(),
-					Integer.valueOf(form.getMonth()).intValue(), regForm.getDay().intValue(),
-					Integer.valueOf(regForm.getWorkStartHour()).intValue(),
-					Integer.valueOf(regForm.getWorkStartMinute()).intValue()));
-			dto.setWorkEndDate(LocalDateTime.of(Integer.valueOf(form.getYear()).intValue(),
-					Integer.valueOf(form.getMonth()).intValue(), regForm.getDay().intValue(),
-					Integer.valueOf(regForm.getWorkEndHour()).intValue(),
-					Integer.valueOf(regForm.getWorkEndMinute()).intValue()));
+			dto.setWorkStartDate(LocalDateTime.of(Integer.valueOf(form.getYear()),
+					Integer.valueOf(form.getMonth()), regForm.getDay().intValue(),
+					Integer.valueOf(regForm.getWorkStartHour()),
+					Integer.valueOf(regForm.getWorkStartMinute())));
+			dto.setWorkEndDate(
+					LocalDateTime.of(Integer.valueOf(form.getYear()), Integer.valueOf(form.getMonth()),
+							regForm.getDay().intValue(), Integer.valueOf(regForm.getWorkEndHour()),
+							Integer.valueOf(regForm.getWorkEndMinute())));
 
 			Duration diff = Duration.between(dto.getWorkStartDate(), dto.getWorkEndDate());
 			dto.setActualWorkTime(diff.toHoursPart() + "." + diff.toMinutesPart());
