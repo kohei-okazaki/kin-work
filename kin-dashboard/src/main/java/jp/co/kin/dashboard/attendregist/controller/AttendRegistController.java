@@ -174,6 +174,7 @@ public class AttendRegistController implements BaseViewController {
 	 */
 	private void viewCalendar(Model model, HttpServletRequest request, BigDecimal year, BigDecimal month,
 			LocalDate targetDate) {
+
 		model.addAttribute("selectedYear", year);
 		model.addAttribute("yearList", attendRegistService.getYearList());
 		model.addAttribute("selectedMonth", month);
@@ -190,8 +191,7 @@ public class AttendRegistController implements BaseViewController {
 		List<AttendRegistDto> dtoList = dailyUserWorkDataSearchService.searchList(userId, targetDate);
 
 		for (AttendRegistDto attendRegistDto : dtoList) {
-			for (int i = 0; i < calendarList.size(); i++) {
-				AttendBusinessCalendar attendBusinessCalendar = calendarList.get(i);
+			for (AttendBusinessCalendar attendBusinessCalendar : calendarList) {
 				if (new BigDecimal(
 						LocalDateTimeUtil.toString(attendRegistDto.getWorkStartDate(), DateFormatType.DD))
 								.equals(attendBusinessCalendar.getDay())) {
@@ -215,7 +215,6 @@ public class AttendRegistController implements BaseViewController {
 							.setWorkEndDateMinute(LocalDateTimeUtil.toString(attendRegistDto.getWorkEndDate(),
 									DateFormatType.MI));
 				} else {
-					LOG.debug("同日でない");
 					continue;
 				}
 			}
