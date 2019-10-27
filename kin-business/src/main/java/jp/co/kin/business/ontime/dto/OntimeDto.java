@@ -6,7 +6,6 @@ import jp.co.kin.common.bean.BaseDto;
  * 定時情報のDto
  *
  * @since 1.0.0
- *
  */
 public class OntimeDto implements BaseDto {
 

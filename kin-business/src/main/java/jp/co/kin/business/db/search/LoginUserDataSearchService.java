@@ -7,7 +7,6 @@ import jp.co.kin.web.service.BaseService;
  * ログインユーザ情報検索サービス実装クラス
  *
  * @since 1.0.0
- *
  */
 public interface LoginUserDataSearchService extends BaseService {
 

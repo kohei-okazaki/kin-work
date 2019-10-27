@@ -4,13 +4,12 @@ import jp.co.kin.common.log.type.LogLevel;
 
 /**
  * 共通エラーコードの列挙
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public enum CommonErrorCode implements BaseErrorCode {
 
-	/** 予期せぬ例外 */
+	/** 予期せぬエラー */
 	UNEXPECTED("EC0001", LogLevel.ERROR),
 
 	/** session例外 */

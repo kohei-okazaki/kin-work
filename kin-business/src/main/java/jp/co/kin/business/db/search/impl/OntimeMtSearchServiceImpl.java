@@ -14,9 +14,8 @@ import jp.co.kin.db.entity.OntimeMt;
 
 /**
  * 定時情報マスタ検索サービス実装クラス
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 @Service
 public class OntimeMtSearchServiceImpl implements OntimeMtSearchService {

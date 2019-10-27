@@ -13,7 +13,6 @@ import jp.co.kin.web.service.BaseService;
  * 勤怠登録サービスインターフェース
  *
  * @since 1.0.0
- *
  */
 public interface AttendRegistService extends BaseService {
 

@@ -1,11 +1,9 @@
 package jp.co.kin.dashboard.ontimeregist.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,11 +20,11 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 
 /**
  * 定時登録画面コントローラ
- * 
+ *
  * @since 1.0.0
  */
 @Controller
-@RequestMapping("ontimeRegist")
+@RequestMapping("ontimeregist")
 public class OntimeRegistController implements BaseViewController {
 
 	@Autowired
@@ -38,13 +36,13 @@ public class OntimeRegistController implements BaseViewController {
 	}
 
 	@GetMapping("/input")
-	public String input(Model model) {
+	public String input() {
 		return getView(DashboardView.ONTIME_REGIST_INPUT);
 	}
 
 	@CsrfToken(factocy = true)
 	@PostMapping("/confirm")
-	public String confirm(Model model, @Valid OntimeRegistForm form, BindingResult result) {
+	public String confirm(@Valid OntimeRegistForm form, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return getView(DashboardView.ONTIME_REGIST_INPUT);
@@ -55,7 +53,7 @@ public class OntimeRegistController implements BaseViewController {
 
 	@CsrfToken(check = true)
 	@PostMapping("/complete")
-	public String complete(Model model, OntimeRegistForm form, HttpServletRequest request) {
+	public String complete(OntimeRegistForm form) {
 
 		OntimeDto dto = DtoFactory.getDto(OntimeDto.class, form);
 

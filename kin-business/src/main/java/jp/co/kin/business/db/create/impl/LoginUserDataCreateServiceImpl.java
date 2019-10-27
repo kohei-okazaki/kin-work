@@ -11,7 +11,6 @@ import jp.co.kin.db.entity.LoginUserData;
  * ログインユーザ情報作成サービス実装クラス
  *
  * @since 1.0.0
- *
  */
 @Service
 public class LoginUserDataCreateServiceImpl implements LoginUserDataCreateService {

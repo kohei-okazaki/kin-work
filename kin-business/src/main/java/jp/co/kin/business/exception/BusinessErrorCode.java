@@ -7,7 +7,6 @@ import jp.co.kin.common.log.type.LogLevel;
  * 業務エラーコードの列挙
  *
  * @since 1.0.0
- *
  */
 public enum BusinessErrorCode implements BaseErrorCode {
 

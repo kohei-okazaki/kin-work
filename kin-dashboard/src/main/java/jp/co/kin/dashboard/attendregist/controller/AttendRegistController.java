@@ -47,7 +47,7 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
  * @since 1.0.0
  */
 @Controller
-@RequestMapping("attendRegist")
+@RequestMapping("attendregist")
 public class AttendRegistController implements BaseViewController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AttendRegistController.class);
@@ -174,6 +174,7 @@ public class AttendRegistController implements BaseViewController {
 	 */
 	private void viewCalendar(Model model, HttpServletRequest request, BigDecimal year, BigDecimal month,
 			LocalDate targetDate) {
+
 		model.addAttribute("selectedYear", year);
 		model.addAttribute("yearList", attendRegistService.getYearList());
 		model.addAttribute("selectedMonth", month);
@@ -186,39 +187,37 @@ public class AttendRegistController implements BaseViewController {
 
 		// カレンダーを取得
 		List<AttendBusinessCalendar> calendarList = attendRegistService.getBusinessCalendarList(targetDate);
-		// 日別ユーザ勤怠情報を設定
+		// 日別ユーザ勤怠情報を対象日付で取得
 		List<AttendRegistDto> dtoList = dailyUserWorkDataSearchService.searchList(userId, targetDate);
 
-		for (int i = 0; i < calendarList.size(); i++) {
-			AttendBusinessCalendar attendBusinessCalendar = calendarList.get(i);
-			LOG.debugRes(attendBusinessCalendar);
+		for (AttendRegistDto attendRegistDto : dtoList) {
+			for (AttendBusinessCalendar attendBusinessCalendar : calendarList) {
+				if (new BigDecimal(
+						LocalDateTimeUtil.toString(attendRegistDto.getWorkStartDate(), DateFormatType.DD))
+								.equals(attendBusinessCalendar.getDay())) {
 
-			if (CollectionUtil.isEmpty(dtoList) || dtoList.size() - 1 < i) {
-				LOG.debug("勤怠情報が登録されていない");
-				break;
+					// 始業日時(時)
+					attendBusinessCalendar
+							.setWorkStartDateHour(
+									LocalDateTimeUtil.toString(attendRegistDto.getWorkStartDate(),
+											DateFormatType.HH));
+					// 始業日時(分)
+					attendBusinessCalendar
+							.setWorkStartDateMinute(
+									LocalDateTimeUtil.toString(attendRegistDto.getWorkStartDate(),
+											DateFormatType.MI));
+					// 終業日時(時)
+					attendBusinessCalendar
+							.setWorkEndDateHour(LocalDateTimeUtil.toString(attendRegistDto.getWorkEndDate(),
+									DateFormatType.HH));
+					// 終業日時(分)
+					attendBusinessCalendar
+							.setWorkEndDateMinute(LocalDateTimeUtil.toString(attendRegistDto.getWorkEndDate(),
+									DateFormatType.MI));
+				} else {
+					continue;
+				}
 			}
-			AttendRegistDto attendRegistDto = dtoList.get(i);
-
-			// 始業日時(時)
-			attendBusinessCalendar
-					.setWorkStartDateHour(LocalDateTimeUtil.toString(attendRegistDto.getWorkStartDate(),
-							DateFormatType.HH));
-			// 始業日時(分)
-			attendBusinessCalendar
-					.setWorkStartDateMinute(LocalDateTimeUtil.toString(attendRegistDto.getWorkStartDate(),
-							DateFormatType.MI));
-			// 終業日時(時)
-			attendBusinessCalendar
-					.setWorkEndDateHour(LocalDateTimeUtil.toString(attendRegistDto.getWorkEndDate(),
-							DateFormatType.HH));
-			// 終業日時(分)
-			attendBusinessCalendar
-					.setWorkEndDateMinute(LocalDateTimeUtil.toString(attendRegistDto.getWorkEndDate(),
-							DateFormatType.MI));
-			LOG.debugRes(attendBusinessCalendar);
-		}
-		for (AttendBusinessCalendar c : calendarList) {
-			LOG.debugRes(c);
 		}
 		model.addAttribute("calendarList", calendarList);
 	}

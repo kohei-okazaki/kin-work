@@ -7,9 +7,8 @@ import jp.co.kin.common.bean.BaseDto;
 
 /**
  * 勤怠登録のDto
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public class AttendRegistDto implements BaseDto {
 

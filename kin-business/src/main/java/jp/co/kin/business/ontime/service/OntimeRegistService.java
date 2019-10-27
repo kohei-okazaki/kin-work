@@ -7,13 +7,12 @@ import jp.co.kin.web.service.BaseService;
  * 定時情報登録サービスインターフェース
  *
  * @since 1.0.0
- *
  */
 public interface OntimeRegistService extends BaseService {
 
 	/**
 	 * 定時情報を登録する
-	 * 
+	 *
 	 * @param dto
 	 *            定時情報Dto
 	 */

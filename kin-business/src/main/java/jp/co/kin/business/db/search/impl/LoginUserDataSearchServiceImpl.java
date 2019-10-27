@@ -13,9 +13,8 @@ import jp.co.kin.db.entity.LoginUserData;
 
 /**
  * ログインユーザ情報検索サービス実装クラス
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 @Service
 public class LoginUserDataSearchServiceImpl implements LoginUserDataSearchService {
@@ -24,6 +23,7 @@ public class LoginUserDataSearchServiceImpl implements LoginUserDataSearchServic
 	private LoginUserDataDao dao;
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public LoginUserDataDto searchByLoginId(String loginId) {
 		LoginUserData entity = dao.selectById(loginId, BeanFactory.getBean(DecryptFunction.class));
 		return DtoFactory.getDto(LoginUserDataDto.class, entity);

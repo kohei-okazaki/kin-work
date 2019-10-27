@@ -15,7 +15,6 @@ import jp.co.kin.db.entity.OntimeMt;
  * 定時情報登録サービス実装クラス
  *
  * @since 1.0.0
- *
  */
 @Service
 public class OntimeRegistServiceImpl implements OntimeRegistService {

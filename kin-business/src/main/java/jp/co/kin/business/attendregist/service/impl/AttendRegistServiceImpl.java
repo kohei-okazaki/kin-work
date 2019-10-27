@@ -24,9 +24,8 @@ import jp.co.kin.db.entity.DailyUserWorkData;
 
 /**
  * 勤怠登録サービス実装クラス
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 @Service
 public class AttendRegistServiceImpl implements AttendRegistService {
@@ -41,24 +40,11 @@ public class AttendRegistServiceImpl implements AttendRegistService {
 	@Override
 	public List<BigDecimal> getYearList() {
 		LocalDate sysdate = LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate());
-		// List<LocalDate> list = new ArrayList<>();
-		// for (int i = 0; i < 10; i++) {
-		// list.add(LocalDateTimeUtil.addYear(sysdate, i));
-		// }
-		// List<LocalDate> list = Stream.iterate(0, i -> ++i).limit(10)
-		// .map(i -> LocalDateTimeUtil.addYear(sysdate,
-		// i)).collect(Collectors.toList());
-
-		List<BigDecimal> _list = Stream.iterate(0, i -> ++i).limit(10)
+		return Stream.iterate(0, i -> ++i).limit(10)
 				.map(i -> {
 					LocalDate date = LocalDateTimeUtil.addYear(sysdate, i);
-					String s = LocalDateTimeUtil.toString(date, DateFormatType.YYYY);
-					return new BigDecimal(s);
+					return new BigDecimal(LocalDateTimeUtil.toString(date, DateFormatType.YYYY));
 				}).collect(Collectors.toList());
-		return _list;
-		// return list.stream().map(e -> LocalDateTimeUtil.toString(e,
-		// DateFormatType.YYYY))
-		// .map(e -> new BigDecimal(e)).collect(Collectors.toList());
 	}
 
 	@Override
