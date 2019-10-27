@@ -11,7 +11,6 @@ import jp.co.kin.db.entity.DailyUserWorkData;
  * 日別ユーザ勤怠情報作成サービス実装クラス
  *
  * @since 1.0.0
- *
  */
 @Service
 public class DailyUserWorkDataCreateServiceImpl implements DailyUserWorkDataCreateService {

@@ -7,7 +7,6 @@ import jp.co.kin.web.service.BaseService;
  * ログインユーザ情報作成サービスインターフェース
  *
  * @since 1.0.0
- *
  */
 public interface LoginUserDataCreateService extends BaseService {
 

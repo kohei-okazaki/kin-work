@@ -7,7 +7,6 @@ import jp.co.kin.web.service.BaseService;
  * 定時情報マスタ作成サービスインターフェース
  *
  * @since 1.0.0
- *
  */
 public interface OntimeMtCreateService extends BaseService {
 

@@ -11,9 +11,8 @@ import jp.co.kin.db.entity.UserBaseData;
 
 /**
  * ユーザ基本情報検索サービス実装クラス
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 @Service
 public class UserBaseDataSearchServiceImpl implements UserBaseDataSearchService {

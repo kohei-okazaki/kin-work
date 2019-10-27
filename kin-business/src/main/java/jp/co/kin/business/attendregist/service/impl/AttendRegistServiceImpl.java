@@ -26,7 +26,6 @@ import jp.co.kin.db.entity.DailyUserWorkData;
  * 勤怠登録サービス実装クラス
  *
  * @since 1.0.0
- *
  */
 @Service
 public class AttendRegistServiceImpl implements AttendRegistService {

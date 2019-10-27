@@ -7,9 +7,8 @@ import jp.co.kin.web.service.BaseService;
 
 /**
  * 定時情報マスタ検索サービスインターフェース
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public interface OntimeMtSearchService extends BaseService {
 
