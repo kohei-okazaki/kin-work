@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import jp.co.kin.business.db.update.UserBaseDataUpdateService;
 import jp.co.kin.db.dao.UserBaseDataDao;
+import jp.co.kin.db.entity.UserBaseData;
 
 /**
  * ユーザ基本情報更新サービス実装クラス
@@ -17,4 +18,9 @@ public class UserBaseDataUpdateServiceImpl implements UserBaseDataUpdateService 
 
 	@Autowired
 	private UserBaseDataDao dao;
+
+	@Override
+	public void update(UserBaseData entity) {
+		dao.update(entity);
+	}
 }

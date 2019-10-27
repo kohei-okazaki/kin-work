@@ -1,5 +1,6 @@
 package jp.co.kin.business.db.update;
 
+import jp.co.kin.db.entity.UserBaseData;
 import jp.co.kin.web.service.BaseService;
 
 /**
@@ -10,4 +11,11 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface UserBaseDataUpdateService extends BaseService {
 
+	/**
+	 * ユーザ基本情報を更新する
+	 * 
+	 * @param entity
+	 *            UserBaseData
+	 */
+	void update(UserBaseData entity);
 }

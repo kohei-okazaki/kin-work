@@ -14,7 +14,6 @@ import jp.co.kin.common.test.BaseCommonTest;
  * {@link CollectionUtil} のjUnit
  *
  */
-@Deprecated(since = "1.0.0")
 public class CollectionUtilTest extends BaseCommonTest {
 
 	@Test

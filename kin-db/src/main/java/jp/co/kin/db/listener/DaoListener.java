@@ -34,8 +34,9 @@ import jp.co.kin.db.entity.BaseEntity;
  */
 public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 
+	/** Logger */
 	private static final Logger LOG = LoggerFactory.getLogger(DaoListener.class);
-
+	/** Entity暗号化クラス */
 	private EntityCrypter entityCrypter = BeanFactory.getBean(EntityCrypterImpl.class);
 
 	@Override

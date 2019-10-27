@@ -47,7 +47,7 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
  * @since 1.0.0
  */
 @Controller
-@RequestMapping("attendRegist")
+@RequestMapping("attendregist")
 public class AttendRegistController implements BaseViewController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(AttendRegistController.class);
