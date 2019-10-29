@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ンユーザ登録画面</title>
+<title>ユーザ登録画面</title>
 <link rel="icon" type="image/png" href="../resources/image/favicon.ico" th:href="@{/resources/image/favicon.ico}">
 <link rel="stylesheet" type="text/css" href="../resources/css/layout.css" th:href="@{/resources/css/layout.min.css}">
 <link rel="stylesheet" type="text/css" href="../resources/css/lib/sal.css" th:href="@{/resources/css/lib/sal.min.css}">
@@ -14,7 +14,7 @@
   <div align="center" class="contentLayout" data-sal="slide-up">
 
     <h2>ユーザ登録完了画面</h2>
-    <form id="userRegistForm" action="../login/top" th:action="@{../login/top}" method="get" th:object="${userRegistForm}"  data-sal="slide-up">
+    <form id="userRegistForm" action="../login/top" th:action="@{../login/top}" method="post" th:object="${userRegistForm}"  data-sal="slide-up">
       <!--/* table部ここから */-->
       <div class="table">
         <div class="table-row">
