@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 '''
 Created on 2019/10/27
 勤怠登録画面のテスト
@@ -6,10 +7,7 @@ Created on 2019/10/27
 
 '''
 from time import sleep
-
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
 from src.main.python.common import ConstData
 
 # Driverパスを設定する
