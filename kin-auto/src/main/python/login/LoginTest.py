@@ -18,13 +18,13 @@ def toLogin(driver, loginId, password):
     # ログイン画面を表示する
     driver.get(ConstData.BASE_REQUEST_URL + '/login/index')
 
-    # ログイン画面 - loginIdにtestを設定
+    # ログイン画面 - loginIdを設定
     loginIdElement = driver.find_element_by_id("loginId")
-    loginIdElement.send_keys("test")
+    loginIdElement.send_keys(loginId)
 
-    # ログイン画面 - passwordにtestを設定
+    # ログイン画面 - passwordを設定
     passwordElement = driver.find_element_by_id("password")
-    passwordElement.send_keys("test")
+    passwordElement.send_keys(password)
 
     # 読み込みを待つために2秒間処理を止める
     sleep(2)

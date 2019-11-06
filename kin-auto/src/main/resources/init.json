@@ -1,0 +1,4 @@
+{
+  "seleniumDriverPath" : "C:/kin-app/git/kin-work/kin-auto/bin/chromedriver.exe",
+  "baseRequestUrl" : "http://localhost:8080/kin-dashboard"
+}
