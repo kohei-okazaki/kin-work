@@ -25,7 +25,7 @@
   <context:component-scan base-package="jp.co.kin.common.crypt" />
   <context:component-scan base-package="jp.co.kin.common.encode" />
 
-  <bean id="properties" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+  <bean id="properties" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
     <property name="locations">
       <list>
         <value>classpath:crypt.properties</value>

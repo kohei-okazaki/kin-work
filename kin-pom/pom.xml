@@ -15,15 +15,15 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java-version>11</java-version>
-    <org.springframework-version>5.2.0.RELEASE</org.springframework-version>
+    <org.springframework-version>5.2.1.RELEASE</org.springframework-version>
     <org.aspectj-version>1.9.4</org.aspectj-version>
     <org.slf4j-version>1.7.26</org.slf4j-version>
     <org.logback-version>1.2.3</org.logback-version>
     <org.jackson-version>2.10.0</org.jackson-version>
-    <org.poi-version>4.1.0</org.poi-version>
-    <org.mysql-version>8.0.17</org.mysql-version>
+    <org.poi-version>4.1.1</org.poi-version>
+    <org.mysql-version>8.0.18</org.mysql-version>
     <org.doma-version>2.24.0</org.doma-version>
-    <org.hibernate-version>6.0.17.Final</org.hibernate-version>
+    <org.hibernate-version>6.1.0.Final</org.hibernate-version>
     <org.groovy-version>2.5.8</org.groovy-version>
     <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
     <org.thymeleaf-layout-version>2.4.1</org.thymeleaf-layout-version>
@@ -256,18 +256,6 @@
       <artifactId>junit-jupiter-api</artifactId>
       <version>${org.junit-version}</version>
       <scope>test</scope>
-    </dependency>
-    <!-- Selenium -->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-java</artifactId>
-      <version>3.141.59</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-chrome-driver</artifactId>
-      <version>3.141.59</version>
     </dependency>
   </dependencies>
 
