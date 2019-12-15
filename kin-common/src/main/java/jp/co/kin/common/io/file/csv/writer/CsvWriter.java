@@ -22,7 +22,7 @@ import jp.co.kin.common.util.BeanUtil;
  * // error処理<br>
  * }<br>
  * </code>
- * 
+ *
  * @since 1.0.0
  */
 public class CsvWriter {
@@ -42,6 +42,13 @@ public class CsvWriter {
 		return this;
 	}
 
+	/**
+	 * CSVへ書き込み処理を行う
+	 *
+	 * @param bean
+	 *            CSV書込データのBean
+	 * @return CsvWriteResult
+	 */
 	public CsvWriteResult write(Object bean) {
 
 		CsvWriteResult result = new CsvWriteResult();
@@ -77,7 +84,8 @@ public class CsvWriter {
 		}).collect(Collectors.toList());
 
 		// orderの昇順にソート
-		return csvDtoList.stream().sorted(Comparator.comparing(CsvUnitDto::getOrder))
+		return csvDtoList.stream()
+				.sorted(Comparator.comparing(CsvUnitDto::getOrder))
 				.collect(Collectors.toList());
 	}
 

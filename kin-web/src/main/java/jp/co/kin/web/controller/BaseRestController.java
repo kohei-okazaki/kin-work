@@ -71,6 +71,7 @@ public abstract class BaseRestController<Rq extends BaseApiRequest, Rs extends B
 			break;
 		case ERROR:
 			LOG.errorRes(response, e);
+			break;
 		default:
 			break;
 		}
