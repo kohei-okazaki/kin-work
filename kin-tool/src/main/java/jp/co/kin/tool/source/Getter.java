@@ -9,7 +9,8 @@ import jp.co.kin.tool.type.AccessType;
 
 /**
  * Getter
- *
+ * 
+ * @since 1.0.0
  */
 public class Getter extends Method {
 

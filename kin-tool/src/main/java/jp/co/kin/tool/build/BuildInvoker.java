@@ -6,6 +6,12 @@ import jp.co.kin.common.log.Logger;
 import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.tool.build.annotation.Build;
 
+/**
+ * BuildInvoker
+ * 
+ * @since 1.0.0
+ *
+ */
 public class BuildInvoker {
 
 	/** LOG */

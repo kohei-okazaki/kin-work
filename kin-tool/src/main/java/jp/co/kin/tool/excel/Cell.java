@@ -2,6 +2,12 @@ package jp.co.kin.tool.excel;
 
 import jp.co.kin.tool.type.ColumnType;
 
+/**
+ * Cell
+ * 
+ * @since 1.0.0
+ *
+ */
 public class Cell {
 
 	/** 値 */

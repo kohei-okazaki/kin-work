@@ -8,6 +8,12 @@ import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.excel.Row;
 import jp.co.kin.tool.type.CellPositionType;
 
+/**
+ * SqlSourceBuilder
+ * 
+ * @since 1.0.0
+ *
+ */
 public abstract class SqlSourceBuilder extends BaseBuilder {
 
 	protected boolean isCrypt(Row row) {

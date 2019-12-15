@@ -2,7 +2,7 @@ package jp.co.kin.common.crypt;
 
 /**
  * 暗号/復号インターフェース
- * 
+ *
  * @since 1.0.0
  */
 public interface Crypter {
@@ -12,16 +12,16 @@ public interface Crypter {
 	 *
 	 * @param str
 	 *            暗号化したい文字列
-	 * @return
+	 * @return 暗号化後の文字列
 	 */
 	String encrypt(String str);
 
 	/**
-	 * 復号化を行う
+	 * 復号を行う
 	 *
 	 * @param str
 	 *            復号したい文字列
-	 * @return
+	 * @return 復号後の文字列
 	 */
 	String decrypt(String str);
 }

@@ -12,6 +12,7 @@ import jp.co.kin.common.log.type.LogLevel;
  * <li>B:機能名</li>
  * <li>CDEF:採番</li>
  * </ul>
+ * 
  * @since 1.0.0
  */
 public interface BaseErrorCode {
@@ -19,14 +20,14 @@ public interface BaseErrorCode {
 	/**
 	 * エラーコード(外部用)を返却
 	 *
-	 * @return
+	 * @return エラーコード(外部用)
 	 */
 	String getOuterErrorCode();
 
 	/**
 	 * ログレベルを返却
 	 *
-	 * @return
+	 * @return ログレベル
 	 */
 	LogLevel getLogLevel();
 

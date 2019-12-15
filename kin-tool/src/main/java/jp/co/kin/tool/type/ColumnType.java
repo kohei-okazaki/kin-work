@@ -6,6 +6,12 @@ import java.time.LocalDateTime;
 
 import jp.co.kin.common.type.BaseEnum;
 
+/**
+ * ColumnType
+ * 
+ * @since 1.0.0
+ *
+ */
 public enum ColumnType implements BaseEnum {
 
 	/** VARCHAR */

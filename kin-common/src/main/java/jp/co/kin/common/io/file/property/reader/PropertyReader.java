@@ -20,7 +20,7 @@ import jp.co.kin.common.util.FileUtil.FileSeparator;
 
 /**
  * PropertiesファイルのReader
- * 
+ *
  * @since 1.0.0
  */
 public class PropertyReader {
@@ -63,7 +63,7 @@ public class PropertyReader {
 	 *            ファイル名
 	 * @param clazz
 	 *            bean
-	 * @return
+	 * @return 対応するBean
 	 */
 	public <T> T read(String path, String fileName, Class<T> clazz) {
 		Properties prop = read(path, fileName);

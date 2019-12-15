@@ -32,8 +32,7 @@ public class MinValidator implements ConstraintValidator<Min, Object> {
 		}
 		if (isEqual) {
 			return this.size <= value.toString().length();
-		} else {
-			return this.size < value.toString().length();
 		}
+		return this.size < value.toString().length();
 	}
 }

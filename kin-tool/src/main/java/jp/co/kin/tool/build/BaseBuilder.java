@@ -16,6 +16,12 @@ import jp.co.kin.tool.reader.ExcelReader;
 import jp.co.kin.tool.type.CellPositionType;
 import jp.co.kin.tool.type.ExecuteType;
 
+/**
+ * BaseBuilder
+ * 
+ * @since 1.0.0
+ *
+ */
 public abstract class BaseBuilder {
 
 	/** LOG */

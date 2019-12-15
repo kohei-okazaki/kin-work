@@ -5,6 +5,12 @@ import java.io.File;
 import jp.co.kin.common.util.FileUtil;
 import jp.co.kin.common.util.FileUtil.FileSeparator;
 
+/**
+ * BaseFileReader
+ * 
+ * @since 1.0.0
+ *
+ */
 public abstract class BaseFileReader {
 
 	/**

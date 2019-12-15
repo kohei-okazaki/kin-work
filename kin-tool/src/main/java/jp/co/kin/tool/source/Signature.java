@@ -6,6 +6,11 @@ import java.util.StringJoiner;
 
 import jp.co.kin.common.util.StringUtil;
 
+/**
+ * Signature
+ *
+ * @since 1.0.0
+ */
 public class Signature {
 
 	private Map<Class<?>, String> argsMap = new LinkedHashMap<>();

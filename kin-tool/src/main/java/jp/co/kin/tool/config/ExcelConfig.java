@@ -1,5 +1,11 @@
 package jp.co.kin.tool.config;
 
+/**
+ * ExcelConfig
+ * 
+ * @since 1.0.0
+ *
+ */
 public class ExcelConfig {
 
 	/** ファイルパス */

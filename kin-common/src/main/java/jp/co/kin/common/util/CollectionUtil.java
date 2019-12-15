@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 /**
  * CollectionのUtilクラス
- * 
+ *
  * @since 1.0.0
  */
 public class CollectionUtil {
@@ -48,9 +48,8 @@ public class CollectionUtil {
 	public static <T> T getFirst(List<T> list) {
 		if (isEmpty(list)) {
 			return null;
-		} else {
-			return list.get(0);
 		}
+		return list.get(0);
 	}
 
 	/**
@@ -63,9 +62,8 @@ public class CollectionUtil {
 	public static <T> T getLast(List<T> list) {
 		if (isEmpty(list)) {
 			return null;
-		} else {
-			return list.get(list.size());
 		}
+		return list.get(list.size());
 	}
 
 	/**

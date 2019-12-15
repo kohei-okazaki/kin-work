@@ -18,6 +18,12 @@ import jp.co.kin.tool.excel.Cell;
 import jp.co.kin.tool.excel.Excel;
 import jp.co.kin.tool.type.CellPositionType;
 
+/**
+ * ExcelReader
+ * 
+ * @since 1.0.0
+ *
+ */
 public class ExcelReader extends BaseFileReader {
 
 	/** LOG */

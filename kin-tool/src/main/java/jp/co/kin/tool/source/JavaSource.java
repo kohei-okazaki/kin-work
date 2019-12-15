@@ -8,6 +8,11 @@ import java.util.Map;
 import jp.co.kin.tool.type.AccessType;
 import jp.co.kin.tool.type.ClassType;
 
+/**
+ * JavaSource
+ * 
+ * @since 1.0.0
+ */
 public class JavaSource {
 
 	/** パッケージ */

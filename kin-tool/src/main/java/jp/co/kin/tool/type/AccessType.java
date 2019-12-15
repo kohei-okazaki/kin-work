@@ -2,6 +2,12 @@ package jp.co.kin.tool.type;
 
 import jp.co.kin.common.type.BaseEnum;
 
+/**
+ * AccessType
+ * 
+ * @since 1.0.0
+ *
+ */
 public enum AccessType implements BaseEnum {
 
 	/** public */

@@ -6,6 +6,8 @@ import jp.co.kin.common.util.StringUtil;
 
 /**
  * Import
+ * 
+ * @since 1.0.0
  */
 public class Import {
 

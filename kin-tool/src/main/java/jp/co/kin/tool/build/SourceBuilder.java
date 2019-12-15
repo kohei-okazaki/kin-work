@@ -16,6 +16,12 @@ import jp.co.kin.tool.source.Method;
 import jp.co.kin.tool.type.CellPositionType;
 import jp.co.kin.tool.type.ClassType;
 
+/**
+ * SourceBuilder
+ * 
+ * @since 1.0.0
+ *
+ */
 public abstract class SourceBuilder extends BaseBuilder {
 
 	/**
