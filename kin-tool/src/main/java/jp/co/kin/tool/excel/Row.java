@@ -5,6 +5,12 @@ import java.util.List;
 
 import jp.co.kin.tool.type.CellPositionType;
 
+/**
+ * Row
+ * 
+ * @since 1.0.0
+ *
+ */
 public class Row {
 
 	/** セルリスト */

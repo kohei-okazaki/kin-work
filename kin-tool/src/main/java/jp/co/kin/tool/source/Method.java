@@ -7,7 +7,8 @@ import jp.co.kin.tool.type.AccessType;
 
 /**
  * Method
- *
+ * 
+ * @since 1.0.0
  */
 public abstract class Method {
 

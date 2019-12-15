@@ -1,5 +1,11 @@
 package jp.co.kin.tool.config;
 
+/**
+ * FileConfig
+ * 
+ * @since 1.0.0
+ *
+ */
 public class FileConfig {
 
 	/** 出力先ファイルパス */

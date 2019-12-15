@@ -3,6 +3,12 @@ package jp.co.kin.tool.excel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Excel
+ * 
+ * @since 1.0.0
+ *
+ */
 public class Excel {
 
 	/** シートリスト */

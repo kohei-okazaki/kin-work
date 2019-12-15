@@ -17,6 +17,12 @@ import jp.co.kin.tool.factory.FileFactory;
 import jp.co.kin.tool.type.CellPositionType;
 import jp.co.kin.tool.type.ExecuteType;
 
+/**
+ * CreateTableBuilder
+ * 
+ * @since 1.0.0
+ *
+ */
 public class CreateTableBuilder extends SqlSourceBuilder {
 
 	@Build

@@ -4,6 +4,8 @@ import jp.co.kin.common.io.file.property.annotation.Property;
 
 /**
  * tool.proertiesのBean
+ * 
+ * @since 1.0.0
  */
 public class ToolProperties {
 

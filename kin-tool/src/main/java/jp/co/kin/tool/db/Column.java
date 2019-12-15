@@ -1,5 +1,11 @@
 package jp.co.kin.tool.db;
 
+/**
+ * Column
+ * 
+ * @since 1.0.0
+ *
+ */
 public class Column {
 
 	/** カラム名 */

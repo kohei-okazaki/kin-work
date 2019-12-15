@@ -2,6 +2,12 @@ package jp.co.kin.tool.type;
 
 import jp.co.kin.common.type.BaseEnum;
 
+/**
+ * ClassType
+ * 
+ * @since 1.0.0
+ *
+ */
 public enum ClassType implements BaseEnum {
 
 	/** クラス */

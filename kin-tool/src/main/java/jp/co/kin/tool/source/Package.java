@@ -2,7 +2,8 @@ package jp.co.kin.tool.source;
 
 /**
  * Package
- *
+ * 
+ * @since 1.0.0
  */
 public class Package {
 

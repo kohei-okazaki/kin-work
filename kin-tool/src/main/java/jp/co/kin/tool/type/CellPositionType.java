@@ -2,6 +2,12 @@ package jp.co.kin.tool.type;
 
 import jp.co.kin.common.type.BaseEnum;
 
+/**
+ * CellPositionType
+ * 
+ * @since 1.0.0
+ *
+ */
 public enum CellPositionType implements BaseEnum {
 
 	/** 論理名 */

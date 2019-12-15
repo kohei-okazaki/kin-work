@@ -3,6 +3,12 @@ package jp.co.kin.tool.db;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Table
+ * 
+ * @since 1.0.0
+ *
+ */
 public class Table {
 
 	/** 論理名 */

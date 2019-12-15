@@ -33,6 +33,12 @@ import jp.co.kin.tool.type.ClassType;
 import jp.co.kin.tool.type.ColumnType;
 import jp.co.kin.tool.type.ExecuteType;
 
+/**
+ * EntityBuilder
+ * 
+ * @since 1.0.0
+ *
+ */
 public class EntityBuilder extends SourceBuilder {
 
 	@Build

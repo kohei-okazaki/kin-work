@@ -12,6 +12,12 @@ import jp.co.kin.common.util.FileUtil;
 import jp.co.kin.common.util.FileUtil.FileSeparator;
 import jp.co.kin.tool.config.FileConfig;
 
+/**
+ * FileFactory
+ * 
+ * @since 1.0.0
+ *
+ */
 public class FileFactory {
 
 	/** LOG */
@@ -28,7 +34,8 @@ public class FileFactory {
 	 */
 	public static void create(FileConfig conf) {
 		LOG.info("作成 開始 ---> " + conf.getFileName());
-		File file = FileUtil.getFile(conf.getOutputPath() + FileSeparator.SYSTEM.getValue() + conf.getFileName());
+		File file = FileUtil
+				.getFile(conf.getOutputPath() + FileSeparator.SYSTEM.getValue() + conf.getFileName());
 
 		// ファイル作成
 		try {

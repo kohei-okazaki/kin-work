@@ -27,6 +27,8 @@ import jp.co.kin.tool.type.ExecuteType;
  * の場合、<br>
  * <code>ALTER TABLE HOGE ADD PIYO FUGA;</code><br>
  * のDDLを作成
+ * 
+ * @since 1.0.0
  */
 public class AddColumnBuilder extends SqlSourceBuilder {
 

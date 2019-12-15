@@ -10,7 +10,8 @@ import jp.co.kin.tool.type.AccessType;
 
 /**
  * Field
- *
+ * 
+ * @since 1.0.0
  */
 public class Field {
 

@@ -30,6 +30,12 @@ import jp.co.kin.tool.type.AccessType;
 import jp.co.kin.tool.type.ClassType;
 import jp.co.kin.tool.type.ExecuteType;
 
+/**
+ * DaoBuilder
+ * 
+ * @since 1.0.0
+ *
+ */
 public class DaoBuilder extends SourceBuilder {
 
 	@Build
