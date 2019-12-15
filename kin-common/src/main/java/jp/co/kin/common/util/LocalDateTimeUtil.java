@@ -16,7 +16,7 @@ import jp.co.kin.common.type.ZoneIdType;
 
 /**
  * {@link DateUtil}に代わる日付及び時間操作クラス
- * 
+ *
  * @since 1.0.0
  */
 public class LocalDateTimeUtil {
@@ -95,7 +95,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param localDateTime
 	 *            日時
-	 * @return
+	 * @return 指定した日時の0時0分0秒
 	 */
 	public static LocalDateTime getStartDay(LocalDateTime localDateTime) {
 		return localDateTime.withHour(0).withMinute(0).withSecond(0);
@@ -106,7 +106,7 @@ public class LocalDateTimeUtil {
 	 *
 	 * @param localDateTime
 	 *            日時
-	 * @return
+	 * @return 指定した日時の23時59分59秒
 	 */
 	public static LocalDateTime getEndDay(LocalDateTime localDateTime) {
 		return localDateTime.withHour(23).withMinute(59).withSecond(59);
@@ -119,7 +119,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param day
 	 *            加算日
-	 * @return
+	 * @return 指定した日付に加算日分だけ加算した日付
 	 */
 	public static LocalDate addDay(LocalDate localDate, int day) {
 		return localDate.plusDays(day);
@@ -132,7 +132,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param day
 	 *            減算日
-	 * @return
+	 * @return 指定した日付に減算日分だけ減算した日付
 	 */
 	public static LocalDate minusDay(LocalDate localDate, int day) {
 		return localDate.minusDays(day);
@@ -145,7 +145,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param month
 	 *            加算月
-	 * @return
+	 * @return 指定した日付に加算月分だけ加算した日付
 	 */
 	public static LocalDate addMonth(LocalDate localDate, int month) {
 		return localDate.plusMonths(month);
@@ -158,7 +158,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param month
 	 *            減算月
-	 * @return
+	 * @return 指定した日付に減算月分だけ減算した日付
 	 */
 	public static LocalDate minusMonth(LocalDate localDate, int month) {
 		return localDate.minusMonths(month);
@@ -171,7 +171,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param week
 	 *            加算週
-	 * @return
+	 * @return 指定した日付に加算週分だけ加算した日付
 	 */
 	public static LocalDate addWeek(LocalDate localDate, int week) {
 		return localDate.plusWeeks(week);
@@ -184,7 +184,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param week
 	 *            減算週
-	 * @return
+	 * @return 指定した日付に減算週分だけ減算した日付
 	 */
 	public static LocalDate minusWeek(LocalDate localDate, int week) {
 		return localDate.minusWeeks(week);
@@ -197,7 +197,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param year
 	 *            加算年
-	 * @return
+	 * @return 指定した日付に加算年分だけ加算した日付
 	 */
 	public static LocalDate addYear(LocalDate localDate, int year) {
 		return localDate.plusYears(year);
@@ -210,7 +210,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param year
 	 *            減算年
-	 * @return
+	 * @return 指定した日付に減算年分だけ減算した日付
 	 */
 	public static LocalDate minusYear(LocalDate localDate, int year) {
 		return localDate.minusYears(year);
@@ -237,18 +237,16 @@ public class LocalDateTimeUtil {
 	 *            比較日時
 	 * @param isEquals
 	 *            同時刻を超過したに含むかどうか
-	 * @return
+	 * @return 判定結果
 	 */
 	public static boolean isAfter(LocalDateTime localDateTime, LocalDateTime when, boolean isEquals) {
 		if (isEquals) {
 			if (localDateTime.isEqual(when)) {
 				return true;
-			} else {
-				return localDateTime.isAfter(when);
 			}
-		} else {
 			return localDateTime.isAfter(when);
 		}
+		return localDateTime.isAfter(when);
 	}
 
 	/**
@@ -278,12 +276,10 @@ public class LocalDateTimeUtil {
 		if (isEquals) {
 			if (localDateTime.isEqual(when)) {
 				return true;
-			} else {
-				return localDateTime.isBefore(when);
 			}
-		} else {
 			return localDateTime.isBefore(when);
 		}
+		return localDateTime.isBefore(when);
 	}
 
 	/**
@@ -394,7 +390,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param formatType
 	 *            フォーマット
-	 * @return
+	 * @return <code>java.time.LocalDateTime</code>型の日付
 	 */
 	public static LocalDateTime toLocalDateTime(String strDate, DateFormatType formatType) {
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(formatType.getValue());
@@ -408,7 +404,7 @@ public class LocalDateTimeUtil {
 	 *            日付
 	 * @param formatType
 	 *            フォーマット
-	 * @return
+	 * @return <code>java.time.LocalDate</code>型の日付
 	 */
 	public static LocalDate toLocalDate(String strDate, DateFormatType formatType) {
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(formatType.getValue());

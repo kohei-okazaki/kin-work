@@ -8,7 +8,7 @@ import jp.co.kin.common.util.CollectionUtil;
 
 /**
  * 妥当性チェック結果情報保持クラス
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -21,9 +21,9 @@ public class ValidateErrorResult {
 	}
 
 	/**
-	 * エラー保持している場合true
+	 * エラー保持している場合、true
 	 *
-	 * @return
+	 * @return エラー保持している場合、true
 	 */
 	public boolean hasError() {
 		return CollectionUtil.exists(resultList);

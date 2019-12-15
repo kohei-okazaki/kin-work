@@ -32,8 +32,7 @@ public class MaxValidator implements ConstraintValidator<Max, Object> {
 		}
 		if (isEqual) {
 			return value.toString().length() <= this.size;
-		} else {
-			return value.toString().length() < this.size;
 		}
+		return value.toString().length() < this.size;
 	}
 }

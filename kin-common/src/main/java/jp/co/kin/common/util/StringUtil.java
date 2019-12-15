@@ -1,14 +1,21 @@
 package jp.co.kin.common.util;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.StringJoiner;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.util.StringUtils;
 
+import jp.co.kin.common.exception.CommonErrorCode;
+import jp.co.kin.common.exception.SystemException;
+import jp.co.kin.common.type.Charset;
+
 /**
  * 文字列のUtilクラス
- * 
+ *
  * @since 1.0.0
  */
 public class StringUtil {
@@ -153,7 +160,7 @@ public class StringUtil {
 	 *
 	 * @param str
 	 *            対象文字列
-	 * @return
+	 * @return capitalize後の文字列
 	 */
 	public static String capitalize(String str) {
 		return StringUtils.capitalize(str);
@@ -170,6 +177,74 @@ public class StringUtil {
 	 */
 	public static String getRandamStr(int length) {
 		return RandomStringUtils.randomAlphabetic(length);
+	}
+
+	/**
+	 * 指定した区切り文字で対象文字列を結合する
+	 *
+	 * @param delim
+	 *            区切り文字
+	 * @param ignoreRule
+	 *            結合しない条件
+	 * @param values
+	 *            対象文字列
+	 * @return 結合した文字列
+	 */
+	public String join(String delim, Predicate<String> ignoreRule, String... values) {
+
+		if (isEmpty(delim) || CollectionUtil.isEmpty(Arrays.asList(values))) {
+			return null;
+		}
+		StringJoiner sj = new StringJoiner(delim);
+		Arrays.asList(values).stream().filter(e -> ignoreRule == null || !ignoreRule.test(e))
+				.forEach(e -> sj.add(e));
+
+		return sj.toString();
+	}
+
+	/**
+	 * 指定した文字列<code>str</code>を<code>length</code>で切り取る<br>
+	 *
+	 * @param str
+	 *            対象文字列
+	 * @param charset
+	 *            文字コード
+	 * @param length
+	 *            切りたい文字列の長さ
+	 * @return 切り取った後の文字列
+	 */
+	public static String slice(String str, Charset charset, int length) {
+
+		String result = null;
+		if (isEmpty(str)) {
+			return result;
+		}
+
+		try {
+			byte[] b = str.getBytes(charset.getValue());
+			if (b.length <= length) {
+				result = str;
+			} else {
+				String s = new String(b, 0, length, charset.getValue());
+				// 切り取った文字列の最後の1文字の位置
+				int cutLastLen = s.length() - 1;
+				// 切り取った文字列の最後の文字
+				char c1 = s.charAt(cutLastLen);
+				// 切り取る前の文字列の切り取り位置の文字
+				char c2 = str.charAt(cutLastLen);
+				if (c1 == c2) {
+					result = s;
+				} else {
+					// 切り取った文字列の最後の1文字が半端なbyteの場合
+					result = slice(str, charset, length - 1);
+				}
+			}
+		} catch (Exception e) {
+			// 文字コードが不正な場合
+			throw new SystemException(CommonErrorCode.UNEXPECTED, "文字コードの指定が不正");
+		}
+		return result;
+
 	}
 
 	/**

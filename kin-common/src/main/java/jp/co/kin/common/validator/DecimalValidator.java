@@ -10,7 +10,7 @@ import jp.co.kin.common.validator.annotation.Decimal;
 
 /**
  * 数字の妥当性チェッククラス
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -50,9 +50,8 @@ public class DecimalValidator implements ConstraintValidator<Decimal, Object> {
 			} else {
 				return (min < length) && (length < max);
 			}
-		} else {
-			return false;
 		}
+		return false;
 
 	}
 
