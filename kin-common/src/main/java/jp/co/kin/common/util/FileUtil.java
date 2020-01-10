@@ -174,18 +174,16 @@ public class FileUtil {
 		case WINDOWS:
 			if (srcPath.contains(FileSeparator.WINDOWS.getValue())) {
 				return getFile(srcPath);
-			} else {
-				return getFile(
-						srcPath.replaceAll(FileSeparator.LINUX.getValue(), FileSeparator.WINDOWS.getValue()));
 			}
+			return getFile(
+					srcPath.replaceAll(FileSeparator.LINUX.getValue(), FileSeparator.WINDOWS.getValue()));
 
 		default:
 			if (srcPath.contains(FileSeparator.LINUX.getValue())) {
 				return getFile(srcPath);
-			} else {
-				return getFile(
-						srcPath.replaceAll(FileSeparator.WINDOWS.getValue(), FileSeparator.LINUX.getValue()));
 			}
+			return getFile(
+					srcPath.replaceAll(FileSeparator.WINDOWS.getValue(), FileSeparator.LINUX.getValue()));
 		}
 	}
 
