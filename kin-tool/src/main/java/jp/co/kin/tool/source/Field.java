@@ -10,7 +10,7 @@ import jp.co.kin.tool.type.AccessType;
 
 /**
  * Field
- * 
+ *
  * @since 1.0.0
  */
 public class Field {
@@ -101,9 +101,8 @@ public class Field {
 
 		if (StringUtil.isEmpty(annotationBody.toString())) {
 			return javadoc + StringUtil.NEW_LINE + field;
-		} else {
-			return javadoc + StringUtil.NEW_LINE + annotationBody + StringUtil.NEW_LINE + field;
 		}
+		return javadoc + StringUtil.NEW_LINE + annotationBody + StringUtil.NEW_LINE + field;
 	}
 
 	/**
