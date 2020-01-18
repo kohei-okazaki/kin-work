@@ -7,13 +7,14 @@ import javax.validation.Valid;
 
 import jp.co.kin.common.type.RegixType;
 import jp.co.kin.common.validator.annotation.Length;
+import jp.co.kin.common.validator.annotation.Max;
 import jp.co.kin.common.validator.annotation.Pattern;
 import jp.co.kin.common.validator.annotation.Required;
 import jp.co.kin.web.form.BaseForm;
 
 /**
  * 勤怠登録画面form
- * 
+ *
  * @since 1.0.0
  */
 public class AttendRegistForm implements BaseForm {
@@ -26,7 +27,7 @@ public class AttendRegistForm implements BaseForm {
 	/** 月 */
 	@Required
 	@Pattern(regixPattern = RegixType.HALF_NUMBER, message = "月は半角数字です")
-	@Length(length = 2, message = "月は2桁です")
+	@Max(size = 2, isEqual = true)
 	private String month;
 	/** 1行あたりの勤怠データ */
 	@Valid

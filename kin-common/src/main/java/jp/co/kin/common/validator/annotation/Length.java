@@ -14,8 +14,8 @@ import javax.validation.Payload;
 import jp.co.kin.common.validator.LengthValidator;
 
 /**
- * 桁数チェックのアノテーション1
- * 
+ * 桁数チェックのアノテーション
+ *
  * @since 1.0.0
  *
  */

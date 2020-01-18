@@ -47,7 +47,7 @@ public class ValidateErrorResult {
 	 * @return 妥当性エラー
 	 */
 	public ValidateError get(Supplier<Integer> supplier) {
-		return this.resultList.get(supplier.get());
+		return this.resultList.get(supplier.get().intValue());
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class ValidateErrorResult {
 	 * @return 妥当性エラー
 	 */
 	public ValidateError get() {
-		return this.get(() -> 0);
+		return this.get(() -> Integer.valueOf(0));
 	}
 
 	public static class ValidateError {
