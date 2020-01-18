@@ -58,6 +58,6 @@ loginId = "test"
 password= "hoge"
 result = toLogin(driver, loginId, password)
 
-log.write("LoginTest修正")
+log.write("LoginTest終了")
 
 ''' ここまでメイン処理 '''
