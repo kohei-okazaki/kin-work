@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 '''
 Created on 2019/10/20
 共通情報の定義情報
@@ -6,6 +6,7 @@ Created on 2019/10/20
 @since 1.0.0
 
 '''
+
 # Driverパス
 SELENIUM_DRIVER_PATH = 'C:/kin-app/git/kin-work/kin-auto/bin/chromedriver.exe'
 # RequestベースURL

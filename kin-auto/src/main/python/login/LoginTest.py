@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 '''
 Created on 2019/10/20
 Login画面→ログイン後のTOP画面のテストを行うpython
@@ -11,7 +11,7 @@ from selenium import webdriver
 
 from src.main.python.common import ConstData
 from src.main.python.common import Logger
-from src.main.python.common import LoginAuth
+from src.main.python.login import LoginAuth
 
 ''' ここからメイン処理 '''
 
@@ -23,18 +23,16 @@ driver = webdriver.Chrome(ConstData.SELENIUM_DRIVER_PATH)
 
 # 正しいログイン情報でログイン
 loginId = "test"
-password= "test"
-loginAuth = LoginAuth.LoginAuth(driver, loginId, password)
-result = loginAuth.login()
+password = "test"
+LoginAuth.LoginAuth(driver, loginId, password).login()
 
 # ブラウザバック
 driver.back()
 
 # 正しくないパスワードでログイン
 loginId = "test"
-password= "hoge"
-loginAuth = LoginAuth.LoginAuth(driver, loginId, password)
-result = loginAuth.login()
+password = "hoge"
+LoginAuth.LoginAuth(driver, loginId, password).doLogin()
 
 log.write("LoginTest終了")
 
