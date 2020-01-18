@@ -37,6 +37,31 @@ def testMonthList(driver):
         sleep(1)
         monthEelementSelected.select_by_value(str(month))
 
+def testRegistAttend(driver):
+    inputWorkStartHour = driver.find_element_by_name('registFormList[0].workStartHour')
+    inputWorkStartHour.send_keys('01')
+
+    inputWorkStartMinute = driver.find_element_by_name('registFormList[0].workStartMinute')
+    inputWorkStartMinute.send_keys('23')
+
+    inputWorkEndHour = driver.find_element_by_name('registFormList[0].workEndHour')
+    inputWorkEndHour.send_keys('01')
+
+    inputWorkEndMinute = driver.find_element_by_name('registFormList[0].workEndMinute')
+    inputWorkEndMinute.send_keys('23')
+
+    # 確認ボタン押下し、勤怠登録確認画面に遷移
+    driver.find_element_by_name('submit').click()
+
+    # 戻るボタン押下し、再度勤怠登録画面に遷移
+    driver.find_element_by_name('back').click()
+
+    # 確認ボタン押下し、勤怠登録確認画面に遷移
+    driver.find_element_by_name('submit').click()
+
+    # 確認ボタン押下し、勤怠登録完了画面に遷移
+    driver.find_element_by_name('submit').click()
+
 ''' ここからメイン処理 '''
 log = Logger.Logger("auto.log")
 log.write("AttendTest開始")
@@ -57,6 +82,9 @@ testSelectList(driver)
 
 # セレクトリスト(月)のテストを行う
 testMonthList(driver)
+
+# 勤怠情報を登録する
+testRegistAttend(driver)
 
 log.write("AttendTest終了")
 
