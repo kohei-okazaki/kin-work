@@ -24,7 +24,7 @@ def testSelectList(driver):
     # selectボックス-年を変更する(先頭から最後まで)
     yearEelement = driver.find_element_by_name('year')
     yearEelementSelected = Select(yearEelement)
-    for i in range(0, 9):
+    for i in range(0, 10):
         sleep(1)
         yearEelementSelected.select_by_value(str(sysdateYear + i))
 
@@ -47,8 +47,7 @@ driver = webdriver.Chrome(ConstData.SELENIUM_DRIVER_PATH)
 # 正しいログイン情報でログイン
 loginId = "test"
 password= "test"
-loginAuth = LoginAuth.LoginAuth(driver, loginId, password)
-result = loginAuth.login()
+LoginAuth.LoginAuth(driver, loginId, password).login()
 
 # 勤怠登録画面へ遷移
 driver.find_element_by_link_text(u"勤怠登録").click()

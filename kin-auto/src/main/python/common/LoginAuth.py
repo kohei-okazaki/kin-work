@@ -34,11 +34,11 @@ class LoginAuth():
         passwordElement.send_keys(self.password)
 
         # 読み込みを待つために2秒間処理を止める
-        sleep(2)
+        sleep(1)
 
         # ログインボタン押下し、TOP画面へ遷移
         submitButton = self.driver.find_element_by_id("submit")
         submitButton.click()
 
         # 読み込みを待つために2秒間処理を止める
-        sleep(2)
+        sleep(1)

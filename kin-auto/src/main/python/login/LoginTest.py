@@ -24,8 +24,7 @@ driver = webdriver.Chrome(ConstData.SELENIUM_DRIVER_PATH)
 # 正しいログイン情報でログイン
 loginId = "test"
 password= "test"
-loginAuth = LoginAuth.LoginAuth(driver, loginId, password)
-result = loginAuth.login()
+LoginAuth.LoginAuth(driver, loginId, password).login()
 
 # ブラウザバック
 driver.back()
@@ -33,8 +32,7 @@ driver.back()
 # 正しくないパスワードでログイン
 loginId = "test"
 password= "hoge"
-loginAuth = LoginAuth.LoginAuth(driver, loginId, password)
-result = loginAuth.login()
+LoginAuth.LoginAuth(driver, loginId, password).login()
 
 log.write("LoginTest終了")
 
