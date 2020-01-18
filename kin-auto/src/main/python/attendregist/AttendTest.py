@@ -7,7 +7,6 @@ Created on 2019/10/27
 
 '''
 import datetime
-from time import sleep
 
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
@@ -25,7 +24,6 @@ def testSelectList(driver):
     yearEelement = driver.find_element_by_name('year')
     yearEelementSelected = Select(yearEelement)
     for i in range(0, 10):
-        sleep(1)
         yearEelementSelected.select_by_value(str(sysdateYear + i))
 
 def testMonthList(driver):
@@ -34,7 +32,6 @@ def testMonthList(driver):
     monthList = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, 11, 12]
     monthEelementSelected = Select(monthEelement)
     for month in monthList:
-        sleep(1)
         monthEelementSelected.select_by_value(str(month))
 
 def testRegistAttend(driver):
