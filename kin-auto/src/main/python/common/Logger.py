@@ -42,5 +42,5 @@ class Logger():
         linetxt += "\n"
 
         # ログファイルに書き込む
-        with open(self.__filepath, "a") as f:
+        with open(self.__filepath, "w", encoding='utf-8') as f:
             f.write(linetxt)

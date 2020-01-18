@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 '''
 Created on 2020/01/18
 JSON読み込み処理を行うPython
