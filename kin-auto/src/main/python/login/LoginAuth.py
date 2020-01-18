@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 '''
 Created on 2020/01/18
 ログイン処理を行うPython
@@ -8,6 +8,7 @@ Created on 2020/01/18
 '''
 from time import sleep
 from src.main.python.common import ConstData
+
 
 class LoginAuth():
 
@@ -19,8 +20,10 @@ class LoginAuth():
         self.loginId = loginId
         self.password = password
 
-
-    def login(self):
+    def doLogin(self):
+        '''
+       ログイン処理
+        '''
 
         # ログイン画面を表示する
         self.driver.get(ConstData.BASE_REQUEST_URL + '/login/index')

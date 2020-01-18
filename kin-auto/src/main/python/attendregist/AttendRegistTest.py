@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 '''
 Created on 2019/10/27
 勤怠登録画面のテスト
@@ -13,7 +13,8 @@ from selenium.webdriver.support.ui import Select
 
 from src.main.python.common import ConstData
 from src.main.python.common import Logger
-from src.main.python.common import LoginAuth
+from src.main.python.login import LoginAuth
+
 
 def testSelectList(driver):
 
@@ -26,6 +27,7 @@ def testSelectList(driver):
     for i in range(0, 10):
         yearEelementSelected.select_by_value(str(sysdateYear + i))
 
+
 def testMonthList(driver):
     # selectボックス-月を変更する(先頭から最後まで)
     monthEelement = driver.find_element_by_name('month')
@@ -33,6 +35,7 @@ def testMonthList(driver):
     monthEelementSelected = Select(monthEelement)
     for month in monthList:
         monthEelementSelected.select_by_value(str(month))
+
 
 def testRegistAttend(driver):
     inputWorkStartHour = driver.find_element_by_name('registFormList[0].workStartHour')
@@ -59,6 +62,7 @@ def testRegistAttend(driver):
     # 確認ボタン押下し、勤怠登録完了画面に遷移
     driver.find_element_by_name('submit').click()
 
+
 ''' ここからメイン処理 '''
 log = Logger.Logger("auto.log")
 log.write("AttendTest開始")
@@ -68,8 +72,8 @@ driver = webdriver.Chrome(ConstData.SELENIUM_DRIVER_PATH)
 
 # 正しいログイン情報でログイン
 loginId = "test"
-password= "test"
-LoginAuth.LoginAuth(driver, loginId, password).login()
+password = "test"
+LoginAuth.LoginAuth(driver, loginId, password).doLogin()
 
 # 勤怠登録画面へ遷移
 driver.find_element_by_link_text(u"勤怠登録").click()

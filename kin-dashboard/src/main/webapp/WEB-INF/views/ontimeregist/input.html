@@ -42,11 +42,11 @@
         <div class="table-row">
           <div class="table-header" th:text="#{workStartTime}"></div>
           <div class="table-data">
-            <input type="text" class="validate[required]" th:field="*{workStartHour}" size="10" maxlength="2" />
+            <input type="text" class="validate[required,custom[number]]" th:field="*{workStartHour}" size="10" maxlength="2" />
           </div>
           <div class="table-data">:</div>
           <div class="table-data">
-            <input type="text" class="validate[required]" th:field="*{workStartMinute}" size="10" maxlength="2" />
+            <input type="text" class="validate[required,custom[number]]" th:field="*{workStartMinute}" size="10" maxlength="2" />
           </div>
         </div>
 
@@ -55,11 +55,11 @@
         <div class="table-row">
           <div class="table-header" th:text="#{workEndTime}"></div>
           <div class="table-data">
-            <input type="text" class="validate[required]" th:field="*{workEndHour}" size="10" maxlength="2" />
+            <input type="text" class="validate[required,custom[number]]" th:field="*{workEndHour}" size="10" maxlength="2" />
           </div>
           <div class="table-data">:</div>
           <div class="table-data">
-            <input type="text" class="validate[required]" th:field="*{workEndMinute}" size="10" maxlength="2" />
+            <input type="text" class="validate[required,custom[number]]" th:field="*{workEndMinute}" size="10" maxlength="2" />
           </div>
         </div>
       </div>
@@ -69,7 +69,7 @@
       <div class="table">
         <div class="table-row">
           <div class="table-data">
-            <input type="submit" value="確 認" />
+            <input type="submit" name="submit" value="確 認" />
           </div>
         </div>
       </div>
