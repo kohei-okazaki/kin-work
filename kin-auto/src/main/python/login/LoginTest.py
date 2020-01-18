@@ -8,11 +8,13 @@ Login画面→ログイン後のTOP画面のテストを行うpython
 '''
 
 from time import sleep
+
 from selenium import webdriver
+
 from src.main.python.common import ConstData
 from src.main.python.common import Logger
 
-''' 指定したログインIDとパスワードでログインを行う '''
+# 指定したログインIDとパスワードでログインを行う
 def toLogin(driver, loginId, password):
 
     # ログイン画面を表示する
