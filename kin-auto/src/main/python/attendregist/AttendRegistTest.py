@@ -11,6 +11,7 @@ import datetime
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
+from src.main.python.attendregist import AttendRegist
 from src.main.python.common import ConstData
 from src.main.python.common import Logger
 from src.main.python.login import LoginAuth
@@ -38,20 +39,8 @@ def testMonthList(driver):
 
 
 def testRegistAttend(driver):
-    inputWorkStartHour = driver.find_element_by_name('registFormList[0].workStartHour')
-    inputWorkStartHour.send_keys('01')
 
-    inputWorkStartMinute = driver.find_element_by_name('registFormList[0].workStartMinute')
-    inputWorkStartMinute.send_keys('23')
-
-    inputWorkEndHour = driver.find_element_by_name('registFormList[0].workEndHour')
-    inputWorkEndHour.send_keys('01')
-
-    inputWorkEndMinute = driver.find_element_by_name('registFormList[0].workEndMinute')
-    inputWorkEndMinute.send_keys('23')
-
-    # 確認ボタン押下し、勤怠登録確認画面に遷移
-    driver.find_element_by_name('submit').click()
+    AttendRegist.AttendRegist(driver, 0, '09', '00', '17', '30').doRegist()
 
     # 戻るボタン押下し、再度勤怠登録画面に遷移
     driver.find_element_by_name('back').click()

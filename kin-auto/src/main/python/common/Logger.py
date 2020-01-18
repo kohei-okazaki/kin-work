@@ -19,7 +19,7 @@ class Logger():
             Param:
                 1. filepath:    ファイルパス
         """
-        self.__filepath = 'C:\kin-app\logs' + filepath
+        self.__filepath = 'C:\\kin-app\\logs\\' + filepath
 
     def write(self, msg):
         """
@@ -42,5 +42,5 @@ class Logger():
         linetxt += "\n"
 
         # ログファイルに書き込む
-        with open(self.__filepath, "a") as f:
+        with open(self.__filepath, "w", encoding='utf-8') as f:
             f.write(linetxt)

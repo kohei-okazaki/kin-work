@@ -22,7 +22,7 @@ class LoginAuth():
 
     def doLogin(self):
         '''
-       ログイン処理
+        ログイン処理
         '''
 
         # ログイン画面を表示する

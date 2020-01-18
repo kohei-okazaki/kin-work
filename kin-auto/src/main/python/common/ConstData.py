@@ -7,7 +7,9 @@ Created on 2019/10/20
 
 '''
 
+# 基底システムパス
+BASE_SYSTEM_PATH = 'C:/kin-app/git/kin-work/kin-auto'
 # Driverパス
-SELENIUM_DRIVER_PATH = 'C:/kin-app/git/kin-work/kin-auto/bin/chromedriver.exe'
-# RequestベースURL
+SELENIUM_DRIVER_PATH = BASE_SYSTEM_PATH + '/bin/chromedriver.exe'
+# Request基底URL
 BASE_REQUEST_URL = 'http://localhost:8080/kin-dashboard'
