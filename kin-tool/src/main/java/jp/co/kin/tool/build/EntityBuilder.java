@@ -35,7 +35,7 @@ import jp.co.kin.tool.type.ExecuteType;
 
 /**
  * EntityBuilder
- * 
+ *
  * @since 1.0.0
  *
  */

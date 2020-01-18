@@ -19,7 +19,7 @@ import jp.co.kin.tool.type.ExecuteType;
 
 /**
  * CreateTableBuilder
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -38,10 +38,23 @@ public class CreateTableBuilder extends SqlSourceBuilder {
 			body.add("CREATE TABLE " + tableName + " (");
 			StringJoiner columnData = new StringJoiner(StringUtil.COMMA + LineFeedType.CRLF.getValue());
 			table.getColumnList().stream().forEach(e -> {
+
 				String comment = e.getComment();
 				String name = e.getName();
 				String type = e.getType();
-				columnData.add(comment + StringUtil.NEW_LINE + name + StringUtil.SPACE + type);
+
+				StringBuilder sb = new StringBuilder();
+				sb.append("-- ");
+				sb.append(comment);
+				sb.append(StringUtil.NEW_LINE);
+				sb.append(name);
+				sb.append(StringUtil.SPACE);
+				sb.append(type);
+				sb.append(" comment '");
+				sb.append(comment);
+				sb.append("'");
+
+				columnData.add(sb.toString());
 			});
 			body.add(columnData.toString());
 			body.add(");");
