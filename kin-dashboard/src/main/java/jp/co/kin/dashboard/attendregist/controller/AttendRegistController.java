@@ -134,14 +134,14 @@ public class AttendRegistController implements BaseViewController {
 			dto.setUserId(sessionLoginUser.getUserId());
 			dto.setCompanyCode(ontimeDto.getCompanyCode());
 			dto.setWorkDataRegDate(LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate()));
-			dto.setWorkStartDate(LocalDateTime.of(Integer.valueOf(form.getYear()),
-					Integer.valueOf(form.getMonth()), regForm.getDay().intValue(),
-					Integer.valueOf(regForm.getWorkStartHour()),
-					Integer.valueOf(regForm.getWorkStartMinute())));
+			dto.setWorkStartDate(LocalDateTime.of(Integer.parseInt(form.getYear()),
+					Integer.parseInt(form.getMonth()), regForm.getDay().intValue(),
+					Integer.parseInt(regForm.getWorkStartHour()),
+					Integer.parseInt(regForm.getWorkStartMinute())));
 			dto.setWorkEndDate(
-					LocalDateTime.of(Integer.valueOf(form.getYear()), Integer.valueOf(form.getMonth()),
-							regForm.getDay().intValue(), Integer.valueOf(regForm.getWorkEndHour()),
-							Integer.valueOf(regForm.getWorkEndMinute())));
+					LocalDateTime.of(Integer.parseInt(form.getYear()), Integer.parseInt(form.getMonth()),
+							regForm.getDay().intValue(), Integer.parseInt(regForm.getWorkEndHour()),
+							Integer.parseInt(regForm.getWorkEndMinute())));
 
 			Duration diff = Duration.between(dto.getWorkStartDate(), dto.getWorkEndDate());
 			dto.setActualWorkTime(diff.toHoursPart() + "." + diff.toMinutesPart());

@@ -26,11 +26,19 @@
         <div class="table-row">
           <div class="table-data">完了しました</div>
         </div>
-        <div class="table-row"></div>
+        <div class="table-row">
+          <div class="table-data">&nbsp;</div>
+        </div>
         <div class="table-row">
           <input type="hidden" th:name="loginId" th:value="${session['sessionUser'].loginId}">
           <input type="hidden" th:name="password" th:value="${session['sessionUser'].password}">
           <input type="submit" value="TOPへ戻る" />
+        </div>
+        <div class="table-row">
+          <div class="table-data">&nbsp;</div>
+        </div>
+        <div class="table-row">
+          <div class="table-data">&nbsp;</div>
         </div>
       </div>
       <!--/* table部ここまで */-->

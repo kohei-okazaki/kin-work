@@ -18,7 +18,7 @@ class Logger():
             Param:
                 1. filepath:    ファイルパス
         """
-        self.__filepath = filepath
+        self.__filepath = 'C:\kin-app\logs' + filepath
 
     def write(self, msg):
         """
