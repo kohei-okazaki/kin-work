@@ -3,8 +3,6 @@ package jp.co.kin.tool.source;
 import java.util.Map;
 import java.util.StringJoiner;
 
-import org.apache.poi.ss.formula.functions.T;
-
 import jp.co.kin.common.util.StringUtil;
 import jp.co.kin.tool.type.AccessType;
 
@@ -158,7 +156,7 @@ public class Field {
 	 * @param classType
 	 *            クラス型
 	 */
-	public void setClassType(Class<T> classType) {
+	public void setClassType(Class<?> classType) {
 		this.classType = classType;
 	}
 

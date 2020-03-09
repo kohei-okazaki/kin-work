@@ -140,6 +140,7 @@ public class EntityBuilder extends SourceBuilder {
 	}
 
 	private String build(JavaSource source) {
+
 		StringJoiner result = new StringJoiner(LineFeedType.CRLF.getValue() + LineFeedType.CRLF.getValue());
 
 		// package情報
@@ -149,11 +150,9 @@ public class EntityBuilder extends SourceBuilder {
 		result.add(buildImport(source.getImportList()));
 
 		// class情報
-		result.add(
-				buildClassJavaDoc(source) + LineFeedType.CRLF.getValue()
-						+ buildClassAnnotation(source.getClassAnnotationMap())
-						+ LineFeedType.CRLF.getValue()
-						+ buildClass(source) + buildExtendsClass(source) + buildInterfaces(source) + " {");
+		result.add(buildClassJavaDoc(source) + LineFeedType.CRLF.getValue()
+				+ buildClassAnnotation(source.getClassAnnotationMap()) + LineFeedType.CRLF.getValue()
+				+ buildClass(source) + buildExtendsClass(source) + buildInterfaces(source) + " {");
 
 		// field情報
 		result.add(buildFields(source.getFieldList()));
