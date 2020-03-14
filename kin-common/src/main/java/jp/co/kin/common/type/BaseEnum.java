@@ -4,11 +4,16 @@ import java.util.stream.Stream;
 
 /**
  * 列挙型の基底インターフェース
- * 
+ *
  * @since 1.0.0
  */
 public interface BaseEnum {
 
+	/**
+	 * 値を返す
+	 *
+	 * @return value
+	 */
 	String getValue();
 
 	/**

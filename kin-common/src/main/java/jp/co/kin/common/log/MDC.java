@@ -6,7 +6,7 @@ import jp.co.kin.common.util.StringUtil;
 
 /**
  * Logの追加情報を管理するクラス
- * 
+ *
  * @since 1.0.0
  */
 public class MDC {

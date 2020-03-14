@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 
 /**
  * Propertiesファイルのマーカーアノテーション
- * 
+ *
  * @since 1.0.0
  */
 @Documented

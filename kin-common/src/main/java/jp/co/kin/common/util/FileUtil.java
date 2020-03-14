@@ -25,7 +25,6 @@ import jp.co.kin.common.type.BaseEnum;
  * File操作のUtil
  *
  * @since 1.0.0
- *
  */
 public class FileUtil {
 

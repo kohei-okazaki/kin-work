@@ -5,7 +5,6 @@ package jp.co.kin.common.type;
  * 適宜新しいアルゴリズムが追加された場合、本クラスに追加する
  *
  * @since 1.0.0
- *
  */
 public enum Algorithm implements BaseEnum {
 
