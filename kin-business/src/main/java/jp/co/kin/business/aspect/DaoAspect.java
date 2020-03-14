@@ -14,7 +14,7 @@ import jp.co.kin.db.entity.BaseEntity;
 
 /**
  * DaoAspect
- * 
+ *
  * @since 1.0.0
  */
 @Aspect

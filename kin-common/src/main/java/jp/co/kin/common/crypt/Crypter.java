@@ -25,7 +25,7 @@ public interface Crypter {
 	 *            復号したい文字列
 	 * @return 復号後の文字列
 	 * @throws Exception
-	 *             暗号化に失敗した場合
+	 *             復号に失敗した場合
 	 */
 	String decrypt(String str) throws Exception;
 }
