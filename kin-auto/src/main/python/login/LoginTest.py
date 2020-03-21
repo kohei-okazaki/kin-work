@@ -24,7 +24,7 @@ driver = webdriver.Chrome(ConstData.SELENIUM_DRIVER_PATH)
 # 正しいログイン情報でログイン
 loginId = "test"
 password = "test"
-LoginAuth.LoginAuth(driver, loginId, password).login()
+LoginAuth.LoginAuth(driver, loginId, password).doLogin()
 
 # ブラウザバック
 driver.back()
