@@ -9,9 +9,8 @@ import java.lang.annotation.Target;
 
 /**
  * CSVの1レコードのBeanに付与するマーカーアノテーション
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 @Documented
 @Retention(RUNTIME)

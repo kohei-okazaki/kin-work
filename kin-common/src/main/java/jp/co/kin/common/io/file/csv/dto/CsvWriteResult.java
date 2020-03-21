@@ -4,9 +4,8 @@ import jp.co.kin.common.bean.BaseDto;
 
 /**
  * CSVへの書き込み結果を保持するクラス
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public class CsvWriteResult implements BaseDto {
 

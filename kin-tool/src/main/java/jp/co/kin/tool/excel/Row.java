@@ -7,9 +7,8 @@ import jp.co.kin.tool.type.CellPositionType;
 
 /**
  * Row
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public class Row {
 

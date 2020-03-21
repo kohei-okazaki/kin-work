@@ -1,80 +1,88 @@
 package jp.co.kin.common.crypt;
 
 import java.io.UnsupportedEncodingException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jp.co.kin.common.log.Logger;
-import jp.co.kin.common.log.LoggerFactory;
 import jp.co.kin.common.type.Algorithm;
 import jp.co.kin.common.type.Charset;
 import jp.co.kin.common.util.StringUtil;
 
 /**
  * AESの可逆暗号クラス
- * 
+ *
  * @since 1.0.0
  */
 @Component("aesCrypter")
 public class AesCrypter implements Crypter {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AesCrypter.class);
 	@Autowired
 	private CryptComponent cryptComponent;
 
 	@Override
-	public String encrypt(String str) {
+	public String encrypt(String str) throws Exception {
 
 		if (StringUtil.isEmpty(str)) {
-			return null;
+			return str;
 		}
 
-		try {
-			byte[] key = getKey();
-			SecretKeySpec sks = new SecretKeySpec(key, Algorithm.AES.getValue());
-			byte[] input = str.getBytes(Charset.UTF_8.getValue());
+		byte[] input = str.getBytes(Charset.UTF_8.getValue());
 
-			// 暗号化
-			Cipher c = Cipher.getInstance(cryptComponent.getMode());
-			c.init(Cipher.ENCRYPT_MODE, sks);
+		// 暗号化
+		byte[] encrypted = getCipher(Cipher.ENCRYPT_MODE).doFinal(input);
 
-			byte[] encrypted = c.doFinal(input);
-			return Base64.getEncoder().encodeToString(encrypted);
+		return Base64.getEncoder().encodeToString(encrypted);
 
-		} catch (Exception e) {
-			LOG.error("暗号化処理が失敗しました", e);
-			return null;
-		}
 	}
 
 	@Override
-	public String decrypt(String str) {
+	public String decrypt(String str) throws Exception {
 
 		if (StringUtil.isEmpty(str)) {
-			return null;
+			return str;
 		}
 
-		try {
-			byte[] key = getKey();
-			SecretKeySpec sks = new SecretKeySpec(key, Algorithm.AES.getValue());
-			byte[] input = Base64.getDecoder().decode(str);
+		byte[] input = Base64.getDecoder().decode(str);
 
-			// 復号
-			Cipher c = Cipher.getInstance(cryptComponent.getMode());
-			c.init(Cipher.DECRYPT_MODE, sks);
+		// 復号
+		byte[] decrypted = getCipher(Cipher.DECRYPT_MODE).doFinal(input);
 
-			byte[] decrypted = c.doFinal(input);
-			return new String(decrypted, Charset.UTF_8.getValue());
+		return new String(decrypted, Charset.UTF_8.getValue());
 
-		} catch (Exception e) {
-			LOG.error("復号処理が失敗しました", e);
-			return null;
-		}
+	}
+
+	/**
+	 * Cipherを返す
+	 *
+	 * @param mode
+	 *            暗号化モード
+	 * @return Cipher
+	 * @throws UnsupportedEncodingException
+	 *             文字コードが不正な場合
+	 * @throws NoSuchAlgorithmException
+	 *             Algorithmが不正な場合
+	 * @throws NoSuchPaddingException
+	 *             Cipherの生成に失敗した場合
+	 * @throws InvalidKeyException
+	 *             Cipherの初期化に失敗した場合
+	 */
+	private Cipher getCipher(int mode) throws UnsupportedEncodingException,
+			NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
+
+		SecretKeySpec sks = new SecretKeySpec(getKey(), Algorithm.AES.getValue());
+
+		Cipher cipher = Cipher.getInstance(cryptComponent.getMode());
+		cipher.init(mode, sks);
+
+		return cipher;
 	}
 
 	/**

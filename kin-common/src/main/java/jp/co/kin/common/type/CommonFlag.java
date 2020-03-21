@@ -2,9 +2,8 @@ package jp.co.kin.common.type;
 
 /**
  * アプリで共通で使う"0"と"1"を扱う列挙
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public enum CommonFlag implements BaseEnum {
 

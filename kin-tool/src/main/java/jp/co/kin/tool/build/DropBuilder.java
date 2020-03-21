@@ -18,9 +18,8 @@ import jp.co.kin.tool.type.ExecuteType;
 
 /**
  * DropBuilder
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public class DropBuilder extends SqlSourceBuilder {
 

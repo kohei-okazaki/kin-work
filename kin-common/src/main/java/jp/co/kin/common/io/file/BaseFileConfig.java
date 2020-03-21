@@ -4,7 +4,7 @@ import jp.co.kin.common.type.Charset;
 
 /**
  * 基底ファイル設定情報保持クラス
- * 
+ *
  * @since 1.0.0
  */
 public abstract class BaseFileConfig {

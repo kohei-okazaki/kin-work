@@ -19,6 +19,7 @@ import jp.co.kin.common.type.ZoneIdType;
  *
  * @since 1.0.0
  */
+@SuppressWarnings("javadoc")
 public class LocalDateTimeUtil {
 
 	private LocalDateTimeUtil() {

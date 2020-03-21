@@ -11,7 +11,6 @@ import jp.co.kin.common.log.type.LogLevel;
  * 各アプリで例外ハンドリングをする場合、本クラスを継承して実装する
  *
  * @since 1.0.0
- *
  */
 public abstract class BaseExceptionHander implements HandlerExceptionResolver {
 

@@ -2,9 +2,8 @@ package jp.co.kin.common.exception;
 
 /**
  * システム例外クラス
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public class SystemException extends BaseRuntimeException {
 

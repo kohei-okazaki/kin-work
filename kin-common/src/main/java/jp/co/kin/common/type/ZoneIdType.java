@@ -4,9 +4,8 @@ import java.time.ZoneId;
 
 /**
  * java.time.ZoneIdの列挙
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public enum ZoneIdType implements BaseEnum {
 

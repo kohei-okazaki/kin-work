@@ -6,7 +6,7 @@ import jp.co.kin.common.log.annotation.Mask;
 
 /**
  * マスク処理クラス
- * 
+ *
  * @since 1.0.0
  */
 public class MaskExecutor {
