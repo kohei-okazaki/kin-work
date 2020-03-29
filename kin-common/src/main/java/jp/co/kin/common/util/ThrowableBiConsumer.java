@@ -7,24 +7,24 @@ import jp.co.kin.common.exception.BaseException;
  * throwできる例外はBaseExceptionを継承したクラスのみとする
  *
  * @param <T>
- *            T型
+ *     T型
  * @param <U>
- *            U型
+ *     U型
  * @since 1.0.0
  */
 @FunctionalInterface
 public interface ThrowableBiConsumer<T, U> {
 
-	/**
-	 * 関数を実行する
-	 *
-	 * @param t
-	 *            T
-	 * @param u
-	 *            U
-	 * @throws BaseException
-	 *             基底例外
-	 */
-	void accept(T t, U u) throws BaseException;
+    /**
+     * 関数を実行する
+     *
+     * @param t
+     *     T
+     * @param u
+     *     U
+     * @throws BaseException
+     *     基底例外
+     */
+    void accept(T t, U u) throws BaseException;
 
 }

@@ -10,11 +10,11 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface DailyUserWorkDataCreateService extends BaseService {
 
-	/**
-	 * 作成
-	 * 
-	 * @param entity
-	 *            日別ユーザ勤怠情報 Entity
-	 */
-	void create(DailyUserWorkData entity);
+    /**
+     * 作成
+     *
+     * @param entity
+     *     日別ユーザ勤怠情報 Entity
+     */
+    void create(DailyUserWorkData entity);
 }

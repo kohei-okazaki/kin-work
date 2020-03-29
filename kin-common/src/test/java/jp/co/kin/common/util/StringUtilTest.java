@@ -16,123 +16,123 @@ import jp.co.kin.common.util.StringUtil.PaddingType;
  */
 public class StringUtilTest extends BaseCommonTest {
 
-	@Test
-	public void toStrListTest() {
-		{
-			String str = "1,2,3,4";
-			List<String> resultList = StringUtil.toStrList(str, StringUtil.COMMA);
-			List<String> list = Arrays.asList("1", "2", "3", "4");
-			for (int i = 0; i < list.size(); i++) {
-				assertEquals(resultList.get(i), list.get(i));
-			}
-		}
-		{
-			String str = "1,2,3,4";
-			List<String> resultList = StringUtil.toStrList(str, StringUtil.COMMA);
-			List<String> list = Arrays.asList("1", "2", "3", "3");
-			assertEquals(resultList.get(0), list.get(0));
-			assertEquals(resultList.get(1), list.get(1));
-			assertEquals(resultList.get(2), list.get(2));
-			assertNotEquals(resultList.get(3), list.get(3));
-		}
-	}
+    @Test
+    public void toStrListTest() {
+        {
+            String str = "1,2,3,4";
+            List<String> resultList = StringUtil.toStrList(str, StringUtil.COMMA);
+            List<String> list = Arrays.asList("1", "2", "3", "4");
+            for (int i = 0; i < list.size(); i++) {
+                assertEquals(resultList.get(i), list.get(i));
+            }
+        }
+        {
+            String str = "1,2,3,4";
+            List<String> resultList = StringUtil.toStrList(str, StringUtil.COMMA);
+            List<String> list = Arrays.asList("1", "2", "3", "3");
+            assertEquals(resultList.get(0), list.get(0));
+            assertEquals(resultList.get(1), list.get(1));
+            assertEquals(resultList.get(2), list.get(2));
+            assertNotEquals(resultList.get(3), list.get(3));
+        }
+    }
 
-	@Test
-	public void isEmptyTest() {
-		{
-			String str = null;
-			assertEquals(StringUtil.isEmpty(str), true);
-		}
-		{
-			String str = "";
-			assertEquals(StringUtil.isEmpty(str), true);
-		}
-		{
-			String str = "  ";
-			assertEquals(StringUtil.isEmpty(str), true);
-		}
-		{
-			String str = "a";
-			assertEquals(StringUtil.isEmpty(str), false);
-		}
-	}
+    @Test
+    public void isEmptyTest() {
+        {
+            String str = null;
+            assertEquals(StringUtil.isEmpty(str), true);
+        }
+        {
+            String str = "";
+            assertEquals(StringUtil.isEmpty(str), true);
+        }
+        {
+            String str = "  ";
+            assertEquals(StringUtil.isEmpty(str), true);
+        }
+        {
+            String str = "a";
+            assertEquals(StringUtil.isEmpty(str), false);
+        }
+    }
 
-	@Test
-	public void isBrankTest() {
-		{
-			String str = null;
-			assertEquals(StringUtil.isBrank(str), true);
-		}
-		{
-			String str = "";
-			assertEquals(StringUtil.isBrank(str), true);
-		}
-		{
-			String str = "  ";
-			assertEquals(StringUtil.isBrank(str), false);
-		}
-		{
-			String str = "a";
-			assertEquals(StringUtil.isBrank(str), false);
-		}
-	}
+    @Test
+    public void isBrankTest() {
+        {
+            String str = null;
+            assertEquals(StringUtil.isBrank(str), true);
+        }
+        {
+            String str = "";
+            assertEquals(StringUtil.isBrank(str), true);
+        }
+        {
+            String str = "  ";
+            assertEquals(StringUtil.isBrank(str), false);
+        }
+        {
+            String str = "a";
+            assertEquals(StringUtil.isBrank(str), false);
+        }
+    }
 
-	@Test
-	public void hasValueTest() {
-		{
-			String str = "";
-			assertEquals(StringUtil.hasValue(str), false);
-		}
-		{
-			String str = null;
-			assertEquals(StringUtil.hasValue(str), false);
-		}
-		{
-			String str = "a";
-			assertEquals(StringUtil.hasValue(str), true);
-		}
-	}
+    @Test
+    public void hasValueTest() {
+        {
+            String str = "";
+            assertEquals(StringUtil.hasValue(str), false);
+        }
+        {
+            String str = null;
+            assertEquals(StringUtil.hasValue(str), false);
+        }
+        {
+            String str = "a";
+            assertEquals(StringUtil.hasValue(str), true);
+        }
+    }
 
-	@Test
-	public void paddingSpaceTest() {
+    @Test
+    public void paddingSpaceTest() {
 
-		{
-			String target = "";
-			int length = 5;
-			PaddingType paddingType = PaddingType.LEFT;
-			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "     ");
-		}
-		{
-			String target = "";
-			int length = 5;
-			PaddingType paddingType = PaddingType.LEFT;
-			assertNotEquals(StringUtil.paddingSpace(target, length, paddingType), " ");
-		}
-		{
-			String target = "a";
-			int length = 5;
-			PaddingType paddingType = PaddingType.LEFT;
-			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "a    ");
-		}
-		{
-			String target = "a";
-			int length = 5;
-			PaddingType paddingType = PaddingType.RIGHT;
-			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "    a");
-		}
-		{
-			String target = "12345";
-			int length = 1;
-			PaddingType paddingType = PaddingType.LEFT;
-			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "12345");
-		}
-		{
-			String target = "12345";
-			int length = 1;
-			PaddingType paddingType = PaddingType.RIGHT;
-			assertEquals(StringUtil.paddingSpace(target, length, paddingType), "12345");
-		}
+        {
+            String target = "";
+            int length = 5;
+            PaddingType paddingType = PaddingType.LEFT;
+            assertEquals(StringUtil.paddingSpace(target, length, paddingType), "     ");
+        }
+        {
+            String target = "";
+            int length = 5;
+            PaddingType paddingType = PaddingType.LEFT;
+            assertNotEquals(StringUtil.paddingSpace(target, length, paddingType), " ");
+        }
+        {
+            String target = "a";
+            int length = 5;
+            PaddingType paddingType = PaddingType.LEFT;
+            assertEquals(StringUtil.paddingSpace(target, length, paddingType), "a    ");
+        }
+        {
+            String target = "a";
+            int length = 5;
+            PaddingType paddingType = PaddingType.RIGHT;
+            assertEquals(StringUtil.paddingSpace(target, length, paddingType), "    a");
+        }
+        {
+            String target = "12345";
+            int length = 1;
+            PaddingType paddingType = PaddingType.LEFT;
+            assertEquals(StringUtil.paddingSpace(target, length, paddingType), "12345");
+        }
+        {
+            String target = "12345";
+            int length = 1;
+            PaddingType paddingType = PaddingType.RIGHT;
+            assertEquals(StringUtil.paddingSpace(target, length, paddingType), "12345");
+        }
 
-	}
+    }
 
 }

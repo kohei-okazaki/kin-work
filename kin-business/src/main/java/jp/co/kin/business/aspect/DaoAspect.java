@@ -21,33 +21,33 @@ import jp.co.kin.db.entity.BaseEntity;
 @Component
 public class DaoAspect {
 
-	/** LOG */
-	private static final Logger LOG = LoggerFactory.getLogger(DaoAspect.class);
+    /** LOG */
+    private static final Logger LOG = LoggerFactory.getLogger(DaoAspect.class);
 
-	@Autowired
-	@Qualifier("aesCrypter")
-	private Crypter crypter;
+    @Autowired
+    @Qualifier("aesCrypter")
+    private Crypter crypter;
 
-	/**
-	 * Dao実行時のAspect
-	 *
-	 * @param pjp
-	 *            ProceedingJoinPoint
-	 * @return Service実行後のObject
-	 * @throws Throwable
-	 *             例外発生時、そのままthrow
-	 */
-	@Around("execution(* jp.co.kin.db.dao.*Dao.*(..))")
-	public Object select(ProceedingJoinPoint pjp) throws Throwable {
+    /**
+     * Dao実行時のAspect
+     *
+     * @param pjp
+     *     ProceedingJoinPoint
+     * @return Service実行後のObject
+     * @throws Throwable
+     *     例外発生時、そのままthrow
+     */
+    @Around("execution(* jp.co.kin.db.dao.*Dao.*(..))")
+    public Object select(ProceedingJoinPoint pjp) throws Throwable {
 
-		String daoName = pjp.getThis().getClass().getName();
-		LOG.info(daoName + " called...");
-		Object result = pjp.proceed();
-		if (result instanceof BaseEntity) {
+        String daoName = pjp.getThis().getClass().getName();
+        LOG.info(daoName + " called...");
+        Object result = pjp.proceed();
+        if (result instanceof BaseEntity) {
 
-		}
-		LOG.info(daoName + " success");
+        }
+        LOG.info(daoName + " success");
 
-		return result;
-	}
+        return result;
+    }
 }

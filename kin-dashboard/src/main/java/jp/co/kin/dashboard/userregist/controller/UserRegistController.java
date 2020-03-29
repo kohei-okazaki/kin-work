@@ -34,60 +34,63 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 @RequestMapping("userregist")
 public class UserRegistController implements BaseViewController {
 
-	@Autowired
-	private LoginUserRegistService loginUserRegistService;
-	@Autowired
-	private OntimeMtSearchService ontimeMtSearchService;
+    @Autowired
+    private LoginUserRegistService loginUserRegistService;
+    @Autowired
+    private OntimeMtSearchService ontimeMtSearchService;
 
-	@ModelAttribute("userRegistForm")
-	public UserRegistForm setUpForm() {
-		return new UserRegistForm();
-	}
+    @ModelAttribute("userRegistForm")
+    public UserRegistForm setUpForm() {
+        return new UserRegistForm();
+    }
 
-	@SessionNonAuth
-	@GetMapping("/input")
-	public String input(Model model) {
-		// 定時情報マスタから企業コードを取得
-		List<String> companyCodeList = ontimeMtSearchService.search().stream().map(e -> e.getCompanyCode())
-				.collect(Collectors.toList());
-		model.addAttribute("companyCodeList", companyCodeList);
-		return getView(DashboardView.USER_REGIST_INPUT);
-	}
+    @SessionNonAuth
+    @GetMapping("/input")
+    public String input(Model model) {
+        // 定時情報マスタから企業コードを取得
+        List<String> companyCodeList = ontimeMtSearchService.search().stream()
+                .map(e -> e.getCompanyCode())
+                .collect(Collectors.toList());
+        model.addAttribute("companyCodeList", companyCodeList);
+        return getView(DashboardView.USER_REGIST_INPUT);
+    }
 
-	@SessionNonAuth
-	@CsrfToken(factocy = true)
-	@PostMapping("/confirm")
-	public String confirm(Model model, HttpServletRequest request, @Valid UserRegistForm form,
-			BindingResult result) {
+    @SessionNonAuth
+    @CsrfToken(factocy = true)
+    @PostMapping("/confirm")
+    public String confirm(Model model, HttpServletRequest request,
+            @Valid UserRegistForm form,
+            BindingResult result) {
 
-		// 定時情報を取得
-		List<String> companyCodeList = ontimeMtSearchService.search().stream().map(e -> e.getCompanyCode())
-				.collect(Collectors.toList());
-		model.addAttribute("companyCodeList", companyCodeList);
-		model.addAttribute("selectedCompanyCode", form.getCompanyCode());
+        // 定時情報を取得
+        List<String> companyCodeList = ontimeMtSearchService.search().stream()
+                .map(e -> e.getCompanyCode())
+                .collect(Collectors.toList());
+        model.addAttribute("companyCodeList", companyCodeList);
+        model.addAttribute("selectedCompanyCode", form.getCompanyCode());
 
-		if (result.hasErrors()) {
-			return getView(DashboardView.USER_REGIST_INPUT);
-		}
+        if (result.hasErrors()) {
+            return getView(DashboardView.USER_REGIST_INPUT);
+        }
 
-		UserRegistDto dto = DtoFactory.getDto(UserRegistDto.class, form);
-		if (loginUserRegistService.isDuplicateLoginId(dto)) {
-			model.addAttribute("errorMessage", "指定されたログインIDは使用できません");
-			return getView(DashboardView.USER_REGIST_INPUT);
-		}
+        UserRegistDto dto = DtoFactory.getDto(UserRegistDto.class, form);
+        if (loginUserRegistService.isDuplicateLoginId(dto)) {
+            model.addAttribute("errorMessage", "指定されたログインIDは使用できません");
+            return getView(DashboardView.USER_REGIST_INPUT);
+        }
 
-		return getView(DashboardView.USER_REGIST_CONFIRM);
-	}
+        return getView(DashboardView.USER_REGIST_CONFIRM);
+    }
 
-	@SessionNonAuth
-	@CsrfToken(check = true)
-	@PostMapping("/complete")
-	public String complete(Model model, UserRegistForm form) {
+    @SessionNonAuth
+    @CsrfToken(check = true)
+    @PostMapping("/complete")
+    public String complete(Model model, UserRegistForm form) {
 
-		UserRegistDto dto = DtoFactory.getDto(UserRegistDto.class, form);
-		loginUserRegistService.regist(dto);
+        UserRegistDto dto = DtoFactory.getDto(UserRegistDto.class, form);
+        loginUserRegistService.regist(dto);
 
-		return getView(DashboardView.USER_REGIST_COMPLETE);
-	}
+        return getView(DashboardView.USER_REGIST_COMPLETE);
+    }
 
 }

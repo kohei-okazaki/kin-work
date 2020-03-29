@@ -14,21 +14,21 @@ import jp.co.kin.business.userregist.dto.UserBaseDataDto;
  */
 public class UserBaseDataSearchServiceTest extends BaseBusinessTest {
 
-	@Autowired
-	private UserBaseDataSearchService service;
+    @Autowired
+    private UserBaseDataSearchService service;
 
-	@Test
-	public void searchByUserIdTest() {
-		{
-			String userId = "dummyId";
-			UserBaseDataDto dto = service.searchByUserId(userId);
-			assertEquals(null, dto);
-		}
-		{
-			String userId = "KCtest";
-			UserBaseDataDto dto = service.searchByUserId(userId);
-			assertEquals(userId, dto.getUserId());
-		}
-	}
+    @Test
+    public void searchByUserIdTest() {
+        {
+            String userId = "dummyId";
+            UserBaseDataDto dto = service.searchByUserId(userId);
+            assertEquals(null, dto);
+        }
+        {
+            String userId = "KCtest";
+            UserBaseDataDto dto = service.searchByUserId(userId);
+            assertEquals(userId, dto.getUserId());
+        }
+    }
 
 }

@@ -20,100 +20,103 @@ import jp.co.kin.common.log.LoggerFactory;
 
 /**
  * Dao設定情報クラス
- * 
+ *
  * @since 1.0.0
  */
 @Configuration
 public class DaoConfig implements Config {
 
-	@Autowired
-	private DataSource dataSource;
-	@Autowired
-	private Dialect dialect;
-	@Autowired
-	private SqlFileRepository sqlFileRepository;
-	@Autowired
-	private SystemComponent systemComponent;
+    @Autowired
+    private DataSource dataSource;
+    @Autowired
+    private Dialect dialect;
+    @Autowired
+    private SqlFileRepository sqlFileRepository;
+    @Autowired
+    private SystemComponent systemComponent;
 
-	public DaoConfig() {
-	}
+    public DaoConfig() {
+    }
 
-	@Override
-	public DataSource getDataSource() {
-		return dataSource;
-	}
+    @Override
+    public DataSource getDataSource() {
+        return dataSource;
+    }
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
-	@Override
-	public Dialect getDialect() {
-		return dialect;
-	}
+    @Override
+    public Dialect getDialect() {
+        return dialect;
+    }
 
-	public void setDialect(Dialect dialect) {
-		this.dialect = dialect;
-	}
+    public void setDialect(Dialect dialect) {
+        this.dialect = dialect;
+    }
 
-	@Override
-	public SqlFileRepository getSqlFileRepository() {
-		return sqlFileRepository;
-	}
+    @Override
+    public SqlFileRepository getSqlFileRepository() {
+        return sqlFileRepository;
+    }
 
-	public void setSqlFileRepository(SqlFileRepository sqlFileRepository) {
-		this.sqlFileRepository = sqlFileRepository;
-	}
+    public void setSqlFileRepository(SqlFileRepository sqlFileRepository) {
+        this.sqlFileRepository = sqlFileRepository;
+    }
 
-	@Override
-	public JdbcLogger getJdbcLogger() {
-		return new DaoLogger(Stream.of(Level.class.getEnumConstants())
-				.filter(e -> e.toString().equals(systemComponent.getLoglevel().getValue())).findFirst()
-				.orElse(Level.INFO));
-	}
+    @Override
+    public JdbcLogger getJdbcLogger() {
+        return new DaoLogger(Stream.of(Level.class.getEnumConstants())
+                .filter(e -> e.toString()
+                        .equals(systemComponent.getLoglevel().getValue()))
+                .findFirst()
+                .orElse(Level.INFO));
+    }
 
-	/**
-	 * Daoのロガークラス
-	 *
-	 */
-	public static class DaoLogger extends AbstractJdbcLogger<Level> {
+    /**
+     * Daoのロガークラス
+     *
+     */
+    public static class DaoLogger extends AbstractJdbcLogger<Level> {
 
-		private static final Logger LOG = LoggerFactory.getLogger(DaoLogger.class);
+        private static final Logger LOG = LoggerFactory.getLogger(DaoLogger.class);
 
-		public DaoLogger() {
-			this(Level.DEBUG);
-		}
+        public DaoLogger() {
+            this(Level.DEBUG);
+        }
 
-		public DaoLogger(Level level) {
-			super(level);
-		}
+        public DaoLogger(Level level) {
+            super(level);
+        }
 
-		@Override
-		public void log(Level level, String callerClassName, String callerMethodName, Throwable throwable,
-				Supplier<String> messageSupplier) {
+        @Override
+        public void log(Level level, String callerClassName, String callerMethodName,
+                Throwable throwable,
+                Supplier<String> messageSupplier) {
 
-			switch (level) {
-			case ERROR:
-				LOG.error(messageSupplier.get(), throwable);
-				break;
-			case WARN:
-				LOG.warn(messageSupplier.get(), throwable);
-				break;
-			case INFO:
-				LOG.info(messageSupplier.get());
-				break;
-			case DEBUG:
-				LOG.debug(messageSupplier.get());
-				break;
-			case TRACE:
-				LOG.trace(messageSupplier.get());
-				break;
-			default:
-				break;
-			}
+            switch (level) {
+            case ERROR:
+                LOG.error(messageSupplier.get(), throwable);
+                break;
+            case WARN:
+                LOG.warn(messageSupplier.get(), throwable);
+                break;
+            case INFO:
+                LOG.info(messageSupplier.get());
+                break;
+            case DEBUG:
+                LOG.debug(messageSupplier.get());
+                break;
+            case TRACE:
+                LOG.trace(messageSupplier.get());
+                break;
+            default:
+                break;
+            }
 
-		}
+        }
 
-	}
+    }
 
 }

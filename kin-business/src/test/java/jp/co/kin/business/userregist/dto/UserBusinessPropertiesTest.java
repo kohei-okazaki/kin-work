@@ -16,15 +16,15 @@ import jp.co.kin.business.test.BaseBusinessTest;
  */
 public class UserBusinessPropertiesTest extends BaseBusinessTest {
 
-	@Autowired
-	private UserBusinessProperties prop;
+    @Autowired
+    private UserBusinessProperties prop;
 
-	@Test
-	public void valueTest() {
-		{
-			assertEquals(LocalDateTime.of(9999, 12, 31, 0, 0, 0), prop.getAuthDate());
-			assertEquals(UserAuth.COMMON, prop.getUserAuth());
-		}
-	}
+    @Test
+    public void valueTest() {
+        {
+            assertEquals(LocalDateTime.of(9999, 12, 31, 0, 0, 0), prop.getAuthDate());
+            assertEquals(UserAuth.COMMON, prop.getUserAuth());
+        }
+    }
 
 }

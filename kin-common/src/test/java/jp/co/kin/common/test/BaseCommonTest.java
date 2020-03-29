@@ -23,16 +23,17 @@ import jp.co.kin.common.log.LoggerFactory;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BaseCommonTest {
 
-	private static final Logger LOG = LoggerFactory.getLogger(BaseCommonTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BaseCommonTest.class);
 
-	@Before
-	public void before() {
-		LOG.debug("BaseCommonTest start");
-		BeanFactory.setContext(new ClassPathXmlApplicationContext("classpath:common-context.xml"));
-	}
+    @Before
+    public void before() {
+        LOG.debug("BaseCommonTest start");
+        BeanFactory.setContext(
+                new ClassPathXmlApplicationContext("classpath:common-context.xml"));
+    }
 
-	@After
-	public void after() {
-		LOG.debug("BaseCommonTest end");
-	}
+    @After
+    public void after() {
+        LOG.debug("BaseCommonTest end");
+    }
 }

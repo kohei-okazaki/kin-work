@@ -18,10 +18,10 @@ import org.springframework.stereotype.Repository;
  *
  */
 @AnnotateWith(annotations = {
-		// 生成されたDAO実装クラスに@Repository
-		@Annotation(target = AnnotationTarget.CLASS, type = Repository.class),
-		// 生成されたDAO実装クラスのコンストラクタに@Autowired
-		@Annotation(target = AnnotationTarget.CONSTRUCTOR, type = Autowired.class)
+        // 生成されたDAO実装クラスに@Repository
+        @Annotation(target = AnnotationTarget.CLASS, type = Repository.class),
+        // 生成されたDAO実装クラスのコンストラクタに@Autowired
+        @Annotation(target = AnnotationTarget.CONSTRUCTOR, type = Autowired.class)
 })
 public @interface DaoRepository {
 

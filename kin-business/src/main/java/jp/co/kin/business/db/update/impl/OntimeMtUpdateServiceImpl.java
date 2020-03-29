@@ -15,12 +15,12 @@ import jp.co.kin.db.entity.OntimeMt;
 @Service
 public class OntimeMtUpdateServiceImpl implements OntimeMtUpdateService {
 
-	@Autowired
-	private OntimeMtDao dao;
+    @Autowired
+    private OntimeMtDao dao;
 
-	@Override
-	public void update(OntimeMt entity) {
-		dao.updateEntity(entity);
-	}
+    @Override
+    public void update(OntimeMt entity) {
+        dao.updateEntity(entity);
+    }
 
 }

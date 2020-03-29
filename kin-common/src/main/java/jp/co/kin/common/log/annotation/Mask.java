@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * ログ出力時マスク処理対象項目につけるアノテーション<br>
  * 出力したいマスク文字列をvalueで指定する
- * 
+ *
  * @since 1.0.0
  */
 @Documented
@@ -18,11 +18,11 @@ import java.lang.annotation.Target;
 @Target(FIELD)
 public @interface Mask {
 
-	/**
-	 * マスク文字列
-	 *
-	 * @return value
-	 */
-	String value() default "****";
+    /**
+     * マスク文字列
+     *
+     * @return value
+     */
+    String value() default "****";
 
 }

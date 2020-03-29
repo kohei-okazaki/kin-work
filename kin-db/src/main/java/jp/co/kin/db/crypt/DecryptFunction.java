@@ -14,26 +14,26 @@ import jp.co.kin.db.entity.BaseEntity;
 /**
  * 復号処理をおこなうFunction<br>
  * 暗号化カラムに対し、本クラスが復号処理を行う
- * 
+ *
  * @param <T>
- *            Entity
+ *     Entity
  * @since 1.0.0
  */
 @Component
 public class DecryptFunction<T extends BaseEntity> implements Function<Stream<T>, T> {
 
-	@Autowired
-	private EntityCrypter entityCrypter;
+    @Autowired
+    private EntityCrypter entityCrypter;
 
-	@Override
-	public T apply(Stream<T> t) {
+    @Override
+    public T apply(Stream<T> t) {
 
-		List<T> list = t.map(e -> {
-			entityCrypter.decrypt(e);
-			return e;
-		}).collect(Collectors.toList());
+        List<T> list = t.map(e -> {
+            entityCrypter.decrypt(e);
+            return e;
+        }).collect(Collectors.toList());
 
-		return CollectionUtil.isEmpty(list) ? null : list.get(0);
-	}
+        return CollectionUtil.isEmpty(list) ? null : list.get(0);
+    }
 
 }

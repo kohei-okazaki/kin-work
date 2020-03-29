@@ -16,23 +16,23 @@ import jp.co.kin.common.test.BaseCommonTest;
  */
 public class AesCrypterTest extends BaseCommonTest {
 
-	private static final Logger LOG = LoggerFactory.getLogger(AesCrypterTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AesCrypterTest.class);
 
-	@Autowired
-	@Qualifier("aesCrypter")
-	private Crypter crypter;
+    @Autowired
+    @Qualifier("aesCrypter")
+    private Crypter crypter;
 
-	@Test
-	public void cryptTest() {
-		try {
-			String value = "あいうえお12345";
-			String encryptValue = crypter.encrypt(value);
-			String decryptValue = crypter.decrypt(encryptValue);
-			assertEquals(value, decryptValue);
-		} catch (Exception e) {
-			LOG.error("#cryptTestに失敗", e);
-		}
+    @Test
+    public void cryptTest() {
+        try {
+            String value = "あいうえお12345";
+            String encryptValue = crypter.encrypt(value);
+            String decryptValue = crypter.decrypt(encryptValue);
+            assertEquals(value, decryptValue);
+        } catch (Exception e) {
+            LOG.error("#cryptTestに失敗", e);
+        }
 
-	}
+    }
 
 }

@@ -19,39 +19,39 @@ import jp.co.kin.db.entity.OntimeMt;
 @Service
 public class OntimeRegistServiceImpl implements OntimeRegistService {
 
-	/** 定時情報マスタ作成サービス */
-	@Autowired
-	private OntimeMtCreateService ontimeMtCreateService;
-	/** 定時情報マスタ検索サービス */
-	@Autowired
-	private OntimeMtSearchService ontimeMtSearchService;
-	/** 定時情報マスタ更新サービス */
-	@Autowired
-	private OntimeMtUpdateService ontimeMtUpdateService;
+    /** 定時情報マスタ作成サービス */
+    @Autowired
+    private OntimeMtCreateService ontimeMtCreateService;
+    /** 定時情報マスタ検索サービス */
+    @Autowired
+    private OntimeMtSearchService ontimeMtSearchService;
+    /** 定時情報マスタ更新サービス */
+    @Autowired
+    private OntimeMtUpdateService ontimeMtUpdateService;
 
-	@Override
-	public void regist(OntimeDto dto) {
+    @Override
+    public void regist(OntimeDto dto) {
 
-		OntimeMt entity = new OntimeMt();
-		BeanUtil.copy(dto, entity);
-		OntimeDto searchDto = selectByCompanyCode(dto.getCompanyCode());
-		if (BeanUtil.isNull(searchDto)) {
-			ontimeMtCreateService.create(entity);
-		} else {
-			ontimeMtUpdateService.update(entity);
-		}
+        OntimeMt entity = new OntimeMt();
+        BeanUtil.copy(dto, entity);
+        OntimeDto searchDto = selectByCompanyCode(dto.getCompanyCode());
+        if (BeanUtil.isNull(searchDto)) {
+            ontimeMtCreateService.create(entity);
+        } else {
+            ontimeMtUpdateService.update(entity);
+        }
 
-	}
+    }
 
-	/**
-	 * 指定した企業コードから定時情報Dtoを返す
-	 *
-	 * @param companyCode
-	 *            企業コード
-	 * @return 定時情報Dto
-	 */
-	private OntimeDto selectByCompanyCode(String companyCode) {
-		return ontimeMtSearchService.searchByCompanyCode(companyCode);
-	}
+    /**
+     * 指定した企業コードから定時情報Dtoを返す
+     *
+     * @param companyCode
+     *     企業コード
+     * @return 定時情報Dto
+     */
+    private OntimeDto selectByCompanyCode(String companyCode) {
+        return ontimeMtSearchService.searchByCompanyCode(companyCode);
+    }
 
 }

@@ -11,28 +11,28 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface LoginService extends BaseService {
 
-	/**
-	 * ログインユーザ情報のログインチェックを行う
-	 *
-	 * @param dto
-	 *            ログインユーザのDTO
-	 * @return LoginCheckResult
-	 */
-	LoginCheckResult checkLogin(LoginUserDataDto dto);
+    /**
+     * ログインユーザ情報のログインチェックを行う
+     *
+     * @param dto
+     *     ログインユーザのDTO
+     * @return LoginCheckResult
+     */
+    LoginCheckResult checkLogin(LoginUserDataDto dto);
 
-	/**
-	 * ログイン失敗回数をインクリメントし、更新後のログイン失敗回数が3回目の場合、アカウントロックフラグを1に更新する
-	 *
-	 * @param dto
-	 *            ログインユーザのDTO
-	 */
-	void updateFailLoginUserData(LoginUserDataDto dto);
+    /**
+     * ログイン失敗回数をインクリメントし、更新後のログイン失敗回数が3回目の場合、アカウントロックフラグを1に更新する
+     *
+     * @param dto
+     *     ログインユーザのDTO
+     */
+    void updateFailLoginUserData(LoginUserDataDto dto);
 
-	/**
-	 * ログイン失敗回数を"0"に更新する
-	 *
-	 * @param dto
-	 *            ログインユーザのDTO
-	 */
-	void updateClearloginFailCount(LoginUserDataDto dto);
+    /**
+     * ログイン失敗回数を"0"に更新する
+     *
+     * @param dto
+     *     ログインユーザのDTO
+     */
+    void updateClearloginFailCount(LoginUserDataDto dto);
 }

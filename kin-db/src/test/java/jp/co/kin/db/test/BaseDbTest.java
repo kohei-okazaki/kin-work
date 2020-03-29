@@ -20,21 +20,23 @@ import jp.co.kin.common.log.LoggerFactory;
  * </ul>
  *
  */
-@ContextConfiguration(locations = { "classpath:common-context.xml", "classpath:db-context.xml" })
+@ContextConfiguration(locations = { "classpath:common-context.xml",
+        "classpath:db-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class BaseDbTest {
 
-	private static final Logger LOG = LoggerFactory.getLogger(BaseDbTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BaseDbTest.class);
 
-	@Before
-	public void before() {
-		LOG.debug("BaseDbTest start");
-		BeanFactory.setContext(new ClassPathXmlApplicationContext("classpath:common-context.xml",
-				"classpath:db-context.xml"));
-	}
+    @Before
+    public void before() {
+        LOG.debug("BaseDbTest start");
+        BeanFactory.setContext(
+                new ClassPathXmlApplicationContext("classpath:common-context.xml",
+                        "classpath:db-context.xml"));
+    }
 
-	@After
-	public void after() {
-		LOG.debug("BaseDbTest end");
-	}
+    @After
+    public void after() {
+        LOG.debug("BaseDbTest end");
+    }
 }

@@ -6,57 +6,53 @@ import jp.co.kin.common.log.type.LogLevel;
 
 /**
  * system.propertiesのBeanクラス
- * 
+ *
  * @since 1.0.0
  */
 @Component
 public class SystemComponent {
 
-	/** loglevel */
-	private LogLevel loglevel;
-	/** ページング */
-	private String paging;
+    /** loglevel */
+    private LogLevel loglevel;
+    /** ページング */
+    private String paging;
 
-	/**
-	 * loglevelを返す
-	 *
-	 * @return loglevel
-	 *
-	 */
-	public LogLevel getLoglevel() {
-		return loglevel;
-	}
+    /**
+     * loglevelを返す
+     *
+     * @return loglevel
+     */
+    public LogLevel getLoglevel() {
+        return loglevel;
+    }
 
-	/**
-	 * loglevelを設定する
-	 *
-	 * @param loglevel
-	 *            loglevel
-	 *
-	 */
-	public void setLoglevel(String loglevel) {
-		this.loglevel = LogLevel.of(loglevel);
-	}
+    /**
+     * loglevelを設定する
+     *
+     * @param loglevel
+     *     loglevel
+     */
+    public void setLoglevel(String loglevel) {
+        this.loglevel = LogLevel.of(loglevel);
+    }
 
-	/**
-	 * pagingを返す
-	 *
-	 * @return paging
-	 *
-	 */
-	public String getPaging() {
-		return paging;
-	}
+    /**
+     * pagingを返す
+     *
+     * @return paging
+     */
+    public String getPaging() {
+        return paging;
+    }
 
-	/**
-	 * pagingを設定する
-	 *
-	 * @param paging
-	 *            paging
-	 *
-	 */
-	public void setPaging(String paging) {
-		this.paging = paging;
-	}
+    /**
+     * pagingを設定する
+     *
+     * @param paging
+     *     paging
+     */
+    public void setPaging(String paging) {
+        this.paging = paging;
+    }
 
 }

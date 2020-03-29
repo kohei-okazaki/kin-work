@@ -17,8 +17,8 @@ import java.lang.annotation.Target;
 @Target(FIELD)
 public @interface CsvColumn {
 
-	String label();
+    String label();
 
-	int order();
+    int order();
 
 }

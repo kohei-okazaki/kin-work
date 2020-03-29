@@ -7,7 +7,7 @@ import jp.co.kin.db.listener.DaoListener;
 /**
  * Entityの基底クラス<br>
  * 全Entityクラスはこのクラスを継承すること
- * 
+ *
  * @since 1.0.0
  */
 @Entity(listener = DaoListener.class)

@@ -13,14 +13,15 @@ import jp.co.kin.db.entity.DailyUserWorkData;
  * @since 1.0.0
  */
 @Service
-public class DailyUserWorkDataCreateServiceImpl implements DailyUserWorkDataCreateService {
+public class DailyUserWorkDataCreateServiceImpl
+        implements DailyUserWorkDataCreateService {
 
-	@Autowired
-	private DailyUserWorkDataDao dao;
+    @Autowired
+    private DailyUserWorkDataDao dao;
 
-	@Override
-	public void create(DailyUserWorkData entity) {
-		dao.insert(entity);
-	}
+    @Override
+    public void create(DailyUserWorkData entity) {
+        dao.insert(entity);
+    }
 
 }

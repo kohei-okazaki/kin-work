@@ -10,7 +10,7 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface LoginUserDataSearchService extends BaseService {
 
-	LoginUserDataDto searchByLoginId(String loginId);
+    LoginUserDataDto searchByLoginId(String loginId);
 
-	int searchCountByLoginId(String loginId);
+    int searchCountByLoginId(String loginId);
 }

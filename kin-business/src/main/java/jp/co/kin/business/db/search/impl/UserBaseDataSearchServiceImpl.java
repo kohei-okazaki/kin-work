@@ -17,13 +17,13 @@ import jp.co.kin.db.entity.UserBaseData;
 @Service
 public class UserBaseDataSearchServiceImpl implements UserBaseDataSearchService {
 
-	@Autowired
-	private UserBaseDataDao userBaseDataDao;
+    @Autowired
+    private UserBaseDataDao userBaseDataDao;
 
-	@Override
-	public UserBaseDataDto searchByUserId(String userId) {
-		UserBaseData entity = userBaseDataDao.selectById(userId);
-		return DtoFactory.getDto(UserBaseDataDto.class, entity);
-	}
+    @Override
+    public UserBaseDataDto searchByUserId(String userId) {
+        UserBaseData entity = userBaseDataDao.selectById(userId);
+        return DtoFactory.getDto(UserBaseDataDto.class, entity);
+    }
 
 }

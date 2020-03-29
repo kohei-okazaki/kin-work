@@ -10,28 +10,28 @@ import jp.co.kin.common.io.file.BaseFileConfig;
  */
 public class CsvConfig extends BaseFileConfig implements BaseDto {
 
-	/** 囲い文字 */
-	private String fileChar;
+    /** 囲い文字 */
+    private String fileChar;
 
-	/**
-	 * fileCharを返す
-	 *
-	 * @return fileChar
-	 *
-	 */
-	public String getFileChar() {
-		return fileChar;
-	}
+    /**
+     * fileCharを返す
+     *
+     * @return fileChar
+     *
+     */
+    public String getFileChar() {
+        return fileChar;
+    }
 
-	/**
-	 * fileCharを設定する
-	 *
-	 * @param fileChar
-	 *            fileChar
-	 *
-	 */
-	public void setFileChar(String fileChar) {
-		this.fileChar = fileChar;
-	}
+    /**
+     * fileCharを設定する
+     *
+     * @param fileChar
+     *     fileChar
+     *
+     */
+    public void setFileChar(String fileChar) {
+        this.fileChar = fileChar;
+    }
 
 }

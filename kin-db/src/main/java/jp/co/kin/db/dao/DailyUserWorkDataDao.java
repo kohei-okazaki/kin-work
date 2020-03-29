@@ -20,17 +20,17 @@ import jp.co.kin.db.entity.DailyUserWorkData;
 @DaoRepository
 public interface DailyUserWorkDataDao extends BaseDao {
 
-	@Delete
-	public int delete(DailyUserWorkData entity);
+    @Delete
+    public int delete(DailyUserWorkData entity);
 
-	@Update
-	public int update(DailyUserWorkData entity);
+    @Update
+    public int update(DailyUserWorkData entity);
 
-	@Insert
-	public int insert(DailyUserWorkData entity);
+    @Insert
+    public int insert(DailyUserWorkData entity);
 
-	@Select
-	public List<DailyUserWorkData> selectByWorkDate(String userId, LocalDate workStartDate,
-			LocalDate workEndDate);
+    @Select
+    public List<DailyUserWorkData> selectByWorkDate(String userId,
+            LocalDate workStartDate, LocalDate workEndDate);
 
 }

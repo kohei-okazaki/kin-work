@@ -17,16 +17,16 @@ import jp.co.kin.db.entity.UserBaseData;
 @DaoRepository
 public interface UserBaseDataDao extends BaseDao {
 
-	@Delete
-	public int delete(UserBaseData entity);
+    @Delete
+    public int delete(UserBaseData entity);
 
-	@Update
-	public int update(UserBaseData entity);
+    @Update
+    public int update(UserBaseData entity);
 
-	@Insert
-	public int insert(UserBaseData entity);
+    @Insert
+    public int insert(UserBaseData entity);
 
-	@Select
-	public UserBaseData selectById(String userId);
+    @Select
+    public UserBaseData selectById(String userId);
 
 }

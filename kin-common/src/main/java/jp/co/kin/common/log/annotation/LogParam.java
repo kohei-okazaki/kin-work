@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 /**
  * ログ出力項目名につけるアノテーション<br>
  * ログ出力時に指定したい名前をnameに指定する
- * 
+ *
  * @since 1.0.0
  */
 @Documented
@@ -18,11 +18,11 @@ import java.lang.annotation.Target;
 @Target(FIELD)
 public @interface LogParam {
 
-	/**
-	 * 名前
-	 *
-	 * @return 名前
-	 */
-	String name();
+    /**
+     * 名前
+     *
+     * @return 名前
+     */
+    String name();
 
 }

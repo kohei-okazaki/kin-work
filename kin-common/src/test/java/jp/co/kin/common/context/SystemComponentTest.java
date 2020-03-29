@@ -13,15 +13,15 @@ import jp.co.kin.common.test.BaseCommonTest;
  */
 public class SystemComponentTest extends BaseCommonTest {
 
-	@Autowired
-	private SystemComponent systemComponent;
+    @Autowired
+    private SystemComponent systemComponent;
 
-	@Test
-	public void valueTest() {
-		// paging
-		assertEquals(Integer.valueOf(systemComponent.getPaging()), 10);
+    @Test
+    public void valueTest() {
+        // paging
+        assertEquals(Integer.valueOf(systemComponent.getPaging()), 10);
 
-		// loglevel
-		assertEquals(systemComponent.getLoglevel(), "DEBUG");
-	}
+        // loglevel
+        assertEquals(systemComponent.getLoglevel(), "DEBUG");
+    }
 }

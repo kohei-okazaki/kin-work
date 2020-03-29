@@ -15,12 +15,12 @@ import jp.co.kin.db.entity.UserBaseData;
 @Service
 public class UserBaseDataCreateServiceImpl implements UserBaseDataCreateService {
 
-	@Autowired
-	private UserBaseDataDao dao;
+    @Autowired
+    private UserBaseDataDao dao;
 
-	@Override
-	public void create(UserBaseData entity) {
-		dao.insert(entity);
-	}
+    @Override
+    public void create(UserBaseData entity) {
+        dao.insert(entity);
+    }
 
 }

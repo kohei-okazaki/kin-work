@@ -12,14 +12,14 @@ import jp.co.kin.db.entity.UserBaseData;
  */
 public class UserBaseDataCreateServiceTest extends BaseBusinessTest {
 
-	@Autowired
-	private UserBaseDataCreateService service;
+    @Autowired
+    private UserBaseDataCreateService service;
 
-	@Test
-	public void createTest() {
-		UserBaseData entity = new UserBaseData();
-		entity.setUserId("tttttt");
-		entity.setCompanyCode("12345");
-		service.create(entity);
-	}
+    @Test
+    public void createTest() {
+        UserBaseData entity = new UserBaseData();
+        entity.setUserId("tttttt");
+        entity.setCompanyCode("12345");
+        service.create(entity);
+    }
 }

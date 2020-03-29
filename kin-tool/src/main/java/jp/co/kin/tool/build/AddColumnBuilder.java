@@ -32,48 +32,49 @@ import jp.co.kin.tool.type.ExecuteType;
  */
 public class AddColumnBuilder extends SqlSourceBuilder {
 
-	@Build
-	public void execute() {
+    @Build
+    public void execute() {
 
-		Excel excel = super.reader.read();
-		excel.activeSheet("TABLE_LIST");
+        Excel excel = super.reader.read();
+        excel.activeSheet("TABLE_LIST");
 
-		List<Row> targetRowList = getTargetRowList(excel.getRowList());
+        List<Row> targetRowList = getTargetRowList(excel.getRowList());
 
-		StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
+        StringJoiner body = new StringJoiner(StringUtil.NEW_LINE);
 
-		targetRowList.stream().forEach(e -> {
+        targetRowList.stream().forEach(e -> {
 
-			String tableName = e.getCell(CellPositionType.PHYSICAL_NAME).getValue();
-			String columnName = e.getCell(CellPositionType.COLUMN_NAME).getValue();
-			String columnType = getColumnType(e);
-			String columnComment = getColumnComment(e);
+            String tableName = e.getCell(CellPositionType.PHYSICAL_NAME).getValue();
+            String columnName = e.getCell(CellPositionType.COLUMN_NAME).getValue();
+            String columnType = getColumnType(e);
+            String columnComment = getColumnComment(e);
 
-			StringBuilder sb = new StringBuilder();
-			sb.append("ALTER TABLE ");
-			sb.append(tableName);
-			sb.append(" ADD ");
-			sb.append(columnName);
-			sb.append(" ");
-			sb.append(columnType);
-			sb.append(" COMMENT '");
-			sb.append(columnComment);
-			sb.append("';");
+            StringBuilder sb = new StringBuilder();
+            sb.append("ALTER TABLE ");
+            sb.append(tableName);
+            sb.append(" ADD ");
+            sb.append(columnName);
+            sb.append(" ");
+            sb.append(columnType);
+            sb.append(" COMMENT '");
+            sb.append(columnComment);
+            sb.append("';");
 
-			body.add(sb.toString());
-		});
+            body.add(sb.toString());
+        });
 
-		FileConfig fileConf = getFileConfig(ExecuteType.DDL);
-		fileConf.setFileName(LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(),
-				DateFormatType.YYYYMMDD_HHMMSS_NOSEP) + FileExtension.SQL.getValue());
-		fileConf.setData(body.toString());
-		FileFactory.create(fileConf);
-	}
+        FileConfig fileConf = getFileConfig(ExecuteType.DDL);
+        fileConf.setFileName(LocalDateTimeUtil.toString(LocalDateTimeUtil.getSysDate(),
+                DateFormatType.YYYYMMDD_HHMMSS_NOSEP) + FileExtension.SQL.getValue());
+        fileConf.setData(body.toString());
+        FileFactory.create(fileConf);
+    }
 
-	private List<Row> getTargetRowList(List<Row> rowList) {
-		return rowList.stream()
-				.filter(e -> CommonFlag.TRUE.is(e.getCell(CellPositionType.ADD_FLG).getValue()))
-				.collect(Collectors.toList());
-	}
+    private List<Row> getTargetRowList(List<Row> rowList) {
+        return rowList.stream()
+                .filter(e -> CommonFlag.TRUE
+                        .is(e.getCell(CellPositionType.ADD_FLG).getValue()))
+                .collect(Collectors.toList());
+    }
 
 }

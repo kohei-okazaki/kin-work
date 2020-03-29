@@ -10,11 +10,11 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface OntimeRegistService extends BaseService {
 
-	/**
-	 * 定時情報を登録する
-	 *
-	 * @param dto
-	 *            定時情報Dto
-	 */
-	void regist(OntimeDto dto);
+    /**
+     * 定時情報を登録する
+     *
+     * @param dto
+     *     定時情報Dto
+     */
+    void regist(OntimeDto dto);
 }

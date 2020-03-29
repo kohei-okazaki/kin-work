@@ -15,17 +15,17 @@ import jp.co.kin.db.entity.LoginUserData;
 @Service
 public class LoginUserDataUpdateServiceImpl implements LoginUserDataUpdateService {
 
-	@Autowired
-	private LoginUserDataDao dao;
+    @Autowired
+    private LoginUserDataDao dao;
 
-	@Override
-	public void updateFailCount(LoginUserData entity) {
-		dao.updateFailCount(entity);
-	}
+    @Override
+    public void updateFailCount(LoginUserData entity) {
+        dao.updateFailCount(entity);
+    }
 
-	@Override
-	public void updateAccountLock(LoginUserData entity) {
-		dao.updateAccountLock(entity);
-	}
+    @Override
+    public void updateAccountLock(LoginUserData entity) {
+        dao.updateAccountLock(entity);
+    }
 
 }

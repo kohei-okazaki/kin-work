@@ -12,19 +12,19 @@ import jp.co.kin.business.test.BaseBusinessTest;
  */
 public class OntimeRegistServiceTest extends BaseBusinessTest {
 
-	@Autowired
-	private OntimeRegistService service;
+    @Autowired
+    private OntimeRegistService service;
 
-	@Test
-	public void registTest() {
-		{
-			OntimeDto dto = new OntimeDto();
-			dto.setCompanyCode("99999");
-			dto.setWorkStartHour("01");
-			dto.setWorkStartMinute("02");
-			dto.setWorkEndHour("03");
-			dto.setWorkEndMinute("04");
-			service.regist(dto);
-		}
-	}
+    @Test
+    public void registTest() {
+        {
+            OntimeDto dto = new OntimeDto();
+            dto.setCompanyCode("99999");
+            dto.setWorkStartHour("01");
+            dto.setWorkStartMinute("02");
+            dto.setWorkEndHour("03");
+            dto.setWorkEndMinute("04");
+            service.regist(dto);
+        }
+    }
 }

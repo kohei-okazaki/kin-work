@@ -14,22 +14,22 @@ import jp.co.kin.db.test.BaseDbTest;
  */
 public class OntimeMtDaoTest extends BaseDbTest {
 
-	@Autowired
-	private OntimeMtDao dao;
+    @Autowired
+    private OntimeMtDao dao;
 
-	@Test
-	public void selectByIdTest() {
-		{
-			// entityが存在する場合
-			String id = "00001";
-			OntimeMt entity = dao.selectById(id);
-			assertEquals(id, entity.getCompanyCode());
-		}
-		{
-			// entityが存在しない場合
-			String id = "dummyId";
-			OntimeMt entity = dao.selectById(id);
-			assertEquals(null, entity);
-		}
-	}
+    @Test
+    public void selectByIdTest() {
+        {
+            // entityが存在する場合
+            String id = "00001";
+            OntimeMt entity = dao.selectById(id);
+            assertEquals(id, entity.getCompanyCode());
+        }
+        {
+            // entityが存在しない場合
+            String id = "dummyId";
+            OntimeMt entity = dao.selectById(id);
+            assertEquals(null, entity);
+        }
+    }
 }

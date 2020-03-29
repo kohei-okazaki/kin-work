@@ -15,12 +15,12 @@ import jp.co.kin.db.entity.LoginUserData;
 @Service
 public class LoginUserDataCreateServiceImpl implements LoginUserDataCreateService {
 
-	@Autowired
-	private LoginUserDataDao dao;
+    @Autowired
+    private LoginUserDataDao dao;
 
-	@Override
-	public void create(LoginUserData entity) {
-		dao.insert(entity);
-	}
+    @Override
+    public void create(LoginUserData entity) {
+        dao.insert(entity);
+    }
 
 }

@@ -47,4 +47,7 @@ appender("FILE", RollingFileAppender) {
 
 }
 
+// アプリで出力されるログのログレベルを設定
+logger("jp.co.kin", DEBUG, appenderList, false)
+
 root(DEBUG, appenderList)

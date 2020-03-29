@@ -25,64 +25,64 @@ import jp.co.kin.db.entity.UserBaseData;
 @Service
 public class LoginUserRegistServiceImpl implements LoginUserRegistService {
 
-	/** ログインユーザ情報作成サービス */
-	@Autowired
-	private LoginUserDataCreateService loginUserDataCreateService;
-	/** ユーザ業務設定ファイルのDto */
-	@Autowired
-	private UserBusinessProperties loginUserBusinessProperties;
-	/** ログインユーザ情報検索サービス */
-	@Autowired
-	private LoginUserDataSearchService loginUserDataSearchService;
-	/** ユーザ基本情報作成サービス */
-	@Autowired
-	private UserBaseDataCreateService userBaseDataCreateService;
+    /** ログインユーザ情報作成サービス */
+    @Autowired
+    private LoginUserDataCreateService loginUserDataCreateService;
+    /** ユーザ業務設定ファイルのDto */
+    @Autowired
+    private UserBusinessProperties loginUserBusinessProperties;
+    /** ログインユーザ情報検索サービス */
+    @Autowired
+    private LoginUserDataSearchService loginUserDataSearchService;
+    /** ユーザ基本情報作成サービス */
+    @Autowired
+    private UserBaseDataCreateService userBaseDataCreateService;
 
-	@Override
-	public void regist(UserRegistDto dto) {
+    @Override
+    public void regist(UserRegistDto dto) {
 
-		registLoginUserData(dto);
-		registUserBaseData(dto);
-		dto.setRegistSuccess(true);
-	}
+        registLoginUserData(dto);
+        registUserBaseData(dto);
+        dto.setRegistSuccess(true);
+    }
 
-	@Override
-	public boolean isDuplicateLoginId(UserRegistDto dto) {
-		return loginUserDataSearchService.searchCountByLoginId(dto.getLoginId()) > 1;
-	}
+    @Override
+    public boolean isDuplicateLoginId(UserRegistDto dto) {
+        return loginUserDataSearchService.searchCountByLoginId(dto.getLoginId()) > 1;
+    }
 
-	/**
-	 * ログインユーザ情報を登録
-	 * 
-	 * @param dto
-	 *            ユーザ登録DTO
-	 */
-	private void registLoginUserData(UserRegistDto dto) {
+    /**
+     * ログインユーザ情報を登録
+     *
+     * @param dto
+     *     ユーザ登録DTO
+     */
+    private void registLoginUserData(UserRegistDto dto) {
 
-		LoginUserData entity = new LoginUserData();
+        LoginUserData entity = new LoginUserData();
 
-		dto.setUserId("KC" + dto.getLoginId());
-		BeanUtil.copy(dto, entity);
+        dto.setUserId("KC" + dto.getLoginId());
+        BeanUtil.copy(dto, entity);
 
-		entity.setPasswordExpire(loginUserBusinessProperties.getAuthDate());
-		entity.setUserAuth(loginUserBusinessProperties.getUserAuth().getValue());
-		entity.setAccountLockFlg(AccountLockFlg.USABLE.getValue());
-		entity.setLoginFailCount(BigDecimal.ZERO);
+        entity.setPasswordExpire(loginUserBusinessProperties.getAuthDate());
+        entity.setUserAuth(loginUserBusinessProperties.getUserAuth().getValue());
+        entity.setAccountLockFlg(AccountLockFlg.USABLE.getValue());
+        entity.setLoginFailCount(BigDecimal.ZERO);
 
-		loginUserDataCreateService.create(entity);
-	}
+        loginUserDataCreateService.create(entity);
+    }
 
-	/**
-	 * ユーザ基本情報を登録
-	 *
-	 * @param dto
-	 *            ユーザ登録DTO
-	 */
-	private void registUserBaseData(UserRegistDto dto) {
+    /**
+     * ユーザ基本情報を登録
+     *
+     * @param dto
+     *     ユーザ登録DTO
+     */
+    private void registUserBaseData(UserRegistDto dto) {
 
-		UserBaseData entity = new UserBaseData();
-		BeanUtil.copy(dto, entity);
-		userBaseDataCreateService.create(entity);
-	}
+        UserBaseData entity = new UserBaseData();
+        BeanUtil.copy(dto, entity);
+        userBaseDataCreateService.create(entity);
+    }
 
 }

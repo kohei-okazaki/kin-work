@@ -15,32 +15,32 @@ import jp.co.kin.db.test.BaseDbTest;
  */
 public class LoginUserDataDaoTest extends BaseDbTest {
 
-	@Autowired
-	private LoginUserDataDao dao;
-	@Autowired
-	private DecryptFunction<LoginUserData> decryptFuinction;
+    @Autowired
+    private LoginUserDataDao dao;
+    @Autowired
+    private DecryptFunction<LoginUserData> decryptFuinction;
 
-	@Test
-	public void selectByIdTest() {
-		{
-			// entityが存在する場合
-			String id = "test";
-			LoginUserData entity = dao.selectById(id, decryptFuinction);
-			assertEquals(id, entity.getLoginId());
-		}
-		{
-			// entityが存在しない場合
-			String id = "dummyId";
-			LoginUserData entity = dao.selectById(id, decryptFuinction);
-			assertEquals(null, entity);
-		}
-	}
+    @Test
+    public void selectByIdTest() {
+        {
+            // entityが存在する場合
+            String id = "test";
+            LoginUserData entity = dao.selectById(id, decryptFuinction);
+            assertEquals(id, entity.getLoginId());
+        }
+        {
+            // entityが存在しない場合
+            String id = "dummyId";
+            LoginUserData entity = dao.selectById(id, decryptFuinction);
+            assertEquals(null, entity);
+        }
+    }
 
-	@Test
-	public void selectCountById() {
-		{
-			String loginId = "test";
-			assertEquals(1, dao.selectCountById(loginId));
-		}
-	}
+    @Test
+    public void selectCountById() {
+        {
+            String loginId = "test";
+            assertEquals(1, dao.selectCountById(loginId));
+        }
+    }
 }

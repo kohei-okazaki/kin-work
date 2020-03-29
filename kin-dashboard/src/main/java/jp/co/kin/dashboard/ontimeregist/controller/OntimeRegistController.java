@@ -27,38 +27,38 @@ import jp.co.kin.web.interceptor.annotation.CsrfToken;
 @RequestMapping("ontimeregist")
 public class OntimeRegistController implements BaseViewController {
 
-	@Autowired
-	private OntimeRegistService ontimeRegistService;
+    @Autowired
+    private OntimeRegistService ontimeRegistService;
 
-	@ModelAttribute("ontimeRegistForm")
-	public OntimeRegistForm setUpForm() {
-		return new OntimeRegistForm();
-	}
+    @ModelAttribute("ontimeRegistForm")
+    public OntimeRegistForm setUpForm() {
+        return new OntimeRegistForm();
+    }
 
-	@GetMapping("/input")
-	public String input() {
-		return getView(DashboardView.ONTIME_REGIST_INPUT);
-	}
+    @GetMapping("/input")
+    public String input() {
+        return getView(DashboardView.ONTIME_REGIST_INPUT);
+    }
 
-	@CsrfToken(factocy = true)
-	@PostMapping("/confirm")
-	public String confirm(@Valid OntimeRegistForm form, BindingResult result) {
+    @CsrfToken(factocy = true)
+    @PostMapping("/confirm")
+    public String confirm(@Valid OntimeRegistForm form, BindingResult result) {
 
-		if (result.hasErrors()) {
-			return getView(DashboardView.ONTIME_REGIST_INPUT);
-		}
+        if (result.hasErrors()) {
+            return getView(DashboardView.ONTIME_REGIST_INPUT);
+        }
 
-		return getView(DashboardView.ONTIME_REGIST_CONFIRM);
-	}
+        return getView(DashboardView.ONTIME_REGIST_CONFIRM);
+    }
 
-	@CsrfToken(check = true)
-	@PostMapping("/complete")
-	public String complete(OntimeRegistForm form) {
+    @CsrfToken(check = true)
+    @PostMapping("/complete")
+    public String complete(OntimeRegistForm form) {
 
-		OntimeDto dto = DtoFactory.getDto(OntimeDto.class, form);
+        OntimeDto dto = DtoFactory.getDto(OntimeDto.class, form);
 
-		ontimeRegistService.regist(dto);
+        ontimeRegistService.regist(dto);
 
-		return getView(DashboardView.ONTIME_REGIST_COMPLETE);
-	}
+        return getView(DashboardView.ONTIME_REGIST_COMPLETE);
+    }
 }

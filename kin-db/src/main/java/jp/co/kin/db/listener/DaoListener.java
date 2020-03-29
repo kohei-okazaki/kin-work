@@ -29,73 +29,76 @@ import jp.co.kin.db.entity.BaseEntity;
  * </ul>
  *
  * @param <T>
- *            Entity
+ *     Entity
  * @since 1.0.0
  */
 public class DaoListener<T extends BaseEntity> implements EntityListener<T> {
 
-	/** Logger */
-	private static final Logger LOG = LoggerFactory.getLogger(DaoListener.class);
-	/** Entity暗号化クラス */
-	private EntityCrypter entityCrypter = BeanFactory.getBean(EntityCrypterImpl.class);
+    /** Logger */
+    private static final Logger LOG = LoggerFactory.getLogger(DaoListener.class);
+    /** Entity暗号化クラス */
+    private EntityCrypter entityCrypter = BeanFactory.getBean(EntityCrypterImpl.class);
 
-	@Override
-	public void preDelete(T entity, PreDeleteContext<T> context) {
-		EntityListener.super.preDelete(entity, context);
-	}
+    @Override
+    public void preDelete(T entity, PreDeleteContext<T> context) {
+        EntityListener.super.preDelete(entity, context);
+    }
 
-	@Override
-	public void preInsert(T entity, PreInsertContext<T> context) {
-		try {
-			for (Method m : BeanUtil.getMethodList(entity.getClass())) {
-				if ("setRegDate".equals(m.getName()) || "setUpdateDate".equals(m.getName())) {
-					// 登録日時/更新日時の設定
-					m.invoke(entity, LocalDateTimeUtil.getSysDate());
-				}
-			}
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			LOG.error("setterの実行に失敗しました", e);
-		}
+    @Override
+    public void preInsert(T entity, PreInsertContext<T> context) {
+        try {
+            for (Method m : BeanUtil.getMethodList(entity.getClass())) {
+                if ("setRegDate".equals(m.getName())
+                        || "setUpdateDate".equals(m.getName())) {
+                    // 登録日時/更新日時の設定
+                    m.invoke(entity, LocalDateTimeUtil.getSysDate());
+                }
+            }
+        } catch (IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException e) {
+            LOG.error("setterの実行に失敗しました", e);
+        }
 
-		// 暗号化
-		entityCrypter.encrypt(entity);
+        // 暗号化
+        entityCrypter.encrypt(entity);
 
-		EntityListener.super.preInsert(entity, context);
-	}
+        EntityListener.super.preInsert(entity, context);
+    }
 
-	@Override
-	public void preUpdate(T entity, PreUpdateContext<T> context) {
-		try {
-			for (Method m : BeanUtil.getMethodList(entity.getClass())) {
-				if ("setUpdateDate".equals(m.getName())) {
-					// 更新日時の設定
-					m.invoke(entity, LocalDateTimeUtil.getSysDate());
-				}
-			}
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			LOG.error("setterの実行に失敗しました", e);
-		}
+    @Override
+    public void preUpdate(T entity, PreUpdateContext<T> context) {
+        try {
+            for (Method m : BeanUtil.getMethodList(entity.getClass())) {
+                if ("setUpdateDate".equals(m.getName())) {
+                    // 更新日時の設定
+                    m.invoke(entity, LocalDateTimeUtil.getSysDate());
+                }
+            }
+        } catch (IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException e) {
+            LOG.error("setterの実行に失敗しました", e);
+        }
 
-		// 暗号化
-		entityCrypter.encrypt(entity);
+        // 暗号化
+        entityCrypter.encrypt(entity);
 
-		// 暗号化
-		EntityListener.super.preUpdate(entity, context);
-	}
+        // 暗号化
+        EntityListener.super.preUpdate(entity, context);
+    }
 
-	@Override
-	public void postDelete(T entity, PostDeleteContext<T> context) {
-		EntityListener.super.postDelete(entity, context);
-	}
+    @Override
+    public void postDelete(T entity, PostDeleteContext<T> context) {
+        EntityListener.super.postDelete(entity, context);
+    }
 
-	@Override
-	public void postInsert(T entity, PostInsertContext<T> context) {
-		EntityListener.super.postInsert(entity, context);
-	}
+    @Override
+    public void postInsert(T entity, PostInsertContext<T> context) {
+        EntityListener.super.postInsert(entity, context);
+    }
 
-	@Override
-	public void postUpdate(T entity, PostUpdateContext<T> context) {
-		EntityListener.super.postUpdate(entity, context);
-	}
+    @Override
+    public void postUpdate(T entity, PostUpdateContext<T> context) {
+        EntityListener.super.postUpdate(entity, context);
+    }
 
 }

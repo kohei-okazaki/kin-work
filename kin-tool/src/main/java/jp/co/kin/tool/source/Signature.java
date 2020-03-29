@@ -13,22 +13,23 @@ import jp.co.kin.common.util.StringUtil;
  */
 public class Signature {
 
-	private Map<Class<?>, String> argsMap = new LinkedHashMap<>();
+    private Map<Class<?>, String> argsMap = new LinkedHashMap<>();
 
-	public void addArgs(Class<?> clazz, String name) {
-		argsMap.put(clazz, name);
-	}
+    public void addArgs(Class<?> clazz, String name) {
+        argsMap.put(clazz, name);
+    }
 
-	@Override
-	public String toString() {
+    @Override
+    public String toString() {
 
-		if (argsMap.isEmpty()) {
-			return "";
-		}
+        if (argsMap.isEmpty()) {
+            return "";
+        }
 
-		StringJoiner body = new StringJoiner(StringUtil.SPACE);
-		argsMap.entrySet().forEach(e -> body.add(e.getKey().getSimpleName() + " " + e.getValue()));
+        StringJoiner body = new StringJoiner(StringUtil.SPACE);
+        argsMap.entrySet()
+                .forEach(e -> body.add(e.getKey().getSimpleName() + " " + e.getValue()));
 
-		return body.toString();
-	}
+        return body.toString();
+    }
 }
