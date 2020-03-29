@@ -10,6 +10,6 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface OntimeMtCreateService extends BaseService {
 
-	void create(OntimeMt entity);
+    void create(OntimeMt entity);
 
 }

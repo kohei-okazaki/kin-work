@@ -14,31 +14,31 @@ import jp.co.kin.common.type.BaseEnum;
  */
 public enum UserAuth implements BaseEnum {
 
-	/** 一般 */
-	COMMON("0"),
-	/** 管理者 */
-	MANAGE("1");
+    /** 一般 */
+    COMMON("0"),
+    /** 管理者 */
+    MANAGE("1");
 
-	/** 値 */
-	private String value;
+    /** 値 */
+    private String value;
 
-	/**
-	 * コンストラクタ
-	 *
-	 * @param value
-	 *            値
-	 */
-	private UserAuth(String value) {
-		this.value = value;
-	}
+    /**
+     * コンストラクタ
+     *
+     * @param value
+     *     値
+     */
+    private UserAuth(String value) {
+        this.value = value;
+    }
 
-	@Override
-	public String getValue() {
-		return this.value;
-	}
+    @Override
+    public String getValue() {
+        return this.value;
+    }
 
-	public static UserAuth of(String value) {
-		return BaseEnum.of(UserAuth.class, value);
-	}
+    public static UserAuth of(String value) {
+        return BaseEnum.of(UserAuth.class, value);
+    }
 
 }

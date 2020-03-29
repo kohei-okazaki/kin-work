@@ -12,7 +12,7 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface OntimeMtSearchService extends BaseService {
 
-	List<OntimeDto> search();
+    List<OntimeDto> search();
 
-	OntimeDto searchByCompanyCode(String companyCode);
+    OntimeDto searchByCompanyCode(String companyCode);
 }

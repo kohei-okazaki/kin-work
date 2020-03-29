@@ -27,47 +27,53 @@ import jp.co.kin.web.interceptor.BaseWebInterceptor;
  */
 public class SessionAuthInterceptor extends BaseWebInterceptor {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SessionAuthInterceptor.class);
+    private static final Logger LOG = LoggerFactory
+            .getLogger(SessionAuthInterceptor.class);
 
-	@Autowired
-	private SessionComponent sessionComponent;
-	@Autowired
-	private LoginService loginService;
+    @Autowired
+    private SessionComponent sessionComponent;
+    @Autowired
+    private LoginService loginService;
 
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
+            Object handler)
+            throws Exception {
 
-		if (isStaticResource(handler)) {
-			// 静的リソースの場合は認証不要
-			return true;
-		} else if (isSessionAuth(handler)) {
-			// session情報の検査が必要な場合
+        if (isStaticResource(handler)) {
+            // 静的リソースの場合は認証不要
+            return true;
+        } else if (isSessionAuth(handler)) {
+            // session情報の検査が必要な場合
 
-			// session情報を取得
-			HttpSession session = request.getSession();
-			SessionLoginUser sessionLoginUser = sessionComponent
-					.getValue(session, "sessionUser", SessionLoginUser.class).orElseThrow(
-							() -> new SystemException(CommonErrorCode.SESSION_ILLEGAL, "session情報が不正です"));
-			LOG.infoRes(sessionLoginUser);
+            // session情報を取得
+            HttpSession session = request.getSession();
+            SessionLoginUser sessionLoginUser = sessionComponent
+                    .getValue(session, "sessionUser", SessionLoginUser.class).orElseThrow(
+                            () -> new SystemException(CommonErrorCode.SESSION_ILLEGAL,
+                                    "session情報が不正です"));
+            LOG.infoRes(sessionLoginUser);
 
-			LoginUserDataDto dto = DtoFactory.getNullableDto(LoginUserDataDto.class, sessionLoginUser)
-					.orElseThrow(
-							() -> new SystemException(CommonErrorCode.SESSION_ILLEGAL, "session情報が不正です"));
+            LoginUserDataDto dto = DtoFactory
+                    .getNullableDto(LoginUserDataDto.class, sessionLoginUser)
+                    .orElseThrow(
+                            () -> new SystemException(CommonErrorCode.SESSION_ILLEGAL,
+                                    "session情報が不正です"));
 
-			// session情報がログイン基準を満たしているか検証
-			LoginCheckResult result = loginService.checkLogin(dto);
-			if (result.hasError()) {
-				throw new SystemException(CommonErrorCode.SESSION_ILLEGAL,
-						"session情報が不正です loginId:" + dto.getLoginId());
-			}
-		}
+            // session情報がログイン基準を満たしているか検証
+            LoginCheckResult result = loginService.checkLogin(dto);
+            if (result.hasError()) {
+                throw new SystemException(CommonErrorCode.SESSION_ILLEGAL,
+                        "session情報が不正です loginId:" + dto.getLoginId());
+            }
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	private boolean isSessionAuth(Object handler) {
-		return !((HandlerMethod) handler).getMethod().isAnnotationPresent(SessionNonAuth.class);
-	}
+    private boolean isSessionAuth(Object handler) {
+        return !((HandlerMethod) handler).getMethod()
+                .isAnnotationPresent(SessionNonAuth.class);
+    }
 
 }

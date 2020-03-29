@@ -19,19 +19,20 @@ import jp.co.kin.db.entity.LoginUserData;
 @Service
 public class LoginUserDataSearchServiceImpl implements LoginUserDataSearchService {
 
-	@Autowired
-	private LoginUserDataDao dao;
+    @Autowired
+    private LoginUserDataDao dao;
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public LoginUserDataDto searchByLoginId(String loginId) {
-		LoginUserData entity = dao.selectById(loginId, BeanFactory.getBean(DecryptFunction.class));
-		return DtoFactory.getDto(LoginUserDataDto.class, entity);
-	}
+    @Override
+    @SuppressWarnings("unchecked")
+    public LoginUserDataDto searchByLoginId(String loginId) {
+        LoginUserData entity = dao.selectById(loginId,
+                BeanFactory.getBean(DecryptFunction.class));
+        return DtoFactory.getDto(LoginUserDataDto.class, entity);
+    }
 
-	@Override
-	public int searchCountByLoginId(String loginId) {
-		return dao.selectCountById(loginId);
-	}
+    @Override
+    public int searchCountByLoginId(String loginId) {
+        return dao.selectCountById(loginId);
+    }
 
 }

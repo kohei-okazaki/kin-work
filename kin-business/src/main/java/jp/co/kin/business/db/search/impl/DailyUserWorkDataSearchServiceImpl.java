@@ -20,20 +20,21 @@ import jp.co.kin.db.entity.DailyUserWorkData;
  * @since 1.0.0
  */
 @Service
-public class DailyUserWorkDataSearchServiceImpl implements DailyUserWorkDataSearchService {
+public class DailyUserWorkDataSearchServiceImpl
+        implements DailyUserWorkDataSearchService {
 
-	@Autowired
-	private DailyUserWorkDataDao dao;
+    @Autowired
+    private DailyUserWorkDataDao dao;
 
-	@Override
-	public List<AttendRegistDto> searchList(String userId, LocalDate targetDate) {
-		List<LocalDate> dateList = LocalDateTimeUtil.getLocalDateList(targetDate);
-		LocalDate workStartDate = dateList.get(0);
-		LocalDate workEndDate = dateList.get(dateList.size() - 1);
-		List<DailyUserWorkData> list = dao.selectByWorkDate(userId,
-				workStartDate, workEndDate);
-		return list.stream().map(e -> DtoFactory.getDto(AttendRegistDto.class, e))
-				.collect(Collectors.toList());
-	}
+    @Override
+    public List<AttendRegistDto> searchList(String userId, LocalDate targetDate) {
+        List<LocalDate> dateList = LocalDateTimeUtil.getLocalDateList(targetDate);
+        LocalDate workStartDate = dateList.get(0);
+        LocalDate workEndDate = dateList.get(dateList.size() - 1);
+        List<DailyUserWorkData> list = dao.selectByWorkDate(userId,
+                workStartDate, workEndDate);
+        return list.stream().map(e -> DtoFactory.getDto(AttendRegistDto.class, e))
+                .collect(Collectors.toList());
+    }
 
 }

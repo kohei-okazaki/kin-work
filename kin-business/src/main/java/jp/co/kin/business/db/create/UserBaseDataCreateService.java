@@ -10,6 +10,6 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface UserBaseDataCreateService extends BaseService {
 
-	void create(UserBaseData entity);
+    void create(UserBaseData entity);
 
 }

@@ -15,12 +15,12 @@ import jp.co.kin.db.entity.OntimeMt;
 @Service
 public class OntimeMtCreateServiceImpl implements OntimeMtCreateService {
 
-	@Autowired
-	private OntimeMtDao dao;
+    @Autowired
+    private OntimeMtDao dao;
 
-	@Override
-	public void create(OntimeMt entity) {
-		dao.insert(entity);
-	}
+    @Override
+    public void create(OntimeMt entity) {
+        dao.insert(entity);
+    }
 
 }

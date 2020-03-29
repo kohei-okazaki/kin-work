@@ -13,31 +13,31 @@ import jp.co.kin.common.type.BaseEnum;
  */
 public enum AccountLockFlg implements BaseEnum {
 
-	/** 利用可能 */
-	USABLE("0"),
-	/** 利用不可 */
-	UNUSABLE("1");
+    /** 利用可能 */
+    USABLE("0"),
+    /** 利用不可 */
+    UNUSABLE("1");
 
-	/** 値 */
-	private String value;
+    /** 値 */
+    private String value;
 
-	/**
-	 * コンストラクタ
-	 *
-	 * @param value
-	 *            値
-	 */
-	private AccountLockFlg(String value) {
-		this.value = value;
-	}
+    /**
+     * コンストラクタ
+     *
+     * @param value
+     *     値
+     */
+    private AccountLockFlg(String value) {
+        this.value = value;
+    }
 
-	@Override
-	public String getValue() {
-		return this.value;
-	}
+    @Override
+    public String getValue() {
+        return this.value;
+    }
 
-	public static AccountLockFlg of(String value) {
-		return BaseEnum.of(AccountLockFlg.class, value);
-	}
+    public static AccountLockFlg of(String value) {
+        return BaseEnum.of(AccountLockFlg.class, value);
+    }
 
 }

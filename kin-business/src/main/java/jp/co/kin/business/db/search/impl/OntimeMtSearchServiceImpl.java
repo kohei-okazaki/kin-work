@@ -20,20 +20,20 @@ import jp.co.kin.db.entity.OntimeMt;
 @Service
 public class OntimeMtSearchServiceImpl implements OntimeMtSearchService {
 
-	@Autowired
-	private OntimeMtDao dao;
+    @Autowired
+    private OntimeMtDao dao;
 
-	@Override
-	public List<OntimeDto> search() {
-		List<OntimeMt> mtList = dao.select();
-		return mtList.stream().map(e -> DtoFactory.getDto(OntimeDto.class, e))
-				.collect(Collectors.toList());
-	}
+    @Override
+    public List<OntimeDto> search() {
+        List<OntimeMt> mtList = dao.select();
+        return mtList.stream().map(e -> DtoFactory.getDto(OntimeDto.class, e))
+                .collect(Collectors.toList());
+    }
 
-	@Override
-	public OntimeDto searchByCompanyCode(String companyCode) {
-		OntimeMt mt = dao.selectById(companyCode);
-		return DtoFactory.getDto(OntimeDto.class, mt);
-	}
+    @Override
+    public OntimeDto searchByCompanyCode(String companyCode) {
+        OntimeMt mt = dao.selectById(companyCode);
+        return DtoFactory.getDto(OntimeDto.class, mt);
+    }
 
 }

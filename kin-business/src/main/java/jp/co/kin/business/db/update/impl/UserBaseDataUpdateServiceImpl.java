@@ -15,11 +15,11 @@ import jp.co.kin.db.entity.UserBaseData;
 @Service
 public class UserBaseDataUpdateServiceImpl implements UserBaseDataUpdateService {
 
-	@Autowired
-	private UserBaseDataDao dao;
+    @Autowired
+    private UserBaseDataDao dao;
 
-	@Override
-	public void update(UserBaseData entity) {
-		dao.update(entity);
-	}
+    @Override
+    public void update(UserBaseData entity) {
+        dao.update(entity);
+    }
 }

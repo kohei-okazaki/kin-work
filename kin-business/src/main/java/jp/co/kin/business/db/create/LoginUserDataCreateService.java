@@ -10,11 +10,11 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface LoginUserDataCreateService extends BaseService {
 
-	/**
-	 * 作成
-	 *
-	 * @param entity
-	 *            ログインユーザ情報 Entity
-	 */
-	void create(LoginUserData entity);
+    /**
+     * 作成
+     *
+     * @param entity
+     *     ログインユーザ情報 Entity
+     */
+    void create(LoginUserData entity);
 }

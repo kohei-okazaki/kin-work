@@ -10,121 +10,111 @@ import jp.co.kin.common.log.annotation.Mask;
  */
 public class SessionLoginUser implements BaseDto {
 
-	/** ログインID */
-	private String loginId;
-	/** パスワード */
-	@Mask
-	private String password;
-	/** ユーザ名 */
-	private String userName;
-	/** ユーザ権限 */
-	private String userAuth;
-	/** ユーザID */
-	private String userId;
+    /** ログインID */
+    private String loginId;
+    /** パスワード */
+    @Mask
+    private String password;
+    /** ユーザ名 */
+    private String userName;
+    /** ユーザ権限 */
+    private String userAuth;
+    /** ユーザID */
+    private String userId;
 
-	/**
-	 * loginIdを返す
-	 *
-	 * @return loginId
-	 *
-	 */
-	public String getLoginId() {
-		return loginId;
-	}
+    /**
+     * loginIdを返す
+     *
+     * @return loginId
+     */
+    public String getLoginId() {
+        return loginId;
+    }
 
-	/**
-	 * loginIdを設定する
-	 *
-	 * @param loginId
-	 *            loginId
-	 *
-	 */
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
+    /**
+     * loginIdを設定する
+     *
+     * @param loginId
+     *     loginId
+     */
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
 
-	/**
-	 * passwordを返す
-	 *
-	 * @return password
-	 *
-	 */
-	public String getPassword() {
-		return password;
-	}
+    /**
+     * passwordを返す
+     *
+     * @return password
+     */
+    public String getPassword() {
+        return password;
+    }
 
-	/**
-	 * passwordを設定する
-	 *
-	 * @param password
-	 *            password
-	 *
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    /**
+     * passwordを設定する
+     *
+     * @param password
+     *     password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	/**
-	 * userNameを返す
-	 *
-	 * @return userName
-	 *
-	 */
-	public String getUserName() {
-		return userName;
-	}
+    /**
+     * userNameを返す
+     *
+     * @return userName
+     */
+    public String getUserName() {
+        return userName;
+    }
 
-	/**
-	 * userNameを設定する
-	 *
-	 * @param userName
-	 *            userName
-	 *
-	 */
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    /**
+     * userNameを設定する
+     *
+     * @param userName
+     *     userName
+     */
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	/**
-	 * userAuthを返す
-	 *
-	 * @return userAuth
-	 *
-	 */
-	public String getUserAuth() {
-		return userAuth;
-	}
+    /**
+     * userAuthを返す
+     *
+     * @return userAuth
+     */
+    public String getUserAuth() {
+        return userAuth;
+    }
 
-	/**
-	 * userAuthを設定する
-	 *
-	 * @param userAuth
-	 *            userAuth
-	 *
-	 */
-	public void setUserAuth(String userAuth) {
-		this.userAuth = userAuth;
-	}
+    /**
+     * userAuthを設定する
+     *
+     * @param userAuth
+     *     userAuth
+     */
+    public void setUserAuth(String userAuth) {
+        this.userAuth = userAuth;
+    }
 
-	/**
-	 * userIdを返す
-	 *
-	 * @return userId
-	 *
-	 */
-	public String getUserId() {
-		return userId;
-	}
+    /**
+     * userIdを返す
+     *
+     * @return userId
+     */
+    public String getUserId() {
+        return userId;
+    }
 
-	/**
-	 * userIdを設定する
-	 *
-	 * @param userId
-	 *            userId
-	 *
-	 */
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    /**
+     * userIdを設定する
+     *
+     * @param userId
+     *     userId
+     */
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
 }

@@ -10,11 +10,11 @@ import jp.co.kin.web.service.BaseService;
  */
 public interface UserBaseDataUpdateService extends BaseService {
 
-	/**
-	 * ユーザ基本情報を更新する
-	 *
-	 * @param entity
-	 *            UserBaseData
-	 */
-	void update(UserBaseData entity);
+    /**
+     * ユーザ基本情報を更新する
+     *
+     * @param entity
+     *     UserBaseData
+     */
+    void update(UserBaseData entity);
 }
