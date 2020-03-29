@@ -16,26 +16,26 @@ import jp.co.kin.business.test.BaseBusinessTest;
  */
 public class OntimeMtSearchServiceTest extends BaseBusinessTest {
 
-	@Autowired
-	private OntimeMtSearchService service;
+    @Autowired
+    private OntimeMtSearchService service;
 
-	@Test
-	public void searchTest() {
-		List<OntimeDto> dtoList = service.search();
-		assertNotEquals(0, dtoList.size());
-	}
+    @Test
+    public void searchTest() {
+        List<OntimeDto> dtoList = service.search();
+        assertNotEquals(0, dtoList.size());
+    }
 
-	@Test
-	public void searchByCompanyCodeTest() {
-		{
-			String companyCode = "dummyId";
-			OntimeDto dto = service.searchByCompanyCode(companyCode);
-			assertEquals(null, dto);
-		}
-		{
-			String companyCode = "00001";
-			OntimeDto dto = service.searchByCompanyCode(companyCode);
-			assertEquals(companyCode, dto.getCompanyCode());
-		}
-	}
+    @Test
+    public void searchByCompanyCodeTest() {
+        {
+            String companyCode = "dummyId";
+            OntimeDto dto = service.searchByCompanyCode(companyCode);
+            assertEquals(null, dto);
+        }
+        {
+            String companyCode = "00001";
+            OntimeDto dto = service.searchByCompanyCode(companyCode);
+            assertEquals(companyCode, dto.getCompanyCode());
+        }
+    }
 }

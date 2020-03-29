@@ -12,17 +12,17 @@ import jp.co.kin.db.entity.OntimeMt;
  */
 public class OntimeMtCreateServiceTest extends BaseBusinessTest {
 
-	@Autowired
-	private OntimeMtCreateService service;
+    @Autowired
+    private OntimeMtCreateService service;
 
-	@Test
-	public void createTest() {
-		OntimeMt entity = new OntimeMt();
-		entity.setCompanyCode("12346");
-		entity.setWorkStartHour("01");
-		entity.setWorkStartMinute("01");
-		entity.setWorkEndHour("01");
-		entity.setWorkEndMinute("01");
-		service.create(entity);
-	}
+    @Test
+    public void createTest() {
+        OntimeMt entity = new OntimeMt();
+        entity.setCompanyCode("12346");
+        entity.setWorkStartHour("01");
+        entity.setWorkStartMinute("01");
+        entity.setWorkEndHour("01");
+        entity.setWorkEndMinute("01");
+        service.create(entity);
+    }
 }

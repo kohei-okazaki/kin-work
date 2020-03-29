@@ -14,15 +14,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageSourceComponent {
 
-	@Autowired
-	private MessageSource messageSource;
+    @Autowired
+    private MessageSource messageSource;
 
-	public String getMessage(String key) {
-		return this.getMessageByLocale(key, Locale.getDefault());
-	}
+    public String getMessage(String key) {
+        return this.getMessageByLocale(key, Locale.getDefault());
+    }
 
-	public String getMessageByLocale(String key, Locale locale) {
-		return messageSource.getMessage(key, null, locale);
-	}
+    public String getMessageByLocale(String key, Locale locale) {
+        return messageSource.getMessage(key, null, locale);
+    }
 
 }

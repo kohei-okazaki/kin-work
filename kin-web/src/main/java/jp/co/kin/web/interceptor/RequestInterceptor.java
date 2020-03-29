@@ -19,37 +19,38 @@ import jp.co.kin.common.util.StringUtil;
  */
 public class RequestInterceptor extends BaseWebInterceptor {
 
-	private static final Logger LOG = LoggerFactory.getLogger(RequestInterceptor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RequestInterceptor.class);
 
-	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response,
+            Object handler) throws Exception {
 
-		if (isStaticResource(handler)) {
-			// 静的リソースの場合は認証不要
-			return true;
-		}
-		// MDCの設定を行う
-		MDC.put("id", StringUtil.getRandamStr(16));
+        if (isStaticResource(handler)) {
+            // 静的リソースの場合は認証不要
+            return true;
+        }
+        // MDCの設定を行う
+        MDC.put("id", StringUtil.getRandamStr(16));
 
-		Method method = ((HandlerMethod) handler).getMethod();
-		LOG.info("---> START " + method.getDeclaringClass().getName() + "#" + method.getName() + "[URI:"
-				+ request.getRequestURI() + ",METHOD:" + request.getMethod() + "]");
+        Method method = ((HandlerMethod) handler).getMethod();
+        LOG.info("---> START " + method.getDeclaringClass().getName() + "#"
+                + method.getName() + "[URI:"
+                + request.getRequestURI() + ",METHOD:" + request.getMethod() + "]");
 
-		return true;
-	}
+        return true;
+    }
 
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
-			Exception e)
-			throws Exception {
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response,
+            Object handler, Exception e) throws Exception {
 
-		if (isStaticResource(handler)) {
-			// 静的リソースの場合は認証不要
-			return;
-		}
-		Method method = ((HandlerMethod) handler).getMethod();
-		LOG.info("---> END " + method.getDeclaringClass().getName() + "#" + method.getName());
+        if (isStaticResource(handler)) {
+            // 静的リソースの場合は認証不要
+            return;
+        }
+        Method method = ((HandlerMethod) handler).getMethod();
+        LOG.info("---> END " + method.getDeclaringClass().getName() + "#"
+                + method.getName());
 
-	}
+    }
 }

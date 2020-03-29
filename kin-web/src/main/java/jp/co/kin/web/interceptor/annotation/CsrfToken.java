@@ -24,17 +24,17 @@ import jp.co.kin.web.interceptor.CsrfTokenInterceptor;
 @Target(METHOD)
 public @interface CsrfToken {
 
-	/**
-	 * トークンを生成する
-	 *
-	 * @return 生成する場合true、それ以外の場合false
-	 */
-	boolean factocy() default false;
+    /**
+     * トークンを生成する
+     *
+     * @return 生成する場合true、それ以外の場合false
+     */
+    boolean factocy() default false;
 
-	/**
-	 * トークンをチェックする
-	 *
-	 * @return チェックする場合true、それ以外の場合false
-	 */
-	boolean check() default false;
+    /**
+     * トークンをチェックする
+     *
+     * @return チェックする場合true、それ以外の場合false
+     */
+    boolean check() default false;
 }

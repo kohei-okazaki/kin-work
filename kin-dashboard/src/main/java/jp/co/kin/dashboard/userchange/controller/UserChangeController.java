@@ -23,27 +23,27 @@ import jp.co.kin.web.controller.BaseViewController;
 @RequestMapping("userchange")
 public class UserChangeController implements BaseViewController {
 
-	@ModelAttribute("userChangeForm")
-	public UserChangeForm setUpForm() {
-		return new UserChangeForm();
-	}
+    @ModelAttribute("userChangeForm")
+    public UserChangeForm setUpForm() {
+        return new UserChangeForm();
+    }
 
-	@GetMapping("/input")
-	public String input() {
-		return getView(DashboardView.USER_CHANGE_INPUT);
-	}
+    @GetMapping("/input")
+    public String input() {
+        return getView(DashboardView.USER_CHANGE_INPUT);
+    }
 
-	@PostMapping("/confirm")
-	public String confirm(Model model, @Valid UserChangeForm form, BindingResult result) {
+    @PostMapping("/confirm")
+    public String confirm(Model model, @Valid UserChangeForm form, BindingResult result) {
 
-		if (result.hasErrors()) {
-			return getView(DashboardView.USER_CHANGE_INPUT);
-		}
-		return getView(DashboardView.USER_CHANGE_CONFIRM);
-	}
+        if (result.hasErrors()) {
+            return getView(DashboardView.USER_CHANGE_INPUT);
+        }
+        return getView(DashboardView.USER_CHANGE_CONFIRM);
+    }
 
-	@PostMapping("/complete")
-	public String complete(UserChangeForm form) {
-		return getView(DashboardView.USER_CHANGE_COMPLETE);
-	}
+    @PostMapping("/complete")
+    public String complete(UserChangeForm form) {
+        return getView(DashboardView.USER_CHANGE_COMPLETE);
+    }
 }

@@ -19,25 +19,25 @@ import jp.co.kin.db.entity.OntimeMt;
 @DaoRepository
 public interface OntimeMtDao extends BaseDao {
 
-	@Delete
-	public int delete(OntimeMt entity);
+    @Delete
+    public int delete(OntimeMt entity);
 
-	@Update
-	public int update(OntimeMt entity);
+    @Update
+    public int update(OntimeMt entity);
 
-	@Insert
-	public int insert(OntimeMt entity);
+    @Insert
+    public int insert(OntimeMt entity);
 
-	@Select
-	public OntimeMt selectById(String companyCode);
+    @Select
+    public OntimeMt selectById(String companyCode);
 
-	@Select
-	public Integer selectCountById(String companyCode);
+    @Select
+    public Integer selectCountById(String companyCode);
 
-	@Update(sqlFile = true)
-	public int updateEntity(OntimeMt entity);
+    @Update(sqlFile = true)
+    public int updateEntity(OntimeMt entity);
 
-	@Select
-	public List<OntimeMt> select();
+    @Select
+    public List<OntimeMt> select();
 
 }

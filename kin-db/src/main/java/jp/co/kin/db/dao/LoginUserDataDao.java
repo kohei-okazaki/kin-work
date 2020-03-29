@@ -19,25 +19,26 @@ import jp.co.kin.db.entity.LoginUserData;
 @DaoRepository
 public interface LoginUserDataDao extends BaseDao {
 
-	@Delete
-	public int delete(LoginUserData entity);
+    @Delete
+    public int delete(LoginUserData entity);
 
-	@Update
-	public int update(LoginUserData entity);
+    @Update
+    public int update(LoginUserData entity);
 
-	@Insert
-	public int insert(LoginUserData entity);
+    @Insert
+    public int insert(LoginUserData entity);
 
-	@Select(strategy = SelectType.STREAM)
-	public LoginUserData selectById(String loginId, DecryptFunction<LoginUserData> function);
+    @Select(strategy = SelectType.STREAM)
+    public LoginUserData selectById(String loginId,
+            DecryptFunction<LoginUserData> function);
 
-	@Select
-	public Integer selectCountById(String loginId);
+    @Select
+    public Integer selectCountById(String loginId);
 
-	@Update(sqlFile = true)
-	public int updateFailCount(LoginUserData entity);
+    @Update(sqlFile = true)
+    public int updateFailCount(LoginUserData entity);
 
-	@Update(sqlFile = true)
-	public int updateAccountLock(LoginUserData entity);
+    @Update(sqlFile = true)
+    public int updateAccountLock(LoginUserData entity);
 
 }

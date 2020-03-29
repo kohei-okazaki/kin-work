@@ -10,13 +10,13 @@ import jp.co.kin.common.test.BaseCommonTest;
  */
 public class JsonReaderTest extends BaseCommonTest {
 
-	@Test
-	public void readTest() {
-		// TODO 要実装
-		{
-			String filePath = "";
-			String fileName = "";
-		}
-	}
+    @Test
+    public void readTest() {
+        // TODO 要実装
+        {
+            String filePath = "";
+            String fileName = "";
+        }
+    }
 
 }

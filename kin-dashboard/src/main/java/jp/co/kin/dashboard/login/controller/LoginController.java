@@ -33,58 +33,60 @@ import jp.co.kin.web.controller.BaseViewController;
 @RequestMapping("login")
 public class LoginController implements BaseViewController {
 
-	@Autowired
-	private LoginService loginService;
-	@Autowired
-	private SessionComponent sessionComponent;
-	@Autowired
-	private MessageSourceComponent messageSourceComponent;
+    @Autowired
+    private LoginService loginService;
+    @Autowired
+    private SessionComponent sessionComponent;
+    @Autowired
+    private MessageSourceComponent messageSourceComponent;
 
-	@ModelAttribute("loginForm")
-	public LoginForm setUpForm() {
-		return new LoginForm();
-	}
+    @ModelAttribute("loginForm")
+    public LoginForm setUpForm() {
+        return new LoginForm();
+    }
 
-	@SessionNonAuth
-	@GetMapping("/index")
-	public String index(HttpServletRequest request) {
-		sessionComponent.removeValues(request.getSession());
-		return getView(DashboardView.LOGIN);
-	}
+    @SessionNonAuth
+    @GetMapping("/index")
+    public String index(HttpServletRequest request) {
+        sessionComponent.removeValues(request.getSession());
+        return getView(DashboardView.LOGIN);
+    }
 
-	@SessionNonAuth
-	@PostMapping("/top")
-	public String top(Model model, HttpServletRequest request, @Valid LoginForm form, BindingResult result) {
+    @SessionNonAuth
+    @PostMapping("/top")
+    public String top(Model model, HttpServletRequest request, @Valid LoginForm form,
+            BindingResult result) {
 
-		if (result.hasErrors()) {
-			return getView(DashboardView.LOGIN);
-		}
+        if (result.hasErrors()) {
+            return getView(DashboardView.LOGIN);
+        }
 
-		LoginUserDataDto dto = DtoFactory.getDto(LoginUserDataDto.class, form);
+        LoginUserDataDto dto = DtoFactory.getDto(LoginUserDataDto.class, form);
 
-		LoginCheckResult loginCheckResult = loginService.checkLogin(dto);
-		if (loginCheckResult.hasError()) {
+        LoginCheckResult loginCheckResult = loginService.checkLogin(dto);
+        if (loginCheckResult.hasError()) {
 
-			// ログイン失敗回数をインクリメントし、失敗回数が3回になった場合アカウントをロックする
-			loginService.updateFailLoginUserData(dto);
+            // ログイン失敗回数をインクリメントし、失敗回数が3回になった場合アカウントをロックする
+            loginService.updateFailLoginUserData(dto);
 
-			String message = messageSourceComponent.getMessage(loginCheckResult.getMessage());
-			model.addAttribute("errorMessage", message);
+            String message = messageSourceComponent
+                    .getMessage(loginCheckResult.getMessage());
+            model.addAttribute("errorMessage", message);
 
-			return getView(DashboardView.LOGIN);
-		}
+            return getView(DashboardView.LOGIN);
+        }
 
-		// ログイン失敗回数を0に更新
-		loginService.updateClearloginFailCount(dto);
+        // ログイン失敗回数を0に更新
+        loginService.updateClearloginFailCount(dto);
 
-		SessionLoginUser sessionUser = DtoFactory.getDto(SessionLoginUser.class, dto);
-		sessionComponent.setValue(request.getSession(), "sessionUser", sessionUser);
+        SessionLoginUser sessionUser = DtoFactory.getDto(SessionLoginUser.class, dto);
+        sessionComponent.setValue(request.getSession(), "sessionUser", sessionUser);
 
-		return getView(DashboardView.TOP);
-	}
+        return getView(DashboardView.TOP);
+    }
 
-	@GetMapping("/top")
-	public String top(HttpServletRequest request) {
-		return getView(DashboardView.TOP);
-	}
+    @GetMapping("/top")
+    public String top(HttpServletRequest request) {
+        return getView(DashboardView.TOP);
+    }
 }

@@ -12,22 +12,22 @@ import jp.co.kin.common.type.Charset;
  */
 public class Sha256HashEncodeAndDecoderTest extends BaseCommonTest {
 
-	@Autowired
-	@Qualifier("sha256HashEncodeAndDecoder")
-	private Sha256HashEncodeAndDecoder encodeAndDecoder;
+    @Autowired
+    @Qualifier("sha256HashEncodeAndDecoder")
+    private Sha256HashEncodeAndDecoder encodeAndDecoder;
 
-	@Test
-	public void testEncode() {
-		{
-			String s = "testPassword";
-			String str = encodeAndDecoder.encode(s, Charset.UTF_8);
-			System.out.println(str);
-		}
-		{
-			String s = "testPassword";
-			String str = encodeAndDecoder.powerEncode(s, Charset.UTF_8);
-			System.out.println(str);
-		}
-	}
+    @Test
+    public void testEncode() {
+        {
+            String s = "testPassword";
+            String str = encodeAndDecoder.encode(s, Charset.UTF_8);
+            System.out.println(str);
+        }
+        {
+            String s = "testPassword";
+            String str = encodeAndDecoder.powerEncode(s, Charset.UTF_8);
+            System.out.println(str);
+        }
+    }
 
 }

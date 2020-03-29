@@ -4,34 +4,34 @@ import jp.co.kin.common.type.BaseEnum;
 
 /**
  * ClassType
- * 
+ *
  * @since 1.0.0
  *
  */
 public enum ClassType implements BaseEnum {
 
-	/** クラス */
-	CLASS("class"),
-	/** インターフェース */
-	INTERFACE("interface"),
-	/** アノテーション */
-	ANNOTATION("@interface"),
-	/** 列挙 */
-	ENUM("enum");
+    /** クラス */
+    CLASS("class"),
+    /** インターフェース */
+    INTERFACE("interface"),
+    /** アノテーション */
+    ANNOTATION("@interface"),
+    /** 列挙 */
+    ENUM("enum");
 
-	/** 値 */
-	private String value;
+    /** 値 */
+    private String value;
 
-	private ClassType(String value) {
-		this.value = value;
-	}
+    private ClassType(String value) {
+        this.value = value;
+    }
 
-	@Override
-	public String getValue() {
-		return this.value;
-	}
+    @Override
+    public String getValue() {
+        return this.value;
+    }
 
-	public static ClassType of(String value) {
-		return BaseEnum.of(ClassType.class, value);
-	}
+    public static ClassType of(String value) {
+        return BaseEnum.of(ClassType.class, value);
+    }
 }

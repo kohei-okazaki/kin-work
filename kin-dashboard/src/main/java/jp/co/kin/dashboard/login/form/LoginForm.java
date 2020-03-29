@@ -13,56 +13,56 @@ import jp.co.kin.web.form.BaseForm;
  */
 public class LoginForm implements BaseForm {
 
-	/** ログインID */
-	@Required
-	@Pattern(regixPattern = RegixType.HALF_CHAR, message = "ログインIDは半角英数字です")
-	private String loginId;
-	/** パスワード */
-	@Mask
-	@Required
-	@Pattern(regixPattern = RegixType.HALF_CHAR, message = "パスワードは半角英数字です")
-	private String password;
+    /** ログインID */
+    @Required
+    @Pattern(regixPattern = RegixType.HALF_CHAR, message = "ログインIDは半角英数字です")
+    private String loginId;
+    /** パスワード */
+    @Mask
+    @Required
+    @Pattern(regixPattern = RegixType.HALF_CHAR, message = "パスワードは半角英数字です")
+    private String password;
 
-	/**
-	 * loginIdを返す
-	 *
-	 * @return loginId
-	 *
-	 */
-	public String getLoginId() {
-		return loginId;
-	}
+    /**
+     * loginIdを返す
+     *
+     * @return loginId
+     *
+     */
+    public String getLoginId() {
+        return loginId;
+    }
 
-	/**
-	 * loginIdを設定する
-	 *
-	 * @param loginId
-	 *            loginId
-	 *
-	 */
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
+    /**
+     * loginIdを設定する
+     *
+     * @param loginId
+     *     loginId
+     *
+     */
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
 
-	/**
-	 * passwordを返す
-	 *
-	 * @return password
-	 *
-	 */
-	public String getPassword() {
-		return password;
-	}
+    /**
+     * passwordを返す
+     *
+     * @return password
+     *
+     */
+    public String getPassword() {
+        return password;
+    }
 
-	/**
-	 * passwordを設定する
-	 *
-	 * @param password
-	 *            password
-	 *
-	 */
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    /**
+     * passwordを設定する
+     *
+     * @param password
+     *     password
+     *
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }

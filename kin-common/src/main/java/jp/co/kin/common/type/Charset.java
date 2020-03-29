@@ -7,24 +7,24 @@ package jp.co.kin.common.type;
  */
 public enum Charset implements BaseEnum {
 
-	/** MS932 */
-	MS_932("MS932"),
-	/** UTF-8 */
-	UTF_8("UTF-8");
+    /** MS932 */
+    MS_932("MS932"),
+    /** UTF-8 */
+    UTF_8("UTF-8");
 
-	/** 値 */
-	private String value;
+    /** 値 */
+    private String value;
 
-	private Charset(String value) {
-		this.value = value;
-	}
+    private Charset(String value) {
+        this.value = value;
+    }
 
-	@Override
-	public String getValue() {
-		return this.value;
-	}
+    @Override
+    public String getValue() {
+        return this.value;
+    }
 
-	public static Charset of(String value) {
-		return BaseEnum.of(Charset.class, value);
-	}
+    public static Charset of(String value) {
+        return BaseEnum.of(Charset.class, value);
+    }
 }

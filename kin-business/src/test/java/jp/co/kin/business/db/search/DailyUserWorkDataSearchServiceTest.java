@@ -17,18 +17,18 @@ import jp.co.kin.business.test.BaseBusinessTest;
  */
 public class DailyUserWorkDataSearchServiceTest extends BaseBusinessTest {
 
-	@Autowired
-	private DailyUserWorkDataSearchService service;
+    @Autowired
+    private DailyUserWorkDataSearchService service;
 
-	@Test
-	public void searchListTest() {
+    @Test
+    public void searchListTest() {
 
-		{
-			String userId = "dummyId";
-			LocalDate targetDate = LocalDate.of(2019, 1, 1);
-			List<AttendRegistDto> list = service.searchList(userId, targetDate);
-			assertEquals(0, list.size());
-		}
+        {
+            String userId = "dummyId";
+            LocalDate targetDate = LocalDate.of(2019, 1, 1);
+            List<AttendRegistDto> list = service.searchList(userId, targetDate);
+            assertEquals(0, list.size());
+        }
 
-	}
+    }
 }

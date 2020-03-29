@@ -21,61 +21,61 @@ import jp.co.kin.business.test.BaseBusinessTest;
  */
 public class AttendRegistServiceTest extends BaseBusinessTest {
 
-	@Autowired
-	private AttendRegistService service;
+    @Autowired
+    private AttendRegistService service;
 
-	@Test
-	public void getYearListTest() {
-		List<BigDecimal> list = service.getYearList();
-		assertEquals(10, list.size());
-		assertEquals(new BigDecimal("2019"), list.get(0));
-	}
+    @Test
+    public void getYearListTest() {
+        List<BigDecimal> list = service.getYearList();
+        assertEquals(10, list.size());
+        assertEquals(new BigDecimal("2019"), list.get(0));
+    }
 
-	@Test
-	public void getMonthListTest() {
-		List<BigDecimal> list = service.getMonthList();
-		assertEquals(12, list.size());
-		assertEquals(new BigDecimal("1"), list.get(0));
-	}
+    @Test
+    public void getMonthListTest() {
+        List<BigDecimal> list = service.getMonthList();
+        assertEquals(12, list.size());
+        assertEquals(new BigDecimal("1"), list.get(0));
+    }
 
-	@Test
-	public void getOntimeDtoTest() {
-		{
-			// entityが存在する場合
-			String userId = "admin";
-			OntimeDto dto = service.getOntimeDto(userId);
-			assertEquals("00001", dto.getCompanyCode());
-		}
-		{
-			// entityが存在しない場合
-			// FIXME 基本的にこのメソッドが呼ばれるときはuserIdに紐づくユーザ基本情報は存在する
-			// String userId = "dummyId";
-			// OntimeDto dto = service.getOntimeDto(userId);
-			// assertEquals(null, dto);
-		}
-	}
+    @Test
+    public void getOntimeDtoTest() {
+        {
+            // entityが存在する場合
+            String userId = "admin";
+            OntimeDto dto = service.getOntimeDto(userId);
+            assertEquals("00001", dto.getCompanyCode());
+        }
+        {
+            // entityが存在しない場合
+            // FIXME 基本的にこのメソッドが呼ばれるときはuserIdに紐づくユーザ基本情報は存在する
+            // String userId = "dummyId";
+            // OntimeDto dto = service.getOntimeDto(userId);
+            // assertEquals(null, dto);
+        }
+    }
 
-	@Test
-	public void getBusinessCalendarListTest() {
-		{
-			LocalDate date = LocalDate.of(2019, 1, 1);
-			List<AttendBusinessCalendar> list = service.getBusinessCalendarList(date);
-			assertEquals(BigDecimal.ONE, list.get(0).getDay());
-			assertEquals("tuesday", list.get(0).getWeekDay());
-		}
-	}
+    @Test
+    public void getBusinessCalendarListTest() {
+        {
+            LocalDate date = LocalDate.of(2019, 1, 1);
+            List<AttendBusinessCalendar> list = service.getBusinessCalendarList(date);
+            assertEquals(BigDecimal.ONE, list.get(0).getDay());
+            assertEquals("tuesday", list.get(0).getWeekDay());
+        }
+    }
 
-	@Test
-	public void registDailyWorkDataTest() {
-		{
-			AttendRegistDto dto = new AttendRegistDto();
-			dto.setUserId("test");
-			dto.setCompanyCode("98765");
-			dto.setActualWorkTime("10");
-			dto.setWorkStartDate(LocalDateTime.of(2019, 1, 1, 0, 0, 0));
-			dto.setWorkEndDate(LocalDateTime.of(2019, 1, 2, 0, 0, 0));
+    @Test
+    public void registDailyWorkDataTest() {
+        {
+            AttendRegistDto dto = new AttendRegistDto();
+            dto.setUserId("test");
+            dto.setCompanyCode("98765");
+            dto.setActualWorkTime("10");
+            dto.setWorkStartDate(LocalDateTime.of(2019, 1, 1, 0, 0, 0));
+            dto.setWorkEndDate(LocalDateTime.of(2019, 1, 2, 0, 0, 0));
 
-			service.registDailyWorkData(dto);
-		}
-	}
+            service.registDailyWorkData(dto);
+        }
+    }
 }

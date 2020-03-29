@@ -14,23 +14,23 @@ import jp.co.kin.db.test.BaseDbTest;
  */
 public class UserBaseDataDaoTest extends BaseDbTest {
 
-	@Autowired
-	private UserBaseDataDao dao;
+    @Autowired
+    private UserBaseDataDao dao;
 
-	@Test
-	public void selectByIdTest() {
-		{
-			// entityが存在する場合
-			String id = "admin";
-			UserBaseData entity = dao.selectById(id);
-			assertEquals(id, entity.getUserId());
-		}
-		{
-			// entityが存在しない場合
-			String id = "dummyId";
-			UserBaseData entity = dao.selectById(id);
-			assertEquals(null, entity);
-		}
-	}
+    @Test
+    public void selectByIdTest() {
+        {
+            // entityが存在する場合
+            String id = "admin";
+            UserBaseData entity = dao.selectById(id);
+            assertEquals(id, entity.getUserId());
+        }
+        {
+            // entityが存在しない場合
+            String id = "dummyId";
+            UserBaseData entity = dao.selectById(id);
+            assertEquals(null, entity);
+        }
+    }
 
 }

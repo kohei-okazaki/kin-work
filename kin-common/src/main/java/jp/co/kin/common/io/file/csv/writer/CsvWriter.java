@@ -27,140 +27,141 @@ import jp.co.kin.common.util.BeanUtil;
  */
 public class CsvWriter {
 
-	/** CSV設定情報 */
-	private CsvConfig conf;
+    /** CSV設定情報 */
+    private CsvConfig conf;
 
-	/**
-	 * confを設定する<br>
-	 * conf Methodチェイン用に自身を返却すること
-	 *
-	 * @param conf
-	 *            conf
-	 */
-	public CsvWriter setConfig(CsvConfig conf) {
-		this.conf = conf;
-		return this;
-	}
+    /**
+     * confを設定する<br>
+     * conf Methodチェイン用に自身を返却すること
+     *
+     * @param conf
+     *     conf
+     */
+    public CsvWriter setConfig(CsvConfig conf) {
+        this.conf = conf;
+        return this;
+    }
 
-	/**
-	 * CSVへ書き込み処理を行う
-	 *
-	 * @param bean
-	 *            CSV書込データのBean
-	 * @return CsvWriteResult
-	 */
-	public CsvWriteResult write(Object bean) {
+    /**
+     * CSVへ書き込み処理を行う
+     *
+     * @param bean
+     *     CSV書込データのBean
+     * @return CsvWriteResult
+     */
+    public CsvWriteResult write(Object bean) {
 
-		CsvWriteResult result = new CsvWriteResult();
+        CsvWriteResult result = new CsvWriteResult();
 
-		if (!isCsvEntity(bean)) {
-			result.setHasError(true);
-			result.setErrorMessage("CSV出力対象Entityに@CsvEntityを付与してください");
-			return result;
-		}
+        if (!isCsvEntity(bean)) {
+            result.setHasError(true);
+            result.setErrorMessage("CSV出力対象Entityに@CsvEntityを付与してください");
+            return result;
+        }
 
-		List<CsvUnitDto> orderList = getCsvOrder(bean);
+        List<CsvUnitDto> orderList = getCsvOrder(bean);
 
-		// TODO CSVに実際に書き込む処理を追加
-		return result;
-	}
+        // TODO CSVに実際に書き込む処理を追加
+        return result;
+    }
 
-	private static boolean isCsvEntity(Object bean) {
-		return bean.getClass().isAnnotationPresent(CsvEntity.class);
-	}
+    private static boolean isCsvEntity(Object bean) {
+        return bean.getClass().isAnnotationPresent(CsvEntity.class);
+    }
 
-	private static List<CsvUnitDto> getCsvOrder(Object bean) {
+    private static List<CsvUnitDto> getCsvOrder(Object bean) {
 
-		List<CsvUnitDto> csvDtoList = BeanUtil.getFieldList(bean.getClass()).stream().map(e -> {
+        List<CsvUnitDto> csvDtoList = BeanUtil.getFieldList(bean.getClass()).stream()
+                .map(e -> {
 
-			CsvUnitDto csvUnitDto = new CsvUnitDto();
-			CsvColumn column = e.getAnnotation(CsvColumn.class);
+                    CsvUnitDto csvUnitDto = new CsvUnitDto();
+                    CsvColumn column = e.getAnnotation(CsvColumn.class);
 
-			csvUnitDto.setOrder(column.order());
-			csvUnitDto.setField(e);
-			csvUnitDto.setLabel(column.label());
+                    csvUnitDto.setOrder(column.order());
+                    csvUnitDto.setField(e);
+                    csvUnitDto.setLabel(column.label());
 
-			return csvUnitDto;
-		}).collect(Collectors.toList());
+                    return csvUnitDto;
+                }).collect(Collectors.toList());
 
-		// orderの昇順にソート
-		return csvDtoList.stream()
-				.sorted(Comparator.comparing(CsvUnitDto::getOrder))
-				.collect(Collectors.toList());
-	}
+        // orderの昇順にソート
+        return csvDtoList.stream()
+                .sorted(Comparator.comparing(CsvUnitDto::getOrder))
+                .collect(Collectors.toList());
+    }
 
-	private static class CsvUnitDto implements BaseDto {
+    private static class CsvUnitDto implements BaseDto {
 
-		/** 表示順 */
-		private Integer order;
-		/** フィールド名 */
-		private Field field;
-		/** ラベル名 */
-		private String label;
+        /** 表示順 */
+        private Integer order;
+        /** フィールド名 */
+        private Field field;
+        /** ラベル名 */
+        private String label;
 
-		/**
-		 * orderを返す
-		 *
-		 * @return order
-		 *
-		 */
-		public Integer getOrder() {
-			return order;
-		}
+        /**
+         * orderを返す
+         *
+         * @return order
+         *
+         */
+        public Integer getOrder() {
+            return order;
+        }
 
-		/**
-		 * orderを設定する
-		 *
-		 * @param order
-		 *            order
-		 *
-		 */
-		public void setOrder(Integer order) {
-			this.order = order;
-		}
+        /**
+         * orderを設定する
+         *
+         * @param order
+         *     order
+         *
+         */
+        public void setOrder(Integer order) {
+            this.order = order;
+        }
 
-		/**
-		 * fieldを返す
-		 *
-		 * @return field
-		 *
-		 */
-		public Field getField() {
-			return field;
-		}
+        /**
+         * fieldを返す
+         *
+         * @return field
+         *
+         */
+        public Field getField() {
+            return field;
+        }
 
-		/**
-		 * fieldを設定する
-		 *
-		 * @param field
-		 *            field
-		 *
-		 */
-		public void setField(Field field) {
-			this.field = field;
-		}
+        /**
+         * fieldを設定する
+         *
+         * @param field
+         *     field
+         *
+         */
+        public void setField(Field field) {
+            this.field = field;
+        }
 
-		/**
-		 * labelを返す
-		 *
-		 * @return label
-		 *
-		 */
-		public String getLabel() {
-			return label;
-		}
+        /**
+         * labelを返す
+         *
+         * @return label
+         *
+         */
+        public String getLabel() {
+            return label;
+        }
 
-		/**
-		 * labelを設定する
-		 *
-		 * @param label
-		 *            label
-		 *
-		 */
-		public void setLabel(String label) {
-			this.label = label;
-		}
+        /**
+         * labelを設定する
+         *
+         * @param label
+         *     label
+         *
+         */
+        public void setLabel(String label) {
+            this.label = label;
+        }
 
-	}
+    }
 
 }

@@ -18,49 +18,50 @@ import jp.co.kin.dashboard.type.DashboardView;
 
 /**
  * ダッシュボードの例外ハンドラー
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 @Component
 public class DashboardExceptionHandler extends BaseExceptionHander {
 
-	private static final Logger LOG = LoggerFactory.getLogger(DashboardExceptionHandler.class);
+    private static final Logger LOG = LoggerFactory
+            .getLogger(DashboardExceptionHandler.class);
 
-	@Autowired
-	private MessageSourceComponent messageComponent;
-	@Autowired
-	private SessionComponent sessionComponent;
+    @Autowired
+    private MessageSourceComponent messageComponent;
+    @Autowired
+    private SessionComponent sessionComponent;
 
-	@Override
-	@SuppressWarnings("incomplete-switch")
-	public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response,
-			Object handler, Exception e) {
+    @Override
+    @SuppressWarnings("incomplete-switch")
+    public ModelAndView resolveException(HttpServletRequest request,
+            HttpServletResponse response,
+            Object handler, Exception e) {
 
-		// session情報をクリアする
-		sessionComponent.removeValues(request.getSession());
+        // session情報をクリアする
+        sessionComponent.removeValues(request.getSession());
 
-		ModelAndView modelView = new ModelAndView();
-		// error画面を設定
-		modelView.setViewName(DashboardView.ERROR.getName());
+        ModelAndView modelView = new ModelAndView();
+        // error画面を設定
+        modelView.setViewName(DashboardView.ERROR.getName());
 
-		LogLevel loglevel = getLogLevel(e);
-		BaseErrorCode errorCode = getErrorCode(e);
-		String errorMessage = messageComponent.getMessage(errorCode.getOuterErrorCode());
-		String detail = getDetail(e);
+        LogLevel loglevel = getLogLevel(e);
+        BaseErrorCode errorCode = getErrorCode(e);
+        String errorMessage = messageComponent.getMessage(errorCode.getOuterErrorCode());
+        String detail = getDetail(e);
 
-		modelView.addObject("errorMessage", errorMessage);
+        modelView.addObject("errorMessage", errorMessage);
 
-		// ERROR, WARB以外のログレベルは到達しない
-		switch (loglevel) {
-		case ERROR:
-			LOG.error(detail, e);
-			break;
-		case WARN:
-			LOG.warn(detail, e);
-			break;
-		}
+        // ERROR, WARB以外のログレベルは到達しない
+        switch (loglevel) {
+        case ERROR:
+            LOG.error(detail, e);
+            break;
+        case WARN:
+            LOG.warn(detail, e);
+            break;
+        }
 
-		return modelView;
-	}
+        return modelView;
+    }
 }

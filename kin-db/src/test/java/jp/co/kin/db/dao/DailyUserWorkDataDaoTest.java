@@ -17,27 +17,27 @@ import jp.co.kin.db.test.BaseDbTest;
  */
 public class DailyUserWorkDataDaoTest extends BaseDbTest {
 
-	@Autowired
-	private DailyUserWorkDataDao dao;
+    @Autowired
+    private DailyUserWorkDataDao dao;
 
-	@Test
-	public void selectByWorkDateTest() {
-		{
-			// entityが存在しない場合
-			LocalDate from = LocalDate.of(2019, 1, 1);
-			LocalDate to = LocalDate.of(2019, 1, 2);
-			String id = "dummyId";
-			List<DailyUserWorkData> entityList = dao.selectByWorkDate(id, from, to);
-			assertEquals(0, entityList.size());
-		}
-		{
-			// entityが存在しない場合(fromとtoを入れ替えた)
-			LocalDate from = LocalDate.of(2019, 1, 1);
-			LocalDate to = LocalDate.of(2019, 1, 2);
-			String id = "dummyId";
-			List<DailyUserWorkData> entityList = dao.selectByWorkDate(id, from, to);
-			assertEquals(0, entityList.size());
-		}
-	}
+    @Test
+    public void selectByWorkDateTest() {
+        {
+            // entityが存在しない場合
+            LocalDate from = LocalDate.of(2019, 1, 1);
+            LocalDate to = LocalDate.of(2019, 1, 2);
+            String id = "dummyId";
+            List<DailyUserWorkData> entityList = dao.selectByWorkDate(id, from, to);
+            assertEquals(0, entityList.size());
+        }
+        {
+            // entityが存在しない場合(fromとtoを入れ替えた)
+            LocalDate from = LocalDate.of(2019, 1, 1);
+            LocalDate to = LocalDate.of(2019, 1, 2);
+            String id = "dummyId";
+            List<DailyUserWorkData> entityList = dao.selectByWorkDate(id, from, to);
+            assertEquals(0, entityList.size());
+        }
+    }
 
 }

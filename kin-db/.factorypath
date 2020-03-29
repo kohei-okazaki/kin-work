@@ -1,4 +1,4 @@
 <factorypath>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/seasar/doma/doma/2.24.0/doma-2.24.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="PLUGIN" id="org.eclipse.jst.ws.annotations.core" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="WKSPJAR" id="/kin-db/lib/doma-2.28.0.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>

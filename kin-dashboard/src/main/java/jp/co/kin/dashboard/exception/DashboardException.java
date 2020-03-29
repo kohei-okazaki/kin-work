@@ -5,24 +5,24 @@ import jp.co.kin.common.exception.BaseException;
 
 /**
  * ダッシュボードの例外クラス
- * 
- * @since 1.0.0
  *
+ * @since 1.0.0
  */
 public class DashboardException extends BaseException {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public DashboardException(Exception e) {
-		super(e);
-	}
+    public DashboardException(Exception e) {
+        super(e);
+    }
 
-	public DashboardException(BaseErrorCode errorCode, String detail) {
-		super(errorCode, detail);
-	}
+    public DashboardException(BaseErrorCode errorCode, String detail) {
+        super(errorCode, detail);
+    }
 
-	public DashboardException(BaseErrorCode errorCode, String detail, RuntimeException e) {
-		super(errorCode, detail, e);
-	}
+    public DashboardException(BaseErrorCode errorCode, String detail,
+            RuntimeException e) {
+        super(errorCode, detail, e);
+    }
 
 }
