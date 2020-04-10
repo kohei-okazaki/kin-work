@@ -16,7 +16,7 @@ import jp.co.kin.common.validator.PatternValidator;
 
 /**
  * 文字種チェックのアノテーション
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -27,15 +27,15 @@ import jp.co.kin.common.validator.PatternValidator;
 @Constraint(validatedBy = PatternValidator.class)
 public @interface Pattern {
 
-	/** 正規表現 */
-	RegixType regixPattern();
+    /** 正規表現 */
+    RegixType regixPattern();
 
-	/** message */
-	String message();
+    /** message */
+    String message();
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }

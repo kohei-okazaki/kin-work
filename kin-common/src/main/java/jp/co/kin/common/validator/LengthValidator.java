@@ -15,20 +15,20 @@ import jp.co.kin.common.validator.annotation.Length;
  */
 public class LengthValidator implements ConstraintValidator<Length, Object> {
 
-	/** length */
-	private int length;
+    /** length */
+    private int length;
 
-	@Override
-	public void initialize(Length annotation) {
-		this.length = annotation.length();
-	}
+    @Override
+    public void initialize(Length annotation) {
+        this.length = annotation.length();
+    }
 
-	@Override
-	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		if (BeanUtil.isNull(value) || StringUtil.isEmpty(value.toString())) {
-			return true;
-		}
-		return value.toString().length() == length;
-	}
+    @Override
+    public boolean isValid(Object value, ConstraintValidatorContext context) {
+        if (BeanUtil.isNull(value) || StringUtil.isEmpty(value.toString())) {
+            return true;
+        }
+        return value.toString().length() == length;
+    }
 
 }

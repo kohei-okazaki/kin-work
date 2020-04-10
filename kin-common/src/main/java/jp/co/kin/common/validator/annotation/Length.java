@@ -26,15 +26,15 @@ import jp.co.kin.common.validator.LengthValidator;
 @Constraint(validatedBy = LengthValidator.class)
 public @interface Length {
 
-	/** length */
-	int length();
+    /** length */
+    int length();
 
-	/** message */
-	String message();
+    /** message */
+    String message();
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }

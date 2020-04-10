@@ -15,11 +15,12 @@ import jp.co.kin.common.validator.annotation.Required;
  */
 public class RequiredValidator implements ConstraintValidator<Required, Object> {
 
-	@Override
-	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		if (BeanUtil.isNull(value)) {
-			return false;
-		}
-		return !StringUtil.isEmpty(value.toString());
-	}
+    @Override
+    public boolean isValid(Object value, ConstraintValidatorContext context) {
+        if (BeanUtil.isNull(value)) {
+            return false;
+        }
+        return !StringUtil.isEmpty(value.toString());
+    }
+
 }

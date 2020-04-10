@@ -15,7 +15,7 @@ import jp.co.kin.common.validator.RequiredValidator;
 
 /**
  * 必須チェックのアノテーション
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -26,12 +26,12 @@ import jp.co.kin.common.validator.RequiredValidator;
 @Constraint(validatedBy = RequiredValidator.class)
 public @interface Required {
 
-	/** message */
-	String message() default "{0}の入力は必須です";
+    /** message */
+    String message() default "{0}の入力は必須です";
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }

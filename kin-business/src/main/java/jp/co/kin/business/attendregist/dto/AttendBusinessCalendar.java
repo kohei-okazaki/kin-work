@@ -28,7 +28,6 @@ public class AttendBusinessCalendar implements BaseDto {
      * dayを返す
      *
      * @return day
-     *
      */
     public BigDecimal getDay() {
         return day;
@@ -38,8 +37,7 @@ public class AttendBusinessCalendar implements BaseDto {
      * dayを設定する
      *
      * @param day
-     *     day
-     *
+     *     日にち
      */
     public void setDay(BigDecimal day) {
         this.day = day;
@@ -49,7 +47,6 @@ public class AttendBusinessCalendar implements BaseDto {
      * weekDayを返す
      *
      * @return weekDay
-     *
      */
     public String getWeekDay() {
         return weekDay;
@@ -59,8 +56,7 @@ public class AttendBusinessCalendar implements BaseDto {
      * weekDayを設定する
      *
      * @param weekDay
-     *     weekDay
-     *
+     *     曜日
      */
     public void setWeekDay(String weekDay) {
         this.weekDay = weekDay;
@@ -70,7 +66,6 @@ public class AttendBusinessCalendar implements BaseDto {
      * workStartDateHourを返す
      *
      * @return workStartDateHour
-     *
      */
     public String getWorkStartDateHour() {
         return workStartDateHour;
@@ -80,8 +75,7 @@ public class AttendBusinessCalendar implements BaseDto {
      * workStartDateHourを設定する
      *
      * @param workStartDateHour
-     *     workStartDateHour
-     *
+     *     始業日時(時)
      */
     public void setWorkStartDateHour(String workStartDateHour) {
         this.workStartDateHour = workStartDateHour;
@@ -91,7 +85,6 @@ public class AttendBusinessCalendar implements BaseDto {
      * workStartDateMinuteを返す
      *
      * @return workStartDateMinute
-     *
      */
     public String getWorkStartDateMinute() {
         return workStartDateMinute;
@@ -101,8 +94,7 @@ public class AttendBusinessCalendar implements BaseDto {
      * workStartDateMinuteを設定する
      *
      * @param workStartDateMinute
-     *     workStartDateMinute
-     *
+     *     始業日時(分)
      */
     public void setWorkStartDateMinute(String workStartDateMinute) {
         this.workStartDateMinute = workStartDateMinute;
@@ -112,7 +104,6 @@ public class AttendBusinessCalendar implements BaseDto {
      * workEndDateHourを返す
      *
      * @return workEndDateHour
-     *
      */
     public String getWorkEndDateHour() {
         return workEndDateHour;
@@ -122,8 +113,7 @@ public class AttendBusinessCalendar implements BaseDto {
      * workEndDateHourを設定する
      *
      * @param workEndDateHour
-     *     workEndDateHour
-     *
+     *     終業日時(時)
      */
     public void setWorkEndDateHour(String workEndDateHour) {
         this.workEndDateHour = workEndDateHour;
@@ -133,7 +123,6 @@ public class AttendBusinessCalendar implements BaseDto {
      * workEndDateMinuteを返す
      *
      * @return workEndDateMinute
-     *
      */
     public String getWorkEndDateMinute() {
         return workEndDateMinute;
@@ -143,8 +132,7 @@ public class AttendBusinessCalendar implements BaseDto {
      * workEndDateMinuteを設定する
      *
      * @param workEndDateMinute
-     *     workEndDateMinute
-     *
+     *     終業日時(分)
      */
     public void setWorkEndDateMinute(String workEndDateMinute) {
         this.workEndDateMinute = workEndDateMinute;

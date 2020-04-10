@@ -15,7 +15,7 @@ import jp.co.kin.common.validator.DecimalValidator;
 
 /**
  * 数字の妥当性チェックのアノテーション
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -26,20 +26,20 @@ import jp.co.kin.common.validator.DecimalValidator;
 @Constraint(validatedBy = DecimalValidator.class)
 public @interface Decimal {
 
-	int min() default 1;
+    int min() default 1;
 
-	int max() default 99999;
+    int max() default 99999;
 
-	boolean minEqual() default true;
+    boolean minEqual() default true;
 
-	boolean maxEqual() default true;
+    boolean maxEqual() default true;
 
-	/** message */
-	String message() default "";
+    /** message */
+    String message() default "";
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }

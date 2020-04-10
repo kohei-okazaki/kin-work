@@ -15,7 +15,7 @@ import jp.co.kin.common.validator.FlagValidator;
 
 /**
  * フラグ値の妥当性チェックのアノテーション
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -26,12 +26,12 @@ import jp.co.kin.common.validator.FlagValidator;
 @Constraint(validatedBy = FlagValidator.class)
 public @interface Flag {
 
-	/** message */
-	String message() default "{0}は0または1で入力してください";
+    /** message */
+    String message() default "{0}は0または1で入力してください";
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }

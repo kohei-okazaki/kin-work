@@ -43,8 +43,7 @@ public class LoginServiceImpl implements LoginService {
             result.setHasError(true);
             result.setMessage("validate.login.inValidPassword");
         } else if (LocalDateTimeUtil.isBefore(searchDto.getPasswordExpire(),
-                LocalDateTimeUtil.getSysDate(),
-                false)) {
+                LocalDateTimeUtil.getSysDate(), false)) {
             result.setHasError(true);
             result.setMessage("validate.login.expired");
         } else if (AccountLockFlg.UNUSABLE == AccountLockFlg

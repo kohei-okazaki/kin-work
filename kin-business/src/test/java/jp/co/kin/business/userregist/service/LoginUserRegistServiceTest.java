@@ -21,7 +21,6 @@ public class LoginUserRegistServiceTest extends BaseBusinessTest {
     public void registTest() {
         {
             // TODO 要実装
-            UserRegistDto dto = new UserRegistDto();
         }
     }
 
