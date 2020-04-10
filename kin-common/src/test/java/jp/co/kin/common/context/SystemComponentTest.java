@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import jp.co.kin.common.log.type.LogLevel;
 import jp.co.kin.common.test.BaseCommonTest;
 
 /**
@@ -22,6 +23,6 @@ public class SystemComponentTest extends BaseCommonTest {
         assertEquals(Integer.valueOf(systemComponent.getPaging()), 10);
 
         // loglevel
-        assertEquals(systemComponent.getLoglevel(), "DEBUG");
+        assertEquals(systemComponent.getLoglevel(), LogLevel.of("DEBUG"));
     }
 }

@@ -15,7 +15,7 @@ import jp.co.kin.common.validator.MaxValidator;
 
 /**
  * 最大値チェックのアノテーション
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -26,18 +26,18 @@ import jp.co.kin.common.validator.MaxValidator;
 @Constraint(validatedBy = MaxValidator.class)
 public @interface Max {
 
-	/** size */
-	int size();
+    /** size */
+    int size();
 
-	/** 同じ値を含むか */
-	boolean isEqual() default true;
+    /** 同じ値を含むか */
+    boolean isEqual() default true;
 
-	/** message */
-	String message() default "{0}は桁数超過しています";
+    /** message */
+    String message() default "{0}は桁数超過しています";
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }

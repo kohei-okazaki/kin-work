@@ -15,7 +15,7 @@ import jp.co.kin.common.validator.MailAddressValidator;
 
 /**
  * メールアドレス型チェックのアノテーション
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -26,12 +26,12 @@ import jp.co.kin.common.validator.MailAddressValidator;
 @Constraint(validatedBy = MailAddressValidator.class)
 public @interface MailAddress {
 
-	/** message */
-	String message() default "{0}はメールアドレス形式で入力してください";
+    /** message */
+    String message() default "{0}はメールアドレス形式で入力してください";
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }

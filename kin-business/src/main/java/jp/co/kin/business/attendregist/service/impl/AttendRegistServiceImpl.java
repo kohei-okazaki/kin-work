@@ -40,7 +40,8 @@ public class AttendRegistServiceImpl implements AttendRegistService {
     @Override
     public List<BigDecimal> getYearList() {
         LocalDate sysdate = LocalDateTimeUtil.toLocalDate(LocalDateTimeUtil.getSysDate());
-        return Stream.iterate(0, i -> ++i).limit(10)
+        return Stream.iterate(0, i -> ++i)
+                .limit(10)
                 .map(i -> {
                     LocalDate date = LocalDateTimeUtil.addYear(sysdate, i);
                     return new BigDecimal(
@@ -50,7 +51,9 @@ public class AttendRegistServiceImpl implements AttendRegistService {
 
     @Override
     public List<BigDecimal> getMonthList() {
-        return Stream.iterate(0, i -> ++i).limit(12).map(e -> new BigDecimal(e + 1))
+        return Stream.iterate(0, i -> ++i)
+                .limit(12)
+                .map(e -> new BigDecimal(e + 1))
                 .collect(Collectors.toList());
     }
 

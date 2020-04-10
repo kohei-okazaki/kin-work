@@ -26,18 +26,18 @@ import jp.co.kin.common.validator.MinValidator;
 @Constraint(validatedBy = MinValidator.class)
 public @interface Min {
 
-	/** size */
-	int size();
+    /** size */
+    int size();
 
-	/** 同じ値を含むか */
-	boolean isEqual() default true;
+    /** 同じ値を含むか */
+    boolean isEqual() default true;
 
-	/** message */
-	String message() default "{0}は桁数が足りません";
+    /** message */
+    String message() default "{0}は桁数が足りません";
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }

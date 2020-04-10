@@ -16,11 +16,12 @@ import jp.co.kin.common.validator.annotation.MailAddress;
  */
 public class MailAddressValidator implements ConstraintValidator<MailAddress, Object> {
 
-	@Override
-	public boolean isValid(Object value, ConstraintValidatorContext context) {
-		if (BeanUtil.isNull(value) || StringUtil.isEmpty(value.toString())) {
-			return true;
-		}
-		return value.toString().matches(RegixType.MAIL_ADDRESS.getValue());
-	}
+    @Override
+    public boolean isValid(Object value, ConstraintValidatorContext context) {
+        if (BeanUtil.isNull(value) || StringUtil.isEmpty(value.toString())) {
+            return true;
+        }
+        return value.toString().matches(RegixType.MAIL_ADDRESS.getValue());
+    }
+
 }

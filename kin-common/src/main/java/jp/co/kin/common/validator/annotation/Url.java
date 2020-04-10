@@ -15,7 +15,7 @@ import jp.co.kin.common.validator.UrlValidator;
 
 /**
  * URL型の妥当性チェックアノテーション
- * 
+ *
  * @since 1.0.0
  *
  */
@@ -26,12 +26,12 @@ import jp.co.kin.common.validator.UrlValidator;
 @Constraint(validatedBy = UrlValidator.class)
 public @interface Url {
 
-	/** message */
-	String message() default "{0}はURL形式で入力してください";
+    /** message */
+    String message() default "{0}はURL形式で入力してください";
 
-	/** groups */
-	Class<?>[] groups() default {};
+    /** groups */
+    Class<?>[] groups() default {};
 
-	/** payload */
-	Class<? extends Payload>[] payload() default {};
+    /** payload */
+    Class<? extends Payload>[] payload() default {};
 }
