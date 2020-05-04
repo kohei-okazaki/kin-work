@@ -32,7 +32,7 @@ def testSelectList(driver):
 def testMonthList(driver):
     # selectボックス-月を変更する(先頭から最後まで)
     monthEelement = driver.find_element_by_name('month')
-    monthList = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, 11, 12]
+    monthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     monthEelementSelected = Select(monthEelement)
     for month in monthList:
         monthEelementSelected.select_by_value(str(month))
