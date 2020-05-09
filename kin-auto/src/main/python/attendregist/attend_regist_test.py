@@ -11,9 +11,9 @@ import datetime
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
-from src.main.python.attendregist import AttendRegist
-from src.main.python.common import ConstData
-from src.main.python.common import Logger
+from src.main.python.attendregist.attend_regist import AttendRegist
+from src.main.python.common import const_data
+from src.main.python.common.logger import Logger
 from src.main.python.login import LoginAuth
 
 
@@ -40,7 +40,7 @@ def testMonthList(driver):
 
 def testRegistAttend(driver):
 
-    AttendRegist.AttendRegist(driver, 0, '09', '00', '17', '30').doRegist()
+    AttendRegist(driver, 0, '09', '00', '17', '30').doRegist()
 
     # 戻るボタン押下し、再度勤怠登録画面に遷移
     driver.find_element_by_name('back').click()
@@ -53,11 +53,11 @@ def testRegistAttend(driver):
 
 
 ''' ここからメイン処理 '''
-log = Logger.Logger("auto.log")
+log = Logger("auto.log")
 log.write("AttendTest開始")
 
 # Driverパスを設定する
-driver = webdriver.Chrome(ConstData.SELENIUM_DRIVER_PATH)
+driver = webdriver.Chrome(const_data.SELENIUM_DRIVER_PATH)
 
 # 正しいログイン情報でログイン
 loginId = "test"

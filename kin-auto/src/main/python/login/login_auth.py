@@ -7,7 +7,7 @@ Created on 2020/01/18
 
 '''
 from time import sleep
-from src.main.python.common import ConstData
+from src.main.python.common import const_data
 
 
 class LoginAuth():
@@ -26,7 +26,7 @@ class LoginAuth():
         '''
 
         # ログイン画面を表示する
-        self.driver.get(ConstData.BASE_REQUEST_URL + '/login/index')
+        self.driver.get(const_data.BASE_REQUEST_URL + '/login/index')
 
         # ログイン画面 - loginIdを設定
         loginIdElement = self.driver.find_element_by_id("loginId")
