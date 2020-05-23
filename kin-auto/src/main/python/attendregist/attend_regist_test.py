@@ -14,7 +14,7 @@ from selenium.webdriver.support.ui import Select
 from src.main.python.attendregist.attend_regist import AttendRegist
 from src.main.python.common import const_data
 from src.main.python.common.logger import Logger
-from src.main.python.login import LoginAuth
+from src.main.python.login.login_auth import LoginAuth
 
 
 def testSelectList(driver):
@@ -62,7 +62,7 @@ driver = webdriver.Chrome(const_data.SELENIUM_DRIVER_PATH)
 # 正しいログイン情報でログイン
 loginId = "test"
 password = "test"
-LoginAuth.LoginAuth(driver, loginId, password).doLogin()
+LoginAuth(driver, loginId, password).doLogin()
 
 # 勤怠登録画面へ遷移
 driver.find_element_by_link_text(u"勤怠登録").click()
