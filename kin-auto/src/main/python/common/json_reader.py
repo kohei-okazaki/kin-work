@@ -7,7 +7,7 @@ JSON読み込み処理を行うPython
 
 '''
 import json
-from src.main.python.common import ConstData
+from src.main.python.common import const_data
 
 
 class JsonReader():
@@ -17,7 +17,7 @@ class JsonReader():
         Constructor
         @param filePath: ファイルパス
         '''
-        self.filePath = ConstData.BASE_SYSTEM_PATH + '/' + filePath
+        self.filePath = const_data.BASE_SYSTEM_PATH + '/' + filePath
 
     def getValue(self, key):
         '''

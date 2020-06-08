@@ -9,22 +9,22 @@ Login画面→ログイン後のTOP画面のテストを行うpython
 
 from selenium import webdriver
 
-from src.main.python.common import ConstData
-from src.main.python.common import Logger
-from src.main.python.login import LoginAuth
+from src.main.python.common import const_data
+from src.main.python.common.logger import Logger
+from src.main.python.login.login_auth import LoginAuth
 
 ''' ここからメイン処理 '''
 
-log = Logger.Logger("auto.log")
+log = Logger("auto.log")
 log.write("LoginTest開始")
 
 # driverを取得
-driver = webdriver.Chrome(ConstData.SELENIUM_DRIVER_PATH)
+driver = webdriver.Chrome(const_data.SELENIUM_DRIVER_PATH)
 
 # 正しいログイン情報でログイン
 loginId = "test"
 password = "test"
-LoginAuth.LoginAuth(driver, loginId, password).doLogin()
+LoginAuth(driver, loginId, password).doLogin()
 
 # ブラウザバック
 driver.back()
@@ -32,7 +32,7 @@ driver.back()
 # 正しくないパスワードでログイン
 loginId = "test"
 password = "hoge"
-LoginAuth.LoginAuth(driver, loginId, password).doLogin()
+LoginAuth(driver, loginId, password).doLogin()
 
 log.write("LoginTest終了")
 

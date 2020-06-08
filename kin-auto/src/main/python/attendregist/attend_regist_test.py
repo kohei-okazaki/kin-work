@@ -11,10 +11,10 @@ import datetime
 from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 
-from src.main.python.attendregist import AttendRegist
-from src.main.python.common import ConstData
-from src.main.python.common import Logger
-from src.main.python.login import LoginAuth
+from src.main.python.attendregist.attend_regist import AttendRegist
+from src.main.python.common import const_data
+from src.main.python.common.logger import Logger
+from src.main.python.login.login_auth import LoginAuth
 
 
 def testSelectList(driver):
@@ -32,7 +32,7 @@ def testSelectList(driver):
 def testMonthList(driver):
     # selectボックス-月を変更する(先頭から最後まで)
     monthEelement = driver.find_element_by_name('month')
-    monthList = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, 11, 12]
+    monthList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     monthEelementSelected = Select(monthEelement)
     for month in monthList:
         monthEelementSelected.select_by_value(str(month))
@@ -40,7 +40,7 @@ def testMonthList(driver):
 
 def testRegistAttend(driver):
 
-    AttendRegist.AttendRegist(driver, 0, '09', '00', '17', '30').doRegist()
+    AttendRegist(driver, 0, '09', '00', '17', '30').doRegist()
 
     # 戻るボタン押下し、再度勤怠登録画面に遷移
     driver.find_element_by_name('back').click()
@@ -53,16 +53,16 @@ def testRegistAttend(driver):
 
 
 ''' ここからメイン処理 '''
-log = Logger.Logger("auto.log")
+log = Logger("auto.log")
 log.write("AttendTest開始")
 
 # Driverパスを設定する
-driver = webdriver.Chrome(ConstData.SELENIUM_DRIVER_PATH)
+driver = webdriver.Chrome(const_data.SELENIUM_DRIVER_PATH)
 
 # 正しいログイン情報でログイン
 loginId = "test"
 password = "test"
-LoginAuth.LoginAuth(driver, loginId, password).doLogin()
+LoginAuth(driver, loginId, password).doLogin()
 
 # 勤怠登録画面へ遷移
 driver.find_element_by_link_text(u"勤怠登録").click()
