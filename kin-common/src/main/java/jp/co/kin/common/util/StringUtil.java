@@ -66,7 +66,7 @@ public class StringUtil {
      * @return 判定結果
      */
     public static boolean isEmpty(String target) {
-        return BeanUtil.isNull(target) || "".equals(target.trim());
+        return BeanUtil.isNull(target) || EMPTY.equals(target.trim());
     }
 
     /**
