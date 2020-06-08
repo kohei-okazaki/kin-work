@@ -11,7 +11,8 @@ from time import sleep
 
 class AttendRegist():
 
-    def __init__(self, driver, index, workStartHour, workStartMinute, workEndHour, workEndMinute):
+    def __init__(self, driver, index, workStartHour, workStartMinute,
+                 workEndHour, workEndMinute):
         '''
         Constructor
         '''

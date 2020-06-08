@@ -16,8 +16,8 @@ from src.main.python.ontimeregist.ontime_regist import OntimeRegist
 
 def testValidate(driver):
     '''
-     妥当性チェックを行う
-     '''
+    妥当性チェックを行う
+    '''
 
     # 必須チェック
     testValidateRequired(driver)
@@ -28,15 +28,15 @@ def testValidate(driver):
 
 def testValidateRequired(driver):
     '''
-     必須チェックを行う
-     '''
+    必須チェックを行う
+    '''
     OntimeRegist(driver, "", "", "", "", "").doRegist()
 
 
 def testValidateType(driver):
     '''
-     型チェックを行う
-     '''
+    型チェックを行う
+    '''
     OntimeRegist(driver, "12345", "A", "B", "C", "D").doRegist()
 
 
