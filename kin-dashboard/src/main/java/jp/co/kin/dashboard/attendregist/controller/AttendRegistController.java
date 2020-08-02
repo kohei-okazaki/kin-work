@@ -68,8 +68,7 @@ public class AttendRegistController implements BaseViewController {
 
     @GetMapping("/changeCalendar")
     public String changeCalendar(Model model, HttpServletRequest request,
-            @Valid AttendRegistForm form,
-            BindingResult result) {
+            @Valid AttendRegistForm form, BindingResult result) {
 
         if (result.hasErrors()) {
             initCalendar(model, request);
@@ -179,8 +178,7 @@ public class AttendRegistController implements BaseViewController {
      *     対象日時
      */
     private void viewCalendar(Model model, HttpServletRequest request, BigDecimal year,
-            BigDecimal month,
-            LocalDate targetDate) {
+            BigDecimal month, LocalDate targetDate) {
 
         model.addAttribute("selectedYear", year);
         model.addAttribute("yearList", attendRegistService.getYearList());
@@ -221,13 +219,11 @@ public class AttendRegistController implements BaseViewController {
                     // 終業日時(時)
                     attendBusinessCalendar
                             .setWorkEndDateHour(LocalDateTimeUtil.toString(
-                                    attendRegistDto.getWorkEndDate(),
-                                    DateFormatType.HH));
+                                    attendRegistDto.getWorkEndDate(), DateFormatType.HH));
                     // 終業日時(分)
                     attendBusinessCalendar
                             .setWorkEndDateMinute(LocalDateTimeUtil.toString(
-                                    attendRegistDto.getWorkEndDate(),
-                                    DateFormatType.MI));
+                                    attendRegistDto.getWorkEndDate(), DateFormatType.MI));
                 } else {
                     continue;
                 }
